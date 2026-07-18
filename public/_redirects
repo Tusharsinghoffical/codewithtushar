@@ -1,0 +1,4 @@
+# SPA Routing - All routes go to index.html for React Router to handle
+# This ensures deep linking works (shared URLs open correct pages)
+
+/*    /index.html   200

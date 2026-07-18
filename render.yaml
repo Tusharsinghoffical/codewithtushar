@@ -1,0 +1,38 @@
+services:
+  - type: static
+    name: codewithmrsingh
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    # Custom domain — configure in Render dashboard
+    # domain: codewithmrsingh.me
+    headers:
+      # Cache hashed assets forever (Vite adds content hashes to filenames)
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      # Don't cache HTML — always fetch fresh so deploys take effect immediately
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      # Security headers
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+    routes:
+      # SPA fallback — all routes serve index.html so React Router handles them
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Add your Gemini API key in the Render dashboard (Environment tab)
+      # Mark it as Secret so it's not exposed in logs
+      - key: GEMINI_API_KEY
+        sync: false

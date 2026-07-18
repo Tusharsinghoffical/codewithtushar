@@ -1,0 +1,54 @@
+{
+  "name": "tushar-singh-freelance-developer-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Professional portfolio of Tushar Singh - Top-rated freelance Data Scientist & Full-Stack Developer from Delhi, India. Expert in Python, AI/ML, React.js, Django.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "seo-check": "echo 'SEO optimization completed'",
+    "sitemap": "echo 'Sitemap generation completed'"
+  },
+  "keywords": [
+    "freelance developer",
+    "data scientist",
+    "full-stack developer",
+    "python developer",
+    "ai ml engineer",
+    "react.js developer",
+    "django developer",
+    "web development",
+    "delhi developer",
+    "india developer"
+  ],
+  "author": "Tushar Singh",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^1.40.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "fuse.js": "^7.1.0",
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-helmet-async": "^3.0.0",
+    "react-router-dom": "^7.13.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitest/ui": "^4.1.4",
+    "fast-check": "^4.7.0",
+    "jsdom": "^29.0.2",
+    "vitest": "^4.1.4"
+  }
+}

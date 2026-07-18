@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Homepage — Highest Priority                          -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://codewithmrsingh.me/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/"/>
+    <xhtml:link rel="alternate" hreflang="en-in" href="https://codewithmrsingh.me/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/me-optimized.jpg</image:loc>
+      <image:title>Tushar Singh - AI Automation Expert &amp; Full-Stack Developer Delhi India</image:title>
+      <image:caption>Tushar Singh — 25+ projects, ₹50L+ revenue generated. AI Automation Expert and Full-Stack Developer based in Delhi, India.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/logo/Untitled design.png</image:loc>
+      <image:title>Code with Mr. Singh Logo</image:title>
+      <image:caption>Official logo of Code with Mr. Singh — Tushar Singh's AI Automation &amp; Development brand</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Services Page — Very High Priority                  -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://codewithmrsingh.me/services</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/services"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/me-optimized.jpg</image:loc>
+      <image:title>AI Automation &amp; Web Development Services by Tushar Singh</image:title>
+      <image:caption>AI automation, chatbot development, full-stack web development, lead generation, sales funnels, and data science services from Delhi, India</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Projects / Portfolio Page                           -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://codewithmrsingh.me/projects</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/projects"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/p1.svg</image:loc>
+      <image:title>AI Automation Project — Lead Generation System</image:title>
+      <image:caption>Automated lead generation system generating 250+ leads in 10 days</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/p2.svg</image:loc>
+      <image:title>AI Chatbot Development Project</image:title>
+      <image:caption>RAG-based AI chatbot reducing support tickets by 70%</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/p3.svg</image:loc>
+      <image:title>Full-Stack Web Application</image:title>
+      <image:caption>React.js and Django full-stack web application for a startup client</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/p4.svg</image:loc>
+      <image:title>n8n Workflow Automation Project</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/p5.svg</image:loc>
+      <image:title>Sales Funnel Development Project</image:title>
+    </image:image>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- About Page                                          -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://codewithmrsingh.me/about</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/about"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/me.webp</image:loc>
+      <image:title>About Tushar Singh — AI Automation Expert Delhi</image:title>
+      <image:caption>Tushar Singh, MCA graduate from Delhi University and AI Automation Expert with 25+ completed projects</image:caption>
+    </image:image>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Blog Page — High Frequency                          -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/blog"/>
+  </url>
+
+  <!-- Blog Post — FAANG Coding Roadmap -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/post/150-coding-questions-faang-interviews</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/post/150-coding-questions-faang-interviews"/>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Testimonials Page                                   -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://codewithmrsingh.me/testimonials</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/testimonials"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/testimonials"/>
+  </url>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Contact Page                                        -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <url>
+    <loc>https://codewithmrsingh.me/contact</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/contact"/>
+  </url>
+
+</urlset>

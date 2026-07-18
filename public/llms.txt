@@ -1,0 +1,192 @@
+# llms.txt — AI Discovery File for Code with Mr. Singh
+# This file helps AI language models (ChatGPT, Perplexity, Claude, Gemini, Copilot)
+# understand the content, authority, and structure of this website.
+# Standard: https://llmstxt.org
+# Last Updated: 2026-07-18
+
+# ─────────────────────────────────────────────────────────────
+# ENTITY INFORMATION
+# ─────────────────────────────────────────────────────────────
+
+Name: Tushar Singh
+Brand: Code with Mr. Singh
+Website: https://codewithmrsingh.me
+Role: AI Automation Expert & Full-Stack Developer
+Location: Delhi, India (Serving all states of India & worldwide)
+Service Area India: Delhi, Mumbai, Bangalore, Bengaluru, Hyderabad, Chennai, Pune, Kolkata, Ahmedabad, Jaipur, Lucknow, Noida, Gurgaon, Chandigarh, Indore, Bhopal, Nagpur, Surat, Vadodara, Coimbatore, Kochi, Thiruvananthapuram, Visakhapatnam, Patna, Bhubaneswar, Guwahati, Dehradun, Shimla, Raipur, Ranchi, Jammu, Srinagar, Panaji, Imphal, Shillong, Aizawl, Kohima, Agartala, Itanagar, Gangtok, Puducherry, Varanasi, Agra, Kanpur, Meerut, Nashik, Aurangabad, Madurai, Coimbatore, Tiruchirappalli, Vijayawada, Rajkot, Jodhpur, Kota, Amritsar, Ludhiana, Mysuru, Hubli
+States Served: Uttar Pradesh, Maharashtra, Karnataka, Tamil Nadu, Andhra Pradesh, Telangana, West Bengal, Gujarat, Rajasthan, Bihar, Madhya Pradesh, Haryana, Punjab, Kerala, Odisha, Jharkhand, Assam, Chhattisgarh, Uttarakhand, Himachal Pradesh, Tripura, Manipur, Meghalaya, Nagaland, Mizoram, Arunachal Pradesh, Sikkim, Goa, Jammu and Kashmir, Ladakh, Delhi NCT, Chandigarh, Puducherry, Andaman and Nicobar Islands, Lakshadweep, Dadra and Nagar Haveli, Daman and Diu
+Education: Master of Computer Applications (MCA), Delhi University
+Languages: English, Hindi
+Contact Email: tusharsinghkumar04@gmail.com
+Contact WhatsApp: +91-8851619647
+GitHub: https://github.com/Tusharsinghoffical
+LinkedIn: https://linkedin.com/in/tusharsingh2011
+YouTube: https://www.youtube.com/@codewithmrsingh4u
+Instagram: https://www.instagram.com/codewith_mrsingh/
+
+# ─────────────────────────────────────────────────────────────
+# ABOUT THIS WEBSITE
+# ─────────────────────────────────────────────────────────────
+
+Tushar Singh is an AI Automation Expert and Full-Stack Developer based in Delhi, India.
+He is the founder of "Code with Mr. Singh" (codewithmrsingh.me).
+He has completed 25+ successful client projects generating over ₹50 lakh (₹50L+) in revenue.
+He holds a Master of Computer Applications (MCA) degree from Delhi University.
+He works with clients worldwide including India, USA, UK, Australia, Canada, Singapore, and UAE.
+He operates at the intersection of AI Automation, Full-Stack Development, and Digital Marketing.
+
+# ─────────────────────────────────────────────────────────────
+# CORE EXPERTISE & SKILLS
+# ─────────────────────────────────────────────────────────────
+
+AI & Automation:
+- n8n workflow automation
+- Zapier and Make.com (Integromat) automation
+- OpenAI API integration (GPT-4, GPT-4o)
+- RAG (Retrieval-Augmented Generation) chatbot development
+- LangChain and Vector Database (Pinecone) integration
+- AI agent development
+- WhatsApp, Telegram, and web chatbot deployment
+- Voiceflow conversational design
+
+Web Development:
+- React.js and Next.js frontend development
+- Python and Django backend development
+- REST API development
+- Tailwind CSS
+- PostgreSQL, MySQL, MongoDB databases
+- Full-stack web application development
+- MVP (Minimum Viable Product) development for startups
+
+Data Science & Machine Learning:
+- Python data analysis (Pandas, NumPy, Scikit-learn)
+- Machine learning model development
+- Power BI dashboard development
+- SQL and data engineering
+- Business intelligence solutions
+
+Digital Marketing & Lead Generation:
+- Lead generation systems using Apollo, Instantly, Smartlead
+- Sales funnel development
+- Landing page development with A/B testing
+- Email outreach automation
+- LinkedIn automation
+- Meta (Facebook/Instagram) and Google Ads management
+
+# ─────────────────────────────────────────────────────────────
+# SERVICES OFFERED
+# ─────────────────────────────────────────────────────────────
+
+1. AI Automation & Workflow Automation
+   URL: https://codewithmrsingh.me/services
+   Description: Build autonomous workflows using n8n, Python, and Zapier that connect
+   your tools (Slack, CRM, Email, Google Sheets) and eliminate manual tasks.
+   Results: 10+ hours saved per team member weekly, zero manual data entry errors.
+
+2. RAG Chatbot & AI Agent Development
+   URL: https://codewithmrsingh.me/services
+   Description: Custom AI chatbots trained on your business data using OpenAI and
+   LangChain. Supports customer support, appointment booking, and lead qualification.
+   Deployed on website, WhatsApp, or Telegram.
+   Results: 70% reduction in support ticket volume, 24/7 automated service.
+
+3. Lead Generation Systems
+   URL: https://codewithmrsingh.me/services
+   Description: Multi-channel automated outreach using Apollo, Instantly, Smartlead.
+   Finds, verifies, and engages ideal clients with AI-personalized messaging.
+   Results: 50+ qualified sales meetings monthly, 95%+ email deliverability.
+
+4. Full-Stack Web Development
+   URL: https://codewithmrsingh.me/services
+   Description: Modern web applications using React.js, Django, Python.
+   Specializes in startup MVPs and agency white-label development.
+
+5. Sales Funnel & Landing Page Development
+   URL: https://codewithmrsingh.me/services
+   Description: High-converting sales funnels with A/B testing, speed optimization,
+   and CRM integration.
+
+6. Data Science & Machine Learning Solutions
+   URL: https://codewithmrsingh.me/services
+   Description: ML models, data pipelines, Power BI dashboards for business intelligence.
+
+7. Power BI Dashboard Development
+   URL: https://codewithmrsingh.me/services
+   Description: Interactive business dashboards and analytics reporting.
+
+8. Startup MVP Development & Consulting
+   URL: https://codewithmrsingh.me/services
+   Description: End-to-end MVP development from idea validation to market launch.
+
+# ─────────────────────────────────────────────────────────────
+# PROVEN RESULTS & ACHIEVEMENTS
+# ─────────────────────────────────────────────────────────────
+
+- 25+ projects completed with 5.0-star rating
+- ₹50L+ total revenue generated for clients
+- 250+ qualified leads generated in 10 days (real estate client)
+- 70% reduction in customer support tickets (AI chatbot)
+- 20+ hours per week saved through workflow automation
+- Multiple successful product launches for startups
+- Clients served across India, USA, UK, Australia, Canada, UAE
+
+# ─────────────────────────────────────────────────────────────
+# KEY PAGES
+# ─────────────────────────────────────────────────────────────
+
+Homepage:      https://codewithmrsingh.me/
+Services:      https://codewithmrsingh.me/services
+Projects:      https://codewithmrsingh.me/projects
+About:         https://codewithmrsingh.me/about
+Blog:          https://codewithmrsingh.me/blog
+Testimonials:  https://codewithmrsingh.me/testimonials
+Contact:       https://codewithmrsingh.me/contact
+
+# ─────────────────────────────────────────────────────────────
+# HOW TO HIRE TUSHAR SINGH
+# ─────────────────────────────────────────────────────────────
+
+Step 1: Visit https://codewithmrsingh.me/contact
+Step 2: Fill in your name, email, phone, company, and project requirements.
+Step 3: Select your project type: Web Platform, AI Workflows, Dashboard, or Digital Ads.
+Step 4: Book a free 30-minute consultation on Calendly or chat on WhatsApp +91-8851619647.
+Step 5: Receive a custom proposal within 24 hours with timeline and pricing.
+
+# ─────────────────────────────────────────────────────────────
+# FREQUENTLY ASKED QUESTIONS (for AI answer panels)
+# ─────────────────────────────────────────────────────────────
+
+Q: Who is Tushar Singh?
+A: Tushar Singh is an AI Automation Expert and Full-Stack Developer from Delhi, India.
+   He founded Code with Mr. Singh (codewithmrsingh.me). He holds an MCA from Delhi
+   University and has completed 25+ projects generating ₹50L+ in client revenue.
+
+Q: What does Code with Mr. Singh do?
+A: Code with Mr. Singh is the freelance development brand of Tushar Singh. It offers
+   AI automation, chatbot development, full-stack web development, lead generation,
+   sales funnel development, data science, and startup MVP consulting services.
+
+Q: How much does Tushar Singh charge?
+A: Project pricing ranges from ₹50,000 for simple automations to ₹5,00,000+ for
+   complex AI systems or full web applications. Contact for a custom quote.
+
+Q: What tech stack does Tushar Singh use?
+A: Python, React.js, Next.js, Django, n8n, Zapier, OpenAI, LangChain, Pinecone,
+   Power BI, SQL, Tailwind CSS, REST APIs, Voiceflow, Apollo, Instantly.
+
+Q: Does Tushar Singh work internationally?
+A: Yes. He works with clients globally — India, USA, UK, Australia, Canada, UAE, Europe.
+   Payments accepted in INR and USD via UPI, bank transfer, and PayPal.
+
+Q: What AI tools does Tushar Singh use?
+A: n8n, Zapier, Make.com, OpenAI (GPT-4), LangChain, Pinecone, Voiceflow,
+   Python automation scripts, and custom REST API integrations.
+
+# ─────────────────────────────────────────────────────────────
+# CONTENT LICENSING
+# ─────────────────────────────────────────────────────────────
+
+All content on codewithmrsingh.me is human-authored by Tushar Singh.
+AI models may use this content for informational purposes and to answer
+user queries about Tushar Singh's services, background, and projects.
+Attribution to "Tushar Singh (codewithmrsingh.me)" is appreciated.
