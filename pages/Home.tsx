@@ -1,338 +1,451 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  CheckCircle2, TrendingUp, Users2, Rocket, ShieldCheck, Zap, Cpu,
-  Clock, MapPin, Sparkles, Database, Globe, Terminal, Activity,
-  ArrowRight, Brain, BarChart3, Quote, CheckCircle, FileSearch,
-  Laptop, Star, Award, Code2, Workflow, Bot, Target, ArrowUpRight,
-  ChevronRight, Play
+  ArrowRight, ArrowUpRight, CheckCircle2, Star, Quote,
+  Zap, Globe, Brain, Bot, Rocket, Target, Code2,
+  TrendingUp, Users2, Clock, Sparkles, ChevronRight,
+  FileSearch, Laptop, ShieldCheck, Play, BadgeCheck,
+  MapPin, Circle
 } from 'lucide-react';
 import { PROJECTS, SERVICES, TESTIMONIALS } from '../constants';
 import OptimizedImage from '../components/OptimizedImage';
 
-/* ─── Small reusable components ─────────────────────────────────────────── */
-
-const StatBadge = ({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) => (
-  <div className="flex items-center gap-3 px-5 py-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/10 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
-    <div className="text-indigo-500 dark:text-indigo-400 shrink-0">{icon}</div>
-    <div>
-      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{label}</p>
-      <p className="text-[11px] font-extrabold text-slate-900 dark:text-white whitespace-nowrap">{value}</p>
-    </div>
-  </div>
-);
-
-const ServiceCard = ({ service, idx }: { service: any; idx: number }) => {
-  const icons = [<Brain size={22} />, <Rocket size={22} />, <Bot size={22} />, <Globe size={22} />, <Target size={22} />, <Code2 size={22} />];
-  return (
-    <div className="group relative bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-white/5 rounded-3xl p-7 hover:border-indigo-400/40 hover:shadow-2xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-400">
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/0 to-violet-500/0 group-hover:from-indigo-500/[0.03] group-hover:to-violet-500/[0.03] transition-all duration-500 pointer-events-none"></div>
-      <div className="w-11 h-11 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
-        {icons[idx] || <Zap size={22} />}
-      </div>
-      <h3 className="text-base font-extrabold text-slate-900 dark:text-white mb-3 leading-snug">{service.title}</h3>
-      <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5">{service.description}</p>
-      <ul className="space-y-2">
-        {service.features.slice(0, 3).map((f: any, i: number) => (
-          <li key={i} className="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
-            <CheckCircle2 size={12} className="text-emerald-500 shrink-0" />{f.label}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+/* ─── Animated counter ───────────────────────────────────────────────────── */
+const Counter = ({ end, suffix = '' }: { end: number; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      observer.disconnect();
+      let start = 0;
+      const step = Math.ceil(end / 40);
+      const id = setInterval(() => {
+        start = Math.min(start + step, end);
+        setCount(start);
+        if (start >= end) clearInterval(id);
+      }, 35);
+    }, { threshold: 0.5 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [end]);
+  return <span ref={ref}>{count}{suffix}</span>;
 };
 
-const AuditCard = ({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) => (
-  <div className="p-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-indigo-400/30 transition-all group">
-    <div className="w-9 h-9 bg-indigo-600/80 rounded-xl flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
-      {icon}
-    </div>
-    <p className="text-white font-bold text-sm mb-1">{title}</p>
-    <p className="text-slate-500 text-xs leading-relaxed">{desc}</p>
-  </div>
-);
+/* ─── Service icon map ───────────────────────────────────────────────────── */
+const SVC_ICONS = [
+  <Brain size={20} />, <Rocket size={20} />, <Bot size={20} />,
+  <Globe size={20} />, <Target size={20} />, <Code2 size={20} />,
+];
 
 /* ─── Main Component ─────────────────────────────────────────────────────── */
-
 const Home: React.FC = () => {
-  const featuredPreview = PROJECTS.filter(p => p.isFeatured).slice(0, 3);
-  const techStack = ["Python", "Django", "React.js", "n8n Automation", "Power BI", "SQL",
-    "Machine Learning", "AI Agents", "REST APIs", "Data Engineering", "Tailwind CSS", "OpenAI"];
+  const featured = PROJECTS.filter(p => p.isFeatured).slice(0, 3);
+  const techStack = [
+    'Python', 'Django', 'React.js', 'n8n Automation',
+    'Power BI', 'SQL', 'Machine Learning', 'AI Agents',
+    'REST APIs', 'OpenAI', 'LangChain', 'Tailwind CSS',
+  ];
 
   return (
-    <div className="bg-white dark:bg-slate-950 w-full relative overflow-x-hidden">
+    <div className="bg-white dark:bg-slate-950 w-full overflow-x-hidden">
 
-      {/* ═══════════════════════════════════════════════
-          HERO SECTION
-      ═══════════════════════════════════════════════ */}
-      <header className="relative min-h-[100vh] flex items-center pt-28 pb-16 px-4 sm:px-10 lg:px-16">
-        {/* Background blobs */}
-        <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.025] bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]" />
-          <div className="absolute -top-40 right-0 w-[700px] h-[700px] bg-indigo-100 dark:bg-indigo-950/30 rounded-full blur-[140px] animate-drift" />
-          <div className="absolute bottom-0 -left-20 w-[500px] h-[500px] bg-violet-100 dark:bg-violet-900/10 rounded-full blur-[120px] animate-drift" style={{ animationDelay: '3s' }} />
+      {/* ═══════════════════════ HERO ═══════════════════════ */}
+      <header className="relative min-h-screen flex flex-col justify-center pt-28 pb-20 px-5 sm:px-10 lg:px-20 overflow-hidden">
+
+        {/* Background */}
+        <div className="absolute inset-0 -z-10 pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_60%_-10%,rgba(99,102,241,0.12),transparent)]" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-violet-500/5 rounded-full blur-[120px]" />
+          <div className="absolute inset-0 opacity-[0.018] bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]" />
         </div>
 
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            {/* Left — Copy */}
-            <div className="lg:col-span-7 text-center lg:text-left space-y-8">
+          {/* LEFT ── copy */}
+          <div className="space-y-8">
 
-              {/* Live badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950 dark:bg-white/10 dark:border dark:border-white/10 text-white text-[9px] font-black uppercase tracking-[0.3em] shadow-lg animate-fade-in-up">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Available for Projects — India &amp; Worldwide
-              </div>
-
-              {/* H1 */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight leading-[1.05] animate-fade-in-up speakable">
-                AI Automation,{' '}
-                <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-indigo-600 bg-clip-text text-transparent bg-[length:200%] animate-gradient-flow">
-                    Dashboard
-                  </span>
-                </span>
-                <br />
-                &amp; Full-Stack
-                <br />
-                <span className="relative">
-                  Development.
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full opacity-40" />
-                </span>
-              </h1>
-
-              {/* Subtext */}
-              <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed font-medium animate-fade-in-up speakable">
-                A collection of <strong className="text-slate-700 dark:text-slate-200">25+ projects</strong> demonstrating
-                expertise in AI automation, web development, and intelligent systems. Each project reflects
-                commitment to quality and technical excellence — serving clients across every state of India.
-              </p>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 animate-fade-in-up">
-                <Link
-                  to="/projects"
-                  className="group w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-xl font-extrabold text-xs uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all shadow-xl active:scale-95"
-                >
-                  View Portfolio <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  to="/contact"
-                  className="group w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl font-extrabold text-xs uppercase tracking-widest hover:border-indigo-300 hover:bg-indigo-50/40 transition-all active:scale-95"
-                >
-                  <Play size={13} className="fill-current" /> Explore Projects
-                </Link>
-              </div>
-
-              {/* Stat badges */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-3 animate-fade-in-up">
-                <StatBadge icon={<Users2 size={15} />} label="Experience" value="25+ Projects Completed" />
-                <StatBadge icon={<TrendingUp size={15} />} label="Impact" value="₹50L+ Value Delivered" />
-              </div>
+            {/* Status pill */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/80 shadow-sm text-[9px] font-black uppercase tracking-[0.25em] text-slate-600 dark:text-slate-300">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              Available for Projects — India &amp; Worldwide
             </div>
 
-            {/* Right — Visual card */}
-            <div className="lg:col-span-5 hidden lg:flex justify-center items-center animate-reveal-scale">
-              <div className="relative w-full max-w-sm">
-                <div className="absolute inset-0 bg-indigo-500/10 rounded-[2.5rem] blur-3xl animate-pulse" />
-                <div className="relative bg-slate-950 dark:bg-slate-900 rounded-[2.5rem] p-8 border border-white/[0.07] shadow-2xl group hover:border-white/20 transition-all duration-700 animate-float">
-                  {/* Header */}
-                  <div className="flex justify-between items-center mb-8">
-                    <div className="w-11 h-11 bg-white/5 rounded-2xl flex items-center justify-center text-indigo-400 border border-white/10">
-                      <Terminal size={20} />
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span className="text-[9px] font-black text-white uppercase tracking-widest">Online</span>
-                    </div>
+            {/* H1 */}
+            <div className="space-y-2">
+              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-[1.04] speakable">
+                Build Smarter.
+              </h1>
+              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-outfit font-black tracking-tight leading-[1.04]">
+                <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-indigo-500 bg-clip-text text-transparent">
+                  Automate Faster.
+                </span>
+              </h1>
+              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-[1.04]">
+                Grow Bigger.
+              </h1>
+            </div>
+
+            {/* Sub */}
+            <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed speakable">
+              AI automation, full-stack web development &amp; intelligent systems —
+              <strong className="text-slate-700 dark:text-slate-200"> 10+ real products</strong> delivered
+              to clients across India and worldwide.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-3">
+              <Link to="/contact"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 bg-slate-950 dark:bg-indigo-600 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-500 transition-all shadow-xl active:scale-95">
+                Start a Project
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link to="/projects"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:border-indigo-300 dark:hover:border-indigo-500 transition-all active:scale-95">
+                <Play size={12} className="fill-current" /> View Portfolio
+              </Link>
+            </div>
+
+            {/* Trust strip */}
+            <div className="flex flex-wrap items-center gap-5 pt-2">
+              {[
+                { val: '10+', lbl: 'Projects' },
+                { val: '₹2L+', lbl: 'Delivered' },
+                { val: '4.0★', lbl: 'Rating' },
+                { val: '8+', lbl: 'Countries' },
+              ].map(({ val, lbl }) => (
+                <div key={lbl} className="text-center">
+                  <p className="text-base font-outfit font-extrabold text-slate-900 dark:text-white">{val}</p>
+                  <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{lbl}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT ── dashboard card */}
+          <div className="hidden lg:block">
+            <div className="relative ml-auto max-w-[380px]">
+              <div className="absolute -inset-6 bg-indigo-500/10 rounded-[3rem] blur-3xl" />
+              <div className="relative bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-100 dark:border-white/10 shadow-2xl p-6 space-y-5 animate-float">
+
+                {/* Header row */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Live Dashboard</p>
+                    <p className="text-sm font-outfit font-extrabold text-slate-900 dark:text-white mt-0.5">Project Results</p>
                   </div>
-                  {/* Stat block */}
-                  <div className="p-5 bg-white/5 rounded-2xl border border-white/[0.06] mb-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Activity size={11} className="text-indigo-400" />
-                      <span className="text-[8px] font-black text-indigo-400 uppercase tracking-widest">Expertise</span>
+                  <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-500/20 text-[8px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Live
+                  </span>
+                </div>
+
+                {/* Big metric */}
+                <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-5 relative overflow-hidden">
+                  <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-white/5 rounded-full" />
+                  <p className="text-[8px] font-black text-indigo-200 uppercase tracking-widest mb-1">Total Value</p>
+                  <p className="text-4xl font-outfit font-black text-white">₹2L+</p>
+                  <p className="text-[9px] text-indigo-200 mt-1 flex items-center gap-1">
+                    <TrendingUp size={10} /> Across 10+ real client projects
+                  </p>
+                </div>
+
+                {/* 4 tiles */}
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { icon: <CheckCircle2 size={13} className="text-emerald-500" />, v: '10+',  l: 'Projects',  bg: 'bg-emerald-50 dark:bg-emerald-950/30' },
+                    { icon: <Star size={13} className="text-amber-400 fill-amber-400" />,       v: '4.0★', l: 'Rating',    bg: 'bg-amber-50 dark:bg-amber-950/30' },
+                    { icon: <Zap size={13} className="text-violet-500" />,                      v: '10h+', l: 'Saved/Wk', bg: 'bg-violet-50 dark:bg-violet-950/30' },
+                    { icon: <Globe size={13} className="text-blue-500" />,                      v: '8+',   l: 'Countries', bg: 'bg-blue-50 dark:bg-blue-950/30' },
+                  ].map(({ icon, v, l, bg }) => (
+                    <div key={l} className={`flex items-center gap-2.5 p-3 rounded-xl ${bg}`}>
+                      {icon}
+                      <div>
+                        <p className="text-sm font-outfit font-extrabold text-slate-900 dark:text-white">{v}</p>
+                        <p className="text-[7px] font-black text-slate-400 uppercase tracking-widest">{l}</p>
+                      </div>
                     </div>
-                    <p className="text-2xl font-outfit font-extrabold text-white">25+ Projects</p>
-                    <p className="text-[10px] text-slate-500 font-medium mt-0.5">AI &amp; Web Solutions</p>
-                  </div>
-                  {/* Skill pills */}
-                  <div className="grid grid-cols-3 gap-2.5">
-                    {[{icon: <Database size={13} className="text-blue-400" />, label: 'Data'},
-                      {icon: <Zap size={13} className="text-amber-400" />, label: 'AI'},
-                      {icon: <Globe size={13} className="text-emerald-400" />, label: 'Web'}
-                    ].map(({icon, label}) => (
-                      <div key={label} className="p-3 bg-white/5 rounded-xl border border-white/5 flex flex-col items-center gap-1.5 hover:border-white/20 transition-colors">
-                        {icon}
-                        <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">{label}</span>
+                  ))}
+                </div>
+
+                {/* Avatars */}
+                <div className="flex items-center justify-between pt-1 border-t border-slate-100 dark:border-white/5">
+                  <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Recent clients</p>
+                  <div className="flex -space-x-2">
+                    {['RM','PS','AR','KP','VN'].map((init, i) => (
+                      <div key={i}
+                        className="w-7 h-7 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-white font-black text-[7px]"
+                        style={{ background: ['#6366f1','#10b981','#8b5cf6','#f59e0b','#3b82f6'][i] }}>
+                        {init}
                       </div>
                     ))}
                   </div>
                 </div>
+
               </div>
             </div>
-
           </div>
+
         </div>
       </header>
 
-      {/* ═══════════════════════════════════════════════
-          MARQUEE TECH TICKER
-      ═══════════════════════════════════════════════ */}
-      <div className="py-5 bg-slate-950 overflow-hidden border-y border-white/5">
-        <div className="flex animate-marquee whitespace-nowrap gap-10 sm:gap-14">
-          {[...techStack, ...techStack].map((tech, i) => (
-            <div key={i} className="flex items-center gap-3 group">
-              <span className="text-white/30 font-outfit font-black text-lg uppercase tracking-tight group-hover:text-indigo-400 transition-colors">
-                {tech}
-              </span>
-              <Sparkles className="text-white/10 w-4 h-4 shrink-0" />
-            </div>
+      {/* ═══════════════ MARQUEE ═══════════════ */}
+      <div className="py-4 bg-slate-950 border-y border-white/5 overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap gap-10">
+          {[...techStack, ...techStack].map((t, i) => (
+            <span key={i} className="flex items-center gap-3 text-white/25 hover:text-indigo-400 font-outfit font-black text-sm uppercase tracking-wider transition-colors">
+              {t} <Sparkles size={12} className="text-white/10 shrink-0" />
+            </span>
           ))}
         </div>
       </div>
 
-      {/* ═══════════════════════════════════════════════
-          SERVICES SECTION
-      ═══════════════════════════════════════════════ */}
-      <section className="py-20 sm:py-28 bg-slate-50/50 dark:bg-slate-950 relative" aria-labelledby="services-heading">
-        <div className="max-w-7xl mx-auto px-5 sm:px-10">
+      {/* ═══════════════ STATS BAR ═══════════════ */}
+      <section className="py-14 bg-slate-50 dark:bg-slate-900/40 border-b border-slate-100 dark:border-white/5">
+        <div className="max-w-5xl mx-auto px-5 sm:px-10 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 sm:divide-x divide-slate-200 dark:divide-white/10">
+          {[
+            { end: 10, suffix: '+', label: 'Projects Delivered', sub: 'Real products to clients' },
+            { end: 2,  suffix: 'L+', label: '₹ Value Delivered', sub: 'Across all engagements' },
+            { end: 10, suffix: 'h+', label: 'Saved per Week',    sub: 'Via automation systems' },
+            { end: 8,  suffix: '+',  label: 'Countries',         sub: 'India & worldwide' },
+          ].map(({ end, suffix, label, sub }) => (
+            <div key={label} className="text-center px-4 sm:px-8">
+              <p className="text-3xl sm:text-4xl font-outfit font-black text-indigo-600 dark:text-indigo-400 tabular-nums">
+                <Counter end={end} suffix={suffix} />
+              </p>
+              <p className="text-xs font-extrabold text-slate-800 dark:text-white mt-1">{label}</p>
+              <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{sub}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          {/* Section header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+      {/* ═══════════════ SERVICES ═══════════════ */}
+      <section className="py-24 sm:py-32 px-5 sm:px-10 bg-white dark:bg-slate-950" aria-labelledby="services-heading">
+        <div className="max-w-7xl mx-auto">
+
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-400/20 text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-widest mb-4">
-                <Zap size={12} className="fill-current" /> Core Solutions
-              </div>
-              <h2 id="services-heading" className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight leading-tight">
-                Technical <span className="text-indigo-600 dark:text-indigo-400">Expertise.</span>
+              <p className="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-3">What I Build</p>
+              <h2 id="services-heading" className="text-3xl sm:text-5xl font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-tight">
+                Core Services.
               </h2>
             </div>
             <Link to="/services"
-              className="group inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shrink-0">
-              All Services <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              className="group inline-flex items-center gap-2 text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shrink-0 pb-1">
+              All Services <ChevronRight size={13} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {SERVICES.map((service, idx) => (
-              <ServiceCard key={service.id} service={service} idx={idx} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {SERVICES.map((svc, idx) => (
+              <Link to="/services" key={svc.id}
+                className="group relative bg-slate-50 dark:bg-slate-900/50 hover:bg-white dark:hover:bg-slate-900 border border-slate-100 dark:border-white/5 hover:border-indigo-300/50 dark:hover:border-indigo-500/30 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1">
+                <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shrink-0">
+                  {SVC_ICONS[idx] || <Zap size={20} />}
+                </div>
+                <h3 className="text-sm font-extrabold text-slate-900 dark:text-white mb-2 leading-snug">
+                  {svc.title.split(' | ')[0]}
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4 line-clamp-2">
+                  {svc.description}
+                </p>
+                <ul className="space-y-1.5">
+                  {svc.features.slice(0, 3).map((f: any, i: number) => (
+                    <li key={i} className="flex items-center gap-2 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+                      <CheckCircle2 size={11} className="text-emerald-500 shrink-0" />{f.label}
+                    </li>
+                  ))}
+                </ul>
+                <div className="absolute top-5 right-5 opacity-0 group-hover:opacity-100 transition-all translate-x-1 group-hover:translate-x-0">
+                  <ArrowUpRight size={14} className="text-indigo-500" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          ABOUT SECTION
-      ═══════════════════════════════════════════════ */}
-      <section className="py-20 sm:py-28 bg-white dark:bg-slate-900/20 border-y border-slate-100 dark:border-white/5" aria-labelledby="about-heading">
-        <div className="max-w-7xl mx-auto px-5 sm:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+      {/* ═══════════════ ABOUT SPLIT ═══════════════ */}
+      <section className="py-24 sm:py-32 px-5 sm:px-10 bg-slate-50 dark:bg-slate-900/30 border-y border-slate-100 dark:border-white/5" aria-labelledby="about-heading">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            {/* Photo */}
-            <div className="relative group">
-              <div className="absolute -inset-6 bg-indigo-500/8 rounded-[3rem] blur-3xl group-hover:bg-indigo-500/14 transition-all duration-700" />
-              <div className="relative aspect-square bg-slate-950 rounded-[2.5rem] overflow-hidden border border-white/8 shadow-2xl">
-                <OptimizedImage
-                  src="/me.webp"
-                  alt="Tushar Singh - AI Automation Expert and Full-Stack Developer from Delhi India"
-                  className="opacity-90 group-hover:scale-105 transition-transform duration-1000"
-                  priority={true}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                <div className="absolute bottom-7 left-7">
-                  <p className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.4em] mb-1">Architect</p>
-                  <p className="text-lg font-outfit font-extrabold text-white">Tushar Singh</p>
-                </div>
-                {/* Floating achievement pill */}
-                <div className="absolute top-6 right-6 flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10">
-                  <Award size={12} className="text-amber-400" />
-                  <span className="text-[9px] font-black text-white uppercase tracking-widest">5.0 Rating</span>
-                </div>
+          {/* Photo */}
+          <div className="relative group order-2 lg:order-1">
+            <div className="absolute -inset-4 bg-gradient-to-br from-indigo-500/10 to-violet-500/10 rounded-[2.5rem] blur-2xl group-hover:opacity-150 transition-all duration-700" />
+            <div className="relative rounded-[2rem] overflow-hidden bg-slate-950 border border-white/8 shadow-2xl aspect-[4/5] max-w-sm mx-auto">
+              <OptimizedImage
+                src="/me.webp"
+                alt="Tushar Singh — AI Automation Expert & Full-Stack Developer, Delhi"
+                className="opacity-90 group-hover:scale-105 transition-transform duration-1000"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
+
+              {/* Name overlay */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-[8px] font-black text-indigo-400 uppercase tracking-[0.4em] mb-1">Tushar Singh</p>
+                <p className="text-[10px] font-bold text-white/60">AI Automation Expert · Full-Stack Dev</p>
+              </div>
+
+              {/* Badge */}
+              <div className="absolute top-5 right-5 flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10">
+                <BadgeCheck size={11} className="text-amber-400" />
+                <span className="text-[8px] font-black text-white uppercase tracking-widest">4.0 Rated</span>
+              </div>
+
+              {/* Location */}
+              <div className="absolute top-5 left-5 flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10">
+                <MapPin size={10} className="text-emerald-400" />
+                <span className="text-[8px] font-black text-white uppercase tracking-widest">Delhi, India</span>
               </div>
             </div>
+          </div>
 
-            {/* Text */}
-            <div className="space-y-7">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-px bg-indigo-500" />
-                  <span className="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em]">About the Expert</span>
-                </div>
-                <h2 id="about-heading" className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight leading-tight">
-                  About the <span className="text-indigo-600 dark:text-indigo-400">Developer.</span>
-                </h2>
-              </div>
-
-              <p className="text-slate-500 dark:text-slate-400 leading-relaxed font-medium text-sm sm:text-base">
-                I'm <strong className="text-slate-800 dark:text-slate-200">Tushar Singh</strong>, an AI Automation Expert &amp; Full-Stack
-                Developer from Delhi. With a portfolio of <strong className="text-slate-800 dark:text-slate-200">25+ projects</strong>,
-                I specialize in developing AI agents, chatbots, web applications, and automation systems.
-                My work demonstrates technical proficiency and commitment to delivering quality solutions.
-              </p>
-
-              {/* Quick stats row */}
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { value: '25+', label: 'Projects' },
-                  { value: '5.0★', label: 'Rating' },
-                  { value: '₹50L+', label: 'Revenue' },
-                ].map(({ value, label }) => (
-                  <div key={label} className="text-center p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-white/5">
-                    <p className="text-xl font-outfit font-extrabold text-indigo-600 dark:text-indigo-400">{value}</p>
-                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-0.5">{label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <Link to="/about"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all shadow-lg active:scale-95">
-                Read Full Story <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
+          {/* Text */}
+          <div className="space-y-7 order-1 lg:order-2">
+            <div>
+              <p className="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-3">The Developer</p>
+              <h2 id="about-heading" className="text-3xl sm:text-5xl font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-tight">
+                Hi, I'm Tushar.
+              </h2>
             </div>
+
+            <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm sm:text-base">
+              AI Automation Expert &amp; Full-Stack Developer from <strong className="text-slate-700 dark:text-slate-200">Delhi, India.</strong> I build
+              AI agents, RAG chatbots, automation workflows, and full-stack web apps — turning complex
+              technical problems into clean, scalable solutions that actually ship.
+            </p>
+
+            <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm sm:text-base">
+              <strong className="text-slate-700 dark:text-slate-200">10+ real products</strong> submitted to clients.
+              Every project represents a business problem solved — not just code written.
+            </p>
+
+            {/* Stat row */}
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { val: '10+', lbl: 'Projects' },
+                { val: '4.0★', lbl: 'Rating' },
+                { val: '₹2L+', lbl: 'Revenue' },
+              ].map(({ val, lbl }) => (
+                <div key={lbl} className="text-center p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 shadow-sm">
+                  <p className="text-lg font-outfit font-extrabold text-indigo-600 dark:text-indigo-400">{val}</p>
+                  <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mt-0.5">{lbl}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Skills */}
+            <div className="flex flex-wrap gap-2">
+              {['Python', 'React.js', 'Django', 'n8n', 'OpenAI', 'LangChain', 'Power BI', 'TypeScript'].map(s => (
+                <span key={s} className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-[9px] font-black text-slate-600 dark:text-slate-400 uppercase tracking-widest">
+                  {s}
+                </span>
+              ))}
+            </div>
+
+            <Link to="/about"
+              className="group inline-flex items-center gap-2 px-7 py-3.5 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all shadow-lg active:scale-95">
+              Full Story <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          TESTIMONIALS
-      ═══════════════════════════════════════════════ */}
-      <section className="py-20 sm:py-28 bg-slate-50/50 dark:bg-slate-950 relative" aria-labelledby="testimonials-heading">
-        <div className="max-w-7xl mx-auto px-5 sm:px-10">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-400/20 text-emerald-600 dark:text-emerald-400 text-[9px] font-black uppercase tracking-widest mb-4">
-              <ShieldCheck size={12} className="fill-current" /> Verified Proof
+      {/* ═══════════════ FEATURED PROJECTS ═══════════════ */}
+      <section className="py-24 sm:py-32 px-5 sm:px-10 bg-white dark:bg-slate-950" aria-labelledby="projects-heading">
+        <div className="max-w-7xl mx-auto">
+
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 mb-12">
+            <div>
+              <p className="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-3">Portfolio</p>
+              <h2 id="projects-heading" className="text-3xl sm:text-5xl font-outfit font-black text-slate-950 dark:text-white tracking-tight">
+                Featured Work.
+              </h2>
             </div>
-            <h2 id="testimonials-heading" className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight">
-              Professional <span className="text-indigo-600 dark:text-indigo-400">References.</span>
+            <Link to="/projects"
+              className="group shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 text-[9px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 hover:bg-slate-950 hover:text-white hover:border-slate-950 dark:hover:bg-white dark:hover:text-slate-950 dark:hover:border-white transition-all active:scale-95">
+              Explore All <ArrowUpRight size={12} />
+            </Link>
+          </div>
+
+          {/* 3-column grid — first card spans 2 cols on lg */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featured.map((project, idx) => (
+              <Link key={project.id} to="/projects"
+                className={`group relative overflow-hidden rounded-2xl border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 bg-slate-100 dark:bg-slate-900 ${idx === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={project.imageUrl}
+                    loading="lazy"
+                    decoding="async"
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent opacity-75 group-hover:opacity-95 transition-opacity" />
+                <div className="absolute inset-0 p-5 flex flex-col justify-end">
+                  <span className="text-[8px] font-black text-indigo-400 uppercase tracking-[0.25em] mb-1.5">{project.category}</span>
+                  <h4 className="text-sm font-extrabold text-white leading-snug">{project.title}</h4>
+                  <p className="text-[10px] text-white/50 mt-1 line-clamp-1">{project.description}</p>
+                </div>
+                <div className="absolute top-4 right-4 w-8 h-8 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all">
+                  <ArrowUpRight size={13} className="text-white" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ TESTIMONIALS ═══════════════ */}
+      <section className="py-24 sm:py-32 px-5 sm:px-10 bg-slate-50 dark:bg-slate-900/30 border-y border-slate-100 dark:border-white/5" aria-labelledby="testi-heading">
+        <div className="max-w-7xl mx-auto">
+
+          <div className="text-center mb-14">
+            <p className="text-[9px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.3em] mb-3">Client Proof</p>
+            <h2 id="testi-heading" className="text-3xl sm:text-5xl font-outfit font-black text-slate-950 dark:text-white tracking-tight">
+              What Clients Say.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {TESTIMONIALS.map((t, idx) => {
               const initials = t.clientName.split(' ').map((n: string) => n[0]).slice(0, 2).join('');
               const colors = ['bg-indigo-600', 'bg-emerald-600', 'bg-violet-600'];
               return (
                 <div key={t.id}
-                  className="relative bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-white/5 rounded-3xl p-7 hover:border-indigo-400/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-400">
+                  className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 rounded-2xl p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col gap-5">
+
                   {/* Stars */}
-                  <div className="flex gap-0.5 mb-5">
-                    {Array(5).fill(0).map((_, i) => (
-                      <Star key={i} size={12} className="text-amber-400 fill-amber-400" />
+                  <div className="flex gap-0.5">
+                    {Array(4).fill(0).map((_, i) => (
+                      <Star key={i} size={11} className="text-amber-400 fill-amber-400" />
                     ))}
+                    <Star size={11} className="text-slate-200 dark:text-slate-700 fill-current" />
                   </div>
-                  <Quote size={28} className="text-indigo-200 dark:text-indigo-900 mb-4" />
-                  <p className="text-sm text-slate-700 dark:text-slate-300 italic leading-relaxed mb-7">"{t.content}"</p>
+
+                  {/* Quote */}
+                  <div className="flex-1">
+                    <Quote size={22} className="text-slate-200 dark:text-slate-800 mb-3" />
+                    <p className="text-sm text-slate-600 dark:text-slate-300 italic leading-relaxed">
+                      "{t.content}"
+                    </p>
+                  </div>
+
+                  {/* Author */}
                   <div className="flex items-center gap-3 pt-5 border-t border-slate-100 dark:border-white/5">
-                    <div className={`w-10 h-10 rounded-xl ${colors[idx % colors.length]} flex items-center justify-center text-white font-black text-xs shrink-0`}>
+                    <div className={`w-9 h-9 rounded-xl ${colors[idx % colors.length]} flex items-center justify-center text-white font-black text-[11px] shrink-0`}>
                       {initials}
                     </div>
                     <div>
                       <p className="text-sm font-extrabold text-slate-900 dark:text-white">{t.clientName}</p>
-                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{t.clientRole}</p>
+                      <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{t.clientRole}</p>
                     </div>
+                    <ShieldCheck size={14} className="text-emerald-500 ml-auto shrink-0" />
                   </div>
                 </div>
               );
@@ -341,133 +454,97 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          FREE AUDIT CTA BANNER
-      ═══════════════════════════════════════════════ */}
-      <section className="py-16 sm:py-20 bg-indigo-600 relative overflow-hidden">
+      {/* ═══════════════ FREE AUDIT CTA ═══════════════ */}
+      <section className="relative py-20 sm:py-28 bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-700 overflow-hidden">
+
+        {/* BG */}
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]" />
-        <div className="max-w-7xl mx-auto px-5 sm:px-10 relative z-10">
-          <div className="bg-slate-950 rounded-[2.5rem] p-10 sm:p-16 border border-white/10 shadow-2xl overflow-hidden relative">
-            <div className="absolute -top-32 -right-32 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-[9px] font-black uppercase tracking-widest mb-5">
-                  <Sparkles size={12} className="fill-current" /> High Value Offer
-                </div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-outfit font-extrabold text-white leading-tight mb-5">
-                  Get a Free{' '}
-                  <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
-                    AI Automation Audit.
-                  </span>
-                </h2>
-                <p className="text-slate-400 text-sm leading-relaxed mb-8">
-                  I'll review your current processes and reveal exactly where AI can save you
-                  <strong className="text-white"> 10+ hours a week</strong> and increase your revenue. Zero commitment.
-                </p>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                  <Link to="/contact"
-                    className="px-8 py-4 bg-white text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:scale-105 hover:bg-indigo-50 active:scale-95 transition-all shadow-lg">
-                    Claim Your Free Audit
-                  </Link>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle size={14} className="text-emerald-400 shrink-0" />
-                    <span className="text-white/50 text-[10px] font-bold uppercase tracking-widest">Only 4 slots left this month</span>
-                  </div>
-                </div>
-              </div>
-              <div className="hidden lg:grid grid-cols-2 gap-4">
-                <AuditCard icon={<FileSearch size={18} />} title="Workflow Audit" desc="We map every manual step in your process." />
-                <AuditCard icon={<Laptop size={18} />} title="Tool Review" desc="Are you using the best tech stack?" />
-                <AuditCard icon={<TrendingUp size={18} />} title="ROI Predictor" desc="Calculate your potential gains." />
-                <AuditCard icon={<Zap size={18} />} title="Action Plan" desc="A custom roadmap to automate." />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-white/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-violet-900/20 rounded-full blur-3xl" />
 
-      {/* ═══════════════════════════════════════════════
-          FEATURED PROJECTS
-      ═══════════════════════════════════════════════ */}
-      <section className="py-20 sm:py-28 bg-white dark:bg-slate-900/20 border-y border-slate-100 dark:border-white/5" aria-labelledby="projects-heading">
-        <div className="max-w-7xl mx-auto px-5 sm:px-10">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 mb-12">
+        <div className="max-w-6xl mx-auto px-5 sm:px-10 relative z-10">
+          <div className="bg-slate-950 rounded-[2rem] p-10 sm:p-16 border border-white/10 shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Left */}
             <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-px bg-indigo-500" />
-                <span className="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em]">Curated Preview</span>
-              </div>
-              <h2 id="projects-heading" className="text-3xl sm:text-4xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight">
-                Featured Projects.
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-[8px] font-black uppercase tracking-widest mb-5">
+                <Sparkles size={11} /> Free Offer
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-outfit font-black text-white leading-tight mb-5">
+                Get a Free AI Automation Audit
               </h2>
-              <p className="text-slate-500 dark:text-slate-400 text-sm mt-2 font-medium">
-                A selection of projects demonstrating technical capabilities and solutions.
+              <p className="text-slate-400 text-sm leading-relaxed mb-7">
+                I'll review your current manual processes and show you exactly where AI can save <strong className="text-white">10+ hours per week</strong> — no strings attached.
               </p>
+              <div className="flex flex-col sm:flex-row items-start gap-3">
+                <Link to="/contact"
+                  className="px-8 py-4 bg-white text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-xl active:scale-95">
+                  Claim Free Audit
+                </Link>
+                <span className="flex items-center gap-2 text-[10px] text-white/50 font-bold uppercase tracking-widest">
+                  <CheckCircle2 size={13} className="text-emerald-400" /> 4 slots left this month
+                </span>
+              </div>
             </div>
-            <Link to="/projects"
-              className="group shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-xl text-[9px] font-black uppercase tracking-widest text-slate-700 dark:text-white hover:bg-slate-950 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 transition-all active:scale-95">
-              Explore All <ArrowUpRight size={12} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredPreview.map((project, idx) => (
-              <Link key={project.id} to="/projects"
-                className="group block relative rounded-3xl overflow-hidden border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 aspect-video">
-                <img
-                  src={project.imageUrl}
-                  loading="lazy"
-                  decoding="async"
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <span className="text-[9px] font-black text-indigo-400 uppercase tracking-widest mb-1">{project.category}</span>
-                  <h4 className="text-base font-outfit font-extrabold text-white leading-snug">{project.title}</h4>
+            {/* Right — 4 cards */}
+            <div className="hidden lg:grid grid-cols-2 gap-4">
+              {[
+                { icon: <FileSearch size={16} />, t: 'Workflow Audit', d: 'We map every manual step' },
+                { icon: <Laptop size={16} />,     t: 'Tool Review',    d: 'Best tech stack?' },
+                { icon: <TrendingUp size={16} />, t: 'ROI Forecast',   d: 'Calculate potential gains' },
+                { icon: <Zap size={16} />,        t: 'Action Plan',    d: 'Custom roadmap to automate' },
+              ].map(({ icon, t, d }) => (
+                <div key={t} className="p-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/[0.08] transition-all group">
+                  <div className="w-9 h-9 bg-indigo-600/80 rounded-xl flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
+                    {icon}
+                  </div>
+                  <p className="text-white font-bold text-sm mb-1">{t}</p>
+                  <p className="text-slate-400 text-xs">{d}</p>
                 </div>
-                <div className="absolute top-4 right-4 w-8 h-8 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
-                  <ArrowUpRight size={14} className="text-white" />
-                </div>
-              </Link>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          FINAL CTA
-      ═══════════════════════════════════════════════ */}
-      <section className="py-20 sm:py-28 bg-slate-950 text-center relative overflow-hidden" aria-labelledby="cta-heading">
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-600/20 rounded-full blur-[140px] animate-pulse" />
+      {/* ═══════════════ FINAL CTA ═══════════════ */}
+      <section className="py-20 sm:py-28 bg-slate-950 relative overflow-hidden" aria-labelledby="cta-heading">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-600/15 rounded-full blur-[120px] animate-pulse" />
         </div>
-        <div className="max-w-2xl mx-auto px-5 sm:px-10 relative z-10 space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-[9px] font-black uppercase tracking-widest">
-            <Sparkles size={12} /> Accelerate Your Growth
-          </div>
-          <h2 id="cta-heading" className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-extrabold text-white tracking-tight leading-tight">
-            Interested in{' '}
+
+        <div className="max-w-2xl mx-auto px-5 sm:px-10 text-center relative z-10 space-y-8">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-[9px] font-black uppercase tracking-widest">
+            <Sparkles size={12} /> Ready to Start?
+          </span>
+
+          <h2 id="cta-heading" className="text-3xl sm:text-5xl font-outfit font-black text-white tracking-tight leading-tight">
+            Let's Build Something
+            <br />
             <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent bg-[length:200%] animate-gradient-flow">
-              Collaboration?
+              Intelligent Together.
             </span>
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-medium max-w-lg mx-auto">
-            I'm available for projects in AI automation, web development, and technical consulting.
-            Let's discuss your requirements.
+
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
+            Available for AI automation, web development &amp; technical consulting worldwide.
+            Let's discuss your project.
           </p>
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/contact"
               className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 bg-white text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-50 hover:scale-105 transition-all shadow-xl active:scale-95">
-              Get in Touch <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              Start a Project <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link to="/services"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95">
               View Services
             </Link>
           </div>
+
           <p className="text-slate-600 text-[9px] font-bold uppercase tracking-widest">
-            Replies within 1 hour · Mon–Sat · Pan India &amp; Worldwide
+            Available Mon–Sat · India &amp; Worldwide
           </p>
         </div>
       </section>

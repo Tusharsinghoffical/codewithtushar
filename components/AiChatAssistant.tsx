@@ -20,13 +20,14 @@ const AiChatAssistant: React.FC = () => {
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || loading) return;
+    if (input.trim().length > 1000) return; // prevent oversized payloads
 
     const userMsg = input;
     setInput('');
     setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
     setLoading(true);
 
-    try {
+    try {``
       const response = await chatWithGemini(userMsg, fastMode);
       setMessages(prev => [...prev, { role: 'bot', text: response || "I couldn't process that request." }]);
     } catch (err) {

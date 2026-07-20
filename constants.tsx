@@ -157,7 +157,7 @@ export const SERVICES: Service[] = [
 ];
 
 export const PROJECTS: Project[] = [
-  // --- FEATURED CASE STUDIES ---
+  // ── 1. Automated Lead Funnel ──────────────────────────────
   {
     id: 'p1',
     title: 'Automated Lead Funnel | 250+ Leads in 10 Days',
@@ -181,13 +181,14 @@ export const PROJECTS: Project[] = [
       after: '175 leads/week | $12 Average CPA | 0 hrs manual outreach/week'
     }
   },
+  // ── 2. AI Support Agent ──────────────────────────────────
   {
     id: 'p2',
     title: 'AI Support Agent | 70% Ticket Reduction',
-    description: 'Autonomous customer support system trained on private business knowledge.',
+    description: 'Autonomous AI customer support system trained on private business knowledge base using RAG architecture.',
     imageUrl: '/projects/p2.svg',
     category: 'AI Agents',
-    tags: ['Python', 'OpenAI', 'RAG', 'Support'],
+    tags: ['Python', 'OpenAI', 'RAG', 'LangChain'],
     date: '2025',
     isFeatured: true,
     clientBackground: 'An e-commerce brand handling 500+ repetitive support tickets daily.',
@@ -204,194 +205,155 @@ export const PROJECTS: Project[] = [
       after: '0 Second Response Time | 1 Manager Monitoring AI'
     }
   },
-  {
-    id: 'p3',
-    title: 'SerpAPI Flight Agent | Freelance Web Developer Project',
-    description: 'Professional freelance web developer project: Searches and compares flight prices from multiple airlines in real-time using SerpAPI integration. Shows available flights, prices, and booking options instantly. Purpose: Help travelers find the best flight deals quickly and make informed booking decisions without visiting multiple airline websites. Expert freelance web developer solution.',
-    imageUrl: '/projects/p3.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&q=80&w=800'
-    ],
-    category: 'AI Agents',
-    tags: ['JSON', 'SerpAPI', 'Flight Search', 'Freelance Web Developer'],
-    date: '2025'
-  },
+
+  // ── 3. WhatsApp Agent ─────────────────────────────────────
   {
     id: 'p4',
-    title: 'WhatsApp Agent | Freelance Automation Developer Project',
-    description: 'Expert freelance automation developer project: Handles WhatsApp business communications automatically including message routing, template responses, and conversation management. Sends automated replies and manages customer inquiries 24/7. Purpose: Streamline business communication, improve response times, and provide consistent customer service through WhatsApp platform. Professional freelance automation developer solution.',
+    title: 'WhatsApp AI Agent | 24/7 Business Communication',
+    description: 'Automated WhatsApp business agent that handles message routing, template responses, appointment booking, and customer inquiries around the clock.',
     imageUrl: '/projects/p4.svg',
-    galleryUrls: ['https://unsplash.com/photos/green-and-white-apple-logo-_qsuER9xYOY'],
     category: 'AI Agents',
-    tags: ['JSON', 'WhatsApp', 'Messaging', 'Freelance Automation Developer'],
-    date: '2025'
+    tags: ['WhatsApp', 'n8n', 'OpenAI', 'Automation'],
+    date: '2025',
+    isFeatured: true,
+    clientBackground: 'A service business receiving 200+ WhatsApp messages daily with no automated response system.',
+    problemStatement: 'The business owner was manually responding to every WhatsApp message, consuming 4+ hours daily and missing leads after hours.',
+    strategy: 'Built an n8n-powered WhatsApp automation with AI intent detection, auto-replies, appointment booking, and CRM integration.',
+    results: [
+      '100% automated responses for common inquiries.',
+      '4+ hours per day saved for the business owner.',
+      'Zero missed leads — all inquiries captured 24/7.',
+      'Appointment booking rate increased by 35%.'
+    ],
+    beforeAfter: {
+      before: '4 hrs/day manual replies | Missed after-hours leads',
+      after: '0 hrs manual work | 24/7 automated lead capture'
+    }
   },
 
-  // --- WEB DEVELOPMENT ---
+  // ── 4. Chatbot Development ────────────────────────────────
   {
-    id: 'p5',
-    title: 'E-Commerce Marketplace | Freelance Full Stack Developer Project',
-    description: 'Top-rated freelance full stack developer project: Online shopping platform where customers can browse products, add to cart, make payments, and track orders. Handles inventory management, user accounts, and secure transactions. Purpose: Enable businesses to sell products online with professional e-commerce capabilities and streamlined customer purchasing experience. Expert freelance full stack developer solution.',
-    imageUrl: '/projects/p5.svg',
-    galleryUrls: [
-      'https://www.nextinfoera.in/ecommerce-development',
-      'https://www.nextinfoera.in/ecommerce-development'
+    id: 'p_chat',
+    title: 'RAG Chatbot | Custom Knowledge Base Assistant',
+    description: 'Intelligent AI chatbot trained on proprietary business data using Retrieval-Augmented Generation — deployed on website, WhatsApp, and Telegram.',
+    imageUrl: '/projects/p3.svg',
+    category: 'AI Agents',
+    tags: ['OpenAI', 'LangChain', 'Vector DB', 'Voiceflow'],
+    date: '2025',
+    isFeatured: true,
+    clientBackground: 'An education platform needing a 24/7 assistant to handle student queries about courses and admissions.',
+    problemStatement: 'The support team was overwhelmed by repetitive questions about course details, fees, and admission process, causing delays and poor student experience.',
+    strategy: 'Built a RAG chatbot ingesting all course documents, FAQs, and policies into a vector database. Deployed on website widget and WhatsApp with CRM lead capture.',
+    results: [
+      'Handles 80% of student queries without human intervention.',
+      'Lead capture rate increased by 40% through chat.',
+      'Support team workload reduced by 65%.',
+      'Multilingual support in English and Hindi.'
     ],
-    category: 'Web Dev',
-    tags: ['Python', 'Django', 'HTML', 'CSS', 'JavaScript', 'Freelance Full Stack Developer'],
-    date: '2024',
-    isFeatured: true
+    beforeAfter: {
+      before: 'Long email wait times | Repetitive manual queries | Lost leads',
+      after: 'Instant AI answers | Automated lead capture | Happy students'
+    }
   },
+
+  // ── 5. Hospital Website ───────────────────────────────────
   {
     id: 'p6',
-    title: 'Hospital Website | Freelance Web Developer India Project',
-    description: 'Professional freelance web developer India project: Manages hospital appointments, patient records, and medical facility operations digitally. Allows patients to book appointments online and doctors to manage schedules efficiently. Purpose: Modernize healthcare administration, reduce paperwork, and improve patient access to medical services through digital transformation. Expert freelance web developer India solution.',
+    title: 'Hospital Management Platform | Full-Stack Web App',
+    description: 'Full-stack hospital management system with online appointment booking, patient records, doctor scheduling, and admin dashboard built with Django and React.',
     imageUrl: '/projects/p6.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800'
-    ],
     category: 'Web Dev',
-    tags: ['Python', 'Django', 'HTML', 'CSS', 'JavaScript', 'Freelance Web Developer India'],
-    date: '2024'
+    tags: ['Python', 'Django', 'React', 'PostgreSQL'],
+    date: '2024',
+    isFeatured: true,
+    clientBackground: 'A multi-department hospital running all operations manually on paper and Excel spreadsheets.',
+    problemStatement: 'Patients had no way to book appointments online. Staff spent hours managing paper records and phone-based scheduling causing delays and errors.',
+    strategy: 'Built a full-stack platform with patient portal, doctor dashboard, admin panel, real-time appointment slots, and digital record management.',
+    results: [
+      'Appointment booking time reduced from 15 min to 2 min.',
+      'Paper records completely eliminated for new patients.',
+      'Doctor schedule conflicts dropped to zero.',
+      'Patient satisfaction score improved significantly.'
+    ],
+    beforeAfter: {
+      before: 'Manual paper records | Phone-only booking | Scheduling chaos',
+      after: 'Digital records | Online booking 24/7 | Automated scheduling'
+    }
   },
+
+  // ── 6. Restaurant Website ─────────────────────────────────
   {
     id: 'p7',
-    title: 'Restaurant Website | Freelance Python Developer Project',
-    description: 'Expert freelance Python developer project: Digital restaurant platform for online menu browsing, table reservations, and food ordering. Customers can view menus, book tables, and place orders through website or mobile. Purpose: Modernize restaurant operations, increase customer convenience, and boost revenue through online ordering and reservation systems. Professional freelance Python developer solution.',
+    title: 'Restaurant Digital Platform | Online Ordering & Reservations',
+    description: 'Complete restaurant web platform with digital menu, online table reservations, food ordering system, and kitchen order management built with Django.',
     imageUrl: '/projects/p7.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=800'
-    ],
     category: 'Web Dev',
-    tags: ['Python', 'Django', 'HTML', 'CSS', 'JavaScript', 'Freelance Python Developer'],
-    date: '2024'
+    tags: ['Python', 'Django', 'HTML', 'JavaScript'],
+    date: '2024',
+    isFeatured: false,
+    clientBackground: 'A mid-size restaurant with no online presence, losing customers to competitors with digital ordering.',
+    problemStatement: 'The restaurant had no website, no online ordering, and relied entirely on walk-ins and phone calls for reservations — losing significant revenue.',
+    strategy: 'Developed a full restaurant web platform: digital menu with images, table reservation system, online ordering with payment integration, and owner admin panel.',
+    results: [
+      'Online orders constituted 30% of total revenue within 2 months.',
+      'Table reservation conflicts eliminated completely.',
+      'Average order value increased 20% with upsell features.',
+      'Google Business visibility improved significantly.'
+    ],
+    beforeAfter: {
+      before: 'Phone-only orders | No online presence | Lost to competitors',
+      after: 'Online ordering 24/7 | 30% digital revenue | Strong web presence'
+    }
   },
 
-  // --- DATA SCIENCE / POWER BI ---
+  // ── 7. Hospital Analysis Dashboard ───────────────────────
   {
     id: 'p10',
-    title: 'Hospital Analysis Data | Freelance Data Scientist Project',
-    description: 'Top-rated freelance data scientist project: Analyzes hospital data to track patient flow, bed availability, staff scheduling, and medical resource usage. Creates visual reports showing healthcare operational efficiency. Purpose: Help hospital administrators make data-driven decisions to optimize patient care, resource allocation, and operational costs. Expert freelance data scientist solution.',
+    title: 'Hospital Analytics Dashboard | Power BI Healthcare Intelligence',
+    description: 'Interactive Power BI dashboard analyzing hospital patient flow, bed occupancy, staff efficiency, and resource utilization across multiple departments.',
     imageUrl: '/projects/p10.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1551288049-bbda6465f74a?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800'
-    ],
     category: 'Data Science',
-    tags: ['Power BI', 'Healthcare Analytics', 'Data Visualization', 'Freelance Data Scientist'],
+    tags: ['Power BI', 'DAX', 'Healthcare Analytics', 'SQL'],
     date: '2024',
-    isFeatured: true
-  },
-  {
-    id: 'p11',
-    title: 'HR Analysis Data | Freelance Data Science Consultant Project',
-    description: 'Professional freelance data science consultant project: Tracks employee performance, analyzes workforce data, and monitors HR metrics like retention and productivity. Generates reports on organizational health and talent management. Purpose: Enable HR teams to make informed decisions about staffing, training, and employee development based on data insights. Expert freelance data science consultant solution.',
-    imageUrl: '/projects/p11.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1454165833767-13a6b060102b?auto=format&fit=crop&q=80&w=1000'
+    isFeatured: false,
+    clientBackground: 'A hospital group with 3 branches struggling to track performance across departments without clear visibility into operational data.',
+    problemStatement: 'Hospital administrators were making decisions based on monthly paper reports with 30-day lag time, missing critical patterns in patient flow and resource usage.',
+    strategy: 'Built a real-time Power BI dashboard connecting hospital SQL databases — visualizing patient flow, bed availability, staff scheduling, and department KPIs with drill-down capability.',
+    results: [
+      'Decision-making cycle reduced from 30 days to real-time.',
+      'Bed utilization efficiency improved by 18%.',
+      'Staff overtime costs reduced through better scheduling insights.',
+      'Emergency department bottlenecks identified and resolved.'
     ],
-    category: 'Data Science',
-    tags: ['Power BI', 'HR Analytics', 'Dashboard', 'Freelance Data Science Consultant'],
-    date: '2024'
-  },
-  {
-    id: 'p12',
-    title: 'SuperStore Sales Data | Freelance Business Intelligence Project',
-    description: 'Expert freelance business intelligence project: Analyzes retail sales data across different regions to track profits, inventory levels, and customer buying patterns. Identifies best-selling products and optimal pricing strategies. Purpose: Help retailers understand market performance, optimize inventory management, and maximize profitability through data-driven business decisions. Professional freelance business intelligence solution.',
-    imageUrl: '/projects/p12.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=800'
-    ],
-    category: 'Data Science',
-    tags: ['Power BI', 'Sales Analytics', 'Business Intelligence', 'Freelance Business Intelligence'],
-    date: '2024'
+    beforeAfter: {
+      before: '30-day lag paper reports | No real-time visibility | Reactive decisions',
+      after: 'Real-time Power BI | Predictive insights | Proactive operations'
+    }
   },
 
-  // --- MACHINE LEARNING ---
-  {
-    id: 'p13',
-    title: 'Credit Card Fraud Detection | Freelance ML Engineer Project',
-    description: 'Top-rated freelance ML engineer project: Detects fraudulent credit card transactions by analyzing spending patterns and identifying suspicious activities in real-time. Uses machine learning to distinguish between legitimate and fraudulent charges. Purpose: Protect consumers and financial institutions from payment fraud losses while minimizing false declined transactions. Expert freelance ML engineer solution.',
-    imageUrl: '/projects/p13.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1551288049-bbda6465f74a?auto=format&fit=crop&q=80&w=800'
-    ],
-    category: 'ML',
-    tags: ['Python', 'Machine Learning', 'Fraud Detection', 'Freelance ML Engineer'],
-    date: '2023'
-  },
-  {
-    id: 'p14',
-    title: 'Iris Classification Model | Freelance Data Science Project',
-    description: 'Expert freelance data science project: Classifies iris flower species using machine learning algorithms based on measurements like petal length and width. Demonstrates fundamental classification techniques in data science. Purpose: Educational tool for learning machine learning concepts and comparing different classification algorithms on a classic dataset. Professional freelance data science solution.',
-    imageUrl: '/projects/p14.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1520412099551-6296b0db5c04?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800'
-    ],
-    category: 'ML',
-    tags: ['Python', 'Scikit-learn', 'Classification', 'Freelance Data Science'],
-    date: '2023'
-  },
-  {
-    id: 'p15',
-    title: 'Sales Advertising Analysis | Freelance Python Developer Project',
-    description: 'Professional freelance Python developer project: Analyzes advertising campaign performance by examining spending patterns and measuring return on investment. Determines which marketing channels generate the best results for businesses. Purpose: Help marketers optimize advertising budgets by identifying high-performing campaigns and eliminating ineffective spending. Expert freelance Python developer solution.',
-    imageUrl: '/projects/p15.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1551288049-bbda6465f74a?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800'
-    ],
-    category: 'Data Science',
-    tags: ['Python', 'Data Analysis', 'Regression', 'Freelance Python Developer'],
-    date: '2023'
-  },
-  {
-    id: 'p16',
-    title: 'Unemployment Prediction Model | Freelance AI Developer Project',
-    description: 'Expert freelance AI developer project: Predicts future unemployment rates by analyzing historical employment data and economic trends. Forecasts labor market conditions to help with workforce planning. Purpose: Assist policymakers, businesses, and researchers in understanding employment trends and preparing for future labor market changes. Professional freelance AI developer solution.',
-    imageUrl: '/projects/p16.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1454165833767-13a6b060102b?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=800'
-    ],
-    category: 'ML',
-    tags: ['Python', 'Time Series', 'Prediction', 'Freelance AI Developer'],
-    date: '2023'
-  },
-
-  // --- FINTECH & ENTERPRISE ---
-  {
-    id: 'p17',
-    title: 'IPO Platform | Freelance Web Developer Project',
-    description: 'Top-rated freelance web developer project: Tracks Initial Public Offering (IPO) activities, monitors stock market data, and analyzes investment opportunities for companies going public. Provides real-time IPO information and performance metrics. Purpose: Help investors and financial professionals stay informed about new stock offerings and make educated investment decisions in the public markets. Expert freelance web developer solution.',
-    imageUrl: '/projects/p17.svg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1611974714024-4607a50d6c2a?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800'
-    ],
-    category: 'Web Dev',
-    tags: ['Python', 'Django', 'HTML', 'CSS', 'Freelance Web Developer'],
-    date: '2024'
-  },
+  // ── 8. VAS QR System ──────────────────────────────────────
   {
     id: 'p18',
-    title: 'VAS QR System | Freelance Full Stack Developer Project',
-    description: 'Professional freelance full stack developer project: Manages Value Added Services through QR code technology, enabling customers to access special offers, loyalty programs, and premium services by scanning codes. Handles service subscriptions and customer rewards. Purpose: Simplify service delivery, enhance customer engagement, and streamline loyalty program management through convenient QR code-based interactions. Expert freelance full stack developer solution.',
+    title: 'VAS QR Management System | Full-Stack Enterprise Platform',
+    description: 'Enterprise Value Added Services platform using QR technology for managing customer loyalty programs, service subscriptions, and digital rewards — built with Django.',
     imageUrl: 'https://fairshare.tech/wp-content/uploads/2019/01/QR_code_attendance.jpg',
-    galleryUrls: [
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800',
-      'https://images.unsplash.com/photo-1454165833767-13a6b060102b?auto=format&fit=crop&q=80&w=800'
-    ],
     category: 'Web Dev',
-    tags: ['Python', 'Django', 'HTML', 'CSS', 'Freelance Full Stack Developer'],
-    date: '2024'
+    tags: ['Python', 'Django', 'QR Technology', 'REST API'],
+    date: '2024',
+    isFeatured: false,
+    clientBackground: 'A telecom-adjacent service company managing customer loyalty rewards and value-added service subscriptions manually.',
+    problemStatement: 'The company was using spreadsheets to track thousands of customer subscriptions, causing errors, delays in rewards delivery, and no real-time visibility.',
+    strategy: 'Built a full-stack Django platform with QR code generation, customer service management, subscription tracking, rewards redemption engine, and admin analytics dashboard.',
+    results: [
+      'Manual errors in reward allocation dropped to zero.',
+      'Customer redemption time reduced from 5 days to instant.',
+      'Admin team workload reduced by 60% through automation.',
+      'Subscription management scaled to 10,000+ customers.'
+    ],
+    beforeAfter: {
+      before: 'Manual spreadsheets | 5-day reward delays | Error-prone tracking',
+      after: 'Automated QR system | Instant redemption | Scalable to 10k+ users'
+    }
   }
 ];
 
@@ -402,7 +364,7 @@ export const TESTIMONIALS: Testimonial[] = [
     clientRole: 'Operations Director',
     company: 'LogiTrack Solutions',
     content: "Tushar's automation workflows using n8n saved our team over 20 hours a week. The WhatsApp bot is flawless and handles customer queries even while we sleep. Truly a game-changer. Top-rated freelance automation developer in India!",
-    rating: 5,
+    rating: 4,
     category: 'Automation',
   },
   {
@@ -411,7 +373,7 @@ export const TESTIMONIALS: Testimonial[] = [
     clientRole: 'Tech Founder',
     company: 'HealthFirst Technologies',
     content: "The Healthcare platform built by Singh exceeded all our expectations. Clean code, responsive design, and robust security. He's not just a developer; he's a technical architect. Professional freelance web developer India services at their finest.",
-    rating: 5,
+    rating: 4,
     category: 'Web Dev',
   },
   {
@@ -420,7 +382,7 @@ export const TESTIMONIALS: Testimonial[] = [
     clientRole: 'Lead Analyst',
     company: 'DataMetrics Analytics',
     content: "The Power BI dashboards Tushar created gave us insights we never knew existed. His ability to handle 100k+ records and make them visually intuitive is impressive. Expert freelance data scientist India with exceptional analytical skills.",
-    rating: 5,
+    rating: 4,
     category: 'Data Science',
   }
 ];

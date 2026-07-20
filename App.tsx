@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useParams } from 'react-router-dom';
 import { ShieldCheck, Activity, Terminal, Cpu } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -14,7 +14,7 @@ import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
-import Blog from './pages/Blog';
+import Blog, { BLOG_POSTS } from './pages/Blog';
 
 const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
@@ -344,7 +344,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
         "name": "Tushar Singh",
         "alternateName": "Code with Mr. Singh",
         "jobTitle": "AI Automation Expert & Full-Stack Developer",
-        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from Delhi University. Founder of Code with Mr. Singh. 25+ projects completed. ₹50L+ revenue generated for clients. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
+        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from Delhi University. Founder of Code with Mr. Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
         "image": "https://codewithmrsingh.me/me-optimized.jpg",
         "url": `${baseUrl}/about`,
         "sameAs": [
@@ -372,8 +372,8 @@ const updateStructuredData = (title: string, description: string, path: string) 
       "@type": "CollectionPage",
       "@id": `${pageUrl}#collectionpage`,
       "url": pageUrl,
-      "name": "Project Portfolio — 25+ AI & Web Development Case Studies",
-      "description": "Complete portfolio of 25+ projects by Tushar Singh: AI automation systems, chatbots, web applications, sales funnels, lead generation systems, data science dashboards, and machine learning models.",
+      "name": "Project Portfolio — 10+ AI & Web Development Case Studies",
+      "description": "Complete portfolio of 10+ successful projects submitted to clients by Tushar Singh: AI automation systems, chatbots, web applications, sales funnels, lead generation systems, data science dashboards, and machine learning models.",
       "author": { "@id": `${baseUrl}/#person` },
       "about": "AI Automation, Full-Stack Web Development, Chatbot Development, Data Science"
     });
@@ -434,12 +434,79 @@ const updateStructuredData = (title: string, description: string, path: string) 
       "mentions": {
         "@type": "AggregateRating",
         "itemReviewed": { "@id": `${baseUrl}/#person` },
-        "ratingValue": "5.0",
-        "reviewCount": "25",
+        "ratingValue": "4.0",
+        "reviewCount": "10",
         "bestRating": "5"
       }
     });
   }
+};
+
+/* ─── BlogPostWrapper ────────────────────────────────────────
+   Sets per-post title, description & og: tags dynamically
+   so shared URLs get the correct preview metadata.
+──────────────────────────────────────────────────────────── */
+const BlogPostWrapperInner: React.FC = () => {
+  const { postId } = useParams<{ postId: string }>();
+  const post = BLOG_POSTS.find(p => p.id === postId);
+
+  useEffect(() => {
+    if (post) {
+      const title = `${post.title} | Code with Mr. Singh`;
+      const desc  = post.excerpt;
+      const url   = `https://codewithmrsingh.me/blog/${post.id}`;
+
+      document.title = title;
+
+      const setMeta = (sel: string, val: string) => {
+        const el = document.querySelector(sel);
+        if (el) el.setAttribute('content', val);
+      };
+      setMeta('meta[name="description"]',         desc);
+      setMeta('meta[property="og:title"]',         title);
+      setMeta('meta[property="og:description"]',   desc);
+      setMeta('meta[property="og:url"]',           url);
+      setMeta('meta[property="og:type"]',          'article');
+      setMeta('meta[property="twitter:title"]',    title);
+      setMeta('meta[property="twitter:description"]', desc);
+      setMeta('meta[property="twitter:url"]',      url);
+
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', url);
+
+      // Inject Article schema for SEO
+      let schema = document.getElementById('schema-blog-post');
+      if (!schema) {
+        schema = document.createElement('script');
+        schema.setAttribute('type', 'application/ld+json');
+        schema.id = 'schema-blog-post';
+        document.head.appendChild(schema);
+      }
+      schema.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        'headline': post.title,
+        'description': post.excerpt,
+        'url': url,
+        'author': { '@id': 'https://codewithmrsingh.me/#person' },
+        'publisher': { '@id': 'https://codewithmrsingh.me/#person' },
+        'keywords': post.tags.join(', '),
+        'inLanguage': 'en',
+        'datePublished': post.date,
+        'dateModified': '2026-07-18'
+      });
+    }
+    return () => {
+      document.getElementById('schema-blog-post')?.remove();
+    };
+  }, [post]);
+
+  return <Blog />;
 };
 
 const App: React.FC = () => {
@@ -450,13 +517,13 @@ const App: React.FC = () => {
         <Navbar />
         <main id="main-content" className="flex-grow w-full overflow-x-hidden">
           <Routes>
-            <Route path="/" element={<PageWrapper title="Hire AI Automation & Full-Stack Developer | Pan India | 25+ Projects" description="Tushar Singh — Top-rated AI Automation Expert & Full-Stack Developer serving all states of India. Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata, Jaipur, Lucknow & more. 25+ projects, ₹50L+ revenue." keywords="Tushar Singh, AI automation expert India, full stack developer India, hire developer India, chatbot developer India, Python developer India, React developer India, web developer India, n8n automation India, freelance developer India, pan India developer, AI developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"><Home /></PageWrapper>} />
-            <Route path="/about" element={<PageWrapper title="About Tushar Singh | AI Automation Expert | Serving All India States" description="Tushar Singh — MCA graduate, AI Automation Expert & Full-Stack Developer. Serving clients from every Indian state. Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata & more. 25+ projects completed." keywords="about Tushar Singh, AI automation expert India, full stack developer background, developer Delhi Mumbai Bangalore Hyderabad Chennai, MCA graduate developer India, pan India freelance developer"><About /></PageWrapper>} />
+            <Route path="/" element={<PageWrapper title="Hire AI Automation & Full-Stack Developer | Pan India | 10+ Projects" description="Tushar Singh — AI Automation Expert & Full-Stack Developer serving all states of India. Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata & more. 10+ successful projects submitted to clients, ₹2L+ revenue." keywords="Tushar Singh, AI automation expert India, full stack developer India, hire developer India, chatbot developer India, Python developer India, React developer India, web developer India, n8n automation India, freelance developer India, pan India developer, AI developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"><Home /></PageWrapper>} />
+            <Route path="/about" element={<PageWrapper title="About Tushar Singh | AI Automation Expert | Serving All India States" description="Tushar Singh — MCA graduate, AI Automation Expert & Full-Stack Developer. Serving clients from every Indian state. 10+ successful projects submitted to clients, ₹2L+ revenue." keywords="about Tushar Singh, AI automation expert India, full stack developer background, developer Delhi Mumbai Bangalore Hyderabad Chennai, MCA graduate developer India, pan India freelance developer"><About /></PageWrapper>} />
             <Route path="/services" element={<PageWrapper title="AI Automation & Web Development Services | All India States" description="Expert AI automation, chatbot development, full-stack web development services across all Indian states — Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata, Ahmedabad, Jaipur, Lucknow & every state." keywords="AI automation services India, web development services India, chatbot development India, n8n automation India, Python development India, React.js services India, freelance services all India states, business automation India, developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"><Services /></PageWrapper>} />
-            <Route path="/projects" element={<PageWrapper title="Portfolio | 25+ AI & Web Dev Projects | Pan India Developer" description="25+ projects by Tushar Singh — AI automation, chatbots, web apps, sales funnels. Serving clients across all Indian states: Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata, and more." keywords="AI automation projects India, web development portfolio India, chatbot projects India, developer portfolio Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer portfolio, freelance projects India"><Projects /></PageWrapper>} />
+            <Route path="/projects" element={<PageWrapper title="Portfolio | 10+ AI & Web Dev Projects | Pan India Developer" description="10+ successful projects by Tushar Singh — real products submitted to clients. AI automation, chatbots, web apps, sales funnels. Serving clients across all Indian states." keywords="AI automation projects India, web development portfolio India, chatbot projects India, developer portfolio Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer portfolio, freelance projects India"><Projects /></PageWrapper>} />
             <Route path="/blog" element={<PageWrapper title="Tech Blog | AI & Web Development | India Developer Insights" description="Technical articles on AI automation, full-stack development, data science by Tushar Singh — India's pan-state developer. Practical insights for businesses across all Indian states." keywords="tech blog India, AI automation blog India, web development articles India, developer blog Delhi Mumbai Bangalore Hyderabad Chennai, data science insights India, machine learning India"><Blog /></PageWrapper>} />
-            <Route path="/blog/:postId" element={<PageWrapper title="FAANG Coding Roadmap | 150 Questions | India Developer Guide" description="Complete 150-question FAANG coding roadmap by Tushar Singh — useful for developers across all Indian states." keywords="FAANG interview India, coding questions India, DSA practice India, developer career guide India, coding roadmap Delhi Mumbai Bangalore Hyderabad"><Blog /></PageWrapper>} />
-            <Route path="/testimonials" element={<PageWrapper title="Client Reviews & Testimonials | Pan India | Tushar Singh" description="Verified client reviews from businesses across all Indian states — Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata & more. 25+ projects, 5.0 star rating." keywords="client testimonials India, developer reviews India, AI automation reviews India, web development reviews India, reviews Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer reviews"><Testimonials /></PageWrapper>} />
+            <Route path="/blog/:postId" element={<BlogPostWrapperInner />} />
+            <Route path="/testimonials" element={<PageWrapper title="Client Reviews & Testimonials | Pan India | Tushar Singh" description="Verified client reviews from businesses across all Indian states — Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata & more. 10+ successful projects submitted to clients, 4.0 star rating." keywords="client testimonials India, developer reviews India, AI automation reviews India, web development reviews India, reviews Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer reviews"><Testimonials /></PageWrapper>} />
             <Route path="/contact" element={<PageWrapper title="Contact Tushar Singh | Hire Developer Anywhere in India" description="Contact Tushar Singh to hire an AI Automation Expert & Full-Stack Developer. Serving all Indian states — Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata, Jaipur, Lucknow & every state. Book free consultation." keywords="hire developer India, contact developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, hire AI automation expert India, hire web developer India, freelance developer contact India, book consultation India"><Contact /></PageWrapper>} />
           </Routes>
         </main>

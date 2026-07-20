@@ -41,8 +41,12 @@ export const search = (query: string): SearchResult[] => {
  * Get recent searches from localStorage
  */
 export const getRecentSearches = (): string[] => {
-  const stored = localStorage.getItem('recentSearches');
-  return stored ? JSON.parse(stored) : [];
+  try {
+    const stored = localStorage.getItem('recentSearches');
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
 };
 
 /**
