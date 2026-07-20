@@ -9,6 +9,8 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        // SPA routing: all 404s serve index.html so React Router handles them
+        historyApiFallback: true,
       },
       plugins: [react()],
       define: {
@@ -33,7 +35,9 @@ export default defineConfig(({ mode }) => {
       // Enable proper routing for production
       preview: {
         port: 3000,
-        host: true
+        host: true,
+        // SPA routing for npm run preview
+        historyApiFallback: true,
       },
       test: {
         globals: true,

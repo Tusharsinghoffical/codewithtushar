@@ -1,32 +1,22 @@
-# Robots.txt for Code with Mr. Singh - AI Automation & Web Development Services
-# Optimized for: Google, Bing, Yahoo, DuckDuckGo, Brave, Yandex, Baidu
-# GEO Optimized for: ChatGPT, Perplexity, Claude, Gemini, Copilot, You.com
-# Last Updated: 2026-07-18
+# robots.txt — Code with Mr. Singh
+# AI Automation Expert & Full-Stack Developer | codewithmrsingh.me
+# Optimised for: Google, Bing, Yahoo, DuckDuckGo, Yandex, Baidu, Brave, Ecosia
+# GEO Enabled for: ChatGPT, Perplexity, Claude, Gemini, Copilot, You.com
+# Last updated: 2026-07-18
 
-# =============================================
-# Default rules for all crawlers
-# =============================================
+# ── Default (all bots) ──────────────────────────────────────
 User-agent: *
 Allow: /
 Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /.github/
 Disallow: /.vscode/
-
-# Sitemap locations
 Sitemap: https://codewithmrsingh.me/sitemap.xml
-Sitemap: https://codewithmrsingh.me/seo-enhanced-sitemap.xml
-
-# Host directive (Yandex compatible)
 Host: https://codewithmrsingh.me
 
-# =============================================
-# Google Search (All Bots)
-# =============================================
+# ── Google ──────────────────────────────────────────────────
 User-agent: Googlebot
 Allow: /
-Disallow: /node_modules/
-Disallow: /.git/
 Crawl-delay: 1
 
 User-agent: Googlebot-Image
@@ -35,148 +25,91 @@ Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.svg$
 Allow: /*.webp$
-Disallow: /node_modules/
 
 User-agent: Googlebot-Mobile
 Allow: /
-Disallow: /node_modules/
 
-# Google AI / Bard / Gemini Crawler
+# Google AI / Gemini — ALLOW for GEO
 User-agent: Google-Extended
 Allow: /
 
-# =============================================
-# Bing & Yahoo (Microsoft)
-# =============================================
+# ── Bing / Microsoft Copilot ────────────────────────────────
 User-agent: Bingbot
 Allow: /
-Disallow: /node_modules/
-Disallow: /.git/
 Crawl-delay: 2
+
+User-agent: BingPreview
+Allow: /
 
 # Yahoo uses Slurp
 User-agent: Slurp
 Allow: /
-Disallow: /node_modules/
-Disallow: /.git/
 Crawl-delay: 2
 
-# Bing AI / Copilot
-User-agent: BingPreview
-Allow: /
-
-# =============================================
-# DuckDuckGo
-# =============================================
+# ── DuckDuckGo ──────────────────────────────────────────────
 User-agent: DuckDuckBot
 Allow: /
-Disallow: /node_modules/
 Crawl-delay: 3
 
-# =============================================
-# Brave Search
-# =============================================
+# ── Brave Search ────────────────────────────────────────────
 User-agent: BraveBot
 Allow: /
-Disallow: /node_modules/
 Crawl-delay: 3
 
-# =============================================
-# Yandex (Russian Search)
-# =============================================
+# ── Yandex ──────────────────────────────────────────────────
 User-agent: Yandex
 Allow: /
-Disallow: /node_modules/
-Disallow: /.git/
 Crawl-delay: 3
 
-# =============================================
-# Baidu (Chinese Search)
-# =============================================
+# ── Baidu ───────────────────────────────────────────────────
 User-agent: Baiduspider
 Allow: /
-Disallow: /node_modules/
-Disallow: /.git/
 Crawl-delay: 5
 
-# =============================================
-# Ecosia (Green Search Engine)
-# =============================================
+# ── Ecosia ──────────────────────────────────────────────────
 User-agent: Ecosia
 Allow: /
-Disallow: /node_modules/
 Crawl-delay: 3
 
-# =============================================
-# Sogou (Chinese Search)
-# =============================================
-User-agent: Sogou web spider
-Allow: /
-Disallow: /node_modules/
-Crawl-delay: 5
+# ── GEO — AI Platform Crawlers ──────────────────────────────
+# Blocking these prevents your site from appearing in
+# ChatGPT, Perplexity, Claude, Gemini, Copilot answers.
+# All ALLOWED for maximum GEO visibility.
 
-# =============================================
-# Exabot (French Search)
-# =============================================
-User-agent: Exabot
-Allow: /
-Disallow: /node_modules/
-Crawl-delay: 5
-
-# =============================================
-# GEO — AI Platform Crawlers (ALLOW ALL)
-# These feed ChatGPT, Claude, Perplexity, Gemini
-# Blocking these hurts AI search visibility (GEO)
-# =============================================
-
-# OpenAI / ChatGPT — ALLOWED for GEO
 User-agent: GPTBot
 Allow: /
 
-# OpenAI ChatGPT browsing plugin
 User-agent: ChatGPT-User
 Allow: /
 
-# Anthropic Claude
 User-agent: ClaudeBot
 Allow: /
 
-# Anthropic Claude AI
 User-agent: anthropic-ai
 Allow: /
 
-# Common Crawl (used by many AI models for training)
 User-agent: CCBot
 Allow: /
 
-# Perplexity AI
 User-agent: PerplexityBot
 Allow: /
 
-# You.com AI Search
 User-agent: YouBot
 Allow: /
 
-# Meta AI / Llama
 User-agent: meta-externalagent
 Allow: /
 
-# Apple Applebot (used for Siri & Apple Intelligence)
 User-agent: Applebot
 Allow: /
 
-# Amazon Alexa / Amazonbot
 User-agent: Amazonbot
 Allow: /
 
-# Cohere AI
 User-agent: cohere-ai
 Allow: /
 
-# =============================================
-# Block known bad bots / scrapers only
-# (NOT AI search engines — those are above)
-# =============================================
+# ── Block scrapers (NOT AI engines) ─────────────────────────
 User-agent: AhrefsBot
 Disallow: /
 

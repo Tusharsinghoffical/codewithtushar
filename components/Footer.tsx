@@ -1,148 +1,139 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  ArrowUpRight, 
-  MapPin, 
-  Phone, 
-  ChevronRight,
-  Instagram,
-  Youtube
-} from 'lucide-react';
+import { Github, Linkedin, Instagram, Youtube, MapPin, Mail, Phone, ArrowUpRight, Zap } from 'lucide-react';
 
-const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  return (
-    <footer className="bg-slate-950 text-slate-400 py-16 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-6">
-        
-        {/* --- MAIN FOOTER GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          
-          {/* Column 1: Brand */}
-          <div className="space-y-4">
-            <Link to="/" onClick={scrollToTop} className="inline-block">
-              <h2 className="text-2xl font-bold text-white hover:text-indigo-400 transition-colors">
-                C.MS
-              </h2>
-            </Link>
-            
-            <p className="text-sm text-slate-400 leading-relaxed">
-              AI Automation, Dashboard & Full-Stack Development. Building intelligent solutions for modern businesses.
-            </p>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-3 pt-2">
-              <SocialIcon href="https://linkedin.com/in/tusharsingh2011" icon={<Linkedin size={18} />} label="LinkedIn" />
-              <SocialIcon href="https://github.com/Tusharsinghoffical" icon={<Github size={18} />} label="GitHub" />
-              <SocialIcon href="https://www.instagram.com/codewith_mrsingh/" icon={<Instagram size={18} />} label="Instagram" />
-              <SocialIcon href="https://www.youtube.com/@codewithmrsingh4u" icon={<Youtube size={18} />} label="YouTube" />
-            </div>
-          </div>
-
-          {/* Column 2: Quick Links */}
-          <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Navigation</h3>
-            <ul className="space-y-3">
-              <FooterLink to="/" label="Home" />
-              <FooterLink to="/about" label="About" />
-              <FooterLink to="/projects" label="Projects" />
-              <FooterLink to="/services" label="Services" />
-              <FooterLink to="/blog" label="Blog" />
-              <FooterLink to="/contact" label="Contact" />
-            </ul>
-          </div>
-
-          {/* Column 3: Services */}
-          <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Services</h3>
-            <ul className="space-y-3">
-              <FooterLink to="/services" label="AI Automation" />
-              <FooterLink to="/services" label="Web Development" />
-              <FooterLink to="/services" label="Chatbot Development" />
-              <FooterLink to="/services" label="Lead Generation" />
-              <FooterLink to="/services" label="Logo & Design" />
-            </ul>
-          </div>
-
-          {/* Column 4: Contact */}
-          <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Contact</h3>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3 text-sm">
-                <MapPin size={16} className="text-indigo-400 mt-0.5 shrink-0" />
-                <span>Delhi, India</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <Phone size={16} className="text-emerald-400 shrink-0" />
-                <a href="tel:+918851619647" className="hover:text-white transition-colors">+91 88516 19647</a>
-              </div>
-              <div className="flex items-center gap-3 text-sm">
-                <Mail size={16} className="text-amber-400 shrink-0" />
-                <a href="mailto:tusharsinghkumar04@gmail.com" className="hover:text-white transition-colors break-all">
-                  tusharsinghkumar04@gmail.com
-                </a>
-              </div>
-            </div>
-            
-            <Link 
-              to="/contact" 
-              className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-all hover:gap-3"
-            >
-              Get in Touch
-              <ArrowUpRight size={16} />
-            </Link>
-          </div>
-          
-        </div>
-
-        {/* --- BOTTOM BAR --- */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          
-          <div className="text-sm text-slate-500">
-            &copy; {currentYear} Code with Mr. Singh. All rights reserved.
-          </div>
-          
-          <div className="text-sm text-slate-500">
-            AI Automation & Full-Stack Development Portfolio
-          </div>
-
-        </div>
-      </div>
-    </footer>
-  );
-};
-
+/* ─── Sub-components ─────────────────────────────────────── */
 const FooterLink = ({ to, label }: { to: string; label: string }) => (
   <li>
-    <Link 
-      to={to} 
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="text-slate-400 text-[11px] sm:text-xs font-bold hover:text-white hover:translate-x-1 transition-all flex items-center gap-2 group"
-    >
-      <ChevronRight size={10} className="text-indigo-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+    <Link to={to} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      className="text-slate-400 text-xs hover:text-white transition-colors flex items-center gap-1.5 group">
+      <span className="w-0 group-hover:w-2 h-px bg-indigo-400 transition-all duration-300 shrink-0" />
       {label}
     </Link>
   </li>
 );
 
-const SocialIcon = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
-  <a 
-    href={href} 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    aria-label={label}
-    className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-400 hover:bg-slate-700 transition-all active:scale-95"
-  >
+const SocialBtn = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+    className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-400/50 hover:bg-indigo-500/10 transition-all active:scale-95">
     {icon}
   </a>
 );
+
+/* ─── Footer ─────────────────────────────────────────────── */
+const Footer: React.FC = () => {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="bg-slate-950 border-t border-white/5">
+      
+      {/* ── CTA STRIP ─────────────────────────────────────── */}
+      <div className="border-b border-white/5 py-8 px-5 sm:px-10">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
+          <div>
+            <p className="text-[9px] font-black text-indigo-400 uppercase tracking-widest mb-1">
+              Available Worldwide — India, USA, UK, UAE &amp; More
+            </p>
+            <p className="text-base font-outfit font-extrabold text-white">
+              Ready to start your project?
+            </p>
+          </div>
+          <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest transition-all active:scale-95">
+            Get in Touch <ArrowUpRight size={13} />
+          </Link>
+        </div>
+      </div>
+
+      {/* ── MAIN GRID ──────────────────────────────────────── */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-10 py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1 space-y-5">
+            <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <span className="text-2xl font-outfit font-black text-white hover:text-indigo-400 transition-colors tracking-tight">C.MS</span>
+            </Link>
+            <p className="text-xs text-slate-400 leading-relaxed max-w-[220px]">
+              AI Automation &amp; Full-Stack Development. Building intelligent systems that scale businesses — not workloads.
+            </p>
+            <div className="flex items-center gap-2">
+              <SocialBtn href="https://linkedin.com/in/tusharsingh2011"      icon={<Linkedin size={15} />}  label="LinkedIn" />
+              <SocialBtn href="https://github.com/Tusharsinghoffical"         icon={<Github size={15} />}   label="GitHub" />
+              <SocialBtn href="https://www.instagram.com/codewith_mrsingh/"  icon={<Instagram size={15} />} label="Instagram" />
+              <SocialBtn href="https://www.youtube.com/@codewithmrsingh4u"    icon={<Youtube size={15} />}  label="YouTube" />
+            </div>
+            {/* Worldwide badge */}
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/8 rounded-xl w-fit">
+              <Zap size={10} className="text-indigo-400" />
+              <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Serving Worldwide</span>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h3 className="text-[9px] font-black text-white uppercase tracking-widest mb-5">Navigation</h3>
+            <ul className="space-y-3">
+              <FooterLink to="/"            label="Home" />
+              <FooterLink to="/about"       label="About" />
+              <FooterLink to="/projects"    label="Projects" />
+              <FooterLink to="/services"    label="Services" />
+              <FooterLink to="/blog"        label="Blog" />
+              <FooterLink to="/contact"     label="Contact" />
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-[9px] font-black text-white uppercase tracking-widest mb-5">Services</h3>
+            <ul className="space-y-3">
+              <FooterLink to="/services" label="AI Automation" />
+              <FooterLink to="/services" label="Chatbot Development" />
+              <FooterLink to="/services" label="Website & Funnel" />
+              <FooterLink to="/services" label="Logo & Branding" />
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-[9px] font-black text-white uppercase tracking-widest mb-5">Contact</h3>
+            <div className="space-y-4">
+              <a href="https://wa.me/918851619647" className="flex items-center gap-2.5 text-slate-400 hover:text-emerald-400 transition-colors group">
+                <Phone size={13} className="shrink-0 text-emerald-400" />
+                <span className="text-xs">+91 88516 19647</span>
+              </a>
+              <a href="mailto:tusharsinghkumar04@gmail.com" className="flex items-start gap-2.5 text-slate-400 hover:text-indigo-400 transition-colors group">
+                <Mail size={13} className="shrink-0 text-indigo-400 mt-0.5" />
+                <span className="text-xs break-all">tusharsinghkumar04@gmail.com</span>
+              </a>
+              <div className="flex items-center gap-2.5 text-slate-500">
+                <MapPin size={13} className="shrink-0 text-rose-400" />
+                <span className="text-xs">Delhi, India — Worldwide</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ── BOTTOM BAR ─────────────────────────────────────── */}
+      <div className="border-t border-white/5 px-5 sm:px-10 py-5">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[10px] text-slate-600 font-medium">
+            &copy; {year} Code with Mr. Singh. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] text-slate-600">AI Automation &amp; Full-Stack Development</span>
+            <div className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[9px] font-black text-emerald-600 uppercase tracking-widest">Available</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+  );
+};
 
 export default Footer;

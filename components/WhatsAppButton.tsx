@@ -38,7 +38,7 @@ const WhatsAppButton: React.FC = () => {
       {/* Mobile-only small tooltip */}
       <div className="absolute bottom-full right-0 mb-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden sm:block">
         <div className="bg-slate-900 text-white text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-xl shadow-xl whitespace-nowrap">
-          Replies within 1 hour or 12 hours of business hours
+          Available on WhatsApp — respond within 1 hour
         </div>
       </div>
     </div>

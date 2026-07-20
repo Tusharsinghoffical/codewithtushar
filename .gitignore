@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build scripts
+git-push.bat
+*.bat
+
 # Environment variables — never commit secrets
 .env
 .env.local

@@ -297,7 +297,7 @@ const Services: React.FC = () => {
           >
             Book Free Consultation <ChevronRight size={14} />
           </button>
-          <p className="text-[9px] text-slate-400 mt-4 uppercase tracking-widest font-bold">Replies within 1 hour · Mon–Sat</p>
+          <p className="text-[9px] text-slate-400 mt-4 uppercase tracking-widest font-bold">Available Worldwide · Mon–Sat</p>
         </div>
       </section>
 
