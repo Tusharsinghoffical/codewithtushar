@@ -15,6 +15,12 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
 import Blog, { BLOG_POSTS } from './pages/Blog';
+import {
+  SITE_URL, SITE_NAME,
+  SITE_DEFAULT_OG_IMAGE, SITE_DEFAULT_OG_ALT,
+  SITE_DEFAULT_OG_WIDTH, SITE_DEFAULT_OG_HEIGHT,
+  SITE_DATE_MODIFIED, PAGE_OG,
+} from './constants';
 
 const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
@@ -175,11 +181,36 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
   const location = useLocation();
 
   useEffect(() => {
-    document.title = `${title} | Code with Mr. Singh`;
+    const fullTitle = `${title} | ${SITE_NAME}`;
+    document.title = fullTitle;
+
+    const pageUrl = `${SITE_URL}${location.pathname}`;
+    // Resolve per-page OG data; fall back to site defaults
+    const ogMeta   = PAGE_OG[location.pathname];
+    const ogImage  = ogMeta?.image  ?? SITE_DEFAULT_OG_IMAGE;
+    const ogAlt    = ogMeta?.alt    ?? SITE_DEFAULT_OG_ALT;
+    const ogWidth  = ogMeta?.width  ?? SITE_DEFAULT_OG_WIDTH;
+    const ogHeight = ogMeta?.height ?? SITE_DEFAULT_OG_HEIGHT;
+    // Homepage keeps og:type="profile"; all other pages use "website"
+    const ogType   = location.pathname === '/' ? 'profile' : 'website';
+
     const setMeta = (selector: string, content: string) => {
-      const el = document.querySelector(selector);
-      if (el) el.setAttribute('content', content);
+      let el = document.querySelector(selector) as HTMLMetaElement | null;
+      if (!el) {
+        const attrMatch = selector.match(/meta\[(name|property)="([^"]+)"\]/);
+        if (attrMatch) {
+          const attr = attrMatch[1];
+          const name = attrMatch[2];
+          el = document.createElement('meta');
+          el.setAttribute(attr, name);
+          document.head.appendChild(el);
+        } else {
+          return;
+        }
+      }
+      el.setAttribute('content', content);
     };
+
     setMeta('meta[name="description"]', description);
 
     // Merge page-specific keywords WITH all Indian states — nationwide SEO on every page
@@ -193,29 +224,37 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
       document.head.appendChild(keywordsEl);
     }
     keywordsEl.setAttribute('content', fullKeywords);
-    setMeta('meta[property="og:title"]', `${title} | Code with Mr. Singh`);
-    setMeta('meta[property="og:description"]', description);
-    setMeta('meta[property="og:url"]', `https://codewithmrsingh.me${location.pathname}`);
-    setMeta('meta[property="og:type"]', 'website');
-    // Update canonical href — use 'href' attribute (not 'content') for <link> elements.
-    // If the element is absent, create it dynamically to avoid a TypeError.
-    const canonicalUrl = `https://codewithmrsingh.me${location.pathname}`;
+
+    // Open Graph
+    setMeta('meta[property="og:title"]',           fullTitle);
+    setMeta('meta[property="og:description"]',      description);
+    setMeta('meta[property="og:url"]',              pageUrl);
+    setMeta('meta[property="og:type"]',             ogType);
+    setMeta('meta[property="og:image"]',            ogImage);
+    setMeta('meta[property="og:image:secure_url"]', ogImage);
+    setMeta('meta[property="og:image:width"]',      ogWidth);
+    setMeta('meta[property="og:image:height"]',     ogHeight);
+    setMeta('meta[property="og:image:alt"]',        ogAlt);
+
+    // Twitter / X Card
+    setMeta('meta[property="twitter:title"]',       fullTitle);
+    setMeta('meta[property="twitter:description"]', description);
+    setMeta('meta[property="twitter:url"]',         pageUrl);
+    setMeta('meta[property="twitter:image"]',       ogImage);
+    setMeta('meta[name="twitter:image:alt"]',       ogAlt);
+
+    // Canonical — use 'href' (not 'content') for <link> elements
     let canonicalEl = document.querySelector('link[rel="canonical"]');
     if (!canonicalEl) {
       canonicalEl = document.createElement('link');
       canonicalEl.setAttribute('rel', 'canonical');
       document.head.appendChild(canonicalEl);
     }
-    canonicalEl.setAttribute('href', canonicalUrl);
-    
-    // Update Twitter Card meta tags
-    setMeta('meta[property="twitter:title"]', `${title} | Code with Mr. Singh`);
-    setMeta('meta[property="twitter:description"]', description);
-    setMeta('meta[property="twitter:url"]', `https://codewithmrsingh.me${location.pathname}`);
-    
+    canonicalEl.setAttribute('href', pageUrl);
+
     // Add page-specific structured data
     updateStructuredData(title, description, location.pathname);
-    
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location, title, description, keywords]);
 
@@ -270,7 +309,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
       "cssSelector": ["h1", "h2", ".speakable"]
     },
     "inLanguage": "en",
-    "dateModified": "2026-07-18"
+    "dateModified": SITE_DATE_MODIFIED
   });
 
   // ── Page-specific schemas ───────────────────────────────────
@@ -435,7 +474,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
         "@type": "AggregateRating",
         "itemReviewed": { "@id": `${baseUrl}/#person` },
         "ratingValue": "4.0",
-        "reviewCount": "10",
+        "reviewCount": "3",
         "bestRating": "5"
       }
     });
@@ -452,24 +491,49 @@ const BlogPostWrapperInner: React.FC = () => {
 
   useEffect(() => {
     if (post) {
-      const title = `${post.title} | Code with Mr. Singh`;
-      const desc  = post.excerpt;
-      const url   = `https://codewithmrsingh.me/blog/${post.id}`;
+      const title    = `${post.title} | ${SITE_NAME}`;
+      const desc     = post.excerpt;
+      const url      = `${SITE_URL}/blog/${post.id}`;
+      // Use a post-specific image if available, fall back to site default
+      const image    = (post as any).imageUrl ?? SITE_DEFAULT_OG_IMAGE;
+      const imageAlt = `${post.title} — ${SITE_NAME}`;
 
       document.title = title;
 
       const setMeta = (sel: string, val: string) => {
-        const el = document.querySelector(sel);
-        if (el) el.setAttribute('content', val);
+        let el = document.querySelector(sel) as HTMLMetaElement | null;
+        if (!el) {
+          const attrMatch = sel.match(/meta\[(name|property)="([^"]+)"\]/);
+          if (attrMatch) {
+            const attr = attrMatch[1];
+            const name = attrMatch[2];
+            el = document.createElement('meta');
+            el.setAttribute(attr, name);
+            document.head.appendChild(el);
+          } else {
+            return;
+          }
+        }
+        el.setAttribute('content', val);
       };
-      setMeta('meta[name="description"]',         desc);
-      setMeta('meta[property="og:title"]',         title);
-      setMeta('meta[property="og:description"]',   desc);
-      setMeta('meta[property="og:url"]',           url);
-      setMeta('meta[property="og:type"]',          'article');
-      setMeta('meta[property="twitter:title"]',    title);
-      setMeta('meta[property="twitter:description"]', desc);
-      setMeta('meta[property="twitter:url"]',      url);
+
+      setMeta('meta[name="description"]',              desc);
+      // Open Graph
+      setMeta('meta[property="og:title"]',             title);
+      setMeta('meta[property="og:description"]',       desc);
+      setMeta('meta[property="og:url"]',               url);
+      setMeta('meta[property="og:type"]',              'article');
+      setMeta('meta[property="og:image"]',             image);
+      setMeta('meta[property="og:image:secure_url"]',  image);
+      setMeta('meta[property="og:image:width"]',       SITE_DEFAULT_OG_WIDTH);
+      setMeta('meta[property="og:image:height"]',      SITE_DEFAULT_OG_HEIGHT);
+      setMeta('meta[property="og:image:alt"]',         imageAlt);
+      // Twitter / X Card
+      setMeta('meta[property="twitter:title"]',        title);
+      setMeta('meta[property="twitter:description"]',  desc);
+      setMeta('meta[property="twitter:url"]',          url);
+      setMeta('meta[property="twitter:image"]',        image);
+      setMeta('meta[name="twitter:image:alt"]',        imageAlt);
 
       let canonical = document.querySelector('link[rel="canonical"]');
       if (!canonical) {
@@ -492,13 +556,14 @@ const BlogPostWrapperInner: React.FC = () => {
         '@type': 'Article',
         'headline': post.title,
         'description': post.excerpt,
+        'image': image,
         'url': url,
-        'author': { '@id': 'https://codewithmrsingh.me/#person' },
-        'publisher': { '@id': 'https://codewithmrsingh.me/#person' },
+        'author': { '@id': `${SITE_URL}/#person` },
+        'publisher': { '@id': `${SITE_URL}/#person` },
         'keywords': post.tags.join(', '),
         'inLanguage': 'en',
         'datePublished': post.date,
-        'dateModified': '2026-07-18'
+        'dateModified': SITE_DATE_MODIFIED,
       });
     }
     return () => {
@@ -517,14 +582,49 @@ const App: React.FC = () => {
         <Navbar />
         <main id="main-content" className="flex-grow w-full overflow-x-hidden">
           <Routes>
-            <Route path="/" element={<PageWrapper title="Hire AI Automation & Full-Stack Developer | Pan India | 10+ Projects" description="Tushar Singh — AI Automation Expert & Full-Stack Developer serving all states of India. Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata & more. 10+ successful projects submitted to clients, ₹2L+ revenue." keywords="Tushar Singh, AI automation expert India, full stack developer India, hire developer India, chatbot developer India, Python developer India, React developer India, web developer India, n8n automation India, freelance developer India, pan India developer, AI developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"><Home /></PageWrapper>} />
-            <Route path="/about" element={<PageWrapper title="About Tushar Singh | AI Automation Expert | Serving All India States" description="Tushar Singh — MCA graduate, AI Automation Expert & Full-Stack Developer. Serving clients from every Indian state. 10+ successful projects submitted to clients, ₹2L+ revenue." keywords="about Tushar Singh, AI automation expert India, full stack developer background, developer Delhi Mumbai Bangalore Hyderabad Chennai, MCA graduate developer India, pan India freelance developer"><About /></PageWrapper>} />
-            <Route path="/services" element={<PageWrapper title="AI Automation & Web Development Services | All India States" description="Expert AI automation, chatbot development, full-stack web development services across all Indian states — Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata, Ahmedabad, Jaipur, Lucknow & every state." keywords="AI automation services India, web development services India, chatbot development India, n8n automation India, Python development India, React.js services India, freelance services all India states, business automation India, developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"><Services /></PageWrapper>} />
-            <Route path="/projects" element={<PageWrapper title="Portfolio | 10+ AI & Web Dev Projects | Pan India Developer" description="10+ successful projects by Tushar Singh — real products submitted to clients. AI automation, chatbots, web apps, sales funnels. Serving clients across all Indian states." keywords="AI automation projects India, web development portfolio India, chatbot projects India, developer portfolio Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer portfolio, freelance projects India"><Projects /></PageWrapper>} />
-            <Route path="/blog" element={<PageWrapper title="Tech Blog | AI & Web Development | India Developer Insights" description="Technical articles on AI automation, full-stack development, data science by Tushar Singh — India's pan-state developer. Practical insights for businesses across all Indian states." keywords="tech blog India, AI automation blog India, web development articles India, developer blog Delhi Mumbai Bangalore Hyderabad Chennai, data science insights India, machine learning India"><Blog /></PageWrapper>} />
+            <Route path="/" element={<PageWrapper
+              title="AI Automation & Full-Stack Developer | India"
+              description="Tushar Singh — AI Automation Expert & Full-Stack Developer. 10+ client projects, ₹2L+ revenue. AI agents, chatbots, React, Django. Book a free audit."
+              keywords="Tushar Singh, AI automation expert India, full stack developer India, hire developer India, chatbot developer India, Python developer India, React developer India, web developer India, n8n automation India, freelance developer India, pan India developer, AI developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"
+            ><Home /></PageWrapper>} />
+
+            <Route path="/about" element={<PageWrapper
+              title="About Tushar Singh | AI & Dev Expert, Delhi"
+              description="MCA graduate, AI Automation Expert & Full-Stack Developer from Delhi. 10+ successful projects, ₹2L+ revenue, 4.0★ rating. Building systems that scale businesses."
+              keywords="about Tushar Singh, AI automation expert India, full stack developer background, developer Delhi Mumbai Bangalore Hyderabad Chennai, MCA graduate developer India, pan India freelance developer"
+            ><About /></PageWrapper>} />
+
+            <Route path="/services" element={<PageWrapper
+              title="AI Automation & Web Dev Services | India"
+              description="AI automation, chatbot development, full-stack web apps & branding by Tushar Singh. Serving clients across India and worldwide. Book a free 30-min consultation."
+              keywords="AI automation services India, web development services India, chatbot development India, n8n automation India, Python development India, React.js services India, freelance services all India states, business automation India, developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"
+            ><Services /></PageWrapper>} />
+
+            <Route path="/projects" element={<PageWrapper
+              title="Portfolio — 10+ AI & Web Projects | India"
+              description="10+ real client projects by Tushar Singh: AI automation, RAG chatbots, full-stack apps, lead generation & data dashboards. See results & case studies."
+              keywords="AI automation projects India, web development portfolio India, chatbot projects India, developer portfolio Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer portfolio, freelance projects India"
+            ><Projects /></PageWrapper>} />
+
+            <Route path="/blog" element={<PageWrapper
+              title="AI Automation & Dev Blog | Tushar Singh"
+              description="Practical guides on AI automation, n8n workflows, RAG chatbots & full-stack development — written from real project experience by Tushar Singh."
+              keywords="tech blog India, AI automation blog India, web development articles India, developer blog Delhi Mumbai Bangalore Hyderabad Chennai, data science insights India, machine learning India"
+            ><Blog /></PageWrapper>} />
+
             <Route path="/blog/:postId" element={<BlogPostWrapperInner />} />
-            <Route path="/testimonials" element={<PageWrapper title="Client Reviews & Testimonials | Pan India | Tushar Singh" description="Verified client reviews from businesses across all Indian states — Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata & more. 10+ successful projects submitted to clients, 4.0 star rating." keywords="client testimonials India, developer reviews India, AI automation reviews India, web development reviews India, reviews Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer reviews"><Testimonials /></PageWrapper>} />
-            <Route path="/contact" element={<PageWrapper title="Contact Tushar Singh | Hire Developer Anywhere in India" description="Contact Tushar Singh to hire an AI Automation Expert & Full-Stack Developer. Serving all Indian states — Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune, Kolkata, Jaipur, Lucknow & every state. Book free consultation." keywords="hire developer India, contact developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, hire AI automation expert India, hire web developer India, freelance developer contact India, book consultation India"><Contact /></PageWrapper>} />
+
+            <Route path="/testimonials" element={<PageWrapper
+              title="Client Reviews & Testimonials | Tushar Singh"
+              description="Real client reviews from businesses across India & worldwide. 4.0★ rating, 10+ successful projects delivered. See what clients say about Tushar Singh."
+              keywords="client testimonials India, developer reviews India, AI automation reviews India, web development reviews India, reviews Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer reviews"
+            ><Testimonials /></PageWrapper>} />
+
+            <Route path="/contact" element={<PageWrapper
+              title="Contact Tushar Singh | Book Free AI Audit"
+              description="Hire AI Automation Expert & Full-Stack Developer Tushar Singh. Available worldwide — India, USA, UK, UAE & more. Book a free 30-min consultation today."
+              keywords="hire developer India, contact developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, hire AI automation expert India, hire web developer India, freelance developer contact India, book consultation India"
+            ><Contact /></PageWrapper>} />
           </Routes>
         </main>
         <WhatsAppButton />

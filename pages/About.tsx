@@ -1,45 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, ChevronRight, Minus
 } from 'lucide-react';
-
-/* ─── Schema injection ───────────────────────────────────── */
-const injectAboutSchema = () => {
-  const existing = document.getElementById('about-person-jsonld');
-  if (existing) existing.remove();
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.id = 'about-person-jsonld';
-  script.textContent = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "@id": "https://codewithmrsingh.me/about#profilepage",
-    "url": "https://codewithmrsingh.me/about",
-    "name": "About Tushar Singh — AI Automation Expert & Full-Stack Developer Delhi",
-    "description": "AI Automation Expert and Full-Stack Developer. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Building intelligent systems that eliminate operational friction.",
-    "dateModified": "2026-07-18",
-    "inLanguage": "en",
-    "mainEntity": {
-      "@type": "Person",
-      "@id": "https://codewithmrsingh.me/#person",
-      "name": "Tushar Singh",
-      "alternateName": "Code with Mr. Singh",
-      "jobTitle": "AI Automation Expert & Full-Stack Developer",
-      "image": "https://codewithmrsingh.me/me.webp",
-      "url": "https://codewithmrsingh.me",
-      "description": "Building intelligent systems that eliminate operational friction for businesses across India and worldwide.",
-      "address": { "@type": "PostalAddress", "addressLocality": "Delhi", "addressRegion": "DL", "addressCountry": "IN" },
-      "sameAs": [
-        "https://github.com/Tusharsinghoffical",
-        "https://linkedin.com/in/tusharsingh2011",
-        "https://www.youtube.com/@codewithmrsingh4u",
-        "https://www.instagram.com/codewith_mrsingh/"
-      ]
-    }
-  });
-  document.head.appendChild(script);
-};
+import SharePageButton from '../components/SharePageButton';
 
 /* ─── Section divider ────────────────────────────────────── */
 const Divider = () => (
@@ -64,11 +28,6 @@ const Principle = ({ text }: { text: string }) => (
 
 /* ─── Main Component ─────────────────────────────────────── */
 const About: React.FC = () => {
-  useEffect(() => {
-    injectAboutSchema();
-    return () => { document.getElementById('about-person-jsonld')?.remove(); };
-  }, []);
-
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
 
@@ -321,6 +280,10 @@ const About: React.FC = () => {
               className="group inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95">
               View Projects <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
+            <SharePageButton
+              text="Building Systems That Scale Businesses — learn about Tushar Singh, AI Automation Expert & Full-Stack Developer"
+              className="!border-white/10 !bg-white/5 !text-white hover:!border-indigo-400/40 hover:!bg-white/10 hover:!text-indigo-300"
+            />
           </div>
         </div>
       </section>

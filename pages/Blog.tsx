@@ -6,156 +6,25 @@ import {
   ArrowRight, Share2, Check, Copy, Link2
 } from 'lucide-react';
 
+import postsData from '../content/posts.json';
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  dateDisplay?: string;
+  icon: string;
+  color: string;
+  tags: string[];
+  heroGradient: string;
+  imageUrl?: string;
+  content: string;
+}
+
 /* ─── Blog post data ─────────────────────────────────────── */
-export const BLOG_POSTS = [
-  {
-    id: 'faang-coding-roadmap-150-questions',
-    title: 'From Basics to FAANG: Your Ultimate Roadmap with 150 Coding Questions',
-    excerpt: 'A curated set of 150 coding questions designed to take you from fundamentals to FAANG-level problem solving — structured, progressive, and battle-tested.',
-    category: 'Career Development',
-    date: 'Jun 2026',
-    icon: 'Code2',
-    color: 'indigo',
-    tags: ['Coding', 'FAANG', 'Interview Prep', 'DSA'],
-    heroGradient: 'from-indigo-600 to-violet-600',
-    content: `<div class="blog-content space-y-10">
-      <div style="background:linear-gradient(135deg,#6366f1,#7c3aed);padding:3rem;border-radius:1.5rem;color:white;text-align:center;">
-        <h2 style="font-size:2rem;font-weight:800;margin-bottom:0.75rem;">🚀 From Basics to FAANG</h2>
-        <p style="opacity:0.9;font-size:1.1rem;">Your Complete Roadmap with 150 Coding Questions</p>
-      </div>
-      <div style="background:#f8fafc;padding:2rem;border-radius:1rem;border-left:4px solid #6366f1;">
-        <h3 style="color:#6366f1;font-size:1.4rem;font-weight:700;margin-bottom:0.75rem;">💡 The Challenge</h3>
-        <p style="line-height:1.8;color:#475569;">Cracking top-tier companies requires more than knowing syntax — it demands mastering problem-solving at scale. This curated set of 150 questions is designed to take you from fundamentals to advanced system thinking.</p>
-      </div>
-      <div>
-        <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:1.25rem;color:#1e293b;">Three Progressive Tiers</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
-          <div style="background:linear-gradient(135deg,#10b981,#059669);padding:1.75rem;border-radius:1rem;color:white;">
-            <div style="font-size:2rem;margin-bottom:0.5rem;">🔰</div>
-            <h4 style="font-size:1.2rem;font-weight:700;margin-bottom:0.5rem;">Easy (1–50)</h4>
-            <p style="font-size:0.9rem;opacity:0.95;line-height:1.6;">Arrays, strings, number theory — build core thinking patterns every developer needs.</p>
-          </div>
-          <div style="background:linear-gradient(135deg,#3b82f6,#2563eb);padding:1.75rem;border-radius:1rem;color:white;">
-            <div style="font-size:2rem;margin-bottom:0.5rem;">⚙️</div>
-            <h4 style="font-size:1.2rem;font-weight:700;margin-bottom:0.5rem;">Medium (51–100)</h4>
-            <p style="font-size:0.9rem;opacity:0.95;line-height:1.6;">Sliding window, recursion, linked lists — transition from learner to practitioner.</p>
-          </div>
-          <div style="background:linear-gradient(135deg,#ef4444,#dc2626);padding:1.75rem;border-radius:1rem;color:white;">
-            <div style="font-size:2rem;margin-bottom:0.5rem;">🔥</div>
-            <h4 style="font-size:1.2rem;font-weight:700;margin-bottom:0.5rem;">Hard (101–150)</h4>
-            <p style="font-size:0.9rem;opacity:0.95;line-height:1.6;">DP, graphs, trees, system design — simulate FAANG-level interview complexity.</p>
-          </div>
-        </div>
-      </div>
-      <div style="background:linear-gradient(135deg,#fef3c7,#fde68a);padding:2rem;border-radius:1.25rem;border:2px solid #fbbf24;">
-        <h3 style="font-size:1.3rem;font-weight:800;color:#92400e;margin-bottom:1rem;">📈 How to Use This Strategically</h3>
-        <ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;">
-          <li style="background:white;padding:1rem;border-radius:0.75rem;border-left:4px solid #f59e0b;"><b style="color:#f59e0b;">⏰ Daily</b><br/><span style="color:#475569;font-size:0.9rem;">1–2 hours focused practice</span></li>
-          <li style="background:white;padding:1rem;border-radius:0.75rem;border-left:4px solid #f59e0b;"><b style="color:#f59e0b;">🎯 Start</b><br/><span style="color:#475569;font-size:0.9rem;">2–3 Easy problems/day</span></li>
-          <li style="background:white;padding:1rem;border-radius:0.75rem;border-left:4px solid #f59e0b;"><b style="color:#f59e0b;">📊 Level Up</b><br/><span style="color:#475569;font-size:0.9rem;">Move to Medium when consistent</span></li>
-          <li style="background:white;padding:1rem;border-radius:0.75rem;border-left:4px solid #f59e0b;"><b style="color:#f59e0b;">🎪 Weekend</b><br/><span style="color:#475569;font-size:0.9rem;">Hard + System Design focus</span></li>
-        </ul>
-      </div>
-      <div style="background:linear-gradient(135deg,#06b6d4,#0891b2);padding:2.5rem;border-radius:1.25rem;text-align:center;">
-        <h3 style="font-size:1.5rem;font-weight:800;color:white;margin-bottom:1rem;">📚 Access the Complete Resource</h3>
-        <p style="color:rgba(255,255,255,0.9);margin-bottom:1.5rem;">All 150 questions with detailed solutions — free PDF download.</p>
-        <a href="https://drive.google.com/file/d/130rijB2ne3zLPRuPVJZeFc45A5gcsfss/view?usp=sharing" target="_blank" rel="noopener noreferrer"
-          style="display:inline-flex;align-items:center;gap:0.75rem;background:white;color:#0891b2;padding:0.875rem 2rem;border-radius:0.75rem;font-weight:700;text-decoration:none;">
-          📄 Download Complete PDF Guide →
-        </a>
-      </div>
-    </div>`
-  },
-  {
-    id: 'n8n-automation-guide-beginners-2026',
-    title: 'n8n Automation for Beginners: Build Your First AI Workflow in 2026',
-    excerpt: 'A practical guide to building production-ready automation workflows with n8n — from connecting your first tools to deploying an AI-powered business system.',
-    category: 'AI Automation',
-    date: 'Jul 2026',
-    icon: 'Zap',
-    color: 'emerald',
-    tags: ['n8n', 'Automation', 'AI Workflows', 'No-Code'],
-    heroGradient: 'from-emerald-600 to-teal-600',
-    content: `<div class="blog-content space-y-10">
-      <div style="background:linear-gradient(135deg,#059669,#0d9488);padding:3rem;border-radius:1.5rem;color:white;text-align:center;">
-        <h2 style="font-size:2rem;font-weight:800;margin-bottom:0.75rem;">⚡ n8n Automation for Beginners</h2>
-        <p style="opacity:0.9;font-size:1.1rem;">Build Your First AI Workflow in 2026</p>
-      </div>
-      <div style="background:#f0fdf4;padding:2rem;border-radius:1rem;border-left:4px solid #10b981;">
-        <h3 style="color:#059669;font-size:1.4rem;font-weight:700;margin-bottom:0.75rem;">🤔 Why n8n?</h3>
-        <p style="line-height:1.8;color:#475569;">n8n is the open-source automation platform that lets you connect 400+ apps, build AI agents, and automate complex business workflows — without writing code.</p>
-      </div>
-      <div>
-        <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:1.25rem;color:#1e293b;">🔧 Core Concepts</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
-          <div style="padding:1.5rem;background:#f8fafc;border-radius:1rem;border:2px solid #e2e8f0;"><b style="color:#1e293b;display:block;margin-bottom:0.5rem;">📌 Nodes</b><p style="font-size:0.9rem;color:#64748b;">Each app or action is a node. Connect them to build a workflow.</p></div>
-          <div style="padding:1.5rem;background:#f8fafc;border-radius:1rem;border:2px solid #e2e8f0;"><b style="color:#1e293b;display:block;margin-bottom:0.5rem;">🔗 Triggers</b><p style="font-size:0.9rem;color:#64748b;">Webhooks, schedules, or app events that start your workflow.</p></div>
-          <div style="padding:1.5rem;background:#f8fafc;border-radius:1rem;border:2px solid #e2e8f0;"><b style="color:#1e293b;display:block;margin-bottom:0.5rem;">🧠 AI Nodes</b><p style="font-size:0.9rem;color:#64748b;">Connect OpenAI, Claude, or Gemini to add intelligence.</p></div>
-          <div style="padding:1.5rem;background:#f8fafc;border-radius:1rem;border:2px solid #e2e8f0;"><b style="color:#1e293b;display:block;margin-bottom:0.5rem;">📊 Data Mapping</b><p style="font-size:0.9rem;color:#64748b;">Pass data between nodes using expressions.</p></div>
-        </div>
-      </div>
-      <div style="background:#1e293b;padding:2rem;border-radius:1.25rem;color:white;">
-        <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:1rem;color:#a5b4fc;">🚀 Your First Workflow: Lead Capture → Slack Notification</h3>
-        <ol style="padding-left:1.5rem;">
-          <li style="margin-bottom:0.75rem;color:#cbd5e1;line-height:1.6;"><b style="color:white;">Step 1:</b> Add a Webhook trigger — receives form submissions.</li>
-          <li style="margin-bottom:0.75rem;color:#cbd5e1;line-height:1.6;"><b style="color:white;">Step 2:</b> Add a Google Sheets node — log each lead automatically.</li>
-          <li style="margin-bottom:0.75rem;color:#cbd5e1;line-height:1.6;"><b style="color:white;">Step 3:</b> Add an OpenAI node — generate a personalised email.</li>
-          <li style="margin-bottom:0.75rem;color:#cbd5e1;line-height:1.6;"><b style="color:white;">Step 4:</b> Add a Gmail node — send the email automatically.</li>
-          <li style="color:#cbd5e1;line-height:1.6;"><b style="color:white;">Step 5:</b> Add a Slack node — notify your team in real time.</li>
-        </ol>
-      </div>
-      <div style="background:#f8fafc;padding:2rem;border-radius:1.25rem;border:2px solid #e2e8f0;text-align:center;">
-        <p style="font-size:1.1rem;font-weight:600;color:#1e293b;margin-bottom:1rem;">Ready to automate with n8n?</p>
-        <a href="/contact" style="display:inline-flex;align-items:center;gap:0.5rem;background:#059669;color:white;padding:0.875rem 2rem;border-radius:0.75rem;font-weight:700;text-decoration:none;">Book Free Audit →</a>
-      </div>
-    </div>`
-  },
-  {
-    id: 'ai-chatbot-for-business-complete-guide-2026',
-    title: 'How to Build an AI Chatbot for Your Business in 2026 — Complete Guide',
-    excerpt: 'Everything you need to know about building a production-ready AI chatbot using RAG, OpenAI, and LangChain — from architecture to deployment on your website or WhatsApp.',
-    category: 'AI & Chatbots',
-    date: 'Jul 2026',
-    icon: 'Brain',
-    color: 'violet',
-    tags: ['Chatbot', 'RAG', 'OpenAI', 'LangChain', 'WhatsApp AI'],
-    heroGradient: 'from-violet-600 to-purple-700',
-    content: `<div class="blog-content space-y-10">
-      <div style="background:linear-gradient(135deg,#7c3aed,#6d28d9);padding:3rem;border-radius:1.5rem;color:white;text-align:center;">
-        <h2 style="font-size:2rem;font-weight:800;margin-bottom:0.75rem;">🤖 AI Chatbot for Business in 2026</h2>
-        <p style="opacity:0.9;font-size:1.1rem;">Complete RAG Architecture Guide — From Idea to Deployment</p>
-      </div>
-      <div style="background:#faf5ff;padding:2rem;border-radius:1rem;border-left:4px solid #7c3aed;">
-        <h3 style="color:#7c3aed;font-size:1.4rem;font-weight:700;margin-bottom:0.75rem;">🎯 What is RAG?</h3>
-        <p style="line-height:1.8;color:#475569;">RAG (Retrieval-Augmented Generation) lets you build AI chatbots that answer questions using YOUR specific business data — not just generic internet knowledge.</p>
-      </div>
-      <div>
-        <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:1.25rem;color:#1e293b;">🏗️ RAG Architecture — How it Works</h3>
-        <div style="background:#1e293b;padding:2rem;border-radius:1.25rem;color:white;">
-          <div style="display:flex;flex-direction:column;gap:1rem;">
-            <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:0.75rem;"><span style="background:#7c3aed;color:white;width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">1</span><div><b style="color:white;">Document Ingestion</b><br/><span style="color:#94a3b8;font-size:0.9rem;">PDFs, docs, FAQs processed and split into chunks.</span></div></div>
-            <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:0.75rem;"><span style="background:#7c3aed;color:white;width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">2</span><div><b style="color:white;">Embeddings + Vector Store</b><br/><span style="color:#94a3b8;font-size:0.9rem;">Each chunk converted to vector embedding, stored in Pinecone.</span></div></div>
-            <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:0.75rem;"><span style="background:#7c3aed;color:white;width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">3</span><div><b style="color:white;">Query + Retrieval</b><br/><span style="color:#94a3b8;font-size:0.9rem;">User question → semantic search → top relevant chunks retrieved.</span></div></div>
-            <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:0.75rem;"><span style="background:#7c3aed;color:white;width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">4</span><div><b style="color:white;">LLM Response Generation</b><br/><span style="color:#94a3b8;font-size:0.9rem;">OpenAI GPT-4 generates an accurate answer using only your context.</span></div></div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h3 style="font-size:1.5rem;font-weight:800;margin-bottom:1.25rem;color:#1e293b;">🌐 Deployment Options</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;">
-          <div style="padding:1.5rem;background:#f8fafc;border-radius:1rem;border:2px solid #e2e8f0;text-align:center;"><div style="font-size:2rem;margin-bottom:0.5rem;">🌐</div><b>Website Widget</b></div>
-          <div style="padding:1.5rem;background:#f8fafc;border-radius:1rem;border:2px solid #e2e8f0;text-align:center;"><div style="font-size:2rem;margin-bottom:0.5rem;">💬</div><b>WhatsApp</b></div>
-          <div style="padding:1.5rem;background:#f8fafc;border-radius:1rem;border:2px solid #e2e8f0;text-align:center;"><div style="font-size:2rem;margin-bottom:0.5rem;">✈️</div><b>Telegram</b></div>
-          <div style="padding:1.5rem;background:#f8fafc;border-radius:1rem;border:2px solid #e2e8f0;text-align:center;"><div style="font-size:2rem;margin-bottom:0.5rem;">📧</div><b>Email</b></div>
-        </div>
-      </div>
-      <div style="background:#faf5ff;padding:2rem;border-radius:1.25rem;border:2px solid #c4b5fd;text-align:center;">
-        <p style="font-size:1.1rem;font-weight:600;color:#6d28d9;margin-bottom:0.75rem;">Want a custom RAG chatbot for your business?</p>
-        <a href="/contact" style="display:inline-flex;align-items:center;gap:0.5rem;background:#7c3aed;color:white;padding:0.875rem 2rem;border-radius:0.75rem;font-weight:700;text-decoration:none;">Book Free Consultation →</a>
-      </div>
-    </div>`
-  }
-];
+export const BLOG_POSTS: BlogPost[] = postsData as BlogPost[];
 /* ─── Color maps ─────────────────────────────────────────── */
 const BADGE: Record<string, string> = {
   indigo: 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border-indigo-100 dark:border-indigo-400/20',

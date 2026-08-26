@@ -3,6 +3,51 @@ import React from 'react';
 import { Database, Code, Cpu, BarChart, Zap, Globe, Brain, Terminal, Settings, Palette } from 'lucide-react';
 import { Service, Project, Testimonial } from './types';
 
+// ─── Site-wide constants ──────────────────────────────────────────────────────
+export const SITE_URL             = 'https://codewithmrsingh.me';
+export const SITE_NAME            = 'Code with Mr. Singh';
+export const SITE_DEFAULT_OG_IMAGE  = 'https://codewithmrsingh.me/me-optimized.jpg';
+export const SITE_DEFAULT_OG_ALT    = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
+/** Actual pixel dimensions of me-optimized.jpg (square portrait) */
+export const SITE_DEFAULT_OG_WIDTH  = '800';
+export const SITE_DEFAULT_OG_HEIGHT = '800';
+/** Current deployment date — update on each redeploy for fresh dateModified signals */
+export const SITE_DATE_MODIFIED = '2026-08-26';
+
+// Per-page OG images and alt text.
+// width/height must match actual image pixel dimensions.
+// Swap image URLs here when dedicated 1200×630 banners are available.
+export const PAGE_OG: Record<string, { image: string; alt: string; width?: string; height?: string }> = {
+  '/': {
+    image: SITE_DEFAULT_OG_IMAGE,
+    alt: SITE_DEFAULT_OG_ALT,
+  },
+  '/about': {
+    image: SITE_DEFAULT_OG_IMAGE,
+    alt: 'Tushar Singh — MCA graduate, AI Automation Expert & Full-Stack Developer, Delhi India',
+  },
+  '/services': {
+    image: SITE_DEFAULT_OG_IMAGE,
+    alt: 'AI Automation, Chatbot, Full-Stack Web Development & Branding Services by Tushar Singh',
+  },
+  '/projects': {
+    image: SITE_DEFAULT_OG_IMAGE,
+    alt: '10+ AI & Web Development Projects — Portfolio by Tushar Singh',
+  },
+  '/blog': {
+    image: SITE_DEFAULT_OG_IMAGE,
+    alt: 'AI Automation & Web Development Blog by Tushar Singh',
+  },
+  '/testimonials': {
+    image: SITE_DEFAULT_OG_IMAGE,
+    alt: 'Client Testimonials & Reviews — Tushar Singh Portfolio',
+  },
+  '/contact': {
+    image: SITE_DEFAULT_OG_IMAGE,
+    alt: 'Contact Tushar Singh — Book a Free AI Automation Consultation',
+  },
+};
+
 export const SERVICES: Service[] = [
   {
     id: 's1',
