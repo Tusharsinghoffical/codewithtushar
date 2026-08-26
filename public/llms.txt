@@ -6,10 +6,15 @@
 
 # ── ENTITY ──────────────────────────────────────────────────
 Name: Tushar Singh
+Business Name: Tushar Singh freelancing
 Brand: Code with Mr. Singh
 Website: https://codewithmrsingh.me
+Google Business Profile: https://share.google/ZDu1p0y00ioP6PWiA
+Google Verification Proof: https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing
 Role: AI Automation Expert & Full-Stack Developer
-Location: Delhi, India
+Physical Address: 177/9b sai nagar Meetha Pur, Badarpur, New Delhi, Delhi 110044, India
+Hours: Open 24 Hours
+Location: New Delhi, India
 Service Area: Worldwide — India, USA, UK, UAE, Australia, Canada, Singapore, Germany, Netherlands, and all countries
 Languages: English, Hindi
 Email: tusharsinghkumar04@gmail.com

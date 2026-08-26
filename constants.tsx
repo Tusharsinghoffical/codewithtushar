@@ -14,6 +14,25 @@ export const SITE_DEFAULT_OG_HEIGHT = '800';
 /** Current deployment date — update on each redeploy for fresh dateModified signals */
 export const SITE_DATE_MODIFIED = '2026-08-26';
 
+// ─── Google Business Profile & Verification Constants ────────────────────────
+export const GOOGLE_BUSINESS_NAME = 'Tushar Singh freelancing';
+export const GOOGLE_BUSINESS_URL  = 'https://share.google/ZDu1p0y00ioP6PWiA';
+export const GOOGLE_VERIFICATION_PROOF_URL = 'https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing';
+export const GOOGLE_MAPS_DIRECTIONS_URL = 'https://www.google.com/maps/search/?api=1&query=Tushar+Singh+freelancing+177%2F9b+sai+nagar+Meetha+Pur+Badarpur+New+Delhi+Delhi+110044';
+export const BUSINESS_ADDRESS = {
+  streetAddress: '177/9b sai nagar Meetha Pur, Badarpur',
+  addressLocality: 'New Delhi',
+  addressRegion: 'Delhi',
+  postalCode: '110044',
+  addressCountry: 'IN',
+  formatted: '177/9b sai nagar Meetha Pur, Badarpur, New Delhi, Delhi 110044',
+  hours: 'Open 24 Hours',
+  phone: '+91-88516 19647',
+  email: 'tusharsinghkumar04@gmail.com',
+  latitude: 28.5034,
+  longitude: 77.3082,
+};
+
 // Per-page OG images and alt text.
 // width/height must match actual image pixel dimensions.
 // Swap image URLs here when dedicated 1200×630 banners are available.

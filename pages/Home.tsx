@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { PROJECTS, SERVICES, TESTIMONIALS } from '../constants';
 import OptimizedImage from '../components/OptimizedImage';
+import GoogleVerifiedBadge from '../components/GoogleVerifiedBadge';
 
 /* ─── Animated counter ───────────────────────────────────────────────────── */
 const Counter = ({ end, suffix = '' }: { end: number; suffix?: string }) => {
@@ -65,13 +66,16 @@ const Home: React.FC = () => {
           {/* LEFT ── copy */}
           <div className="space-y-8">
 
-            {/* Status pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/80 shadow-sm text-[9px] font-black uppercase tracking-[0.25em] text-slate-600 dark:text-slate-300">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              Available for Projects — India &amp; Worldwide
+            {/* Status pill & Google Verified */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/80 shadow-xs text-[9px] font-black uppercase tracking-[0.2em] text-slate-600 dark:text-slate-300">
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                Available for Projects
+              </div>
+              <GoogleVerifiedBadge variant="pill" />
             </div>
 
             {/* H1 */}
@@ -91,7 +95,7 @@ const Home: React.FC = () => {
 
             {/* Sub */}
             <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed speakable">
-              AI automation, full-stack web development &amp; intelligent systems —
+              AI automation, full-stack web development &amp; intelligent systems by <strong className="text-slate-800 dark:text-slate-100">Tushar Singh</strong> —
               <strong className="text-slate-700 dark:text-slate-200"> 10+ real products</strong> delivered
               to clients across India and worldwide.
             </p>
@@ -398,6 +402,13 @@ const Home: React.FC = () => {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ GOOGLE BUSINESS TRUST BANNER ═══════════════ */}
+      <section className="py-8 px-5 sm:px-10 bg-white dark:bg-slate-950">
+        <div className="max-w-7xl mx-auto">
+          <GoogleVerifiedBadge variant="banner" />
         </div>
       </section>
 

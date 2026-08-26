@@ -59,7 +59,17 @@ const pages = [
         "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from Delhi University. Founder of Code with Mr. Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
         "image": DEFAULT_IMAGE,
         "url": `${SITE_URL}/about`,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "177/9b sai nagar Meetha Pur, Badarpur",
+          "addressLocality": "New Delhi",
+          "addressRegion": "Delhi",
+          "addressCountry": "IN",
+          "postalCode": "110044"
+        },
         "sameAs": [
+          "https://share.google/ZDu1p0y00ioP6PWiA",
+          "https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing",
           "https://github.com/Tusharsinghoffical",
           "https://linkedin.com/in/tusharsingh2011",
           "https://www.youtube.com/@codewithmrsingh4u",
