@@ -5,11 +5,15 @@ import {
   Zap, Globe, Brain, Bot, Rocket, Target, Code2,
   TrendingUp, Users2, Clock, Sparkles, ChevronRight,
   FileSearch, Laptop, ShieldCheck, Play, BadgeCheck,
-  MapPin, Circle
+  MapPin, Circle, ExternalLink, QrCode, X, Award
 } from 'lucide-react';
-import { PROJECTS, SERVICES, TESTIMONIALS } from '../constants';
+import {
+  PROJECTS, SERVICES, TESTIMONIALS,
+  GOOGLE_BUSINESS_NAME, GOOGLE_BUSINESS_URL,
+  GOOGLE_VERIFICATION_PROOF_URL, BUSINESS_ADDRESS
+} from '../constants';
 import OptimizedImage from '../components/OptimizedImage';
-import GoogleVerifiedBadge from '../components/GoogleVerifiedBadge';
+import GoogleVerifiedBadge, { GoogleGIcon } from '../components/GoogleVerifiedBadge';
 
 /* ─── Animated counter ───────────────────────────────────────────────────── */
 const Counter = ({ end, suffix = '' }: { end: number; suffix?: string }) => {
@@ -41,6 +45,7 @@ const SVC_ICONS = [
 
 /* ─── Main Component ─────────────────────────────────────────────────────── */
 const Home: React.FC = () => {
+  const [qrModalOpen, setQrModalOpen] = useState(false);
   const featured = PROJECTS.filter(p => p.isFeatured).slice(0, 3);
   const techStack = [
     'Python', 'Django', 'React.js', 'n8n Automation',
@@ -130,10 +135,10 @@ const Home: React.FC = () => {
           </div>
 
           {/* RIGHT ── dashboard card */}
-          <div className="hidden lg:block">
-            <div className="relative ml-auto max-w-[380px]">
+          <div className="w-full lg:w-auto lg:block">
+            <div className="relative mx-auto lg:ml-auto max-w-[400px]">
               <div className="absolute -inset-6 bg-indigo-500/10 rounded-[3rem] blur-3xl" />
-              <div className="relative bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-100 dark:border-white/10 shadow-2xl p-6 space-y-5 animate-float">
+              <div className="relative bg-white dark:bg-slate-900 rounded-[2.25rem] border border-slate-100 dark:border-white/10 shadow-2xl p-6 space-y-4 animate-float">
 
                 {/* Header row */}
                 <div className="flex items-center justify-between">
@@ -147,7 +152,7 @@ const Home: React.FC = () => {
                 </div>
 
                 {/* Big metric */}
-                <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-5 relative overflow-hidden">
+                <div className="rounded-2xl bg-gradient-to-br from-indigo-600 via-indigo-600 to-violet-600 p-5 relative overflow-hidden shadow-sm">
                   <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-white/5 rounded-full" />
                   <p className="text-[8px] font-black text-indigo-200 uppercase tracking-widest mb-1">Total Value</p>
                   <p className="text-4xl font-outfit font-black text-white">₹2L+</p>
@@ -157,14 +162,14 @@ const Home: React.FC = () => {
                 </div>
 
                 {/* 4 tiles */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-2.5">
                   {[
                     { icon: <CheckCircle2 size={13} className="text-emerald-500" />, v: '10+',  l: 'Projects',  bg: 'bg-emerald-50 dark:bg-emerald-950/30' },
                     { icon: <Star size={13} className="text-amber-400 fill-amber-400" />,       v: '4.0★', l: 'Rating',    bg: 'bg-amber-50 dark:bg-amber-950/30' },
                     { icon: <Zap size={13} className="text-violet-500" />,                      v: '10h+', l: 'Saved/Wk', bg: 'bg-violet-50 dark:bg-violet-950/30' },
                     { icon: <Globe size={13} className="text-blue-500" />,                      v: '8+',   l: 'Countries', bg: 'bg-blue-50 dark:bg-blue-950/30' },
                   ].map(({ icon, v, l, bg }) => (
-                    <div key={l} className={`flex items-center gap-2.5 p-3 rounded-xl ${bg}`}>
+                    <div key={l} className={`flex items-center gap-2.5 p-2.5 rounded-xl ${bg}`}>
                       {icon}
                       <div>
                         <p className="text-sm font-outfit font-extrabold text-slate-900 dark:text-white">{v}</p>
@@ -185,6 +190,68 @@ const Home: React.FC = () => {
                         {init}
                       </div>
                     ))}
+                  </div>
+                </div>
+
+                {/* ── Google Business Verified QR Block ── */}
+                <div className="pt-3 border-t border-slate-100 dark:border-white/5">
+                  <div className="p-3 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-emerald-50/60 dark:from-slate-800/80 dark:to-slate-800/40 border border-slate-200/80 dark:border-white/5 rounded-2xl flex items-center gap-3">
+                    {/* Clickable QR code */}
+                    <div
+                      onClick={() => setQrModalOpen(true)}
+                      title="Click to scan or enlarge Google QR code"
+                      className="relative w-14 h-14 bg-white p-1 rounded-xl border border-slate-200 dark:border-white/10 shrink-0 cursor-pointer shadow-xs hover:scale-105 transition-transform group"
+                    >
+                      <img
+                        src="/google-business-qr.png"
+                        alt="Tushar Singh freelancing - Google Business Profile QR"
+                        className="w-full h-full object-contain rounded-lg"
+                      />
+                      <div className="absolute inset-0 bg-slate-950/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <QrCode size={14} className="text-white drop-shadow" />
+                      </div>
+                    </div>
+
+                    {/* QR Details */}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5 mb-0.5">
+                        <GoogleGIcon size={12} />
+                        <span className="text-[7.5px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/80 px-1.5 py-0.5 rounded">
+                          Google Verified
+                        </span>
+                      </div>
+                      <p className="text-[11px] font-outfit font-extrabold text-slate-900 dark:text-white truncate">
+                        {GOOGLE_BUSINESS_NAME}
+                      </p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <a
+                          href={GOOGLE_BUSINESS_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[8.5px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-0.5"
+                        >
+                          <span>Profile</span>
+                          <ExternalLink size={8} />
+                        </a>
+                        <span className="text-slate-300 dark:text-slate-700">•</span>
+                        <a
+                          href={GOOGLE_VERIFICATION_PROOF_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[8.5px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-0.5"
+                        >
+                          <span>Proof</span>
+                          <Award size={8} />
+                        </a>
+                        <span className="text-slate-300 dark:text-slate-700">•</span>
+                        <button
+                          onClick={() => setQrModalOpen(true)}
+                          className="text-[8.5px] font-black uppercase tracking-wider text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"
+                        >
+                          Scan QR
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -559,6 +626,75 @@ const Home: React.FC = () => {
           </p>
         </div>
       </section>
+
+      {/* ═══════════════ GOOGLE QR MODAL ═══════════════ */}
+      {qrModalOpen && (
+        <div
+          className="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
+          onClick={() => setQrModalOpen(false)}
+        >
+          <div
+            className="relative max-w-sm w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-2xl space-y-4 text-center"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setQrModalOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              <X size={16} />
+            </button>
+
+            <div className="w-12 h-12 mx-auto rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center">
+              <GoogleGIcon size={26} />
+            </div>
+
+            <div>
+              <div className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full mb-1.5">
+                <ShieldCheck size={11} /> Google Verified Business
+              </div>
+              <h3 className="text-lg font-outfit font-extrabold text-slate-950 dark:text-white">
+                {GOOGLE_BUSINESS_NAME}
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                {BUSINESS_ADDRESS.formatted}
+              </p>
+            </div>
+
+            <div className="p-3 bg-white rounded-2xl border border-slate-100 dark:border-white/5 inline-block shadow-inner">
+              <img
+                src="/google-business-qr.png"
+                alt="Google Business QR Code"
+                className="w-52 h-52 object-contain rounded-xl mx-auto"
+              />
+            </div>
+
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+              Scan with your camera or click below to view profile &amp; verified ownership proof on Google.
+            </p>
+
+            <div className="grid grid-cols-2 gap-2.5 pt-1">
+              <a
+                href={GOOGLE_BUSINESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 py-3 bg-indigo-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-indigo-700 transition-all active:scale-95 shadow-sm"
+              >
+                <span>Google Profile</span>
+                <ExternalLink size={12} />
+              </a>
+              <a
+                href={GOOGLE_VERIFICATION_PROOF_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 py-3 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:scale-95"
+              >
+                <Award size={12} className="text-indigo-500" />
+                <span>Verify Proof</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
