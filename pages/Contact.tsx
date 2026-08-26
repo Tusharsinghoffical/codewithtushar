@@ -137,7 +137,7 @@ const Contact: React.FC = () => {
               <div className="flex flex-wrap gap-2 pt-4">
                 <SocialLink href="https://github.com/Tusharsinghoffical" icon={<Github size={11} />} label="GitHub" />
                 <SocialLink href="https://linkedin.com/in/tusharsingh2011" icon={<Linkedin size={11} />} label="LinkedIn" />
-                <SocialLink href="https://www.instagram.com/codewith_mrsingh/" icon={<Instagram size={11} />} label="Instagram" />
+                <SocialLink href="https://www.instagram.com/tushar.cms/" icon={<Instagram size={11} />} label="Instagram" />
               </div>
             </div>
 

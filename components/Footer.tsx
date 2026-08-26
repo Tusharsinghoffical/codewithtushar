@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
             <div className="flex items-center gap-2">
               <SocialBtn href="https://linkedin.com/in/tusharsingh2011"      icon={<Linkedin size={15} />}  label="LinkedIn" />
               <SocialBtn href="https://github.com/Tusharsinghoffical"         icon={<Github size={15} />}   label="GitHub" />
-              <SocialBtn href="https://www.instagram.com/codewith_mrsingh/"  icon={<Instagram size={15} />} label="Instagram" />
+              <SocialBtn href="https://www.instagram.com/tushar.cms/"         icon={<Instagram size={15} />} label="Instagram" />
               <SocialBtn href="https://www.youtube.com/@codewithmrsingh4u"    icon={<Youtube size={15} />}  label="YouTube" />
             </div>
             {/* Worldwide badge */}

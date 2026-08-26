@@ -63,7 +63,7 @@ const pages = [
           "https://github.com/Tusharsinghoffical",
           "https://linkedin.com/in/tusharsingh2011",
           "https://www.youtube.com/@codewithmrsingh4u",
-          "https://www.instagram.com/codewith_mrsingh/"
+          "https://www.instagram.com/tushar.cms/"
         ],
         "knowsAbout": [
           "AI Automation", "n8n Workflow Automation", "RAG Chatbots", "LLM Integration",

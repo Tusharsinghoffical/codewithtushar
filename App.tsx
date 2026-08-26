@@ -51,14 +51,14 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
         // Random "jumps" to simulate data loading chunks
         const jump = Math.random() > 0.8 ? Math.floor(Math.random() * 5) + 1 : 1;
         const next = prev + jump;
-        
+
         // Update status message based on progress thresholds
         const newStatusIndex = Math.min(
           Math.floor((next / 100) * loadingStatuses.length),
           loadingStatuses.length - 1
         );
         setStatusIndex(newStatusIndex);
-        
+
         return next > 100 ? 100 : next;
       });
     }, 25);
@@ -67,24 +67,23 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
   }, [onComplete]);
 
   return (
-    <div 
-      className={`fixed inset-0 z-[300] bg-slate-950 flex flex-col items-center justify-center transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1) ${
-        isExiting ? 'opacity-0 scale-110 pointer-events-none' : 'opacity-100'
-      }`}
+    <div
+      className={`fixed inset-0 z-[300] bg-slate-950 flex flex-col items-center justify-center transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1) ${isExiting ? 'opacity-0 scale-110 pointer-events-none' : 'opacity-100'
+        }`}
     >
       {/* --- BACKGROUND ATMOSPHERE --- */}
       <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]"></div>
-      
+
       {/* Scanning Line Effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent absolute animate-[scan_4s_linear_infinite]"></div>
       </div>
 
       {/* Dynamic Glow Orb */}
-      <div 
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px] transition-all duration-1000 opacity-20"
-        style={{ 
-          width: `${300 + progress}px`, 
+        style={{
+          width: `${300 + progress}px`,
           height: `${300 + progress}px`,
           backgroundColor: progress > 80 ? 'rgba(16, 185, 129, 0.1)' : 'rgba(79, 70, 229, 0.1)'
         }}
@@ -99,20 +98,20 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
       </div>
 
       <div className="relative flex flex-col items-center max-w-sm w-full px-6">
-        
+
         {/* Main Branding Block */}
         <div className="text-center relative z-10 space-y-4">
           <div className="flex items-center justify-center gap-2 mb-2">
             <ShieldCheck size={14} className="text-indigo-500/50 animate-pulse" />
             <span className="text-[8px] font-black text-slate-600 uppercase tracking-[0.4em]">Secure Handshake</span>
           </div>
-          
+
           <h2 className={`text-white font-outfit font-black text-4xl sm:text-5xl tracking-[0.3em] uppercase transition-all duration-700 ${progress > 10 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             C.MS
           </h2>
-          
+
           <div className="flex flex-col items-center gap-1">
-             <p className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.5em] ml-1 h-4 transition-all duration-300">
+            <p className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.5em] ml-1 h-4 transition-all duration-300">
               {loadingStatuses[statusIndex]}
             </p>
             <div className="flex items-center gap-4 mt-2">
@@ -129,8 +128,8 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
         <div className="mt-20 w-full relative">
           <div className="flex justify-between items-end mb-4">
             <div className="space-y-1">
-               <p className="text-[7px] font-black text-slate-600 uppercase tracking-widest">Protocol ID</p>
-               <p className="text-[9px] font-bold text-slate-400 tabular-nums">NODE-02-SYNC</p>
+              <p className="text-[7px] font-black text-slate-600 uppercase tracking-widest">Protocol ID</p>
+              <p className="text-[9px] font-bold text-slate-400 tabular-nums">NODE-02-SYNC</p>
             </div>
             <div className="text-right">
               <span className="text-xl font-outfit font-black text-white tabular-nums tracking-tight">
@@ -138,20 +137,20 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
               </span>
             </div>
           </div>
-          
+
           <div className="h-[2px] w-full bg-slate-900 rounded-full overflow-hidden relative">
             {/* Primary Loading Bar */}
-            <div 
+            <div
               className="h-full bg-indigo-500 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(99,102,241,0.5)]"
               style={{ width: `${progress}%` }}
             ></div>
             {/* Secondary Ghost Bar for depth */}
-            <div 
+            <div
               className="absolute inset-0 h-full bg-indigo-400/20 transition-all duration-700 ease-out"
               style={{ width: `${Math.min(progress + 15, 100)}%` }}
             ></div>
           </div>
-          
+
           <div className="mt-4 flex justify-between">
             <span className="text-[7px] font-black text-slate-700 uppercase tracking-widest">Est: 2025 Registry</span>
             <span className="text-[7px] font-black text-slate-700 uppercase tracking-widest">Artifact v2.4</span>
@@ -186,13 +185,13 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
 
     const pageUrl = `${SITE_URL}${location.pathname}`;
     // Resolve per-page OG data; fall back to site defaults
-    const ogMeta   = PAGE_OG[location.pathname];
-    const ogImage  = ogMeta?.image  ?? SITE_DEFAULT_OG_IMAGE;
-    const ogAlt    = ogMeta?.alt    ?? SITE_DEFAULT_OG_ALT;
-    const ogWidth  = ogMeta?.width  ?? SITE_DEFAULT_OG_WIDTH;
+    const ogMeta = PAGE_OG[location.pathname];
+    const ogImage = ogMeta?.image ?? SITE_DEFAULT_OG_IMAGE;
+    const ogAlt = ogMeta?.alt ?? SITE_DEFAULT_OG_ALT;
+    const ogWidth = ogMeta?.width ?? SITE_DEFAULT_OG_WIDTH;
     const ogHeight = ogMeta?.height ?? SITE_DEFAULT_OG_HEIGHT;
     // Homepage keeps og:type="profile"; all other pages use "website"
-    const ogType   = location.pathname === '/' ? 'profile' : 'website';
+    const ogType = location.pathname === '/' ? 'profile' : 'website';
 
     const setMeta = (selector: string, content: string) => {
       let el = document.querySelector(selector) as HTMLMetaElement | null;
@@ -226,22 +225,22 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
     keywordsEl.setAttribute('content', fullKeywords);
 
     // Open Graph
-    setMeta('meta[property="og:title"]',           fullTitle);
-    setMeta('meta[property="og:description"]',      description);
-    setMeta('meta[property="og:url"]',              pageUrl);
-    setMeta('meta[property="og:type"]',             ogType);
-    setMeta('meta[property="og:image"]',            ogImage);
+    setMeta('meta[property="og:title"]', fullTitle);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[property="og:url"]', pageUrl);
+    setMeta('meta[property="og:type"]', ogType);
+    setMeta('meta[property="og:image"]', ogImage);
     setMeta('meta[property="og:image:secure_url"]', ogImage);
-    setMeta('meta[property="og:image:width"]',      ogWidth);
-    setMeta('meta[property="og:image:height"]',     ogHeight);
-    setMeta('meta[property="og:image:alt"]',        ogAlt);
+    setMeta('meta[property="og:image:width"]', ogWidth);
+    setMeta('meta[property="og:image:height"]', ogHeight);
+    setMeta('meta[property="og:image:alt"]', ogAlt);
 
     // Twitter / X Card
-    setMeta('meta[property="twitter:title"]',       fullTitle);
+    setMeta('meta[property="twitter:title"]', fullTitle);
     setMeta('meta[property="twitter:description"]', description);
-    setMeta('meta[property="twitter:url"]',         pageUrl);
-    setMeta('meta[property="twitter:image"]',       ogImage);
-    setMeta('meta[name="twitter:image:alt"]',       ogAlt);
+    setMeta('meta[property="twitter:url"]', pageUrl);
+    setMeta('meta[property="twitter:image"]', ogImage);
+    setMeta('meta[name="twitter:image:alt"]', ogAlt);
 
     // Canonical — use 'href' (not 'content') for <link> elements
     let canonicalEl = document.querySelector('link[rel="canonical"]');
@@ -390,7 +389,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
           "https://github.com/Tusharsinghoffical",
           "https://linkedin.com/in/tusharsingh2011",
           "https://www.youtube.com/@codewithmrsingh4u",
-          "https://www.instagram.com/codewith_mrsingh/"
+          "https://www.instagram.com/tushar.cms/"
         ],
         "knowsAbout": [
           "AI Automation", "n8n Workflow Automation", "RAG Chatbots", "LLM Integration",
@@ -491,11 +490,11 @@ const BlogPostWrapperInner: React.FC = () => {
 
   useEffect(() => {
     if (post) {
-      const title    = `${post.title} | ${SITE_NAME}`;
-      const desc     = post.excerpt;
-      const url      = `${SITE_URL}/blog/${post.id}`;
+      const title = `${post.title} | ${SITE_NAME}`;
+      const desc = post.excerpt;
+      const url = `${SITE_URL}/blog/${post.id}`;
       // Use a post-specific image if available, fall back to site default
-      const image    = (post as any).imageUrl ?? SITE_DEFAULT_OG_IMAGE;
+      const image = (post as any).imageUrl ?? SITE_DEFAULT_OG_IMAGE;
       const imageAlt = `${post.title} — ${SITE_NAME}`;
 
       document.title = title;
@@ -517,23 +516,23 @@ const BlogPostWrapperInner: React.FC = () => {
         el.setAttribute('content', val);
       };
 
-      setMeta('meta[name="description"]',              desc);
+      setMeta('meta[name="description"]', desc);
       // Open Graph
-      setMeta('meta[property="og:title"]',             title);
-      setMeta('meta[property="og:description"]',       desc);
-      setMeta('meta[property="og:url"]',               url);
-      setMeta('meta[property="og:type"]',              'article');
-      setMeta('meta[property="og:image"]',             image);
-      setMeta('meta[property="og:image:secure_url"]',  image);
-      setMeta('meta[property="og:image:width"]',       SITE_DEFAULT_OG_WIDTH);
-      setMeta('meta[property="og:image:height"]',      SITE_DEFAULT_OG_HEIGHT);
-      setMeta('meta[property="og:image:alt"]',         imageAlt);
+      setMeta('meta[property="og:title"]', title);
+      setMeta('meta[property="og:description"]', desc);
+      setMeta('meta[property="og:url"]', url);
+      setMeta('meta[property="og:type"]', 'article');
+      setMeta('meta[property="og:image"]', image);
+      setMeta('meta[property="og:image:secure_url"]', image);
+      setMeta('meta[property="og:image:width"]', SITE_DEFAULT_OG_WIDTH);
+      setMeta('meta[property="og:image:height"]', SITE_DEFAULT_OG_HEIGHT);
+      setMeta('meta[property="og:image:alt"]', imageAlt);
       // Twitter / X Card
-      setMeta('meta[property="twitter:title"]',        title);
-      setMeta('meta[property="twitter:description"]',  desc);
-      setMeta('meta[property="twitter:url"]',          url);
-      setMeta('meta[property="twitter:image"]',        image);
-      setMeta('meta[name="twitter:image:alt"]',        imageAlt);
+      setMeta('meta[property="twitter:title"]', title);
+      setMeta('meta[property="twitter:description"]', desc);
+      setMeta('meta[property="twitter:url"]', url);
+      setMeta('meta[property="twitter:image"]', image);
+      setMeta('meta[name="twitter:image:alt"]', imageAlt);
 
       let canonical = document.querySelector('link[rel="canonical"]');
       if (!canonical) {
