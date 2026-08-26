@@ -47,11 +47,6 @@ const SVC_ICONS = [
 const Home: React.FC = () => {
   const [qrModalOpen, setQrModalOpen] = useState(false);
   const featured = PROJECTS.filter(p => p.isFeatured).slice(0, 3);
-  const techStack = [
-    'Python', 'Django', 'React.js', 'n8n Automation',
-    'Power BI', 'SQL', 'Machine Learning', 'AI Agents',
-    'REST APIs', 'OpenAI', 'LangChain', 'Tailwind CSS',
-  ];
 
   return (
     <div className="bg-white dark:bg-slate-950 w-full overflow-x-hidden">
@@ -118,20 +113,6 @@ const Home: React.FC = () => {
               </Link>
             </div>
 
-            {/* Trust strip */}
-            <div className="flex flex-wrap items-center gap-5 pt-2">
-              {[
-                { val: '10+', lbl: 'Projects' },
-                { val: '₹2L+', lbl: 'Delivered' },
-                { val: '4.0★', lbl: 'Rating' },
-                { val: '8+', lbl: 'Countries' },
-              ].map(({ val, lbl }) => (
-                <div key={lbl} className="text-center">
-                  <p className="text-base font-outfit font-extrabold text-slate-900 dark:text-white">{val}</p>
-                  <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{lbl}</p>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* RIGHT ── dashboard card */}
@@ -164,10 +145,10 @@ const Home: React.FC = () => {
                 {/* 4 tiles */}
                 <div className="grid grid-cols-2 gap-2.5">
                   {[
-                    { icon: <CheckCircle2 size={13} className="text-emerald-500" />, v: '10+',  l: 'Projects',  bg: 'bg-emerald-50 dark:bg-emerald-950/30' },
-                    { icon: <Star size={13} className="text-amber-400 fill-amber-400" />,       v: '4.0★', l: 'Rating',    bg: 'bg-amber-50 dark:bg-amber-950/30' },
-                    { icon: <Zap size={13} className="text-violet-500" />,                      v: '10h+', l: 'Saved/Wk', bg: 'bg-violet-50 dark:bg-violet-950/30' },
-                    { icon: <Globe size={13} className="text-blue-500" />,                      v: '8+',   l: 'Countries', bg: 'bg-blue-50 dark:bg-blue-950/30' },
+                    { icon: <CheckCircle2 size={13} className="text-emerald-500" />, v: '10+', l: 'Projects', bg: 'bg-emerald-50 dark:bg-emerald-950/30' },
+                    { icon: <Star size={13} className="text-amber-400 fill-amber-400" />, v: '4.0★', l: 'Rating', bg: 'bg-amber-50 dark:bg-amber-950/30' },
+                    { icon: <Zap size={13} className="text-violet-500" />, v: '10h+', l: 'Saved/Wk', bg: 'bg-violet-50 dark:bg-violet-950/30' },
+                    { icon: <Globe size={13} className="text-blue-500" />, v: '8+', l: 'Countries', bg: 'bg-blue-50 dark:bg-blue-950/30' },
                   ].map(({ icon, v, l, bg }) => (
                     <div key={l} className={`flex items-center gap-2.5 p-2.5 rounded-xl ${bg}`}>
                       {icon}
@@ -183,10 +164,10 @@ const Home: React.FC = () => {
                 <div className="flex items-center justify-between pt-1 border-t border-slate-100 dark:border-white/5">
                   <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Recent clients</p>
                   <div className="flex -space-x-2">
-                    {['RM','PS','AR','KP','VN'].map((init, i) => (
+                    {['RM', 'PS', 'AR', 'KP', 'VN'].map((init, i) => (
                       <div key={i}
                         className="w-7 h-7 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-white font-black text-[7px]"
-                        style={{ background: ['#6366f1','#10b981','#8b5cf6','#f59e0b','#3b82f6'][i] }}>
+                        style={{ background: ['#6366f1', '#10b981', '#8b5cf6', '#f59e0b', '#3b82f6'][i] }}>
                         {init}
                       </div>
                     ))}
@@ -262,36 +243,9 @@ const Home: React.FC = () => {
         </div>
       </header>
 
-      {/* ═══════════════ MARQUEE ═══════════════ */}
-      <div className="py-4 bg-slate-950 border-y border-white/5 overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap gap-10">
-          {[...techStack, ...techStack].map((t, i) => (
-            <span key={i} className="flex items-center gap-3 text-white/25 hover:text-indigo-400 font-outfit font-black text-sm uppercase tracking-wider transition-colors">
-              {t} <Sparkles size={12} className="text-white/10 shrink-0" />
-            </span>
-          ))}
-        </div>
-      </div>
 
-      {/* ═══════════════ STATS BAR ═══════════════ */}
-      <section className="py-14 bg-slate-50 dark:bg-slate-900/40 border-b border-slate-100 dark:border-white/5">
-        <div className="max-w-5xl mx-auto px-5 sm:px-10 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 sm:divide-x divide-slate-200 dark:divide-white/10">
-          {[
-            { end: 10, suffix: '+', label: 'Projects Delivered', sub: 'Real products to clients' },
-            { end: 2,  suffix: 'L+', label: '₹ Value Delivered', sub: 'Across all engagements' },
-            { end: 10, suffix: 'h+', label: 'Saved per Week',    sub: 'Via automation systems' },
-            { end: 8,  suffix: '+',  label: 'Countries',         sub: 'India & worldwide' },
-          ].map(({ end, suffix, label, sub }) => (
-            <div key={label} className="text-center px-4 sm:px-8">
-              <p className="text-3xl sm:text-4xl font-outfit font-black text-indigo-600 dark:text-indigo-400 tabular-nums">
-                <Counter end={end} suffix={suffix} />
-              </p>
-              <p className="text-xs font-extrabold text-slate-800 dark:text-white mt-1">{label}</p>
-              <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">{sub}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+
+
 
       {/* ═══════════════ SERVICES ═══════════════ */}
       <section className="py-24 sm:py-32 px-5 sm:px-10 bg-white dark:bg-slate-950" aria-labelledby="services-heading">
@@ -569,9 +523,9 @@ const Home: React.FC = () => {
             <div className="hidden lg:grid grid-cols-2 gap-4">
               {[
                 { icon: <FileSearch size={16} />, t: 'Workflow Audit', d: 'We map every manual step' },
-                { icon: <Laptop size={16} />,     t: 'Tool Review',    d: 'Best tech stack?' },
-                { icon: <TrendingUp size={16} />, t: 'ROI Forecast',   d: 'Calculate potential gains' },
-                { icon: <Zap size={16} />,        t: 'Action Plan',    d: 'Custom roadmap to automate' },
+                { icon: <Laptop size={16} />, t: 'Tool Review', d: 'Best tech stack?' },
+                { icon: <TrendingUp size={16} />, t: 'ROI Forecast', d: 'Calculate potential gains' },
+                { icon: <Zap size={16} />, t: 'Action Plan', d: 'Custom roadmap to automate' },
               ].map(({ icon, t, d }) => (
                 <div key={t} className="p-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/[0.08] transition-all group">
                   <div className="w-9 h-9 bg-indigo-600/80 rounded-xl flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
