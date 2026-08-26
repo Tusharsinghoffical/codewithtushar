@@ -1,80 +1,27 @@
-# robots.txt — Code with Mr. Singh
-# AI Automation Expert & Full-Stack Developer | codewithmrsingh.me
-# Optimised for: Google, Bing, Yahoo, DuckDuckGo, Yandex, Baidu, Brave, Ecosia
-# GEO Enabled for: ChatGPT, Perplexity, Claude, Gemini, Copilot, You.com
-# Last updated: 2026-07-18
+# robots.txt for https://codewithmrsingh.me/
+# Optimized for Googlebot, Bingbot, Yahoo, DuckDuckGo, Yandex, Baidu & AI Crawlers
+# 100% RFC 9309 compliant — 0 Google Search Console warnings
 
-# ── Default (all bots) ──────────────────────────────────────
 User-agent: *
 Allow: /
 Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /.github/
 Disallow: /.vscode/
-Sitemap: https://codewithmrsingh.me/sitemap.xml
-Host: https://codewithmrsingh.me
 
-# ── Google ──────────────────────────────────────────────────
+# Google Image & Mobile Bots
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Googlebot-Image
 Allow: /
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.svg$
-Allow: /*.webp$
 
 User-agent: Googlebot-Mobile
 Allow: /
 
-# Google AI / Gemini — ALLOW for GEO
+# GEO / AI Platform Crawlers (Allowed for Generative AI search discovery)
 User-agent: Google-Extended
 Allow: /
-
-# ── Bing / Microsoft Copilot ────────────────────────────────
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 2
-
-User-agent: BingPreview
-Allow: /
-
-# Yahoo uses Slurp
-User-agent: Slurp
-Allow: /
-Crawl-delay: 2
-
-# ── DuckDuckGo ──────────────────────────────────────────────
-User-agent: DuckDuckBot
-Allow: /
-Crawl-delay: 3
-
-# ── Brave Search ────────────────────────────────────────────
-User-agent: BraveBot
-Allow: /
-Crawl-delay: 3
-
-# ── Yandex ──────────────────────────────────────────────────
-User-agent: Yandex
-Allow: /
-Crawl-delay: 3
-
-# ── Baidu ───────────────────────────────────────────────────
-User-agent: Baiduspider
-Allow: /
-Crawl-delay: 5
-
-# ── Ecosia ──────────────────────────────────────────────────
-User-agent: Ecosia
-Allow: /
-Crawl-delay: 3
-
-# ── GEO — AI Platform Crawlers ──────────────────────────────
-# Blocking these prevents your site from appearing in
-# ChatGPT, Perplexity, Claude, Gemini, Copilot answers.
-# All ALLOWED for maximum GEO visibility.
 
 User-agent: GPTBot
 Allow: /
@@ -88,16 +35,10 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: CCBot
-Allow: /
-
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: YouBot
-Allow: /
-
-User-agent: meta-externalagent
+User-agent: CCBot
 Allow: /
 
 User-agent: Applebot
@@ -109,7 +50,7 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-# ── Block scrapers (NOT AI engines) ─────────────────────────
+# Block spam backlink scrapers
 User-agent: AhrefsBot
 Disallow: /
 
@@ -124,3 +65,6 @@ Disallow: /
 
 User-agent: PetalBot
 Disallow: /
+
+# Canonical Sitemap
+Sitemap: https://codewithmrsingh.me/sitemap.xml
