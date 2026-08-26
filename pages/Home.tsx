@@ -71,7 +71,7 @@ const Home: React.FC = () => {
           {/* LEFT ── copy */}
           <div className="space-y-8">
 
-            {/* Status pill & Google Verified */}
+            {/* Status pill & Google Verified & Motivational Motto */}
             <div className="flex flex-wrap items-center gap-2.5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/80 shadow-xs text-[9px] font-black uppercase tracking-[0.2em] text-slate-600 dark:text-slate-300">
                 <span className="flex h-2 w-2 relative">
@@ -83,51 +83,84 @@ const Home: React.FC = () => {
               <GoogleVerifiedBadge variant="pill" />
             </div>
 
-            {/* H1 */}
+            {/* Motivational Motto Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-500/10 via-violet-500/10 to-emerald-500/10 border border-indigo-500/20 text-slate-800 dark:text-slate-200 text-xs font-semibold">
+              <Sparkles size={14} className="text-amber-500 shrink-0 animate-spin-slow" />
+              <span>
+                <strong className="text-indigo-600 dark:text-indigo-400 font-extrabold uppercase text-[10px] tracking-widest mr-1">Motto:</strong>
+                "Driven by Passion. Backed by Precision. Engineered for Real Growth."
+              </span>
+            </div>
+
+            {/* High-Impact Trust Headline */}
             <div className="space-y-2">
-              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-[1.04] speakable">
-                Build Smarter.
+              <h1 className="text-[clamp(2.5rem,5.5vw,4.25rem)] font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-[1.05] speakable">
+                Empowering Vision.
               </h1>
-              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-outfit font-black tracking-tight leading-[1.04]">
+              <h1 className="text-[clamp(2.5rem,5.5vw,4.25rem)] font-outfit font-black tracking-tight leading-[1.05]">
                 <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-indigo-500 bg-clip-text text-transparent">
-                  Automate Faster.
+                  Automating Growth.
                 </span>
               </h1>
-              <h1 className="text-[clamp(2.6rem,6vw,4.5rem)] font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-[1.04]">
-                Grow Bigger.
+              <h1 className="text-[clamp(2.5rem,5.5vw,4.25rem)] font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-[1.05]">
+                Delivering Certainty.
               </h1>
             </div>
 
-            {/* Sub */}
-            <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed speakable">
-              AI automation, full-stack web development &amp; intelligent systems by <strong className="text-slate-800 dark:text-slate-100">Tushar Singh</strong> —
-              <strong className="text-slate-700 dark:text-slate-200"> 10+ real products</strong> delivered
-              to clients across India and worldwide.
+            {/* Trust-Building Subheadline */}
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed speakable">
+              I don't just write code — I engineer high-impact AI automations, intelligent chatbots, and full-stack web platforms that eliminate manual bottlenecks and accelerate your revenue. Partner directly with <strong className="text-slate-950 dark:text-white font-extrabold">Tushar Singh</strong> — Delhi University MCA graduate &amp; Google Verified Business Owner with <strong className="text-indigo-600 dark:text-indigo-400 font-extrabold">10+ shipped client products</strong> across India and worldwide.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3">
-              <Link to="/contact"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 bg-slate-950 dark:bg-indigo-600 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-500 transition-all shadow-xl active:scale-95">
-                Start a Project
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/projects"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:border-indigo-300 dark:hover:border-indigo-500 transition-all active:scale-95">
-                <Play size={12} className="fill-current" /> View Portfolio
-              </Link>
+            {/* 3 Trust Guarantees */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-slate-700 dark:text-slate-300 pt-1">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
+                <span>1-on-1 Direct Engineering (Zero Middlemen)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
+                <span>Reliable Delivery &amp; Dedicated Post-Launch Support</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
+                <span>Google Verified Business &amp; 4.0★ Client Rating</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
+                <span>Tailored Solutions Designed to Save 10+ hrs/wk</span>
+              </div>
             </div>
 
-            {/* Trust strip */}
-            <div className="flex flex-wrap items-center gap-5 pt-2">
+            {/* CTAs */}
+            <div className="space-y-3 pt-2">
+              <div className="flex flex-wrap gap-3">
+                <Link to="/contact"
+                  className="group inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-extrabold text-[11px] uppercase tracking-widest transition-all shadow-xl hover:shadow-indigo-500/25 hover:scale-[1.02] active:scale-95">
+                  Start Your Project
+                  <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link to="/projects"
+                  className="group inline-flex items-center gap-2 px-7 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl font-extrabold text-[11px] uppercase tracking-widest hover:border-indigo-400 dark:hover:border-indigo-500 transition-all active:scale-95 shadow-xs">
+                  <Play size={13} className="fill-current text-indigo-500" /> View 10+ Case Studies
+                </Link>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                <ShieldCheck size={13} className="text-emerald-500 shrink-0" />
+                <span>Free 30-min strategy audit · Response within 2 hours · No commitment required</span>
+              </p>
+            </div>
+
+            {/* Trust numbers strip */}
+            <div className="flex flex-wrap items-center gap-6 pt-3 border-t border-slate-100 dark:border-white/5">
               {[
-                { val: '10+', lbl: 'Projects' },
-                { val: '₹2L+', lbl: 'Delivered' },
-                { val: '4.0★', lbl: 'Rating' },
+                { val: '10+', lbl: 'Shipped Projects' },
+                { val: '₹2L+', lbl: 'Revenue Delivered' },
+                { val: '4.0★', lbl: 'Client Rating' },
                 { val: '8+', lbl: 'Countries' },
               ].map(({ val, lbl }) => (
-                <div key={lbl} className="text-center">
-                  <p className="text-base font-outfit font-extrabold text-slate-900 dark:text-white">{val}</p>
+                <div key={lbl} className="text-left">
+                  <p className="text-lg font-outfit font-black text-slate-950 dark:text-white">{val}</p>
                   <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{lbl}</p>
                 </div>
               ))}
