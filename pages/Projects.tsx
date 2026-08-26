@@ -1,11 +1,12 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { PROJECTS } from '../constants';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { PROJECTS, SITE_URL } from '../constants';
 import { Project } from '../types';
+import SharePageButton from '../components/SharePageButton';
 import {
   Cpu, Zap, X, ShieldCheck, Target,
   TrendingUp, ArrowRight, Search, Filter,
-  ArrowUpRight, Layers
+  ArrowUpRight, Layers, Share2, Link2, Copy, Check
 } from 'lucide-react';
 
 /* ─── Category metadata ──────────────────────────────────── */
@@ -36,7 +37,7 @@ const Sidebar: React.FC<{
       const on = active === cat;
       return (
         <button key={cat} onClick={() => { setActive(cat); close(); }}
-          className={`flex items-center justify-between gap-3 w-full px-3.5 py-2.5 rounded-2xl font-bold transition-all text-left ${
+          className={`flex items-center justify-between gap-3 w-full px-3.5 py-2.5 rounded-2xl font-bold transition-all text-left cursor-pointer ${
             on ? 'bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-md'
                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/60'
           }`}>
@@ -76,8 +77,13 @@ const Sidebar: React.FC<{
 );
 
 /* ─── Project Card ───────────────────────────────────────── */
-const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ project, onClick }) => {
+const ProjectCard: React.FC<{
+  project: Project;
+  onClick: () => void;
+}> = ({ project, onClick }) => {
   const m = cmeta(project.category);
+  const projectUrl = `${typeof window !== 'undefined' ? window.location.origin : SITE_URL}/projects?project=${project.id}`;
+
   return (
     <div onClick={onClick}
       className="group flex flex-col bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-white/5 rounded-3xl overflow-hidden hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-black/30 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer">
@@ -107,12 +113,21 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ proj
           <div className="flex flex-wrap gap-1.5">
             {project.tags.slice(0, 3).map(tag => (
               <span key={tag} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[8px] font-bold rounded-md">
-                {tag}
+                #{tag}
               </span>
             ))}
           </div>
-          <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center shrink-0 opacity-0 group-hover:opacity-100 transition-all">
-            <ArrowRight size={11} className="text-white" />
+          <div className="flex items-center gap-2">
+            <SharePageButton
+              title={`${project.title} | Case Study`}
+              text={`Check out this project case study: "${project.title}" by Tushar Singh`}
+              url={projectUrl}
+              variant="ghost"
+              className="!p-1.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400"
+            />
+            <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center shrink-0 opacity-0 group-hover:opacity-100 transition-all">
+              <ArrowRight size={11} className="text-white" />
+            </div>
           </div>
         </div>
       </div>
@@ -123,10 +138,12 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ proj
 /* ─── Main Component ─────────────────────────────────────── */
 const Projects: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams]     = useSearchParams();
   const [activeCategory, setActiveCategory] = useState('All');
   const [search, setSearch]                 = useState('');
   const [selected, setSelected]             = useState<Project | null>(null);
   const [mobileOpen, setMobileOpen]         = useState(false);
+  const [modalCopied, setModalCopied]       = useState(false);
 
   const categories = useMemo(() => {
     const s = new Set<string>();
@@ -151,10 +168,52 @@ const Projects: React.FC = () => {
     }),
   [activeCategory, search]);
 
+  // Sync modal with URL search parameters (?project=p1 or ?id=p1)
+  useEffect(() => {
+    const projectId = searchParams.get('project') || searchParams.get('id');
+    if (projectId) {
+      const match = PROJECTS.find(p => p.id === projectId);
+      if (match) {
+        setSelected(match);
+      }
+    }
+  }, [searchParams]);
+
   useEffect(() => {
     document.body.style.overflow = selected ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [selected]);
+
+  const handleSelectProject = (project: Project) => {
+    setSelected(project);
+    setSearchParams({ project: project.id }, { replace: true });
+  };
+
+  const handleCloseModal = () => {
+    setSelected(null);
+    setSearchParams({}, { replace: true });
+  };
+
+  const selectedProjectUrl = selected
+    ? `${typeof window !== 'undefined' ? window.location.origin : SITE_URL}/projects?project=${selected.id}`
+    : `${SITE_URL}/projects`;
+
+  const copyModalProjectLink = async () => {
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(selectedProjectUrl);
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = selectedProjectUrl;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+      setModalCopied(true);
+      setTimeout(() => setModalCopied(false), 2500);
+    } catch (_) {}
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
@@ -173,18 +232,28 @@ const Projects: React.FC = () => {
               Real products submitted to clients — each project represents a tangible transformation using AI, Automation, and Data.
             </p>
           </div>
-          {/* Search */}
-          <div className="relative w-full sm:w-60 shrink-0">
-            <Search size={13} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input type="text" placeholder="Search projects…" value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="w-full pl-9 pr-9 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-xl text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-indigo-400 transition-colors" />
-            {search && (
-              <button onClick={() => setSearch('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
-                <X size={13} />
-              </button>
-            )}
+
+          {/* Action Bar: Share & Search */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto shrink-0">
+            <SharePageButton
+              title="Project Portfolio — 10+ AI & Web Case Studies | Code with Mr. Singh"
+              text="Explore 10+ real-world AI automation, chatbot, web development & data engineering projects by Tushar Singh"
+              buttonLabel="Share Portfolio"
+              className="!py-3 !px-4"
+            />
+            {/* Search */}
+            <div className="relative w-full sm:w-60 shrink-0">
+              <Search size={13} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input type="text" placeholder="Search projects…" value={search}
+                onChange={e => setSearch(e.target.value)}
+                className="w-full pl-9 pr-9 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-xl text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-indigo-400 transition-colors" />
+              {search && (
+                <button onClick={() => setSearch('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer">
+                  <X size={13} />
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -205,7 +274,7 @@ const Projects: React.FC = () => {
           {/* Mobile filter toggle */}
           <div className="lg:hidden w-full absolute -top-14 left-0 z-10">
             <button onClick={() => setMobileOpen(o => !o)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white shadow-sm">
+              className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-white shadow-sm cursor-pointer">
               <Filter size={12} /> {activeCategory}
               <span className="ml-auto px-1.5 py-0.5 bg-indigo-100 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 rounded-md text-[8px] font-black">
                 {filtered.length}
@@ -236,14 +305,14 @@ const Projects: React.FC = () => {
                 <p className="text-4xl mb-4">🔍</p>
                 <p className="text-slate-500 font-medium mb-4">No projects match.</p>
                 <button onClick={() => { setActiveCategory('All'); setSearch(''); }}
-                  className="text-indigo-600 dark:text-indigo-400 text-sm font-bold hover:underline">
+                  className="text-indigo-600 dark:text-indigo-400 text-sm font-bold hover:underline cursor-pointer">
                   Clear filters
                 </button>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                 {filtered.map(p => (
-                  <ProjectCard key={p.id} project={p} onClick={() => setSelected(p)} />
+                  <ProjectCard key={p.id} project={p} onClick={() => handleSelectProject(p)} />
                 ))}
               </div>
             )}
@@ -254,7 +323,7 @@ const Projects: React.FC = () => {
       {/* ── MODAL ────────────────────────────────────────── */}
       {selected && (
         <div className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-6"
-          onClick={() => setSelected(null)}>
+          onClick={handleCloseModal}>
           <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-xl" />
 
           <div
@@ -267,11 +336,20 @@ const Projects: React.FC = () => {
                 className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-900 via-transparent" />
 
-              {/* Close */}
-              <button onClick={() => setSelected(null)}
-                className="absolute top-4 right-4 p-2.5 bg-slate-950/70 backdrop-blur text-white rounded-full hover:bg-indigo-600 transition-all active:scale-95">
-                <X size={16} />
-              </button>
+              {/* Action buttons on image */}
+              <div className="absolute top-4 right-4 flex items-center gap-2">
+                <SharePageButton
+                  title={`${selected.title} | Case Study`}
+                  text={`Check out this project case study: "${selected.title}" by Tushar Singh`}
+                  url={selectedProjectUrl}
+                  buttonLabel="Share"
+                  className="!bg-slate-950/70 !text-white !border-white/20 hover:!bg-indigo-600 hover:!border-indigo-500 backdrop-blur"
+                />
+                <button onClick={handleCloseModal}
+                  className="p-2.5 bg-slate-950/70 backdrop-blur text-white rounded-full hover:bg-rose-600 transition-all active:scale-95 cursor-pointer">
+                  <X size={16} />
+                </button>
+              </div>
 
               {/* Category + title */}
               <div className="absolute bottom-0 left-0 px-7 sm:px-10 pb-6 w-full">
@@ -286,6 +364,31 @@ const Projects: React.FC = () => {
 
             {/* Modal body */}
             <div className="p-6 sm:p-10 space-y-7">
+
+              {/* Share & Direct Link Bar */}
+              <div className="p-4 bg-slate-50 dark:bg-slate-800/40 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border border-slate-100 dark:border-white/5">
+                <div className="flex items-center gap-2 min-w-0 flex-1">
+                  <Link2 size={14} className="text-indigo-500 shrink-0" />
+                  <span className="text-xs text-slate-500 dark:text-slate-400 truncate font-mono select-all">
+                    {selectedProjectUrl}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    onClick={copyModalProjectLink}
+                    className="flex items-center gap-1.5 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-xl text-[9px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all cursor-pointer active:scale-95"
+                  >
+                    {modalCopied ? <><Check size={11} className="text-emerald-500" /> Copied!</> : <><Copy size={11} /> Copy Link</>}
+                  </button>
+                  <SharePageButton
+                    title={`${selected.title} | Case Study`}
+                    text={`Check out this project case study: "${selected.title}" by Tushar Singh`}
+                    url={selectedProjectUrl}
+                    variant="solid"
+                    buttonLabel="Share Project"
+                  />
+                </div>
+              </div>
 
               {/* Background + Challenge */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -319,7 +422,7 @@ const Projects: React.FC = () => {
                 <div className="flex flex-wrap gap-2">
                   {selected.tags.map(tag => (
                     <span key={tag} className="px-2.5 py-1 bg-white/10 text-white/70 text-[8px] font-black uppercase tracking-widest rounded-lg">
-                      {tag}
+                      #{tag}
                     </span>
                   ))}
                 </div>
@@ -360,7 +463,7 @@ const Projects: React.FC = () => {
 
                   <button
                     onClick={() => navigate('/contact', { state: { service: selected.title } })}
-                    className="group w-full py-3.5 bg-indigo-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-950 dark:hover:bg-white dark:hover:text-slate-950 transition-all flex items-center justify-center gap-2 active:scale-95">
+                    className="group w-full py-3.5 bg-indigo-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-950 dark:hover:bg-white dark:hover:text-slate-950 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer">
                     Get Your Results Like This
                     <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                   </button>

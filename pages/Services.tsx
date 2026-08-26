@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SharePageButton from '../components/SharePageButton';
 import {
   Brain, Bot, Globe, Palette, ArrowRight, CheckCircle2,
   TrendingUp, AlertCircle, Sparkles, Clock, ChevronRight,
@@ -219,6 +220,13 @@ const Services: React.FC = () => {
           <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
             Tushar Singh offers expert <strong className="text-slate-700 dark:text-slate-200">AI automation</strong>, <strong className="text-slate-700 dark:text-slate-200">chatbot development</strong>, <strong className="text-slate-700 dark:text-slate-200">website &amp; funnel building</strong>, and <strong className="text-slate-700 dark:text-slate-200">branding</strong> — serving clients across India and worldwide.
           </p>
+          <div className="mt-6 flex justify-center">
+            <SharePageButton
+              title="AI Automation & Web Development Services | Tushar Singh"
+              text="Explore top AI automation, chatbot, and full-stack development services by Tushar Singh"
+              buttonLabel="Share Services"
+            />
+          </div>
         </div>
       </section>
 
