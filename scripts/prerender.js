@@ -61,7 +61,7 @@ const pages = [
         "url": `${SITE_URL}/about`,
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "177/9b sai nagar Meetha Pur, Badarpur",
+          "streetAddress": "Badarpur",
           "addressLocality": "New Delhi",
           "addressRegion": "Delhi",
           "addressCountry": "IN",

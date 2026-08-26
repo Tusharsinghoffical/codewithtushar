@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import ScrollToTop from './components/ScrollToTop';
 import ClockDisplay from './components/ClockDisplay';
+import TopPromoBar from './components/TopPromoBar';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -387,7 +388,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
         "url": `${baseUrl}/about`,
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "177/9b sai nagar Meetha Pur, Badarpur",
+          "streetAddress": "Badarpur",
           "addressLocality": "New Delhi",
           "addressRegion": "Delhi",
           "addressCountry": "IN",
@@ -587,9 +588,10 @@ const App: React.FC = () => {
   return (
     <Router basename={(import.meta as any).env?.BASE_URL || ''}>
       <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 transition-colors duration-300 overflow-x-hidden w-full relative">
+        <TopPromoBar />
         <ClockDisplay />
         <Navbar />
-        <main id="main-content" className="flex-grow w-full overflow-x-hidden">
+        <main id="main-content" className="flex-grow w-full overflow-x-hidden pt-7 sm:pt-8">
           <Routes>
             <Route path="/" element={<PageWrapper
               title="AI Automation & Full-Stack Developer | India"

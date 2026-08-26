@@ -136,7 +136,7 @@ const Contact: React.FC = () => {
             <div className="bg-slate-950 rounded-3xl p-6">
               <InfoRow icon={<Mail size={14} />} label="Email" value="tusharsinghkumar04@gmail.com" href="mailto:tusharsinghkumar04@gmail.com" />
               <InfoRow icon={<Phone size={14} />} label="Phone / WhatsApp" value="+91-88516 19647" href="https://wa.me/918851619647" />
-              <InfoRow icon={<MapPin size={14} />} label="Registered Office" value="177/9b sai nagar Meetha Pur, Badarpur, New Delhi 110044" href="https://www.google.com/maps/search/?api=1&query=Tushar+Singh+freelancing+177%2F9b+sai+nagar+Meetha+Pur+Badarpur+New+Delhi+Delhi+110044" />
+              <InfoRow icon={<MapPin size={14} />} label="Registered Office" value="New Delhi, Delhi 110044, India" href="https://www.google.com/maps/search/?api=1&query=Tushar+Singh+freelancing+New+Delhi+Delhi+110044" />
               <InfoRow icon={<Globe size={14} />} label="Service Area" value="India, USA, UK, UAE, Australia, Canada, Singapore & more" />
               <div className="flex flex-wrap gap-2 pt-4">
                 <SocialLink href="https://github.com/Tusharsinghoffical" icon={<Github size={11} />} label="GitHub" />

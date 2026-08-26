@@ -106,9 +106,9 @@ const Footer: React.FC = () => {
                 <Mail size={13} className="shrink-0 text-indigo-400 mt-0.5" />
                 <span className="text-xs break-all">tusharsinghkumar04@gmail.com</span>
               </a>
-              <a href="https://www.google.com/maps/search/?api=1&query=Tushar+Singh+freelancing+177%2F9b+sai+nagar+Meetha+Pur+Badarpur+New+Delhi+Delhi+110044" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2.5 text-slate-400 hover:text-white transition-colors group">
+              <a href="https://www.google.com/maps/search/?api=1&query=Tushar+Singh+freelancing+New+Delhi+Delhi+110044" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2.5 text-slate-400 hover:text-white transition-colors group">
                 <MapPin size={13} className="shrink-0 text-rose-400 mt-0.5" />
-                <span className="text-xs">177/9b sai nagar Meetha Pur, Badarpur, New Delhi 110044</span>
+                <span className="text-xs">New Delhi, Delhi 110044, India</span>
               </a>
               <div className="pt-2 flex flex-col gap-1.5">
                 <a href="https://share.google/ZDu1p0y00ioP6PWiA" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-wider text-indigo-400 hover:text-indigo-300 transition-colors">
