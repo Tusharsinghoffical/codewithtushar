@@ -471,7 +471,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
   }
 
   else if (path === '/testimonials') {
-    // Testimonials: Review aggregate
+    // Testimonials: Review aggregate on LocalBusiness
     upsertSchema('schema-page-specific', {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -479,13 +479,18 @@ const updateStructuredData = (title: string, description: string, path: string) 
       "url": pageUrl,
       "name": "Client Testimonials & Reviews — Tushar Singh Portfolio",
       "description": description,
-      "about": { "@id": `${baseUrl}/#person` },
-      "mentions": {
-        "@type": "AggregateRating",
-        "itemReviewed": { "@id": `${baseUrl}/#person` },
-        "ratingValue": "4.0",
-        "reviewCount": "3",
-        "bestRating": "5"
+      "about": { "@id": `${baseUrl}/#localbusiness` },
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "@id": `${baseUrl}/#localbusiness`,
+        "name": "Tushar Singh freelancing",
+        "url": baseUrl,
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.0",
+          "reviewCount": "10",
+          "bestRating": "5"
+        }
       }
     });
   }

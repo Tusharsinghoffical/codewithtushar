@@ -168,7 +168,19 @@ const pages = [
       "url": `${SITE_URL}/testimonials`,
       "name": "Client Testimonials & Reviews — Tushar Singh Portfolio",
       "description": "Real client reviews from businesses across India & worldwide. 4.0★ rating, 10+ successful projects delivered. See what clients say about Tushar Singh.",
-      "about": { "@id": `${SITE_URL}/#person` }
+      "about": { "@id": `${SITE_URL}/#localbusiness` },
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "@id": `${SITE_URL}/#localbusiness`,
+        "name": "Tushar Singh freelancing",
+        "url": `${SITE_URL}`,
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.0",
+          "reviewCount": "10",
+          "bestRating": "5"
+        }
+      }
     }
   },
   {
