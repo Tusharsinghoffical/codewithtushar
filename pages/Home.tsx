@@ -66,184 +66,158 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 opacity-[0.018] bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]" />
         </div>
 
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
 
-          {/* LEFT ── copy */}
-          <div className="space-y-8">
+          {/* LEFT COLUMN (7 Cols) ── Clean, Spacious, High-Impact */}
+          <div className="lg:col-span-7 space-y-6 text-left">
 
-            {/* Status pill & Google Verified & Motivational Motto */}
+            {/* Top Pill: Availability + Google Verified */}
             <div className="flex flex-wrap items-center gap-2.5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/80 shadow-xs text-[9px] font-black uppercase tracking-[0.2em] text-slate-600 dark:text-slate-300">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-200/80 dark:border-emerald-500/20 bg-emerald-50/80 dark:bg-emerald-950/40 text-[10px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
                 <span className="flex h-2 w-2 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
                 Available for Projects
-              </div>
+              </span>
               <GoogleVerifiedBadge variant="pill" />
             </div>
 
-            {/* Motivational Motto Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-500/10 via-violet-500/10 to-emerald-500/10 border border-indigo-500/20 text-slate-800 dark:text-slate-200 text-xs font-semibold">
-              <Sparkles size={14} className="text-amber-500 shrink-0 animate-spin-slow" />
-              <span>
-                <strong className="text-indigo-600 dark:text-indigo-400 font-extrabold uppercase text-[10px] tracking-widest mr-1">Motto:</strong>
-                "Driven by Passion. Backed by Precision. Engineered for Real Growth."
-              </span>
-            </div>
-
-            {/* High-Impact Trust Headline */}
-            <div className="space-y-2">
-              <h1 className="text-[clamp(2.5rem,5.5vw,4.25rem)] font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-[1.05] speakable">
-                Empowering Vision.
-              </h1>
-              <h1 className="text-[clamp(2.5rem,5.5vw,4.25rem)] font-outfit font-black tracking-tight leading-[1.05]">
-                <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-indigo-500 bg-clip-text text-transparent">
-                  Automating Growth.
+            {/* Main Headline (H1) with Motto Accent */}
+            <div className="space-y-3">
+              <div className="inline-block">
+                <span className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-3 py-1 rounded-lg border border-indigo-200/60 dark:border-indigo-500/20">
+                  ⚡ Build once, convert always.
                 </span>
-              </h1>
-              <h1 className="text-[clamp(2.5rem,5.5vw,4.25rem)] font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-[1.05]">
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.75rem] font-outfit font-black tracking-tight text-slate-950 dark:text-white leading-[1.08] speakable">
+                Empowering Vision. <br />
+                <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-500 bg-clip-text text-transparent">
+                  Automating Growth.
+                </span> <br />
                 Delivering Certainty.
               </h1>
             </div>
 
-            {/* Trust-Building Subheadline */}
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed speakable">
-              I don't just write code — I engineer high-impact AI automations, intelligent chatbots, and full-stack web platforms that eliminate manual bottlenecks and accelerate your revenue. Partner directly with <strong className="text-slate-950 dark:text-white font-extrabold">Tushar Singh</strong> — Delhi University MCA graduate &amp; Google Verified Business Owner with <strong className="text-indigo-600 dark:text-indigo-400 font-extrabold">10+ shipped client products</strong> across India and worldwide.
+            {/* Subheadline (Work-Centric, Value-Driven) */}
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-lg leading-relaxed speakable">
+              Main aapke repetitive workflows ko self-running <strong className="text-indigo-600 dark:text-indigo-400 font-bold">AI Automations</strong> mein convert karta hoon, 24/7 leads capture karne wale <strong className="text-indigo-600 dark:text-indigo-400 font-bold">Smart Chatbots</strong> build karta hoon, aur high-converting <strong className="text-indigo-600 dark:text-indigo-400 font-bold">Web Platforms</strong> engineer karta hoon jo direct revenue badhate hain.
             </p>
 
-            {/* 3 Trust Guarantees */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-slate-700 dark:text-slate-300 pt-1">
-              <div className="flex items-center gap-2">
+            {/* 2 Clean Trust Bullets */}
+            <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
-                <span>1-on-1 Direct Engineering (Zero Middlemen)</span>
+                <span>Direct 1-on-1 Execution</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
-                <span>Reliable Delivery &amp; Dedicated Post-Launch Support</span>
+                <span>100% Reliable Delivery &amp; Support</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
-                <span>Google Verified Business &amp; 4.0★ Client Rating</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
-                <span>Tailored Solutions Designed to Save 10+ hrs/wk</span>
+                <span>Save 10+ hrs/wk with AI</span>
               </div>
             </div>
 
-            {/* CTAs */}
+            {/* CTAs & Reassurance */}
             <div className="space-y-3 pt-2">
-              <div className="flex flex-wrap gap-3">
-                <Link to="/contact"
-                  className="group inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-extrabold text-[11px] uppercase tracking-widest transition-all shadow-xl hover:shadow-indigo-500/25 hover:scale-[1.02] active:scale-95">
-                  Start Your Project
+              <div className="flex flex-wrap items-center gap-3.5">
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-lg hover:shadow-indigo-500/25 hover:scale-[1.02] active:scale-95"
+                >
+                  <span>Start a Project</span>
                   <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/projects"
-                  className="group inline-flex items-center gap-2 px-7 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl font-extrabold text-[11px] uppercase tracking-widest hover:border-indigo-400 dark:hover:border-indigo-500 transition-all active:scale-95 shadow-xs">
-                  <Play size={13} className="fill-current text-indigo-500" /> View 10+ Case Studies
+                <Link
+                  to="/projects"
+                  className="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:border-indigo-400 dark:hover:border-indigo-500 transition-all active:scale-95 shadow-xs"
+                >
+                  <Play size={12} className="fill-indigo-500 text-indigo-500" />
+                  <span>View 10+ Projects</span>
                 </Link>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <ShieldCheck size={13} className="text-emerald-500 shrink-0" />
-                <span>Free 30-min strategy audit · Response within 2 hours · No commitment required</span>
-              </p>
+
+              <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                <ShieldCheck size={14} className="text-emerald-500 shrink-0" />
+                <span>Free 30-min strategy audit · Response in &lt; 2 hrs · Zero commitment</span>
+              </div>
             </div>
 
-            {/* Trust numbers strip */}
-            <div className="flex flex-wrap items-center gap-6 pt-3 border-t border-slate-100 dark:border-white/5">
-              {[
-                { val: '10+', lbl: 'Shipped Projects' },
-                { val: '₹2L+', lbl: 'Revenue Delivered' },
-                { val: '4.0★', lbl: 'Client Rating' },
-                { val: '8+', lbl: 'Countries' },
-              ].map(({ val, lbl }) => (
-                <div key={lbl} className="text-left">
-                  <p className="text-lg font-outfit font-black text-slate-950 dark:text-white">{val}</p>
-                  <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{lbl}</p>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* RIGHT ── dashboard card */}
-          <div className="w-full lg:w-auto lg:block">
-            <div className="relative mx-auto lg:ml-auto max-w-[400px]">
-              <div className="absolute -inset-6 bg-indigo-500/10 rounded-[3rem] blur-3xl" />
-              <div className="relative bg-white dark:bg-slate-900 rounded-[2.25rem] border border-slate-100 dark:border-white/10 shadow-2xl p-6 space-y-4 animate-float">
+          {/* RIGHT COLUMN (5 Cols) ── Glassmorphism Live Showcase & QR Card */}
+          <div className="lg:col-span-5 w-full">
+            <div className="relative mx-auto max-w-[400px] lg:max-w-none">
+              <div className="absolute -inset-6 bg-gradient-to-tr from-indigo-500/15 to-violet-500/10 rounded-[3rem] blur-3xl pointer-events-none" />
 
-                {/* Header row */}
+              <div className="relative bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-[2.25rem] border border-slate-200/80 dark:border-white/10 shadow-2xl p-6 space-y-4">
+
+                {/* Card Header: Live Dashboard */}
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Live Dashboard</p>
-                    <p className="text-sm font-outfit font-extrabold text-slate-900 dark:text-white mt-0.5">Project Results</p>
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                      <TrendingUp size={15} />
+                    </div>
+                    <div>
+                      <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Live Dashboard</p>
+                      <h2 className="text-xs font-outfit font-black text-slate-900 dark:text-white">Project Results</h2>
+                    </div>
                   </div>
-                  <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/60 dark:border-emerald-500/20 text-[8px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">
+                  <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-500/30 text-[8.5px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Live
                   </span>
                 </div>
 
-                {/* Big metric */}
-                <div className="rounded-2xl bg-gradient-to-br from-indigo-600 via-indigo-600 to-violet-600 p-5 relative overflow-hidden shadow-sm">
-                  <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-white/5 rounded-full" />
-                  <p className="text-[8px] font-black text-indigo-200 uppercase tracking-widest mb-1">Total Value</p>
-                  <p className="text-4xl font-outfit font-black text-white">₹2L+</p>
-                  <p className="text-[9px] text-indigo-200 mt-1 flex items-center gap-1">
-                    <TrendingUp size={10} /> Across 10+ real client projects
+                {/* Total Value Gradient Banner */}
+                <div className="rounded-2xl bg-gradient-to-br from-indigo-600 via-indigo-600 to-violet-600 p-4 relative overflow-hidden text-white shadow-md">
+                  <div className="absolute -right-6 -bottom-6 w-28 h-28 bg-white/5 rounded-full blur-sm pointer-events-none" />
+                  <p className="text-[8.5px] font-black text-indigo-200 uppercase tracking-widest mb-0.5">Total Value Delivered</p>
+                  <p className="text-3xl sm:text-4xl font-outfit font-black text-white">₹2L+</p>
+                  <p className="text-[9.5px] text-indigo-100 mt-1 flex items-center gap-1">
+                    <CheckCircle2 size={11} className="text-emerald-300" />
+                    <span>Across 10+ real client deliverables</span>
                   </p>
                 </div>
 
-                {/* 4 tiles */}
-                <div className="grid grid-cols-2 gap-2.5">
+                {/* 4 Metric Tiles */}
+                <div className="grid grid-cols-2 gap-2">
                   {[
-                    { icon: <CheckCircle2 size={13} className="text-emerald-500" />, v: '10+',  l: 'Projects',  bg: 'bg-emerald-50 dark:bg-emerald-950/30' },
-                    { icon: <Star size={13} className="text-amber-400 fill-amber-400" />,       v: '4.0★', l: 'Rating',    bg: 'bg-amber-50 dark:bg-amber-950/30' },
-                    { icon: <Zap size={13} className="text-violet-500" />,                      v: '10h+', l: 'Saved/Wk', bg: 'bg-violet-50 dark:bg-violet-950/30' },
-                    { icon: <Globe size={13} className="text-blue-500" />,                      v: '8+',   l: 'Countries', bg: 'bg-blue-50 dark:bg-blue-950/30' },
+                    { icon: <CheckCircle2 size={13} className="text-emerald-500" />, v: '10+',  l: 'Projects',  bg: 'bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-100 dark:border-emerald-500/10' },
+                    { icon: <Star size={13} className="text-amber-400 fill-amber-400" />,       v: '4.0★', l: 'Rating', bg: 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-100 dark:border-amber-500/10' },
+                    { icon: <Zap size={13} className="text-violet-500" />,                      v: '10h+', l: 'Saved/Wk', bg: 'bg-violet-50/70 dark:bg-violet-950/30 border-violet-100 dark:border-violet-500/10' },
+                    { icon: <Globe size={13} className="text-blue-500" />,                      v: '8+',   l: 'Countries', bg: 'bg-blue-50/70 dark:bg-blue-950/30 border-blue-100 dark:border-blue-500/10' },
                   ].map(({ icon, v, l, bg }) => (
-                    <div key={l} className={`flex items-center gap-2.5 p-2.5 rounded-xl ${bg}`}>
+                    <div key={l} className={`flex items-center gap-2.5 p-2.5 rounded-xl border ${bg}`}>
                       {icon}
-                      <div>
-                        <p className="text-sm font-outfit font-extrabold text-slate-900 dark:text-white">{v}</p>
-                        <p className="text-[7px] font-black text-slate-400 uppercase tracking-widest">{l}</p>
+                      <div className="min-w-0">
+                        <p className="text-sm font-outfit font-extrabold text-slate-900 dark:text-white leading-tight">{v}</p>
+                        <p className="text-[7.5px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider truncate">{l}</p>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                {/* Avatars */}
-                <div className="flex items-center justify-between pt-1 border-t border-slate-100 dark:border-white/5">
-                  <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Recent clients</p>
-                  <div className="flex -space-x-2">
-                    {['RM','PS','AR','KP','VN'].map((init, i) => (
-                      <div key={i}
-                        className="w-7 h-7 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-white font-black text-[7px]"
-                        style={{ background: ['#6366f1','#10b981','#8b5cf6','#f59e0b','#3b82f6'][i] }}>
-                        {init}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* ── Google Business Verified QR Block ── */}
-                <div className="pt-3 border-t border-slate-100 dark:border-white/5">
-                  <div className="p-3 bg-gradient-to-r from-blue-50/70 via-indigo-50/40 to-emerald-50/60 dark:from-slate-800/80 dark:to-slate-800/40 border border-slate-200/80 dark:border-white/5 rounded-2xl flex items-center gap-3">
+                {/* ── Official Google Business Verified QR Subcard ── */}
+                <div className="pt-2 border-t border-slate-100 dark:border-white/5">
+                  <div className="p-3 bg-gradient-to-r from-blue-50/70 via-indigo-50/50 to-emerald-50/60 dark:from-slate-800/80 dark:to-slate-800/50 border border-slate-200/80 dark:border-white/10 rounded-2xl flex items-center gap-3">
                     {/* Clickable QR code */}
-                    <div
+                    <button
+                      type="button"
                       onClick={() => setQrModalOpen(true)}
                       title="Click to scan or enlarge Google QR code"
-                      className="relative w-14 h-14 bg-white p-1 rounded-xl border border-slate-200 dark:border-white/10 shrink-0 cursor-pointer shadow-xs hover:scale-105 transition-transform group"
+                      className="relative w-13 h-13 bg-white p-1 rounded-xl border border-slate-200 dark:border-white/10 shrink-0 cursor-pointer shadow-xs hover:scale-105 transition-transform group text-left"
                     >
                       <img
                         src="/google-business-qr.png"
                         alt="Tushar Singh freelancing - Google Business Profile QR"
                         className="w-full h-full object-contain rounded-lg"
                       />
-                      <div className="absolute inset-0 bg-slate-950/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <QrCode size={14} className="text-white drop-shadow" />
+                      <div className="absolute inset-0 bg-slate-950/30 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <QrCode size={15} className="text-white drop-shadow" />
                       </div>
-                    </div>
+                    </button>
 
                     {/* QR Details */}
                     <div className="min-w-0 flex-1">
@@ -278,8 +252,9 @@ const Home: React.FC = () => {
                         </a>
                         <span className="text-slate-300 dark:text-slate-700">•</span>
                         <button
+                          type="button"
                           onClick={() => setQrModalOpen(true)}
-                          className="text-[8.5px] font-black uppercase tracking-wider text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"
+                          className="text-[8.5px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white cursor-pointer"
                         >
                           Scan QR
                         </button>
