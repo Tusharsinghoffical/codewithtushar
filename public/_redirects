@@ -1,4 +1,9 @@
-# SPA Routing - All routes go to index.html for React Router to handle
-# This ensures deep linking works (shared URLs open correct pages)
+# Sitemap redirects to root canonical sitemap
+/services/sitemap.xml    /sitemap.xml    301!
+/projects/sitemap.xml    /sitemap.xml    301!
+/about/sitemap.xml       /sitemap.xml    301!
+/blog/sitemap.xml        /sitemap.xml    301!
+/contact/sitemap.xml     /sitemap.xml    301!
 
+# SPA Routing - All routes go to index.html for React Router to handle
 /*    /index.html   200

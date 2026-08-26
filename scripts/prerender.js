@@ -37,8 +37,8 @@ const escapeAttr = (str) => {
 const pages = [
   {
     path: '/about',
-    title: 'About Tushar Singh | AI & Dev Expert, Delhi',
-    description: 'MCA graduate, AI Automation Expert & Full-Stack Developer from Delhi. 10+ successful projects, ₹2L+ revenue, 4.0★ rating. Building systems that scale businesses.',
+    title: 'About Tushar Singh | MCA Graduate, AI Automation Expert & Developer Delhi',
+    description: '👨‍💻 Learn about Tushar Singh — MCA graduate from Delhi, AI Automation Engineer & Full-Stack Developer with 10+ client deliverables, ₹2L+ revenue impact. Specializing in Python, React, n8n, and custom LLM systems.',
     keywords: `about Tushar Singh, AI automation expert India, full stack developer background, developer Delhi Mumbai Bangalore Hyderabad Chennai, MCA graduate developer India, pan India freelance developer, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: DEFAULT_IMAGE,
@@ -88,8 +88,8 @@ const pages = [
   },
   {
     path: '/services',
-    title: 'AI Automation & Web Dev Services | India',
-    description: 'AI automation, chatbot development, full-stack web apps & branding by Tushar Singh. Serving clients across India and worldwide. Book a free 30-min consultation.',
+    title: 'AI Automation, Chatbots & Web Development Services | Tushar Singh',
+    description: '🚀 Scale workflows with autonomous AI agents, 24/7 smart RAG chatbots, n8n automations, React web platforms & brand design by Tushar Singh. 10+ client deliverables, 4.0★ rating. Book a free consultation.',
     keywords: `AI automation services India, web development services India, chatbot development India, n8n automation India, Python development India, React.js services India, freelance services all India states, business automation India, developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: DEFAULT_IMAGE,
@@ -116,8 +116,8 @@ const pages = [
   },
   {
     path: '/projects',
-    title: 'Portfolio — 10+ AI & Web Projects | India',
-    description: '10+ real client projects by Tushar Singh: AI automation, RAG chatbots, full-stack apps, lead generation & data dashboards. See results & case studies.',
+    title: 'Portfolio — 10+ Real AI & Web Deliverables | Tushar Singh',
+    description: '🏆 Explore 10+ commercial client projects delivered by Tushar Singh: AI automation workflows, smart conversational bots, SaaS dashboards, and web platforms with measurable ROI. View live deliverables.',
     keywords: `AI automation projects India, web development portfolio India, chatbot projects India, developer portfolio Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer portfolio, freelance projects India, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: DEFAULT_IMAGE,
@@ -135,8 +135,8 @@ const pages = [
   },
   {
     path: '/blog',
-    title: 'AI Automation & Dev Blog | Tushar Singh',
-    description: 'Practical guides on AI automation, n8n workflows, RAG chatbots & full-stack development — written from real project experience by Tushar Singh.',
+    title: 'AI Automation & Full-Stack Engineering Blog | Tushar Singh',
+    description: '💡 Actionable guides on AI automation, n8n workflows, RAG conversational chatbots & full-stack development — written from real production experience by Tushar Singh.',
     keywords: `tech blog India, AI automation blog India, web development articles India, developer blog Delhi Mumbai Bangalore Hyderabad Chennai, data science insights India, machine learning India, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: DEFAULT_IMAGE,
@@ -155,8 +155,8 @@ const pages = [
   },
   {
     path: '/testimonials',
-    title: 'Client Reviews & Testimonials | Tushar Singh',
-    description: 'Real client reviews from businesses across India & worldwide. 4.0★ rating, 10+ successful projects delivered. See what clients say about Tushar Singh.',
+    title: 'Client Reviews & Testimonials (4.0★) | Tushar Singh',
+    description: '⭐ Real client testimonials and reviews for Tushar Singh. 4.0★ rating across 10+ commercial AI automation, chatbot, and full-stack development projects in India & worldwide.',
     keywords: `client testimonials India, developer reviews India, AI automation reviews India, web development reviews India, reviews Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer reviews, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: DEFAULT_IMAGE,
@@ -173,8 +173,8 @@ const pages = [
   },
   {
     path: '/contact',
-    title: 'Contact Tushar Singh | Book Free AI Audit',
-    description: 'Hire AI Automation Expert & Full-Stack Developer Tushar Singh. Available worldwide — India, USA, UK, UAE & more. Book a free 30-min consultation today.',
+    title: 'Contact Tushar Singh | Book Free 30-Min AI Strategy Audit',
+    description: '📞 Hire Tushar Singh for AI automation, smart chatbots & web engineering. Guaranteed response < 1 hour. Direct WhatsApp +91 88516 19647, Calendly schedule & official Google verified owner.',
     keywords: `hire developer India, contact developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, hire AI automation expert India, hire web developer India, freelance developer contact India, book consultation India, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: DEFAULT_IMAGE,
@@ -334,4 +334,16 @@ pages.forEach((page) => {
   count++;
 });
 
+// Also ensure sitemap.xml is copied into subfolders so /services/sitemap.xml returns valid sitemap XML
+const sitemapSrc = path.join(distDir, 'sitemap.xml');
+if (fs.existsSync(sitemapSrc)) {
+  ['services', 'projects', 'about', 'contact', 'blog'].forEach((sub) => {
+    const subDir = path.join(distDir, sub);
+    if (fs.existsSync(subDir)) {
+      fs.copyFileSync(sitemapSrc, path.join(subDir, 'sitemap.xml'));
+    }
+  });
+}
+
 console.log(`✅ Successfully prerendered ${count} pages with full Open Graph & Twitter cards!`);
+
