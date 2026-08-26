@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
     <footer className="bg-slate-950 border-t border-white/5">
       
       {/* ── CTA STRIP ─────────────────────────────────────── */}
-      <div className="border-b border-white/5 py-8 px-5 sm:px-10">
+      <div className="border-b border-white/5 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5">
           <div>
             <p className="text-[9px] font-black text-indigo-400 uppercase tracking-widest mb-1">
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* ── MAIN GRID ──────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-5 sm:px-10 py-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {/* Brand */}
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* ── BOTTOM BAR ─────────────────────────────────────── */}
-      <div className="border-t border-white/5 px-5 sm:px-10 py-5">
+      <div className="border-t border-white/5 px-4 sm:px-6 lg:px-8 py-5">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[10px] text-slate-600 font-medium">
             &copy; {year} Code with Mr. Singh. All rights reserved.

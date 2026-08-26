@@ -66,12 +66,9 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed left-1/2 -translate-x-1/2 z-[110] transition-all duration-700 ease-in-out ${isScrolled ? 'top-10 sm:top-11 w-[98%] sm:w-fit' : 'top-11 sm:top-14 w-[95%] sm:w-fit'}`}>
+      <nav className={`fixed left-1/2 -translate-x-1/2 z-[110] transition-all duration-500 ease-in-out ${isScrolled ? 'top-10 sm:top-11 w-[98%] sm:w-fit' : 'top-11 sm:top-14 w-[95%] sm:w-fit'}`}>
         <div
-          className={`relative flex items-center justify-between sm:justify-start gap-1 p-1 rounded-full transition-all duration-500 ${isScrolled
-              ? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-2xl'
-              : 'bg-transparent border-transparent shadow-none'
-            }`}
+          className="relative flex items-center justify-between sm:justify-start gap-1 p-1.5 rounded-full transition-all duration-300 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-xl shadow-slate-900/5 dark:shadow-black/20"
         >
 
           {/* Logo Section */}
