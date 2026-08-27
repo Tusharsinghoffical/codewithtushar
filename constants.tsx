@@ -6,9 +6,9 @@ import { Service, Project, Testimonial } from './types';
 // ─── Site-wide constants ──────────────────────────────────────────────────────
 export const SITE_URL             = 'https://codewithmrsingh.me';
 export const SITE_NAME            = 'Code with Mr Singh';
-export const SITE_DEFAULT_OG_IMAGE  = 'https://codewithmrsingh.me/me-optimized.jpg';
+export const SITE_DEFAULT_OG_IMAGE  = 'https://codewithmrsingh.me/tushar-singh-optimized.jpg';
 export const SITE_DEFAULT_OG_ALT    = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
-/** Actual pixel dimensions of me-optimized.jpg (square portrait) */
+/** Actual pixel dimensions of tushar-singh-optimized.jpg (square portrait) */
 export const SITE_DEFAULT_OG_WIDTH  = '800';
 export const SITE_DEFAULT_OG_HEIGHT = '800';
 /** Current deployment date — update on each redeploy for fresh dateModified signals */

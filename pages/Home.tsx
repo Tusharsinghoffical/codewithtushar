@@ -335,7 +335,7 @@ const Home: React.FC = () => {
               <div className="absolute -inset-4 bg-gradient-to-br from-indigo-500/15 via-violet-500/10 to-emerald-500/10 rounded-[2.5rem] blur-2xl group-hover:opacity-150 transition-all duration-700" />
               <div className="relative rounded-[2.25rem] overflow-hidden bg-slate-950 border border-slate-200 dark:border-white/10 shadow-2xl aspect-[4/5] w-full">
                 <OptimizedImage
-                  src="/me.webp"
+                  src="/tushar-singh.webp"
                   alt="Tushar Singh — AI Automation Expert & Full-Stack Developer, Delhi"
                   className="opacity-95 group-hover:scale-105 transition-transform duration-1000 w-full h-full object-cover"
                   priority

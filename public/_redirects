@@ -5,5 +5,11 @@
 /blog/sitemap.xml        /sitemap.xml    301!
 /contact/sitemap.xml     /sitemap.xml    301!
 
+# Image redirects for SEO preservation
+/me-optimized.jpg    /tushar-singh-optimized.jpg    301!
+/me.webp             /tushar-singh.webp             301!
+/me.jpg              /tushar-singh.jpg              301!
+/me.png              /tushar-singh.png              301!
+
 # SPA Routing - All routes go to index.html for React Router to handle
 /*    /index.html   200

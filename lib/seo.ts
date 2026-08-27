@@ -118,7 +118,7 @@ export const setupPageSEO = (options: {
   imageUrl?: string;
   type?: 'website' | 'article' | 'profile';
 }): void => {
-  const { title, description, keywords, path, imageUrl = 'https://codewithmrsingh.me/me-optimized.jpg', type = 'website' } = options;
+  const { title, description, keywords, path, imageUrl = 'https://codewithmrsingh.me/tushar-singh-optimized.jpg', type = 'website' } = options;
   const canonicalUrl = getCanonicalUrl(path);
 
   // Update basic meta tags

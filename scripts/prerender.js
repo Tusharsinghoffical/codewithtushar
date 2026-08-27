@@ -19,7 +19,7 @@ const posts = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
 
 const SITE_URL = 'https://codewithmrsingh.me';
 const SITE_NAME = 'Code with Mr Singh';
-const DEFAULT_IMAGE = 'https://codewithmrsingh.me/me-optimized.jpg';
+const DEFAULT_IMAGE = 'https://codewithmrsingh.me/tushar-singh-optimized.jpg';
 const DEFAULT_ALT = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
 const SITE_DATE_MODIFIED = new Date().toISOString().split('T')[0];
 

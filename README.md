@@ -110,7 +110,8 @@ React 19 · Vite 6 · React Router 7 · Fuse.js · Lucide React · Custom SSG Pr
 └── public/
     ├── projects/            # Project SVG thumbnails
     ├── logo/                # Brand assets
-    ├── me-optimized.jpg     # Profile image (WebP optimized)
+    ├── tushar-singh-optimized.jpg # Profile image (Optimized)
+    ├── tushar-singh.webp    # Profile image WebP
     ├── robots.txt
     ├── sitemap.xml
     ├── llms.txt             # AI crawler instructions

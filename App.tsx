@@ -384,7 +384,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
         "alternateName": "Code with Mr Singh",
         "jobTitle": "AI Automation Expert & Full-Stack Developer",
         "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from Delhi University. Founder of Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
-        "image": "https://codewithmrsingh.me/me-optimized.jpg",
+        "image": "https://codewithmrsingh.me/tushar-singh-optimized.jpg",
         "url": `${baseUrl}/about`,
         "address": {
           "@type": "PostalAddress",
