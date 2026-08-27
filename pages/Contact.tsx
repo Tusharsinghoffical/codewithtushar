@@ -255,8 +255,8 @@ const Contact: React.FC = () => {
               <InfoRow
                 icon={<Mail size={15} />}
                 label="Official Email"
-                value="tusharsinghkumar04@gmail.com"
-                href="mailto:tusharsinghkumar04@gmail.com"
+                value="tusharsinghoffical@gmail.com"
+                href="mailto:tusharsinghoffical@gmail.com"
               />
               <InfoRow
                 icon={<Phone size={15} />}

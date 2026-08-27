@@ -5,7 +5,7 @@ import { Service, Project, Testimonial } from './types';
 
 // ─── Site-wide constants ──────────────────────────────────────────────────────
 export const SITE_URL             = 'https://codewithmrsingh.me';
-export const SITE_NAME            = 'Code with Mr. Singh';
+export const SITE_NAME            = 'Code with Mr Singh';
 export const SITE_DEFAULT_OG_IMAGE  = 'https://codewithmrsingh.me/me-optimized.jpg';
 export const SITE_DEFAULT_OG_ALT    = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
 /** Actual pixel dimensions of me-optimized.jpg (square portrait) */
@@ -29,7 +29,7 @@ export const BUSINESS_ADDRESS = {
   short: 'New Delhi, India',
   hours: 'Open 24 Hours',
   phone: '+91-88516 19647',
-  email: 'tusharsinghkumar04@gmail.com',
+  email: 'tusharsinghoffical@gmail.com',
   latitude: 28.5034,
   longitude: 77.3082,
 };

@@ -37,12 +37,12 @@ const TopPromoBar: React.FC = () => {
 
           {/* Email */}
           <a
-            href="mailto:tusharsinghkumar04@gmail.com"
+            href="mailto:tusharsinghoffical@gmail.com"
             className="hidden lg:flex items-center gap-1.5 hover:text-indigo-300 transition-colors font-medium text-slate-400"
             title="Send Email"
           >
             <Mail size={11} className="text-indigo-400" />
-            <span className="truncate max-w-[150px]">tusharsinghkumar04@gmail.com</span>
+            <span className="truncate max-w-[150px]">tusharsinghoffical@gmail.com</span>
           </a>
 
           {/* Location */}

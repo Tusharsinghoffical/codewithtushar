@@ -18,7 +18,7 @@ const template = fs.readFileSync(templatePath, 'utf8');
 const posts = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
 
 const SITE_URL = 'https://codewithmrsingh.me';
-const SITE_NAME = 'Code with Mr. Singh';
+const SITE_NAME = 'Code with Mr Singh';
 const DEFAULT_IMAGE = 'https://codewithmrsingh.me/me-optimized.jpg';
 const DEFAULT_ALT = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
 const SITE_DATE_MODIFIED = new Date().toISOString().split('T')[0];
@@ -54,9 +54,9 @@ const pages = [
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         "name": "Tushar Singh",
-        "alternateName": "Code with Mr. Singh",
+        "alternateName": "Code with Mr Singh",
         "jobTitle": "AI Automation Expert & Full-Stack Developer",
-        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from Delhi University. Founder of Code with Mr. Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
+        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from Delhi University. Founder of Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
         "image": DEFAULT_IMAGE,
         "url": `${SITE_URL}/about`,
         "address": {
@@ -203,7 +203,7 @@ const pages = [
         "@id": `${SITE_URL}/#person`,
         "name": "Tushar Singh",
         "telephone": "+91-8851619647",
-        "email": "tusharsinghkumar04@gmail.com"
+        "email": "tusharsinghoffical@gmail.com"
       }
     }
   }

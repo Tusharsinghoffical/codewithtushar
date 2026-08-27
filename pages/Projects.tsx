@@ -236,7 +236,7 @@ const Projects: React.FC = () => {
           {/* Action Bar: Share & Search */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto shrink-0">
             <SharePageButton
-              title="Project Portfolio — 10+ AI & Web Case Studies | Code with Mr. Singh"
+              title="Project Portfolio — 10+ AI & Web Case Studies | Code with Mr Singh"
               text="Explore 10+ real-world AI automation, chatbot, web development & data engineering projects by Tushar Singh"
               buttonLabel="Share Portfolio"
               className="!py-3 !px-4"

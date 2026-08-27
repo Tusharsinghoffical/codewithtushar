@@ -126,19 +126,19 @@ export const setupPageSEO = (options: {
     'description': description,
     'keywords': keywords,
     'title': title,
-    'og:title': `${title} | Code with Mr. Singh`,
+    'og:title': `${title} | Code with Mr Singh`,
     'og:description': description,
     'og:url': canonicalUrl,
     'og:type': type,
     'og:image': imageUrl,
-    'twitter:title': `${title} | Code with Mr. Singh`,
+    'twitter:title': `${title} | Code with Mr Singh`,
     'twitter:description': description,
     'twitter:image': imageUrl,
     'twitter:card': 'summary_large_image'
   });
 
   // Update document title
-  document.title = `${title} | Code with Mr. Singh`;
+  document.title = `${title} | Code with Mr Singh`;
 
   // Update canonical link
   const canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -150,7 +150,7 @@ export const setupPageSEO = (options: {
   addStructuredData({
     type: 'WebSite',
     data: {
-      name: 'Code with Mr. Singh',
+      name: 'Code with Mr Singh',
       url: 'https://codewithmrsingh.me',
       description: description,
       publisher: {

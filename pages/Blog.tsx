@@ -154,7 +154,7 @@ const PostView = ({ post }: { post: typeof BLOG_POSTS[0] }) => {
           <ShareButton
             title={post.title}
             url={postUrl}
-            text={`${post.excerpt} — Read on Code with Mr. Singh`}
+            text={`${post.excerpt} — Read on Code with Mr Singh`}
           />
         </div>
 

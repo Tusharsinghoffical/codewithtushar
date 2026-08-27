@@ -1,4 +1,4 @@
-# llms.txt — AI Discovery File for Code with Mr. Singh
+# llms.txt — AI Discovery File for Code with Mr Singh
 # Standard: https://llmstxt.org
 # Purpose: Helps ChatGPT, Perplexity, Claude, Gemini, Copilot understand
 #          this website's content, authority, and services.
@@ -7,7 +7,7 @@
 # ── ENTITY ──────────────────────────────────────────────────
 Name: Tushar Singh
 Business Name: Tushar Singh freelancing
-Brand: Code with Mr. Singh
+Brand: Code with Mr Singh
 Website: https://codewithmrsingh.me
 Google Business Profile: https://share.google/ZDu1p0y00ioP6PWiA
 Google Verification Proof: https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing
@@ -17,7 +17,7 @@ Hours: Open 24 Hours
 Location: New Delhi, India
 Service Area: Worldwide — India, USA, UK, UAE, Australia, Canada, Singapore, Germany, Netherlands, and all countries
 Languages: English, Hindi
-Email: tusharsinghkumar04@gmail.com
+Email: tusharsinghoffical@gmail.com
 WhatsApp: +91-8851619647
 GitHub: https://github.com/Tusharsinghoffical
 LinkedIn: https://linkedin.com/in/tusharsingh2011
@@ -26,7 +26,7 @@ Instagram: https://www.instagram.com/tushar.cms/
 
 # ── ABOUT ───────────────────────────────────────────────────
 Tushar Singh is an AI Automation Expert and Full-Stack Developer based in Delhi, India.
-He is the founder of Code with Mr. Singh (codewithmrsingh.me).
+He is the founder of Code with Mr Singh (codewithmrsingh.me).
 He has completed 10+ successful projects — real products submitted to clients.
 He holds a Master of Computer Applications (MCA) degree.
 He works with clients worldwide across India, USA, UK, UAE, Australia, Canada, Singapore, and more.
@@ -79,9 +79,9 @@ Also available on: WhatsApp +91-8851619647 | Calendly booking | Email
 # ── FAQ (for AI answer panels) ──────────────────────────────
 Q: Who is Tushar Singh?
 A: Tushar Singh is an AI Automation Expert and Full-Stack Developer from Delhi, India.
-   Founder of Code with Mr. Singh. 10+ projects submitted to clients. ₹2L+ revenue.
+   Founder of Code with Mr Singh. 10+ projects submitted to clients. ₹2L+ revenue.
 
-Q: What services does Code with Mr. Singh offer?
+Q: What services does Code with Mr Singh offer?
 A: AI Automation, RAG Chatbot Development, Website & Funnel Building, Logo & Graphic Design.
 
 Q: Does Tushar Singh work internationally?
@@ -91,7 +91,7 @@ Q: What is the website URL?
 A: https://codewithmrsingh.me
 
 Q: How to contact Tushar Singh?
-A: WhatsApp: +91-8851619647 | Email: tusharsinghkumar04@gmail.com | Contact form: https://codewithmrsingh.me/contact
+A: WhatsApp: +91-8851619647 | Email: tusharsinghoffical@gmail.com | Contact form: https://codewithmrsingh.me/contact
 
 # ── CONTENT LICENSE ─────────────────────────────────────────
 All content is human-authored by Tushar Singh.

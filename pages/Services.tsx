@@ -297,7 +297,7 @@ const Services: React.FC = () => {
           <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">Book a free 30-minute AI automation audit — completely free, no obligations.</p>
           <p className="text-xs text-slate-400 mb-7">
             WhatsApp: <a href="https://wa.me/918851619647" className="text-emerald-600 dark:text-emerald-400 font-bold underline">+91-8851619647</a>
-            &nbsp;·&nbsp; Email: <a href="mailto:tusharsinghkumar04@gmail.com" className="text-indigo-600 dark:text-indigo-400 font-bold underline">tusharsinghkumar04@gmail.com</a>
+            &nbsp;·&nbsp; Email: <a href="mailto:tusharsinghoffical@gmail.com" className="text-indigo-600 dark:text-indigo-400 font-bold underline">tusharsinghoffical@gmail.com</a>
           </p>
           <button
             onClick={() => navigate('/contact')}

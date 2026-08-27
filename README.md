@@ -1,6 +1,6 @@
 <div align="center">
 
-# C.MS — Code with Mr. Singh
+# C.MS — Code with Mr Singh
 
 **AI Automation, Dashboard & Full-Stack Development**
 
@@ -208,6 +208,6 @@ All routes rewrite to `index.html` while serving static per-route files automati
 | GitHub | [github.com/Tusharsinghoffical](https://github.com/Tusharsinghoffical) |
 | YouTube | [youtube.com/@codewithmrsingh4u](https://www.youtube.com/@codewithmrsingh4u) |
 | Instagram | [instagram.com/tushar.cms](https://www.instagram.com/tushar.cms/) |
-| Email | tusharsinghkumar04@gmail.com |
+| Email | tusharsinghoffical@gmail.com |
 | WhatsApp | +91-88516 19647 |
 | Location | Delhi, India — Available Worldwide |

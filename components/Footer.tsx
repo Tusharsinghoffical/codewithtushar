@@ -102,9 +102,9 @@ const Footer: React.FC = () => {
                 <Phone size={13} className="shrink-0 text-emerald-400" />
                 <span className="text-xs">+91 88516 19647</span>
               </a>
-              <a href="mailto:tusharsinghkumar04@gmail.com" className="flex items-start gap-2.5 text-slate-400 hover:text-indigo-400 transition-colors group">
+              <a href="mailto:tusharsinghoffical@gmail.com" className="flex items-start gap-2.5 text-slate-400 hover:text-indigo-400 transition-colors group">
                 <Mail size={13} className="shrink-0 text-indigo-400 mt-0.5" />
-                <span className="text-xs break-all">tusharsinghkumar04@gmail.com</span>
+                <span className="text-xs break-all">tusharsinghoffical@gmail.com</span>
               </a>
               <a href="https://www.google.com/maps/search/?api=1&query=Tushar+Singh+freelancing+New+Delhi+Delhi+110044" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2.5 text-slate-400 hover:text-white transition-colors group">
                 <MapPin size={13} className="shrink-0 text-rose-400 mt-0.5" />
@@ -128,7 +128,7 @@ const Footer: React.FC = () => {
       <div className="border-t border-white/5 px-4 sm:px-6 lg:px-8 py-5">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[10px] text-slate-600 font-medium">
-            &copy; {year} Code with Mr. Singh. All rights reserved.
+            &copy; {year} Code with Mr Singh. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <span className="text-[10px] text-slate-600">AI Automation &amp; Full-Stack Development</span>
