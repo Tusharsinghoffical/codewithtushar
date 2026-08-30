@@ -66,7 +66,7 @@ const Sidebar: React.FC<{
       {[
         { label: 'Projects Completed', value: '10+' },
         { label: 'Client Rating',      value: '4.0 ★' },
-        { label: 'Countries Served',   value: '8+' },
+        { label: 'Value Delivered',    value: '₹2L+' },
       ].map(({ label, value }) => (
         <div key={label} className="flex justify-between items-center py-1.5 border-b border-indigo-100/50 dark:border-indigo-400/10 last:border-0">
           <span className="text-[10px] text-slate-500 dark:text-slate-400">{label}</span>

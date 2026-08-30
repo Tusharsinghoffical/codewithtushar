@@ -26,9 +26,8 @@ Personal portfolio website of **Tushar Singh** — AI Automation Expert & Full-S
 |---|---|
 | Projects Completed | 10+ |
 | Value Delivered | ₹2L+ |
-| Client Rating | 5.0 ★ |
+| Client Rating | 4.0 ★ |
 | Time Saved / Week | 10h+ |
-| Countries Served | 8+ |
 
 ---
 

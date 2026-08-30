@@ -170,7 +170,7 @@ const Home: React.FC = () => {
                       { icon: <CheckCircle2 size={14} className="text-emerald-500" />, v: '10+',  l: 'Projects',  bg: 'bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-100 dark:border-emerald-500/10' },
                       { icon: <Star size={14} className="text-amber-400 fill-amber-400" />,       v: '4.0★', l: 'Rating', bg: 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-100 dark:border-amber-500/10' },
                       { icon: <Zap size={14} className="text-violet-500" />,                      v: '10h+', l: 'Saved/Wk', bg: 'bg-violet-50/70 dark:bg-violet-950/30 border-violet-100 dark:border-violet-500/10' },
-                      { icon: <Globe size={14} className="text-blue-500" />,                      v: '8+',   l: 'Countries', bg: 'bg-blue-50/70 dark:bg-blue-950/30 border-blue-100 dark:border-blue-500/10' },
+                      { icon: <ShieldCheck size={14} className="text-blue-500" />,                v: '< 1 Hr', l: 'Response', bg: 'bg-blue-50/70 dark:bg-blue-950/30 border-blue-100 dark:border-blue-500/10' },
                     ].map(({ icon, v, l, bg }) => (
                       <div key={l} className={`flex items-center gap-3 p-3 rounded-xl border ${bg}`}>
                         {icon}
