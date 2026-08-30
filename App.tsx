@@ -386,7 +386,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
         "name": "Tushar Singh",
         "alternateName": "Code with Mr Singh",
         "jobTitle": "AI Automation Expert & Full-Stack Developer",
-        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from Delhi University. Founder of Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
+        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from MIT Pune. Founder of Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
         "image": "https://codewithmrsingh.me/tushar-singh-optimized.jpg",
         "url": `${baseUrl}/about`,
         "address": {
@@ -412,7 +412,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
           "Machine Learning", "Data Science", "Power BI", "Lead Generation",
           "Sales Funnel Development", "Business Process Automation"
         ],
-        "alumniOf": { "@type": "EducationalOrganization", "name": "Delhi University" },
+        "alumniOf": { "@type": "EducationalOrganization", "name": "MIT Pune" },
         "hasCredential": { "@type": "EducationalOccupationalCredential", "credentialCategory": "Master of Computer Applications (MCA)" }
       }
     });

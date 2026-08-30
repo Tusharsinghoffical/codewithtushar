@@ -56,12 +56,12 @@ const About: React.FC = () => {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-medium speakable">
-                I am a Delhi-based <strong>AI Automation Expert &amp; Full-Stack Software Engineer</strong> with a Master of Computer Applications (MCA) from <strong>Delhi University</strong>. As the founder of <em>Code with Mr Singh</em>, I help businesses eliminate manual bottlenecks and scale using autonomous AI workflows, smart RAG chatbots, and high-performance React/Django platforms.
+                I am a Delhi-based <strong>AI Automation Expert &amp; Full-Stack Software Engineer</strong> with a Master of Computer Applications (MCA) from <strong>MIT Pune</strong>. As the founder of <em>Code with Mr Singh</em>, I help businesses eliminate manual bottlenecks and scale using autonomous AI workflows, smart RAG chatbots, and high-performance React/Django platforms.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-slate-600 dark:text-slate-400">
                 <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5">
-                  <GraduationCap size={16} className="text-indigo-500" /> MCA, Delhi University
+                  <GraduationCap size={16} className="text-indigo-500" /> MCA, MIT Pune
                 </span>
                 <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5">
                   <MapPin size={16} className="text-rose-500" /> New Delhi, India

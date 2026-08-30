@@ -197,7 +197,7 @@ export const AIChatAssistant: React.FC = () => {
       q.includes('experience') || q.includes('delhi') || q.includes('kahan')
     ) {
       return {
-        replyText: `👨‍💻 **About Tushar Singh (Code with Mr Singh):**\n\n• **Role:** AI Automation Expert & Full-Stack Developer\n• **Education:** Master of Computer Applications (MCA), Delhi University\n• **Location:** Badarpur, New Delhi, India (Serving clients nationwide & globally)\n• **Credentials:** Google Verified Business Owner, Fiverr Verified Seller, ₹2L+ Value Delivered across 10+ real client products.\n• **Core Tech:** Python, React, n8n, OpenAI, Django, LangChain, PostgreSQL.`,
+        replyText: `👨‍💻 **About Tushar Singh (Code with Mr Singh):**\n\n• **Role:** AI Automation Expert & Full-Stack Developer\n• **Education:** Master of Computer Applications (MCA), MIT Pune\n• **Location:** Badarpur, New Delhi, India (Serving clients nationwide & globally)\n• **Credentials:** Google Verified Business Owner, Fiverr Verified Seller, ₹2L+ Value Delivered across 10+ real client products.\n• **Core Tech:** Python, React, n8n, OpenAI, Django, LangChain, PostgreSQL.`,
         quickActions: [
           { label: '📄 View About Page', action: () => { window.location.href = '/about'; } },
           { label: '⭐ Fiverr Profile', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
