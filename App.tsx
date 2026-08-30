@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import ScrollToTop from './components/ScrollToTop';
 import ClockDisplay from './components/ClockDisplay';
+import TopPromoBar from './components/TopPromoBar';
 import FiverrFloatingButton from './components/FiverrFloatingButton';
 import AIChatAssistant from './components/AIChatAssistant';
 import LiveVisitorCounter from './components/LiveVisitorCounter';
