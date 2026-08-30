@@ -21,7 +21,7 @@ const FiverrIconSvg: React.FC<{ className?: string }> = ({ className = '' }) => 
 
 const FiverrFloatingButton: React.FC = () => {
   return (
-    <div className="group fixed bottom-6 left-6 sm:left-8 z-[120]">
+    <div className="group fixed bottom-[5.25rem] sm:bottom-[5.5rem] right-6 sm:right-8 z-[120]">
       <a
         href={FIVERR_PROFILE_URL}
         target="_blank"
@@ -33,14 +33,9 @@ const FiverrFloatingButton: React.FC = () => {
         {/* Animated Background Ring */}
         <div className="absolute inset-0 bg-[#1DBF73] rounded-full animate-ping opacity-20 scale-110 pointer-events-none" />
 
-        {/* Fiverr Vector Icon */}
-        <div className="relative flex items-center justify-center">
-          <FiverrIconSvg className="group-hover:rotate-12 transition-transform duration-300 drop-shadow-sm" />
-        </div>
-
-        {/* Expandable Text Label (Desktop & Tablet) */}
-        <div className="overflow-hidden max-w-0 group-hover:max-w-[220px] transition-all duration-500 ease-in-out whitespace-nowrap">
-          <div className="flex items-center gap-1.5 pr-2">
+        {/* Expandable Text Label (Expands cleanly to the left) */}
+        <div className="overflow-hidden max-w-0 group-hover:max-w-[200px] transition-all duration-500 ease-in-out whitespace-nowrap">
+          <div className="flex items-center gap-1.5 pl-2">
             <span className="text-[11px] font-black uppercase tracking-wider font-outfit text-white">
               Hire on Fiverr
             </span>
@@ -48,18 +43,22 @@ const FiverrFloatingButton: React.FC = () => {
           </div>
         </div>
 
-        {/* Rating / Trust Mini Badge (top-right of button) */}
-        <div className="absolute -top-1.5 -right-1.5 flex items-center gap-0.5 bg-slate-950 text-amber-400 text-[8px] font-black px-1.5 py-0.5 rounded-full border border-emerald-500/40 shadow-sm">
-          <Star size={9} className="fill-amber-400 text-amber-400" />
-          <span className="text-white">5.0</span>
+        {/* Fiverr Vector Icon */}
+        <div className="relative flex items-center justify-center">
+          <FiverrIconSvg className="group-hover:rotate-12 transition-transform duration-300 drop-shadow-sm" />
+        </div>
+
+        {/* Rating / Trust Mini Badge */}
+        <div className="absolute top-2.5 right-2.5 w-3 h-3 bg-white rounded-full border-2 border-[#1DBF73] flex items-center justify-center">
+          <div className="w-1.5 h-1.5 bg-[#1DBF73] rounded-full animate-pulse" />
         </div>
       </a>
 
-      {/* Hover Info Tooltip */}
-      <div className="absolute bottom-full left-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-1 group-hover:translate-y-0 hidden sm:block">
+      {/* Hover Info Tooltip (Aligned to Right) */}
+      <div className="absolute bottom-full right-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-1 group-hover:translate-y-0 hidden sm:block">
         <div className="bg-slate-900/95 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-xl border border-emerald-500/30 shadow-2xl whitespace-nowrap flex items-center gap-1.5">
           <ShieldCheck size={13} className="text-emerald-400" />
-          <span>Fiverr Verified Seller • 100% Buyer Protection</span>
+          <span>Fiverr Verified Seller • 100% Escrow Protection</span>
         </div>
       </div>
     </div>

@@ -48,8 +48,8 @@ const ScrollToTop: React.FC = () => {
         ${isVisible 
           ? 'opacity-100 translate-y-0 scale-100' 
           : 'opacity-0 translate-y-12 scale-50 pointer-events-none'}
-        /* Positioned above WhatsApp */
-        bottom-24 right-6 sm:right-8
+        /* Positioned above Fiverr & WhatsApp */
+        bottom-[9.5rem] sm:bottom-[10rem] right-6 sm:right-8
         /* Theme Colors */
         bg-white/90 dark:bg-slate-900/90 
         border-slate-200 dark:border-white/10
