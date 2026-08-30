@@ -33,7 +33,7 @@ const Home: React.FC = () => {
     <div className="bg-white dark:bg-slate-950 w-full overflow-x-hidden transition-colors duration-300">
 
       {/* ═══════════════════════ 1. HERO SECTION ═══════════════════════ */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative flex items-center justify-center pt-20 sm:pt-24 pb-8 sm:pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden">
 
         {/* Ambient Glow & Grid Layer */}
         <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -259,16 +259,49 @@ const Home: React.FC = () => {
             </div>
 
           </div>
+
+          {/* ── Modern Tech Stack Trust Strip (fills dead gap seamlessly) ── */}
+          <div className="pt-10 sm:pt-12 mt-6 border-t border-slate-100 dark:border-white/5">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping" />
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500">
+                  Core Technologies &amp; Systems
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center md:justify-end gap-2 sm:gap-2.5">
+                {[
+                  { name: 'Python', tag: 'AI & Automation' },
+                  { name: 'React.js', tag: 'Frontend' },
+                  { name: 'n8n & Zapier', tag: 'Workflows' },
+                  { name: 'OpenAI & RAG', tag: 'LLM Agents' },
+                  { name: 'FastAPI / Django', tag: 'Backend' },
+                  { name: 'PostgreSQL', tag: 'Database' },
+                  { name: 'Tailwind CSS', tag: 'UI Design' },
+                ].map(tech => (
+                  <span
+                    key={tech.name}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-white/5 text-[10.5px] font-bold text-slate-700 dark:text-slate-300 shadow-2xs hover:border-indigo-400 dark:hover:border-indigo-500/40 transition-colors"
+                  >
+                    <span className="font-extrabold text-slate-900 dark:text-white">{tech.name}</span>
+                    <span className="text-[8.5px] text-slate-400 dark:text-slate-500 font-medium">({tech.tag})</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
       {/* ═══════════════════════ 2. CORE SERVICES ═══════════════════════ */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50/60 dark:bg-slate-900/20 border-t border-slate-100 dark:border-white/5" aria-labelledby="services-heading">
+      <section className="pt-10 sm:pt-14 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 bg-slate-50/60 dark:bg-slate-900/20 border-t border-slate-100 dark:border-white/5" aria-labelledby="services-heading">
         <div className="max-w-7xl mx-auto">
 
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
             <div>
-              <p className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-2 flex items-center gap-1.5">
+              <p className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em] mb-1.5 flex items-center gap-1.5">
                 <Flame size={13} className="text-amber-500" />
                 What I Build
               </p>
