@@ -16,6 +16,7 @@ import {
 import OptimizedImage from '../components/OptimizedImage';
 import GoogleVerifiedBadge, { GoogleGIcon } from '../components/GoogleVerifiedBadge';
 import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
+import DataScraperTool from '../components/DataScraperTool';
 
 /* ─── Service icon map ───────────────────────────────────────────────────── */
 const SVC_ICONS = [
@@ -130,66 +131,66 @@ const Home: React.FC = () => {
 
             </div>
 
-            {/* RIGHT: Glassmorphism Live Dashboard HUD (5 Cols) */}
+            {/* RIGHT: Glassmorphism Live Dashboard HUD (Compact & Balanced) */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end w-full">
-              <div className="relative w-full max-w-[430px]">
-                <div className="absolute -inset-4 bg-gradient-to-tr from-indigo-500/15 to-violet-500/10 rounded-[3rem] blur-3xl pointer-events-none" />
+              <div className="relative w-full max-w-[340px]">
+                <div className="absolute -inset-3 bg-gradient-to-tr from-indigo-500/15 to-violet-500/10 rounded-3xl blur-2xl pointer-events-none" />
 
-                <div className="relative bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-[2.25rem] border border-slate-200/80 dark:border-white/10 shadow-2xl p-6 sm:p-7 space-y-5">
+                <div className="relative bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl border border-slate-200/80 dark:border-white/10 shadow-xl p-4 sm:p-5 space-y-3.5">
 
                   {/* Card Header: Live Dashboard */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                        <TrendingUp size={16} />
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                        <TrendingUp size={14} />
                       </div>
                       <div>
-                        <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Live Dashboard</p>
-                        <h2 className="text-sm font-outfit font-black text-slate-900 dark:text-white">Project Results</h2>
+                        <p className="text-[7.5px] font-black text-slate-400 uppercase tracking-widest">Live Dashboard</p>
+                        <h2 className="text-xs font-outfit font-black text-slate-900 dark:text-white">Project Results</h2>
                       </div>
                     </div>
-                    <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-500/30 text-[9px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">
+                    <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-500/30 text-[8px] font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Live
                     </span>
                   </div>
 
-                  {/* Total Value Gradient Banner */}
-                  <div className="rounded-2xl bg-gradient-to-br from-indigo-600 via-indigo-600 to-violet-600 p-5 relative overflow-hidden text-white shadow-md">
-                    <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-white/5 rounded-full blur-sm pointer-events-none" />
-                    <p className="text-[9px] font-black text-indigo-200 uppercase tracking-widest mb-1">Total Value Delivered</p>
-                    <p className="text-4xl font-outfit font-black text-white">₹2L+</p>
-                    <p className="text-[10px] text-indigo-100 mt-1 flex items-center gap-1.5">
-                      <CheckCircle2 size={12} className="text-emerald-300" />
-                      <span>Across 10+ real client deliverables</span>
+                  {/* Total Value Gradient Banner (Compact) */}
+                  <div className="rounded-xl bg-gradient-to-br from-indigo-600 via-indigo-600 to-violet-600 p-3.5 relative overflow-hidden text-white shadow-md">
+                    <div className="absolute -right-4 -bottom-4 w-20 h-20 bg-white/5 rounded-full blur-sm pointer-events-none" />
+                    <p className="text-[8px] font-black text-indigo-200 uppercase tracking-widest">Total Value Delivered</p>
+                    <p className="text-2xl sm:text-3xl font-outfit font-black text-white leading-tight mt-0.5">₹2L+</p>
+                    <p className="text-[9px] text-indigo-100 mt-0.5 flex items-center gap-1">
+                      <CheckCircle2 size={11} className="text-emerald-300" />
+                      <span>Across 10+ client deliverables</span>
                     </p>
                   </div>
 
-                  {/* 4 Metric Tiles */}
-                  <div className="grid grid-cols-2 gap-2.5">
+                  {/* 4 Metric Tiles (Compact) */}
+                  <div className="grid grid-cols-2 gap-2">
                     {[
-                      { icon: <CheckCircle2 size={14} className="text-emerald-500" />, v: '10+',  l: 'Projects',  bg: 'bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-100 dark:border-emerald-500/10' },
-                      { icon: <Star size={14} className="text-amber-400 fill-amber-400" />,       v: '4.0★', l: 'Rating', bg: 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-100 dark:border-amber-500/10' },
-                      { icon: <Zap size={14} className="text-violet-500" />,                      v: '10h+', l: 'Saved/Wk', bg: 'bg-violet-50/70 dark:bg-violet-950/30 border-violet-100 dark:border-violet-500/10' },
-                      { icon: <ShieldCheck size={14} className="text-blue-500" />,                v: '< 1 Hr', l: 'Response', bg: 'bg-blue-50/70 dark:bg-blue-950/30 border-blue-100 dark:border-blue-500/10' },
+                      { icon: <CheckCircle2 size={12} className="text-emerald-500" />, v: '10+',  l: 'Projects',  bg: 'bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-100 dark:border-emerald-500/10' },
+                      { icon: <Star size={12} className="text-amber-400 fill-amber-400" />,       v: '4.0★', l: 'Rating', bg: 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-100 dark:border-amber-500/10' },
+                      { icon: <Zap size={12} className="text-violet-500" />,                      v: '10h+', l: 'Saved/Wk', bg: 'bg-violet-50/70 dark:bg-violet-950/30 border-violet-100 dark:border-violet-500/10' },
+                      { icon: <ShieldCheck size={12} className="text-blue-500" />,                v: '< 1 Hr', l: 'Response', bg: 'bg-blue-50/70 dark:bg-blue-950/30 border-blue-100 dark:border-blue-500/10' },
                     ].map(({ icon, v, l, bg }) => (
-                      <div key={l} className={`flex items-center gap-3 p-3 rounded-xl border ${bg}`}>
+                      <div key={l} className={`flex items-center gap-2 p-2 rounded-lg border ${bg}`}>
                         {icon}
                         <div className="min-w-0">
-                          <p className="text-sm font-outfit font-extrabold text-slate-900 dark:text-white leading-tight">{v}</p>
-                          <p className="text-[7.5px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider truncate">{l}</p>
+                          <p className="text-xs font-outfit font-extrabold text-slate-900 dark:text-white leading-tight">{v}</p>
+                          <p className="text-[7px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider truncate">{l}</p>
                         </div>
                       </div>
                     ))}
                   </div>
 
                   {/* Recent Clients Initial Badges */}
-                  <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-white/5">
-                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Recent clients</span>
-                    <div className="flex -space-x-2">
+                  <div className="flex items-center justify-between pt-1.5 border-t border-slate-100 dark:border-white/5">
+                    <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Recent clients</span>
+                    <div className="flex -space-x-1.5">
                       {['RM','PS','AR','KP','VN'].map((init, i) => (
                         <div
                           key={i}
-                          className="w-7 h-7 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-white font-black text-[7.5px] shadow-2xs"
+                          className="w-6 h-6 rounded-full border border-white dark:border-slate-900 flex items-center justify-center text-white font-black text-[7px] shadow-xs"
                           style={{ background: ['#6366f1','#10b981','#8b5cf6','#f59e0b','#3b82f6'][i] }}
                           title={`Client ${init}`}
                         >
@@ -199,62 +200,52 @@ const Home: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* ── Official Google Business Verified QR Subcard ── */}
-                  <div className="pt-2 border-t border-slate-100 dark:border-white/5">
-                    <div className="p-3.5 bg-gradient-to-r from-blue-50/70 via-indigo-50/50 to-emerald-50/60 dark:from-slate-800/80 dark:to-slate-800/50 border border-slate-200/80 dark:border-white/10 rounded-2xl flex items-center gap-3.5">
+                  {/* ── Official Google Business Verified QR Subcard (Compact) ── */}
+                  <div className="pt-1.5 border-t border-slate-100 dark:border-white/5">
+                    <div className="p-2.5 bg-gradient-to-r from-blue-50/70 via-indigo-50/50 to-emerald-50/60 dark:from-slate-800/80 dark:to-slate-800/50 border border-slate-200/80 dark:border-white/10 rounded-xl flex items-center gap-2.5">
                       {/* Clickable QR code */}
                       <button
                         type="button"
                         onClick={() => setQrModalOpen(true)}
                         title="Click to scan or enlarge Google QR code"
-                        className="relative w-14 h-14 bg-white p-1 rounded-xl border border-slate-200 dark:border-white/10 shrink-0 cursor-pointer shadow-xs hover:scale-105 transition-transform group text-left"
+                        className="relative w-11 h-11 bg-white p-0.5 rounded-lg border border-slate-200 dark:border-white/10 shrink-0 cursor-pointer shadow-xs hover:scale-105 transition-transform group text-left"
                       >
                         <img
                           src="/google-business-qr.png"
                           alt="Tushar Singh freelancing - Google Business Profile QR"
-                          className="w-full h-full object-contain rounded-lg"
+                          className="w-full h-full object-contain rounded-md"
                         />
-                        <div className="absolute inset-0 bg-slate-950/30 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <QrCode size={16} className="text-white drop-shadow" />
+                        <div className="absolute inset-0 bg-slate-950/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <QrCode size={13} className="text-white drop-shadow" />
                         </div>
                       </button>
 
                       {/* QR Details */}
                       <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-1.5 mb-0.5">
-                          <GoogleGIcon size={13} />
-                          <span className="text-[7.5px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/80 px-1.5 py-0.5 rounded">
+                        <div className="flex items-center gap-1 mb-0.5">
+                          <GoogleGIcon size={11} />
+                          <span className="text-[7px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/80 px-1 py-0.2 rounded">
                             Google Verified
                           </span>
                         </div>
-                        <p className="text-xs font-outfit font-extrabold text-slate-900 dark:text-white truncate">
+                        <p className="text-[11px] font-outfit font-extrabold text-slate-900 dark:text-white truncate">
                           {GOOGLE_BUSINESS_NAME}
                         </p>
-                        <div className="flex items-center gap-2 mt-1.5">
+                        <div className="flex items-center gap-1.5 mt-1">
                           <a
                             href={GOOGLE_BUSINESS_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[9px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-0.5"
+                            className="text-[8px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-0.5"
                           >
                             <span>Profile</span>
-                            <ExternalLink size={8} />
-                          </a>
-                          <span className="text-slate-300 dark:text-slate-700">•</span>
-                          <a
-                            href={GOOGLE_VERIFICATION_PROOF_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[9px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-0.5"
-                          >
-                            <span>Proof</span>
-                            <Award size={8} />
+                            <ExternalLink size={7} />
                           </a>
                           <span className="text-slate-300 dark:text-slate-700">•</span>
                           <button
                             type="button"
                             onClick={() => setQrModalOpen(true)}
-                            className="text-[9px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white cursor-pointer"
+                            className="text-[8px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white cursor-pointer"
                           >
                             Scan QR
                           </button>
@@ -334,6 +325,27 @@ const Home: React.FC = () => {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ 2.5 INTERACTIVE DATA SCRAPING TOOL ═══════════════════════ */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/50 dark:bg-slate-900/40 border-t border-slate-200/60 dark:border-white/5">
+        <div className="max-w-5xl mx-auto space-y-6 text-center">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-500/30 text-[10px] font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
+            <Sparkles size={12} className="text-indigo-500" />
+            <span>Interactive Live Automation Tool</span>
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-950 dark:text-white tracking-tight">
+            Free Automatic Data &amp; Lead Scraper
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto font-medium">
+            Test the power of data automation in real time. Paste any messy web text, directory dump, or contacts snippet to extract verified emails, phone numbers, and URLs.
+          </p>
+
+          <div className="pt-4">
+            <DataScraperTool />
           </div>
         </div>
       </section>
