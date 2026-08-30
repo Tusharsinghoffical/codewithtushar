@@ -60,9 +60,6 @@ const PostCard: React.FC<{ post: BlogPost; featured?: boolean }> = ({ post, feat
               {ICON_MAP[post.icon] || <BookOpen size={13} />}
               <span>{post.category}</span>
             </span>
-            <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1">
-              <Clock size={12} /> 5 min read
-            </span>
           </div>
 
           <h2 className={`font-outfit font-black text-slate-950 dark:text-white mb-3 leading-snug group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors ${
@@ -150,9 +147,6 @@ const PostView: React.FC<{ post: BlogPost }> = ({ post }) => {
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <Clock size={13} /> 5 Min Read
-              </span>
               <SharePageButton
                 title={post.title}
                 text={post.excerpt}
