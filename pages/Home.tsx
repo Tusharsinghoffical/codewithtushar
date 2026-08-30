@@ -16,7 +16,6 @@ import {
 import OptimizedImage from '../components/OptimizedImage';
 import GoogleVerifiedBadge, { GoogleGIcon } from '../components/GoogleVerifiedBadge';
 import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
-import DataScraperTool from '../components/DataScraperTool';
 
 /* ─── Service icon map ───────────────────────────────────────────────────── */
 const SVC_ICONS = [
@@ -358,27 +357,6 @@ const Home: React.FC = () => {
                 </div>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════ 2.5 INTERACTIVE DATA SCRAPING TOOL ═══════════════════════ */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/50 dark:bg-slate-900/40 border-t border-slate-200/60 dark:border-white/5">
-        <div className="max-w-5xl mx-auto space-y-6 text-center">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-500/30 text-[10px] font-black uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
-            <Sparkles size={12} className="text-indigo-500" />
-            <span>Interactive Live Automation Tool</span>
-          </div>
-
-          <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-950 dark:text-white tracking-tight">
-            Free Automatic Data &amp; Lead Scraper
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto font-medium">
-            Test the power of data automation in real time. Paste any messy web text, directory dump, or contacts snippet to extract verified emails, phone numbers, and URLs.
-          </p>
-
-          <div className="pt-4">
-            <DataScraperTool />
           </div>
         </div>
       </section>
