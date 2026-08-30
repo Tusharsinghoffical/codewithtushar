@@ -336,10 +336,10 @@ export const AIChatAssistant: React.FC = () => {
             onClick={handleOpen}
             aria-label="Open AI Assistant Chatbot"
             title="Ask AI Assistant about Services, Projects & In-Chat Booking"
-            className="group relative flex items-center gap-0 hover:gap-3 bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-700 hover:from-indigo-500 hover:to-violet-600 text-white rounded-full p-3.5 sm:p-4 shadow-[0_15px_40px_rgba(99,102,241,0.4)] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) active:scale-95 border border-indigo-400/30"
+            className="group relative flex items-center gap-0 hover:gap-3 bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 hover:from-violet-500 hover:via-indigo-500 hover:to-cyan-400 text-white rounded-full p-3.5 sm:p-4 shadow-[0_12px_40px_rgba(99,102,241,0.45)] hover:shadow-[0_18px_50px_rgba(99,102,241,0.65)] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) active:scale-95 border-2 border-indigo-200/40 backdrop-blur-xl"
           >
-            {/* Animated Pulse Wave */}
-            <div className="absolute inset-0 bg-indigo-500 rounded-full animate-ping opacity-25 scale-110 pointer-events-none" />
+            {/* Animated Multi-color Pulse Wave */}
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-cyan-400 rounded-full animate-ping opacity-25 scale-110 pointer-events-none" />
 
             {/* AI Assistant Icon */}
             <div className="relative flex items-center justify-center">
@@ -349,16 +349,16 @@ export const AIChatAssistant: React.FC = () => {
             {/* Expandable Label */}
             <div className="overflow-hidden max-w-0 group-hover:max-w-[200px] transition-all duration-500 ease-in-out whitespace-nowrap">
               <div className="flex items-center gap-1.5 pr-2">
-                <span className="text-[11px] font-black uppercase tracking-wider font-outfit text-white">
+                <span className="text-[11px] font-black uppercase tracking-wider font-outfit text-white drop-shadow-sm">
                   Ask AI Assistant
                 </span>
                 <Sparkles size={13} className="text-amber-300 animate-pulse shrink-0" />
               </div>
             </div>
 
-            {/* Unread Badge / Online Indicator */}
-            <div className="absolute -top-1.5 -right-1.5 flex items-center gap-0.5 bg-emerald-500 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full border-2 border-slate-900 shadow-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            {/* Glowing Live AI Badge */}
+            <div className="absolute -top-1.5 -right-1.5 flex items-center gap-0.5 bg-slate-950 text-cyan-300 text-[8px] font-black px-2 py-0.5 rounded-full border border-cyan-400/50 shadow-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
               <span>AI 24/7</span>
             </div>
           </button>
