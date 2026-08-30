@@ -60,9 +60,9 @@ export const SaaS: React.FC = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-outfit font-black tracking-tight text-slate-950 leading-[1.08]">
-            Something Disruptive is <br className="hidden sm:block" />
-            <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-cyan-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-outfit font-black tracking-tight text-slate-950 leading-[1.15]">
+            <span className="block">Something Disruptive is</span>
+            <span className="block bg-gradient-to-r from-indigo-600 via-violet-600 to-cyan-600 bg-clip-text text-transparent mt-1">
               Coming 1 September 2026.
             </span>
           </h1>
