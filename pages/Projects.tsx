@@ -173,7 +173,17 @@ const Projects: React.FC = () => {
         setSelected(found);
       }
     }
-  }, [searchParams]);
+
+    const cat = searchParams.get('category');
+    if (cat) {
+      if (cat.toLowerCase() === 'saas' || cat.toLowerCase() === 'saas products' || cat === 'Web Dev' || cat === 'Web+Dev') {
+        setActiveCategory('Web Dev');
+      } else {
+        const matched = categories.find(c => c.toLowerCase() === cat.toLowerCase());
+        if (matched) setActiveCategory(matched);
+      }
+    }
+  }, [searchParams, categories]);
 
   const openProject = (p: Project) => {
     setSelected(p);
