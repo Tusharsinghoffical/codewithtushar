@@ -565,35 +565,34 @@ const Home: React.FC = () => {
       </section>
 
       {/* ═══════════════════════ 7. FREE AI AUDIT BANNER ═══════════════════════ */}
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-700 overflow-hidden">
-        {/* BG */}
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]" />
-        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-violet-900/20 rounded-full blur-3xl" />
+      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50 border-y border-slate-200/80 overflow-hidden">
+        {/* Subtle Ambient BG */}
+        <div className="absolute top-0 left-1/4 w-[450px] h-[350px] bg-indigo-100/70 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] bg-violet-100/60 rounded-full blur-3xl pointer-events-none -z-10" />
 
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="bg-slate-950 rounded-[2.5rem] p-8 sm:p-14 border border-white/10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="bg-white rounded-[2.5rem] p-8 sm:p-14 border border-slate-200 shadow-xl shadow-indigo-900/5 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 
             {/* Left (7 cols) */}
             <div className="lg:col-span-7 text-left space-y-5">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-[9px] font-black uppercase tracking-widest">
-                <Sparkles size={12} /> Free Offer
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/70 text-indigo-700 text-[10px] font-black uppercase tracking-widest">
+                <Sparkles size={13} className="text-indigo-600" /> Free Offer
               </span>
-              <h2 className="text-3xl sm:text-4xl font-outfit font-black text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-black text-slate-950 leading-tight">
                 Get a Free AI Automation Audit
               </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                I'll review your current manual processes and show you exactly where AI can save <strong className="text-white font-bold">10+ hours per week</strong> — no strings attached.
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                I'll review your current manual processes and show you exactly where AI can save <strong className="text-slate-950 font-bold">10+ hours per week</strong> — no strings attached.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4 pt-2">
                 <Link
                   to="/contact"
-                  className="px-8 py-4 bg-white text-slate-950 rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl active:scale-95"
+                  className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-indigo-600/25 active:scale-95 cursor-pointer"
                 >
                   Claim Free Audit
                 </Link>
-                <span className="flex items-center gap-2 text-xs text-white/70 font-semibold self-center">
-                  <CheckCircle2 size={15} className="text-emerald-400" /> 4 slots left this month
+                <span className="flex items-center gap-2 text-xs text-slate-600 font-semibold self-center">
+                  <CheckCircle2 size={16} className="text-emerald-600" /> 4 slots left this month
                 </span>
               </div>
             </div>
@@ -606,13 +605,13 @@ const Home: React.FC = () => {
                 { icon: <TrendingUp size={18} />, t: 'ROI Forecast', d: 'Calculate potential gains' },
                 { icon: <Zap size={18} />, t: 'Action Plan', d: 'Custom roadmap to automate' },
               ].map(({ icon, t, d }) => (
-                <div key={t} className="p-4 sm:p-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/[0.08] transition-all group text-left flex flex-col justify-between">
+                <div key={t} className="p-4 sm:p-5 bg-slate-50/90 border border-slate-200/80 rounded-2xl hover:bg-slate-100 hover:border-indigo-200 transition-all group text-left flex flex-col justify-between">
                   <div>
-                    <div className="w-10 h-10 bg-indigo-600/80 rounded-xl flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform shadow-xs">
+                    <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform shadow-xs">
                       {icon}
                     </div>
-                    <p className="text-white font-bold text-sm mb-1">{t}</p>
-                    <p className="text-slate-400 text-xs">{d}</p>
+                    <p className="text-slate-950 font-bold text-sm mb-1">{t}</p>
+                    <p className="text-slate-500 text-xs leading-relaxed">{d}</p>
                   </div>
                 </div>
               ))}
@@ -622,24 +621,24 @@ const Home: React.FC = () => {
       </section>
 
       {/* ═══════════════════════ 8. FINAL CTA ═══════════════════════ */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-950 relative overflow-hidden" aria-labelledby="cta-heading">
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden" aria-labelledby="cta-heading">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-600/15 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-indigo-100/60 via-violet-100/50 to-sky-100/60 rounded-full blur-[130px]" />
         </div>
 
         <div className="max-w-3xl mx-auto text-center relative z-10 space-y-8">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-[10.5px] font-black uppercase tracking-widest shadow-xs">
             <Sparkles size={13} /> Ready to Start?
           </span>
 
-          <h2 id="cta-heading" className="text-3xl sm:text-5xl font-outfit font-black text-white tracking-tight leading-tight">
+          <h2 id="cta-heading" className="text-3xl sm:text-5xl font-outfit font-black text-slate-950 tracking-tight leading-tight">
             Let's Build Something <br />
-            <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent bg-[length:200%] animate-gradient-flow">
+            <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 bg-clip-text text-transparent">
               Intelligent Together.
             </span>
           </h2>
 
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
             Available for AI automation, web development &amp; technical consulting worldwide.
             Let's discuss your project.
           </p>
@@ -647,7 +646,7 @@ const Home: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               to="/contact"
-              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-950 rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:bg-indigo-50 hover:scale-105 transition-all shadow-xl active:scale-95"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-indigo-600/20 active:scale-95"
             >
               <span>Start a Project</span>
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
@@ -656,7 +655,7 @@ const Home: React.FC = () => {
               href={FIVERR_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl active:scale-95"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-[#1DBF73]/20 active:scale-95"
             >
               <FiverrIcon size={16} className="brightness-125" />
               <span>Order on Fiverr</span>
@@ -664,13 +663,13 @@ const Home: React.FC = () => {
             </a>
             <Link
               to="/services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all active:scale-95"
             >
               View Services
             </Link>
           </div>
 
-          <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">
+          <p className="text-slate-400 text-[10.5px] font-bold uppercase tracking-widest">
             Available Mon–Sat · India &amp; Worldwide
           </p>
         </div>

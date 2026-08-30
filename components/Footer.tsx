@@ -57,19 +57,19 @@ export const Footer: React.FC = () => {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-gradient-to-t from-indigo-950/25 via-slate-900/10 to-transparent blur-[140px]" />
       </div>
 
-      {/* ── 1. TOP ACTION BANNER (SIMPLE ENGLISH) ──────────────── */}
-      <div className="border-b border-slate-800/80 py-9 px-4 sm:px-6 lg:px-8 bg-slate-900/40 backdrop-blur-md">
+      {/* ── 1. TOP ACTION BANNER (CLEAN WHITE THEME) ─────────── */}
+      <div className="border-b border-slate-200/80 py-10 px-4 sm:px-6 lg:px-8 bg-white text-slate-900 shadow-xs">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
           
           <div className="space-y-2 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/80 border border-indigo-500/30 text-[11px] font-bold text-indigo-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-[11px] font-bold text-indigo-700">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Open for New Projects &amp; Free Strategy Calls</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-outfit font-black text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-outfit font-black text-slate-950 tracking-tight">
               Want to automate your business or build a custom app?
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl">
+            <p className="text-xs sm:text-sm text-slate-600 max-w-xl leading-relaxed">
               Free 30-minute consultation · Quick reply in under 1 hour · 100% safe with escrow payment options.
             </p>
           </div>
@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
               href="https://wa.me/918851619647?text=Hi%20Tushar,%20I%20want%20to%20discuss%20a%20new%20project%20for%20my%20business!"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-outfit font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-emerald-600/20 active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-outfit font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-emerald-600/20 active:scale-95 cursor-pointer"
             >
               <Phone size={14} />
               <span>WhatsApp Message</span>
@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
               href={FIVERR_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3.5 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-xl font-outfit font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-[#1DBF73]/20 active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-3.5 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-xl font-outfit font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-[#1DBF73]/20 active:scale-95 cursor-pointer"
             >
               <FiverrIcon size={14} className="brightness-125" />
               <span>Hire on Fiverr</span>
@@ -100,7 +100,7 @@ export const Footer: React.FC = () => {
             <Link
               to="/contact"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-outfit font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-indigo-600/20 active:scale-95"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-outfit font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-indigo-600/20 active:scale-95 cursor-pointer"
             >
               <span>Book Free Call</span>
               <ArrowUpRight size={13} />
