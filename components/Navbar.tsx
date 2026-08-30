@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
     { label: 'Home', path: '/' },
     { label: 'Services', path: '/services' },
     { label: 'Projects', path: '/projects' },
-    { label: 'SaaS Products', path: '/projects?category=Web+Dev' },
+    { label: 'SaaS', path: '/saas' },
     { label: 'Blog', path: '/blog' },
     { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' },
@@ -90,24 +90,22 @@ const Navbar: React.FC = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1 px-2">
             {navItems.map((item) => {
-              const currentFull = location.pathname + location.search;
-              const isActive = item.path.includes('?')
-                ? currentFull === item.path
-                : location.pathname === item.path && !location.search;
+              const isActive = location.pathname === item.path;
 
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-3.5 py-2 rounded-full text-[12.5px] font-semibold tracking-tight transition-all duration-300 flex items-center gap-1.5 ${isActive
+                  className={`px-4 py-2.5 rounded-full text-[13px] font-semibold tracking-tight transition-all duration-300 flex items-center gap-1.5 ${isActive
                       ? 'bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-lg'
                       : 'text-slate-950 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-white/5'
                     }`}
                 >
                   <span>{item.label}</span>
-                  {item.label === 'SaaS Products' && (
-                    <span className="px-1.5 py-0.2 rounded-full text-[8.5px] font-black uppercase bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300">
-                      SaaS
+                  {item.label === 'SaaS' && (
+                    <span className="relative flex h-1.5 w-1.5 ml-0.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-500" />
                     </span>
                   )}
                 </Link>

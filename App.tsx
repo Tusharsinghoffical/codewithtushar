@@ -16,6 +16,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
+import SaaS from './pages/SaaS';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
 import Blog, { BLOG_POSTS } from './pages/Blog';
@@ -625,6 +626,12 @@ const App: React.FC = () => {
               description="🏆 Explore 10+ commercial client projects delivered by Tushar Singh: AI automation workflows, smart conversational bots, SaaS dashboards, and web platforms with measurable ROI. View live deliverables."
               keywords="AI automation projects India, web development portfolio India, chatbot projects India, developer portfolio Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer portfolio, freelance projects India"
             ><Projects /></PageWrapper>} />
+
+            <Route path="/saas" element={<PageWrapper
+              title="Next-Gen AI SaaS Platforms — Coming Soon | Tushar Singh Labs"
+              description="🚀 Disruptive autonomous AI SaaS suites by Tushar Singh Labs. Early VIP beta access, live countdown, and preview of upcoming enterprise automation tools."
+              keywords="AI SaaS products, next gen SaaS tools, autonomous lead generation AI, enterprise RAG bot SaaS, OCR invoice AI pipeline, Tushar Singh software suites"
+            ><SaaS /></PageWrapper>} />
 
             <Route path="/blog" element={<PageWrapper
               title="AI Automation & Full-Stack Engineering Blog | Tushar Singh"

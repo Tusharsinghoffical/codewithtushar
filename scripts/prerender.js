@@ -135,6 +135,24 @@ const pages = [
     }
   },
   {
+    path: '/saas',
+    title: 'Next-Gen AI SaaS Platforms — Coming Soon | Tushar Singh Labs',
+    description: '🚀 Disruptive autonomous AI SaaS suites by Tushar Singh Labs. Early VIP beta access, live countdown, and preview of upcoming enterprise automation tools.',
+    keywords: `AI SaaS products, next gen SaaS tools, autonomous lead generation AI, enterprise RAG bot SaaS, OCR invoice AI pipeline, Tushar Singh software suites, ${INDIA_STATES_KEYWORDS}`,
+    type: 'website',
+    image: DEFAULT_IMAGE,
+    alt: 'Next-Gen AI SaaS Platforms by Tushar Singh Labs — Coming Soon',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/saas#webpage`,
+      "url": `${SITE_URL}/saas`,
+      "name": "Next-Gen AI SaaS Platforms — Coming Soon",
+      "description": "Exclusive sneak peek and VIP early beta waitlist for upcoming autonomous AI SaaS suites by Tushar Singh Labs.",
+      "author": { "@id": `${SITE_URL}/#person` }
+    }
+  },
+  {
     path: '/blog',
     title: 'AI Automation & Full-Stack Engineering Blog | Tushar Singh',
     description: '💡 Actionable guides on AI automation, n8n workflows, RAG conversational chatbots & full-stack development — written from real production experience by Tushar Singh.',
