@@ -1,42 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Rocket, Sparkles, Zap, Bot, ShieldCheck, ArrowRight,
-  CheckCircle2, Bell, Lock, Cpu, Globe, Layers, Star,
-  Terminal, Flame, Send, Check
+  Rocket, Sparkles, ShieldCheck, Lock, Star, ArrowRight,
+  Zap, Bot, Layers, CheckCircle2
 } from 'lucide-react';
-import { FIVERR_PROFILE_URL } from '../constants';
-import { FiverrBadge } from '../components/FiverrBadge';
-
-const UPCOMING_PRODUCTS = [
-  {
-    id: 'autolead',
-    name: 'AutoLead AI Studio',
-    badge: 'In Private Beta',
-    icon: <Zap className="text-amber-400" size={24} />,
-    tagline: 'Autonomous Multichannel Lead Machine',
-    description: 'Finds, verifies, enriches, and initiates AI-personalized email & LinkedIn outreach on complete autopilot.',
-    specs: ['99.4% Email Accuracy', 'Bypass Spam Filters', 'n8n Native Sync']
-  },
-  {
-    id: 'omnibot',
-    name: 'OmniBot RAG Orchestrator',
-    badge: 'Under Development',
-    icon: <Bot className="text-cyan-400" size={24} />,
-    tagline: '24/7 Multi-Tenant Business Brain',
-    description: 'Connects all private company documentation, SQL databases, and CRM to answer client queries in milliseconds.',
-    specs: ['Sub-100ms Inference', 'WhatsApp & Webhook API', 'Enterprise Guardrails']
-  },
-  {
-    id: 'docuflow',
-    name: 'DocuFlow Agentic Pipeline',
-    badge: 'Q3 Launch',
-    icon: <Cpu className="text-indigo-400" size={24} />,
-    tagline: 'Intelligent Document & Invoice Extractor',
-    description: 'Converts unstructured PDFs, scanned bills, and complex contracts into clean SQL & JSON databases with 0 human effort.',
-    specs: ['99.9% OCR Precision', 'Automated Tally/ERP Sync', 'Multi-Language Support']
-  }
-];
 
 const TARGET_DATE = new Date('2026-09-01T00:00:00+05:30').getTime();
 
@@ -57,7 +24,6 @@ const calculateTimeLeft = () => {
 };
 
 export const SaaS: React.FC = () => {
-  const [hoveredProduct, setHoveredProduct] = useState<string | null>('autolead');
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
@@ -68,7 +34,7 @@ export const SaaS: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white relative overflow-hidden flex flex-col justify-between pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-950 text-white relative overflow-hidden flex flex-col justify-between pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       
       {/* ── Dynamic Sci-Fi Animated Grid & Ambient Lights ── */}
       <div className="absolute inset-0 pointer-events-none -z-10">
@@ -77,7 +43,7 @@ export const SaaS: React.FC = () => {
         <div className="absolute inset-0 opacity-[0.04] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
       </div>
 
-      <div className="max-w-5xl mx-auto w-full space-y-12 sm:space-y-16 text-center z-10">
+      <div className="max-w-4xl mx-auto w-full space-y-12 sm:space-y-16 text-center z-10 my-auto">
         
         {/* ── 1. Holographic Header ── */}
         <div className="space-y-6">
@@ -127,62 +93,7 @@ export const SaaS: React.FC = () => {
           </div>
         </div>
 
-        {/* ── 3. Sneak-Peek Interactive Products Teaser ── */}
-        <div className="space-y-6 text-left">
-          <div className="text-center">
-            <h2 className="text-xs font-black uppercase tracking-[0.3em] text-indigo-400">
-              Under Active Development
-            </h2>
-            <p className="text-xl sm:text-2xl font-outfit font-black text-white mt-1">
-              Sneak Peek at Upcoming Suites
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {UPCOMING_PRODUCTS.map((prod) => (
-              <div
-                key={prod.id}
-                onMouseEnter={() => setHoveredProduct(prod.id)}
-                className={`relative p-6 sm:p-7 rounded-3xl border transition-all duration-300 flex flex-col justify-between backdrop-blur-xl ${
-                  hoveredProduct === prod.id
-                    ? 'bg-slate-900 border-indigo-400 shadow-2xl shadow-indigo-500/20 scale-[1.02]'
-                    : 'bg-slate-900/50 border-white/10 hover:border-white/20'
-                }`}
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-slate-950 border border-white/10 flex items-center justify-center shadow-lg">
-                      {prod.icon}
-                    </div>
-                    <span className="px-2.5 py-1 rounded-full bg-indigo-950/80 border border-indigo-500/40 text-[9px] font-black text-indigo-300 uppercase tracking-wider">
-                      {prod.badge}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-outfit font-black text-white">{prod.name}</h3>
-                    <p className="text-[11px] font-bold text-indigo-300 uppercase tracking-wide mt-0.5">{prod.tagline}</p>
-                  </div>
-
-                  <p className="text-xs text-slate-300 leading-relaxed font-medium">
-                    {prod.description}
-                  </p>
-                </div>
-
-                <div className="pt-5 mt-5 border-t border-white/5 space-y-2">
-                  {prod.specs.map((s, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-[10.5px] text-slate-300 font-semibold">
-                      <CheckCircle2 size={12} className="text-cyan-400 shrink-0" />
-                      <span>{s}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── 4. Early Access VIP Direct WhatsApp Consultation Box ── */}
+        {/* ── 3. Early Access VIP Direct WhatsApp Consultation Box ── */}
         <div className="max-w-2xl mx-auto p-8 sm:p-10 rounded-3xl bg-gradient-to-b from-slate-900 via-indigo-950/50 to-slate-900 border border-indigo-500/40 shadow-2xl space-y-6 text-center">
           <div className="space-y-2">
             <h3 className="text-xl sm:text-3xl font-outfit font-black text-white">
@@ -219,7 +130,7 @@ export const SaaS: React.FC = () => {
           </div>
         </div>
 
-        {/* ── 5. Back Navigation Links ── */}
+        {/* ── 4. Back Navigation Links ── */}
         <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
           <Link
             to="/services"
