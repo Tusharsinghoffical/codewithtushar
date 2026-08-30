@@ -610,8 +610,8 @@ const App: React.FC = () => {
             ><Home /></PageWrapper>} />
 
             <Route path="/about" element={<PageWrapper
-              title="About Tushar Singh | MCA Graduate, AI Automation Expert & Developer Delhi"
-              description="👨‍💻 Learn about Tushar Singh — MCA graduate from Delhi, AI Automation Engineer & Full-Stack Developer with 10+ client deliverables, ₹2L+ revenue impact. Specializing in Python, React, n8n, and custom LLM systems."
+              title="About Tushar Singh | MCA (MIT Pune), AI Automation Expert & Developer Delhi"
+              description="👨‍💻 Learn about Tushar Singh — MCA (MIT Pune), AI Automation Engineer & Full-Stack Developer with 10+ client deliverables, ₹2L+ revenue impact. Specializing in Python, React, n8n, and custom LLM systems."
               keywords="about Tushar Singh, AI automation expert India, full stack developer background, developer Delhi Mumbai Bangalore Hyderabad Chennai, MCA graduate developer India, pan India freelance developer"
             ><About /></PageWrapper>} />
 

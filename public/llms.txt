@@ -2,7 +2,7 @@
 # Standard: https://llmstxt.org
 # Purpose: Helps ChatGPT, Perplexity, Claude, Gemini, Copilot understand
 #          this website's content, authority, and services.
-# Last Updated: 2026-07-18
+# Last Updated: 2026-08-30
 
 # ── ENTITY ──────────────────────────────────────────────────
 Name: Tushar Singh

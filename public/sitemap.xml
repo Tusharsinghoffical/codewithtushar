@@ -6,7 +6,7 @@
   <!-- ═══ 1. HOME PAGE ═══ -->
   <url>
     <loc>https://codewithmrsingh.me/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/"/>
@@ -93,7 +93,7 @@
   <!-- ═══ 4. ABOUT ═══ -->
   <url>
     <loc>https://codewithmrsingh.me/about</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/about"/>
@@ -109,7 +109,7 @@
   <!-- ═══ 5. TESTIMONIALS & REVIEWS ═══ -->
   <url>
     <loc>https://codewithmrsingh.me/testimonials</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/testimonials"/>
@@ -124,7 +124,7 @@
   <!-- ═══ 6. CONTACT ═══ -->
   <url>
     <loc>https://codewithmrsingh.me/contact</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/contact"/>
@@ -142,7 +142,7 @@
   <!-- ═══ 7. BLOG INDEX ═══ -->
   <url>
     <loc>https://codewithmrsingh.me/blog</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/blog"/>
@@ -153,7 +153,7 @@
   <!-- Blog post 1: FAANG Coding Roadmap -->
   <url>
     <loc>https://codewithmrsingh.me/blog/faang-coding-roadmap-150-questions</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/faang-coding-roadmap-150-questions"/>
@@ -162,7 +162,7 @@
   <!-- Blog post 2: n8n Automation Guide -->
   <url>
     <loc>https://codewithmrsingh.me/blog/n8n-automation-guide-beginners-2026</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/n8n-automation-guide-beginners-2026"/>
@@ -171,7 +171,7 @@
   <!-- Blog post 3: AI Chatbot Guide -->
   <url>
     <loc>https://codewithmrsingh.me/blog/ai-chatbot-for-business-complete-guide-2026</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/ai-chatbot-for-business-complete-guide-2026"/>
