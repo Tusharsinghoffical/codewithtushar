@@ -64,7 +64,7 @@ export const LiveVisitorCounter: React.FC = () => {
   const currentActivity = RECENT_ACTIVITIES[currentActivityIndex];
 
   return (
-    <div className="fixed bottom-5 left-5 z-40 flex flex-col items-start gap-2 select-none pointer-events-auto">
+    <div className="fixed bottom-[5.25rem] sm:bottom-24 left-6 sm:left-8 z-[110] flex flex-col items-start gap-2 select-none pointer-events-auto">
       
       {/* ── 1. Floating Real-Time Activity Toast Popup ── */}
       {showToast && (
