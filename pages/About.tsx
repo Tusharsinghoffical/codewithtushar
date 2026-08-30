@@ -49,7 +49,7 @@ const About: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left: Bio Info */}
-            <div className="lg:col-span-8 space-y-5">
+            <div className="lg:col-span-7 space-y-6">
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-outfit font-black tracking-tight text-slate-950 dark:text-white leading-[1.12] speakable">
                 Hi, I'm <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-teal-500 bg-clip-text text-transparent">Tushar Singh</span>.<br />
                 I Build Intelligent Systems That Scale Businesses.
@@ -60,59 +60,84 @@ const About: React.FC = () => {
               </p>
 
               <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-slate-600 dark:text-slate-400">
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5">
                   <GraduationCap size={16} className="text-indigo-500" /> MCA, Delhi University
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <MapPin size={16} className="text-rose-500" /> New Delhi, India (Worldwide Clients)
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5">
+                  <MapPin size={16} className="text-rose-500" /> New Delhi, India
                 </span>
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5">
                   <ShieldCheck size={16} className="text-emerald-500" /> Google &amp; Fiverr Verified
                 </span>
               </div>
             </div>
 
-            {/* Right: Quick Stat Badge Card */}
-            <div className="lg:col-span-4 p-6 rounded-3xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-white/10 shadow-xl space-y-4 backdrop-blur-xl">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white font-outfit font-black text-xl shadow-md">
-                  TS
-                </div>
-                <div>
-                  <h3 className="font-outfit font-black text-base text-slate-950 dark:text-white">Tushar Singh</h3>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Founder, Code with Mr Singh</p>
-                </div>
-              </div>
+            {/* Right: Featured Portrait Photo Card */}
+            <div className="lg:col-span-5 flex flex-col items-center">
+              <div className="relative w-full max-w-sm rounded-3xl p-3 bg-gradient-to-b from-indigo-500/20 via-violet-500/10 to-teal-500/20 border border-indigo-500/30 shadow-2xl shadow-indigo-500/10 backdrop-blur-xl group">
+                
+                {/* Photo Container */}
+                <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-slate-900 shadow-inner">
+                  <picture>
+                    <source srcSet="/tushar-singh.webp" type="image/webp" />
+                    <img
+                      src="/tushar-singh-optimized.jpg"
+                      alt="Tushar Singh — AI Automation Expert & Full-Stack Developer"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </picture>
 
-              <div className="grid grid-cols-2 gap-2.5 pt-2 border-t border-slate-200 dark:border-white/10 text-center">
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5">
-                  <p className="text-xl font-outfit font-black text-indigo-600 dark:text-indigo-400">10+</p>
-                  <p className="text-[8.5px] font-black text-slate-400 uppercase tracking-wider">Client Products</p>
-                </div>
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5">
-                  <p className="text-xl font-outfit font-black text-emerald-600 dark:text-emerald-400">₹2L+</p>
-                  <p className="text-[8.5px] font-black text-slate-400 uppercase tracking-wider">Revenue Impact</p>
-                </div>
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5">
-                  <p className="text-xl font-outfit font-black text-amber-500">4.0 ★</p>
-                  <p className="text-[8.5px] font-black text-slate-400 uppercase tracking-wider">Client Rating</p>
-                </div>
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/60 dark:border-white/5">
-                  <p className="text-xl font-outfit font-black text-teal-500">&lt; 1 Hr</p>
-                  <p className="text-[8.5px] font-black text-slate-400 uppercase tracking-wider">Response Time</p>
-                </div>
-              </div>
+                  {/* Gradient Vignette at Bottom */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
 
-              <a
-                href={FIVERR_PROFILE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#1DBF73] hover:bg-[#19a463] text-white text-xs font-extrabold uppercase tracking-wider transition-all shadow-md active:scale-95"
-              >
-                <FiverrIcon size={14} className="brightness-125" />
-                <span>Hire on Fiverr (Escrow Protected)</span>
-              </a>
+                  {/* Top Live Status Indicator */}
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-emerald-500/40 text-[10px] font-black uppercase tracking-wider text-emerald-400 shadow-lg">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      Available for Hire
+                    </span>
+                  </div>
+
+                  {/* Name Tag Bottom Overlay */}
+                  <div className="absolute bottom-3 left-3 right-3 z-10 text-center space-y-0.5 p-2 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/10">
+                    <p className="font-outfit font-black text-sm text-white">Tushar Singh</p>
+                    <p className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider">AI Engineer &amp; Full-Stack Architect</p>
+                  </div>
+                </div>
+
+                {/* 3 Metric Pills */}
+                <div className="grid grid-cols-3 gap-2 pt-3 text-center">
+                  <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-xs">
+                    <p className="text-base font-outfit font-black text-indigo-600 dark:text-indigo-400">10+</p>
+                    <p className="text-[8px] font-black uppercase tracking-wider text-slate-400">Products</p>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-xs">
+                    <p className="text-base font-outfit font-black text-emerald-600 dark:text-emerald-400">₹2L+</p>
+                    <p className="text-[8px] font-black uppercase tracking-wider text-slate-400">Impact</p>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 shadow-xs">
+                    <p className="text-base font-outfit font-black text-amber-500">4.0 ★</p>
+                    <p className="text-[8px] font-black uppercase tracking-wider text-slate-400">Satisfaction</p>
+                  </div>
+                </div>
+
+                {/* Hire on Fiverr Button */}
+                <a
+                  href={FIVERR_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 w-full flex items-center justify-center gap-2 py-3 rounded-2xl bg-[#1DBF73] hover:bg-[#19a463] text-white text-xs font-extrabold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+                >
+                  <FiverrIcon size={14} className="brightness-125" />
+                  <span>Hire on Fiverr (100% Escrow)</span>
+                  <ArrowUpRight size={13} />
+                </a>
+
+              </div>
             </div>
+
           </div>
         </div>
       </section>
