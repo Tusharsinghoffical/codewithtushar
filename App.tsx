@@ -9,6 +9,7 @@ import ScrollToTop from './components/ScrollToTop';
 import ClockDisplay from './components/ClockDisplay';
 import TopPromoBar from './components/TopPromoBar';
 import FiverrFloatingButton from './components/FiverrFloatingButton';
+import AIChatAssistant from './components/AIChatAssistant';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -645,6 +646,7 @@ const App: React.FC = () => {
             ><Contact /></PageWrapper>} />
           </Routes>
         </main>
+        <AIChatAssistant />
         <FiverrFloatingButton />
         <WhatsAppButton />
         <ScrollToTop />
