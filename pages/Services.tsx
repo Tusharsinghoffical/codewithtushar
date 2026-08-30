@@ -14,7 +14,7 @@ import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
 /* ─── Types ──────────────────────────────────────────────── */
 interface ServiceDef {
   id: string;
-  category: 'all' | 'ai' | 'chatbots' | 'web' | 'branding';
+  category: 'all' | 'ai' | 'chatbots' | 'web' | 'branding' | 'saas';
   icon: React.ReactNode;
   badge: string;
   badgeType: 'popular' | 'demand' | 'full' | 'brand';
@@ -34,6 +34,30 @@ interface ServiceDef {
 
 /* ─── Service Data with Plain English Clarifications ─────── */
 const ACTIVE_SERVICES: ServiceDef[] = [
+  {
+    id: 'custom-saas',
+    category: 'saas',
+    icon: <Rocket size={26} />,
+    badge: '🚀 Next-Gen Suites',
+    badgeType: 'popular',
+    title: 'Custom SaaS & Cloud MVP Engineering',
+    simpleTitle: 'Build Your Own Software Product (SaaS & Web App)',
+    tagline: 'From Idea to Scalable Monthly Recurring Revenue',
+    description: 'Launch your product vision with multi-tenant architecture, automated Stripe & Razorpay subscriptions, AI agent integration, and enterprise-grade cloud security.',
+    problem: 'Building a SaaS without proper architecture leads to security flaws, high server costs, broken billing logic, and endless technical debt.',
+    features: [
+      'Multi-tenant database & secure user authentication',
+      'Automated recurring subscriptions (Stripe & Razorpay)',
+      'Native AI & LLM agent integrations (OpenAI, LangChain)',
+      'Scalable Docker & AWS cloud deployment (< 100ms speed)'
+    ],
+    result: 'Production-ready SaaS MVP live in 2 to 4 weeks',
+    deliveryTime: '2 – 4 Weeks',
+    stack: ['React', 'Next.js', 'FastAPI', 'Python', 'PostgreSQL', 'Docker', 'AWS'],
+    gradient: 'from-cyan-600/15 via-indigo-600/10 to-transparent',
+    borderGlow: 'group-hover:border-cyan-500/50',
+    accentColor: 'cyan'
+  },
   {
     id: 'ai-automation',
     category: 'ai',
@@ -173,7 +197,7 @@ const injectSchema = () => {
 /* ─── Main Component ─────────────────────────────────────── */
 const Services: React.FC = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'all' | 'ai' | 'chatbots' | 'web' | 'branding'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'saas' | 'ai' | 'chatbots' | 'web' | 'branding'>('all');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
@@ -285,6 +309,7 @@ const Services: React.FC = () => {
         <div className="max-w-6xl mx-auto flex items-center justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar py-1">
           {[
             { id: 'all', label: 'All Services', icon: <Layers size={14} /> },
+            { id: 'saas', label: 'Custom SaaS & MVPs', icon: <Rocket size={14} /> },
             { id: 'ai', label: 'AI Automation', icon: <Brain size={14} /> },
             { id: 'chatbots', label: 'Smart Chatbots', icon: <Bot size={14} /> },
             { id: 'web', label: 'Websites & Funnels', icon: <Globe size={14} /> },

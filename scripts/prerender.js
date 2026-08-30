@@ -109,6 +109,7 @@ const pages = [
       "areaServed": "Worldwide",
       "url": `${SITE_URL}/services`,
       "serviceType": [
+        "Custom SaaS Development", "Cloud MVP Engineering",
         "AI Automation", "Chatbot Development", "Full-Stack Web Development",
         "Lead Generation", "Sales Funnel Development", "Data Science",
         "Machine Learning", "Power BI Dashboard", "MVP Development"

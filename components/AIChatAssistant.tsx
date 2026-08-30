@@ -40,6 +40,7 @@ export const AIChatAssistant: React.FC = () => {
       text: `👋 Namaste! I am **Tushar's AI Assistant**.\n\nAsk me anything about **Services**, **Projects**, **Pricing**, or **Timeline**. You can also book a free 30-min strategy call right here and confirm directly on WhatsApp! 🚀`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       quickActions: [
+        { label: '🚀 Custom SaaS / MVP', action: () => handleSendPreset('Tell me about your custom SaaS and MVP engineering services') },
         { label: '🌐 Website / Landing Page', action: () => handleSendPreset('I want to build a new website or landing page') },
         { label: '🤖 WhatsApp & Website Chatbot', action: () => handleSendPreset('I need an automated AI chatbot for my business') },
         { label: '⚡ Automate Manual Tasks', action: () => handleSendPreset('How can you automate my repetitive business tasks?') },
@@ -141,6 +142,21 @@ export const AIChatAssistant: React.FC = () => {
           { label: '📅 Book Web Project Call', action: () => openBookingFlow('Full-Stack Web Dev') },
           { label: '🏆 View Web Projects', action: () => handleSendPreset('Show me web development case studies') },
           { label: '💬 Message Tushar on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to build a high-performance website/web app.') }
+        ]
+      };
+    }
+
+    // 4.5. Custom SaaS & Cloud MVP Engineering
+    if (
+      q.includes('saas') || q.includes('software') || q.includes('mvp') ||
+      q.includes('product') || q.includes('multi tenant') || q.includes('subscription')
+    ) {
+      return {
+        replyText: `🚀 **Custom SaaS & Cloud MVP Engineering:**\n\n• **Capabilities:** Full-stack multi-tenant SaaS architecture, automated Stripe & Razorpay subscriptions, role-based auth, and scalable cloud deployments.\n• **AI Integrations:** Native OpenAI, LangChain, RAG vector embeddings, and autonomous agent backends.\n• **Upcoming Products:** AutoLead AI Studio, OmniBot RAG Orchestrator, DocuFlow Document Pipeline (Public Beta Reveal 1 Sep 2026).\n• **Timeline:** Production-ready MVP launched in 2 to 4 weeks with sub-second speeds.`,
+        quickActions: [
+          { label: '🚀 Explore SaaS Suites', action: () => { window.location.href = '/saas'; } },
+          { label: '📅 Book SaaS MVP Call', action: () => openBookingFlow('Custom SaaS & MVP Engineering') },
+          { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to build a custom SaaS software platform.') }
         ]
       };
     }

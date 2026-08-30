@@ -5,7 +5,7 @@ export interface Service {
   description: string;
   priceRange: string;
   icon: string;
-  category: 'data-science' | 'web-dev' | 'ai-agents' | 'design' | 'ml' | 'automation' | 'marketing';
+  category: 'data-science' | 'web-dev' | 'ai-agents' | 'design' | 'ml' | 'automation' | 'marketing' | 'saas';
   features: { icon: string; label: string }[];
   techStack: string[];
   problem?: string;

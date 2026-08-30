@@ -222,6 +222,36 @@ export const SERVICES: Service[] = [
       'Versatile designs optimized for digital and print.',
       'Brand guidelines for future design consistency.'
     ]
+  },
+  {
+    id: 's6',
+    title: 'Custom SaaS & Cloud MVP Engineering | Scalable Software Suites',
+    description: 'Turn your product vision into a full-stack SaaS platform. Multi-tenant architecture, Stripe & Razorpay automated billing, AI agent integration, and enterprise-grade cloud security.',
+    priceRange: 'Contact for Price',
+    icon: 'Layers',
+    category: 'saas',
+    features: [
+      { icon: '🚀', label: 'Multi-Tenant Architecture' },
+      { icon: '💳', label: 'Stripe & Razorpay Billing' },
+      { icon: '🤖', label: 'AI Agent & LLM Native' },
+      { icon: '🔒', label: 'Role-Based Access & Security' }
+    ],
+    techStack: ['React', 'Next.js', 'Python', 'FastAPI', 'PostgreSQL', 'Docker', 'AWS'],
+    problem: 'Building a SaaS from scratch is fraught with technical debt, slow development cycles, complex billing logic, and security vulnerabilities.',
+    solution: 'I architect and build battle-tested, modular AI SaaS platforms with clean APIs, modern frontend dashboards, automated subscription tiers, and sub-second performance.',
+    process: [
+      'Product Architecture & Wireframing: Mapping database schemas, user tiers, and API endpoints.',
+      'Core Engine & Auth: Setting up secure OAuth, JWT, and multi-tenant database isolation.',
+      'Subscription & Billing Engine: Integrating automated webhooks for Stripe, Razorpay, or LemonSqueezy.',
+      'AI & Business Logic Integration: Connecting custom LLMs, vector search, and automation triggers.',
+      'Cloud CI/CD & Production Launch: Deploying on AWS/Docker with automated monitoring.'
+    ],
+    expectedResults: [
+      'Production-ready MVP launched in 2 to 4 weeks.',
+      'Scalable cloud infrastructure supporting 100,000+ active users.',
+      'Automated recurring billing and subscription management.',
+      '100% clean, documented codebase ready for venture funding.'
+    ]
   }
 ];
 

@@ -29,26 +29,30 @@ Instagram: https://www.instagram.com/tushar.cms/
 Tushar Singh is an AI Automation Expert and Full-Stack Developer based in Delhi, India.
 He is the founder of Code with Mr Singh (codewithmrsingh.me).
 He has completed 10+ successful projects — real products submitted to clients.
-He holds a Master of Computer Applications (MCA) degree.
+He holds a Master of Computer Applications (MCA) degree from MIT Pune.
 He works with clients worldwide across India, USA, UK, UAE, Australia, Canada, Singapore, and more.
-He specialises in AI automation, chatbot development, web development, and data science.
+He specialises in custom SaaS development, AI automation, chatbot development, web development, and data science.
 
 # ── SERVICES ────────────────────────────────────────────────
-1. AI Automation
+1. Custom SaaS & Cloud MVP Engineering
+   Full-stack multi-tenant SaaS architecture, Stripe/Razorpay billing, AI agent integrations.
+   URL: https://codewithmrsingh.me/saas
+
+2. AI Automation
    Build autonomous workflows using n8n, Python, Zapier, Make.com.
    Eliminate manual tasks. Save 10+ hours per week.
    URL: https://codewithmrsingh.me/services
 
-2. Chatbot Development (RAG)
+3. Chatbot Development (RAG)
    Custom AI chatbots trained on business data using OpenAI and LangChain.
    Deployed on website, WhatsApp, or Telegram. Reduces support workload by 70%.
    URL: https://codewithmrsingh.me/services
 
-3. Website & Funnel Building
+4. Website & Funnel Building
    High-conversion websites and sales funnels using React.js, Django, Next.js.
    URL: https://codewithmrsingh.me/services
 
-4. Logo & Graphic Design
+5. Logo & Graphic Design
    Professional brand identity — logo, social media graphics, marketing materials.
    Tools: Figma, Adobe Illustrator, Canva.
    URL: https://codewithmrsingh.me/services
