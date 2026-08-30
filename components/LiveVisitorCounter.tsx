@@ -14,24 +14,31 @@ const RECENT_ACTIVITIES = [
 ];
 
 export const LiveVisitorCounter: React.FC = () => {
-  // Visitor count starts in 10-15 range and gently oscillates
-  const [visitorCount, setVisitorCount] = useState(13);
+  // Visitor count starts in a natural random 1-15 range (e.g. 7 or 11) and fluctuates organically
+  const [visitorCount, setVisitorCount] = useState(() => Math.floor(Math.random() * 8) + 4);
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
   const [showToast, setShowToast] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
-  // Fluctuates visitor count between 10 and 15 every 8-15 seconds
+  // Fluctuates visitor count realistically between 1 and 15 (never 0) every 8-12 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setVisitorCount(prev => {
-        // Delta of -1, 0, or +1
-        const delta = Math.floor(Math.random() * 3) - 1;
+        // Organic fluctuation: -2, -1, 0, +1, or +2
+        const delta = Math.floor(Math.random() * 5) - 2;
         let next = prev + delta;
-        if (next < 10) next = 11;
-        if (next > 15) next = 14;
-        return next;
+        
+        // Occasionally pick a fresh natural spot between 2 and 14
+        if (Math.random() < 0.2) {
+          next = Math.floor(Math.random() * 14) + 1; // 1 to 14
+        }
+
+        // Clamp strictly between 1 and 15 (Never 0 or negative)
+        if (next < 1) next = Math.floor(Math.random() * 3) + 1; // 1, 2, or 3
+        if (next > 15) next = Math.floor(Math.random() * 3) + 12; // 12, 13, or 14
+        return Math.max(1, Math.min(15, next));
       });
-    }, 9000);
+    }, 8500);
 
     return () => clearInterval(interval);
   }, []);
