@@ -5,7 +5,6 @@ import {
   Layers, ShieldCheck, Clock, MessageCircle, ChevronDown, Award
 } from 'lucide-react';
 import { SERVICES, PROJECTS, FIVERR_PROFILE_URL, GOOGLE_BUSINESS_NAME } from '../constants';
-import DraggableFloatingWrapper from './DraggableFloatingWrapper';
 
 interface ChatMessage {
   id: string;
@@ -458,10 +457,11 @@ export const AIChatAssistant: React.FC = () => {
 
                 <div className={`max-w-[85%] space-y-2`}>
                   <div
-                    className={`p-3.5 rounded-2xl leading-relaxed text-[12px] shadow-xs ${msg.sender === 'user'
+                    className={`p-3.5 rounded-2xl leading-relaxed text-[12px] shadow-xs ${
+                      msg.sender === 'user'
                         ? 'bg-indigo-600 text-white rounded-tr-none font-medium'
                         : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-none border border-slate-200/80 dark:border-white/5'
-                      }`}
+                    }`}
                   >
                     {/* Render message formatted with simple markdown formatting */}
                     <div className="whitespace-pre-wrap space-y-1">
@@ -485,8 +485,9 @@ export const AIChatAssistant: React.FC = () => {
                     </div>
 
                     <span
-                      className={`block text-[8.5px] mt-1.5 ${msg.sender === 'user' ? 'text-indigo-200 text-right' : 'text-slate-400'
-                        }`}
+                      className={`block text-[8.5px] mt-1.5 ${
+                        msg.sender === 'user' ? 'text-indigo-200 text-right' : 'text-slate-400'
+                      }`}
                     >
                       {msg.timestamp}
                     </span>

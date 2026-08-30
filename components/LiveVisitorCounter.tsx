@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Eye, Sparkles, MapPin, X, Flame } from 'lucide-react';
-import DraggableFloatingWrapper from './DraggableFloatingWrapper';
 
 const RECENT_ACTIVITIES = [
   { location: 'New Delhi, India', action: 'viewed AI Automation Workflows', time: 'Just now' },
@@ -15,7 +14,7 @@ const RECENT_ACTIVITIES = [
 ];
 
 export const LiveVisitorCounter: React.FC = () => {
-  // Visitor count starts in a natural random 1-15 range and fluctuates organically
+  // Visitor count starts in a natural random 1-15 range (e.g. 7 or 11) and fluctuates organically
   const [visitorCount, setVisitorCount] = useState(() => Math.floor(Math.random() * 8) + 4);
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
   const [showToast, setShowToast] = useState(false);
@@ -44,7 +43,7 @@ export const LiveVisitorCounter: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Show gentle activity toast every 24 seconds
+  // Show gentle activity toast every 22 seconds
   useEffect(() => {
     const toastTimer = setInterval(() => {
       setCurrentActivityIndex(prev => (prev + 1) % RECENT_ACTIVITIES.length);
@@ -72,72 +71,65 @@ export const LiveVisitorCounter: React.FC = () => {
   const currentActivity = RECENT_ACTIVITIES[currentActivityIndex];
 
   return (
-    <DraggableFloatingWrapper
-      id="visitor_counter"
-      initialBottom={88}
-      initialLeft={24}
-      zIndex={110}
-    >
-      <div className="flex flex-col items-start gap-2 select-none pointer-events-auto">
-        
-        {/* ── 1. Floating Real-Time Activity Toast Popup ── */}
-        {showToast && (
-          <div className="animate-in slide-in-from-bottom-3 fade-in duration-300 max-w-[290px] sm:max-w-xs bg-slate-950/90 dark:bg-slate-900/95 backdrop-blur-xl border border-white/15 text-white p-3 rounded-2xl shadow-2xl flex items-start gap-2.5 text-left">
-            <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-indigo-500 to-violet-500 flex items-center justify-center text-white shrink-0 mt-0.5 shadow-md">
-              <Flame size={14} className="animate-pulse text-amber-300" />
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center justify-between gap-1">
-                <p className="text-[10px] font-black text-indigo-300 uppercase tracking-wider truncate flex items-center gap-1">
-                  <MapPin size={10} className="text-rose-400 shrink-0" />
-                  <span>{currentActivity.location}</span>
-                </p>
-                <span className="text-[8.5px] text-slate-400">{currentActivity.time}</span>
-              </div>
-              <p className="text-[11px] font-semibold text-slate-200 leading-tight mt-0.5 line-clamp-2">
-                {currentActivity.action}
+    <div className="fixed bottom-[5.25rem] sm:bottom-24 left-6 sm:left-8 z-[110] flex flex-col items-start gap-2 select-none pointer-events-auto">
+      
+      {/* ── 1. Floating Real-Time Activity Toast Popup ── */}
+      {showToast && (
+        <div className="animate-in slide-in-from-bottom-3 fade-in duration-300 max-w-[290px] sm:max-w-xs bg-slate-950/90 dark:bg-slate-900/95 backdrop-blur-xl border border-white/15 text-white p-3 rounded-2xl shadow-2xl flex items-start gap-2.5 text-left">
+          <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-indigo-500 to-violet-500 flex items-center justify-center text-white shrink-0 mt-0.5 shadow-md">
+            <Flame size={14} className="animate-pulse text-amber-300" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center justify-between gap-1">
+              <p className="text-[10px] font-black text-indigo-300 uppercase tracking-wider truncate flex items-center gap-1">
+                <MapPin size={10} className="text-rose-400 shrink-0" />
+                <span>{currentActivity.location}</span>
               </p>
+              <span className="text-[8.5px] text-slate-400">{currentActivity.time}</span>
             </div>
-            <button
-              onClick={() => setShowToast(false)}
-              className="text-slate-400 hover:text-white p-0.5 -mr-1 -mt-1 cursor-pointer"
-              aria-label="Close notification"
-            >
-              <X size={12} />
-            </button>
+            <p className="text-[11px] font-semibold text-slate-200 leading-tight mt-0.5 line-clamp-2">
+              {currentActivity.action}
+            </p>
           </div>
-        )}
-
-        {/* ── 2. Compact Live Visitor Pill Badge (Draggable) ── */}
-        <div className="group flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-white/15 text-slate-800 dark:text-slate-100 shadow-xl backdrop-blur-xl transition-all duration-300 hover:scale-105">
-          {/* Pulsing Green Indicator */}
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-          </span>
-
-          {/* Counter Text */}
-          <div className="flex items-center gap-1.5 text-xs">
-            <span className="font-outfit font-black text-indigo-600 dark:text-indigo-400 tabular-nums">
-              {visitorCount}
-            </span>
-            <span className="text-[10.5px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-300">
-              Live Visitors
-            </span>
-          </div>
-
-          {/* Dismiss subtle button on hover */}
           <button
-            onClick={() => setDismissed(true)}
-            className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-opacity ml-0.5 cursor-pointer"
-            title="Dismiss visitor counter"
+            onClick={() => setShowToast(false)}
+            className="text-slate-400 hover:text-white p-0.5 -mr-1 -mt-1 cursor-pointer"
+            aria-label="Close notification"
           >
-            <X size={11} />
+            <X size={12} />
           </button>
         </div>
+      )}
 
+      {/* ── 2. Compact Live Visitor Pill Badge ── */}
+      <div className="group flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-white/15 text-slate-800 dark:text-slate-100 shadow-xl backdrop-blur-xl transition-all duration-300 hover:scale-105">
+        {/* Pulsing Green Indicator */}
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+        </span>
+
+        {/* Counter Text */}
+        <div className="flex items-center gap-1.5 text-xs">
+          <span className="font-outfit font-black text-indigo-600 dark:text-indigo-400 tabular-nums">
+            {visitorCount}
+          </span>
+          <span className="text-[10.5px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+            Live Visitors
+          </span>
+        </div>
+
+        {/* Dismiss subtle button on hover */}
+        <button
+          onClick={() => setDismissed(true)}
+          className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-opacity ml-0.5 cursor-pointer"
+          title="Dismiss visitor counter"
+        >
+          <X size={11} />
+        </button>
       </div>
-    </DraggableFloatingWrapper>
+
+    </div>
   );
 };
 
