@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Github, Linkedin, Instagram, Youtube, MapPin, Mail, Phone, ArrowUpRight, Zap } from 'lucide-react';
+import { FIVERR_PROFILE_URL } from '../constants';
+import { FiverrIcon } from './FiverrBadge';
 
 /* ─── Sub-components ─────────────────────────────────────── */
 const FooterLink = ({ to, label }: { to: string; label: string }) => (
@@ -38,10 +40,22 @@ const Footer: React.FC = () => {
               Ready to start your project?
             </p>
           </div>
-          <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest transition-all active:scale-95">
-            Get in Touch <ArrowUpRight size={13} />
-          </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={FIVERR_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2 px-5 py-3 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest transition-all active:scale-95 shadow-md"
+            >
+              <FiverrIcon size={14} className="brightness-125" />
+              <span>Hire on Fiverr</span>
+              <ArrowUpRight size={13} />
+            </a>
+            <Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest transition-all active:scale-95">
+              Get in Touch <ArrowUpRight size={13} />
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -58,6 +72,7 @@ const Footer: React.FC = () => {
               AI Automation &amp; Full-Stack Development. Building intelligent systems that scale businesses — not workloads.
             </p>
             <div className="flex items-center gap-2">
+              <SocialBtn href={FIVERR_PROFILE_URL}                            icon={<FiverrIcon size={15} />} label="Fiverr" />
               <SocialBtn href="https://linkedin.com/in/tusharsingh2011"      icon={<Linkedin size={15} />}  label="LinkedIn" />
               <SocialBtn href="https://github.com/Tusharsinghoffical"         icon={<Github size={15} />}   label="GitHub" />
               <SocialBtn href="https://www.instagram.com/tushar.cms/"         icon={<Instagram size={15} />} label="Instagram" />
@@ -111,6 +126,9 @@ const Footer: React.FC = () => {
                 <span className="text-xs">New Delhi, Delhi 110044, India</span>
               </a>
               <div className="pt-2 flex flex-col gap-1.5">
+                <a href={FIVERR_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-wider text-[#1DBF73] hover:text-emerald-300 transition-colors">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#1DBF73]" /> Fiverr Profile (Hire &amp; Gigs) <ArrowUpRight size={10} />
+                </a>
                 <a href="https://share.google/ZDu1p0y00ioP6PWiA" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-wider text-indigo-400 hover:text-indigo-300 transition-colors">
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" /> Google Business Profile <ArrowUpRight size={10} />
                 </a>

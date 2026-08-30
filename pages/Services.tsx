@@ -4,8 +4,10 @@ import SharePageButton from '../components/SharePageButton';
 import {
   Brain, Bot, Globe, Palette, ArrowRight, CheckCircle2,
   TrendingUp, AlertCircle, Sparkles, Clock, ChevronRight,
-  Instagram, Share2, Megaphone
+  Instagram, Share2, Megaphone, ArrowUpRight
 } from 'lucide-react';
+import { FIVERR_PROFILE_URL } from '../constants';
+import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
 
 /* ─── Types ──────────────────────────────────────────────── */
 interface ServiceDef {
@@ -177,14 +179,28 @@ const ServiceCard = ({ s, onCTA }: { s: ServiceDef; onCTA: () => void }) => (
         ))}
       </div>
 
-      {/* CTA */}
-      <button
-        onClick={onCTA}
-        className="group/btn w-full flex items-center justify-center gap-2 py-3.5 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all active:scale-95"
-        aria-label={`Get quote for ${s.title}`}
-      >
-        Get Quote <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
-      </button>
+      {/* CTA Buttons (Direct Quote + Fiverr Order) */}
+      <div className="grid grid-cols-2 gap-2">
+        <button
+          onClick={onCTA}
+          className="group/btn w-full flex items-center justify-center gap-1.5 py-3 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-extrabold text-[10px] uppercase tracking-wider hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all active:scale-95 cursor-pointer"
+          aria-label={`Get quote for ${s.title}`}
+        >
+          <span>Get Quote</span>
+          <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
+        </button>
+        <a
+          href={FIVERR_PROFILE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group/fiverr w-full flex items-center justify-center gap-1.5 py-3 bg-emerald-50 dark:bg-emerald-950/50 hover:bg-[#1DBF73] text-emerald-700 dark:text-emerald-300 hover:text-white border border-emerald-300/80 dark:border-emerald-500/30 hover:border-[#1DBF73] rounded-2xl font-extrabold text-[10px] uppercase tracking-wider transition-all active:scale-95"
+          aria-label={`Order ${s.title} on Fiverr`}
+        >
+          <FiverrIcon size={13} />
+          <span>Fiverr Gig</span>
+          <ArrowUpRight size={11} className="group-hover/fiverr:translate-x-0.5 group-hover/fiverr:-translate-y-0.5 transition-transform" />
+        </a>
+      </div>
     </div>
   </div>
 );
@@ -211,14 +227,17 @@ const Services: React.FC = () => {
       {/* ── HEADER ─────────────────────────────────────────── */}
       <section className="pt-28 pb-16 px-5 sm:px-10 border-b border-slate-100 dark:border-white/5">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-400/20 text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-widest mb-5">
-            <Sparkles size={11} /> Expert Freelance Services
+          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-400/20 text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-widest">
+              <Sparkles size={11} /> Expert Freelance Services
+            </div>
+            <FiverrBadge variant="pill" />
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight mb-4 speakable">
             AI Automation &amp; <span className="text-indigo-600 dark:text-indigo-400">Web Development</span> Services
           </h1>
           <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Tushar Singh offers expert <strong className="text-slate-700 dark:text-slate-200">AI automation</strong>, <strong className="text-slate-700 dark:text-slate-200">chatbot development</strong>, <strong className="text-slate-700 dark:text-slate-200">website &amp; funnel building</strong>, and <strong className="text-slate-700 dark:text-slate-200">branding</strong> — serving clients across India and worldwide.
+            Tushar Singh offers expert <strong className="text-slate-700 dark:text-slate-200">AI automation</strong>, <strong className="text-slate-700 dark:text-slate-200">chatbot development</strong>, <strong className="text-slate-700 dark:text-slate-200">website &amp; funnel building</strong>, and <strong className="text-slate-700 dark:text-slate-200">branding</strong> — order directly or hire on Fiverr with buyer protection.
           </p>
           <div className="mt-6 flex justify-center">
             <SharePageButton
@@ -275,9 +294,9 @@ const Services: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { q: 'What AI automation services does Tushar Singh offer?', a: 'Custom n8n and Python-based workflows, AI agents, RAG chatbots using OpenAI and LangChain, WhatsApp bots, and end-to-end business process automation that saves 10+ hours per week.' },
-              { q: 'How much does chatbot development cost?', a: 'Chatbot projects start from ₹80,000 for a simple FAQ bot to ₹3,00,000+ for a full RAG-based AI agent with CRM integration. Contact via WhatsApp for a custom quote.' },
+              { q: 'Can I order services through Fiverr?', a: 'Yes! You can order directly through my official Fiverr profile (https://www.fiverr.com/s/zAd5R2z) with 100% Escrow and Buyer Protection for milestones and deliverables.' },
+              { q: 'How much does chatbot development cost?', a: 'Chatbot projects start from ₹80,000 for a simple FAQ bot to ₹3,00,000+ for a full RAG-based AI agent with CRM integration. Contact via WhatsApp or Fiverr for a custom quote.' },
               { q: 'Does Tushar Singh build full-stack web applications?', a: 'Yes — React.js, Next.js, Django, and Python. Projects include startup MVPs, e-commerce platforms, SaaS dashboards, and agency white-label solutions.' },
-              { q: 'What does branding and logo design include?', a: 'Complete brand identity — primary logo, variations, colour palette, typography, social media graphics, and marketing material templates. Delivered via Figma and Adobe suite.' },
             ].map(({ q, a }) => (
               <div key={q} className="p-5 bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-white/5 rounded-2xl" itemScope itemType="https://schema.org/Question">
                 <h3 className="text-sm font-extrabold text-slate-900 dark:text-white mb-2" itemProp="name">{q}</h3>
@@ -294,18 +313,30 @@ const Services: React.FC = () => {
       <section className="py-14 px-5 sm:px-10 text-center">
         <div className="max-w-xl mx-auto">
           <h2 className="text-2xl font-outfit font-extrabold text-slate-900 dark:text-white mb-3">Need a custom solution?</h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">Book a free 30-minute AI automation audit — completely free, no obligations.</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">Book a free 30-minute AI automation audit or order directly via Fiverr.</p>
           <p className="text-xs text-slate-400 mb-7">
             WhatsApp: <a href="https://wa.me/918851619647" className="text-emerald-600 dark:text-emerald-400 font-bold underline">+91-8851619647</a>
-            &nbsp;·&nbsp; Email: <a href="mailto:tusharsinghoffical@gmail.com" className="text-indigo-600 dark:text-indigo-400 font-bold underline">tusharsinghoffical@gmail.com</a>
+            &nbsp;·&nbsp; Fiverr: <a href={FIVERR_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="text-[#1DBF73] font-bold underline">fiverr.com/s/zAd5R2z</a>
           </p>
-          <button
-            onClick={() => navigate('/contact')}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all shadow-xl active:scale-95"
-          >
-            Book Free Consultation <ChevronRight size={14} />
-          </button>
-          <p className="text-[9px] text-slate-400 mt-4 uppercase tracking-widest font-bold">Available Worldwide · Mon–Sat</p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={() => navigate('/contact')}
+              className="inline-flex items-center gap-2 px-7 py-4 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all shadow-xl active:scale-95 cursor-pointer"
+            >
+              Book Free Consultation <ChevronRight size={14} />
+            </button>
+            <a
+              href={FIVERR_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest transition-all shadow-xl active:scale-95"
+            >
+              <FiverrIcon size={14} className="brightness-125" />
+              <span>Order on Fiverr</span>
+              <ArrowUpRight size={14} />
+            </a>
+          </div>
+          <p className="text-[9px] text-slate-400 mt-4 uppercase tracking-widest font-bold">Available Worldwide · Mon–Sat · Escrow Protected</p>
         </div>
       </section>
 

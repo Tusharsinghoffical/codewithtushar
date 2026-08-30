@@ -10,10 +10,12 @@ import {
 import {
   PROJECTS, SERVICES, TESTIMONIALS,
   GOOGLE_BUSINESS_NAME, GOOGLE_BUSINESS_URL,
-  GOOGLE_VERIFICATION_PROOF_URL, BUSINESS_ADDRESS
+  GOOGLE_VERIFICATION_PROOF_URL, BUSINESS_ADDRESS,
+  FIVERR_PROFILE_URL
 } from '../constants';
 import OptimizedImage from '../components/OptimizedImage';
 import GoogleVerifiedBadge, { GoogleGIcon } from '../components/GoogleVerifiedBadge';
+import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
 
 /* ─── Service icon map ───────────────────────────────────────────────────── */
 const SVC_ICONS = [
@@ -46,7 +48,7 @@ const Home: React.FC = () => {
             {/* LEFT: Copy & Direct Value (7 Cols) */}
             <div className="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-7 text-left">
 
-              {/* Top Pill: Availability & Google Verified */}
+              {/* Top Pill: Availability, Google Verified & Fiverr Verified */}
               <div className="flex flex-wrap items-center gap-2.5">
                 <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-200/90 dark:border-emerald-500/20 bg-emerald-50/80 dark:bg-emerald-950/40 text-[10px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 shadow-2xs">
                   <span className="flex h-2 w-2 relative">
@@ -56,6 +58,7 @@ const Home: React.FC = () => {
                   Available for Projects
                 </span>
                 <GoogleVerifiedBadge variant="pill" />
+                <FiverrBadge variant="pill" />
               </div>
 
               {/* H1 Headline */}
@@ -71,7 +74,7 @@ const Home: React.FC = () => {
               <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed speakable">
                 AI automation, full-stack web development &amp; intelligent systems by <strong className="text-slate-950 dark:text-white font-bold">Tushar Singh</strong> —
                 <strong className="text-indigo-600 dark:text-indigo-400 font-bold"> 10+ real products</strong> delivered
-                to clients across India and worldwide.
+                to clients across India and worldwide. Order directly or via Fiverr with buyer protection.
               </p>
 
               {/* 3 Clean Trust Checkpoints */}
@@ -82,7 +85,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
-                  <span>100% Reliable Delivery &amp; Support</span>
+                  <span>100% Reliable Delivery &amp; Escrow</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
@@ -92,26 +95,36 @@ const Home: React.FC = () => {
 
               {/* CTAs & Reassurance */}
               <div className="space-y-3 pt-1">
-                <div className="flex flex-wrap items-center gap-3.5">
+                <div className="flex flex-wrap items-center gap-3">
                   <Link
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-xl hover:shadow-indigo-500/25 hover:scale-[1.02] active:scale-95"
+                    className="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-xl hover:shadow-indigo-500/25 hover:scale-[1.02] active:scale-95"
                   >
                     <span>Start a Project</span>
                     <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
+                  <a
+                    href={FIVERR_PROFILE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-xl hover:shadow-emerald-500/25 hover:scale-[1.02] active:scale-95"
+                  >
+                    <FiverrIcon size={16} className="brightness-125" />
+                    <span>Hire on Fiverr</span>
+                    <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
                   <Link
                     to="/projects"
-                    className="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:border-indigo-400 dark:hover:border-indigo-500 transition-all active:scale-95 shadow-xs"
+                    className="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:border-indigo-400 dark:hover:border-indigo-500 transition-all active:scale-95 shadow-xs"
                   >
                     <Play size={12} className="fill-indigo-500 text-indigo-500" />
-                    <span>View Portfolio</span>
+                    <span>Portfolio</span>
                   </Link>
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                   <ShieldCheck size={14} className="text-emerald-500 shrink-0" />
-                  <span>Free 30-min strategy audit · Response in &lt; 2 hrs · Zero commitment</span>
+                  <span>Free 30-min strategy audit · Response in &lt; 2 hrs · Escrow Protection</span>
                 </div>
               </div>
 
@@ -608,17 +621,27 @@ const Home: React.FC = () => {
             Let's discuss your project.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
             <Link
               to="/contact"
-              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 bg-white text-slate-950 rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:bg-indigo-50 hover:scale-105 transition-all shadow-xl active:scale-95"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-950 rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:bg-indigo-50 hover:scale-105 transition-all shadow-xl active:scale-95"
             >
               <span>Start a Project</span>
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </Link>
+            <a
+              href={FIVERR_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl active:scale-95"
+            >
+              <FiverrIcon size={16} className="brightness-125" />
+              <span>Order on Fiverr</span>
+              <ArrowUpRight size={14} />
+            </a>
             <Link
               to="/services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95"
             >
               View Services
             </Link>

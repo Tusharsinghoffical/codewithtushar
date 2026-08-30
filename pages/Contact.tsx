@@ -8,9 +8,11 @@ import {
   Flame, Award, Layers, FileCheck, ExternalLink, QrCode
 } from 'lucide-react';
 import GoogleVerifiedBadge, { GoogleGIcon } from '../components/GoogleVerifiedBadge';
+import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
 import {
   GOOGLE_BUSINESS_NAME, GOOGLE_BUSINESS_URL,
-  GOOGLE_VERIFICATION_PROOF_URL, BUSINESS_ADDRESS
+  GOOGLE_VERIFICATION_PROOF_URL, BUSINESS_ADDRESS,
+  FIVERR_PROFILE_URL
 } from '../constants';
 
 /* ─── Reusable Social Pill ────────────────────────────────── */
@@ -110,13 +112,16 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="max-w-4xl mx-auto space-y-6">
-          {/* Availability Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-200/90 dark:border-emerald-500/20 text-[10px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 shadow-2xs">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            Available Worldwide — India, USA, UK, UAE &amp; More
+          {/* Availability Pill & Fiverr Badge */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-200/90 dark:border-emerald-500/20 text-[10px] font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 shadow-2xs">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              Available Worldwide — India, USA, UK, UAE &amp; More
+            </div>
+            <FiverrBadge variant="pill" />
           </div>
 
           {/* Heading */}
@@ -130,7 +135,7 @@ const Contact: React.FC = () => {
           {/* Subheading */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed speakable">
             Ready to automate your manual workflows, build a scalable web platform, or deploy an intelligent AI chatbot?
-            Reach out directly — guaranteed response within <strong className="text-slate-950 dark:text-white font-bold">1 hour</strong>.
+            Reach out directly or hire via Fiverr — guaranteed response within <strong className="text-slate-950 dark:text-white font-bold">1 hour</strong>.
           </p>
 
           {/* 3 Quick Assurance Badges */}
@@ -158,12 +163,12 @@ const Contact: React.FC = () => {
           {/* ── LEFT COLUMN: DIRECT CHANNELS & CREDIBILITY (5 COLS) ── */}
           <div className="lg:col-span-5 space-y-6">
 
-            {/* Direct Action Hub (WhatsApp + Calendly Dual Bento) */}
-            <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-7 border border-white/10 shadow-xl space-y-4">
+            {/* Direct Action Hub (WhatsApp + Fiverr + Calendly Triple Bento) */}
+            <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-7 border border-white/10 shadow-xl space-y-3.5">
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-[8px] font-black uppercase tracking-widest text-indigo-400">Direct Connect</span>
-                  <h3 className="text-base font-outfit font-black text-white">Instant Consultation</h3>
+                  <h3 className="text-base font-outfit font-black text-white">Instant Consultation &amp; Hire</h3>
                 </div>
                 <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-[8px] font-black text-emerald-400 uppercase tracking-widest">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Online
@@ -175,7 +180,7 @@ const Contact: React.FC = () => {
                 href="https://wa.me/918851619647?text=Hi%20Tushar,%20I%20want%20to%20discuss%20a%20project"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-md active:scale-95"
+                className="group flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-md active:scale-95"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
@@ -189,12 +194,31 @@ const Contact: React.FC = () => {
                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
               </a>
 
-              {/* Action 2: Calendly */}
+              {/* Action 2: Fiverr Direct Order */}
+              <a
+                href={FIVERR_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-[#1DBF73] hover:bg-[#19a463] text-white transition-all shadow-md active:scale-95"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                    <FiverrIcon size={22} className="brightness-125" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs font-black uppercase tracking-wider">Order on Fiverr</p>
+                    <p className="text-[10px] text-emerald-100 font-medium">100% Escrow &amp; Buyer Protection</p>
+                  </div>
+                </div>
+                <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+
+              {/* Action 3: Calendly */}
               <a
                 href="https://calendly.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between p-4 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/10 text-white transition-all active:scale-95"
+                className="group flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/10 text-white transition-all active:scale-95"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-indigo-500/30 text-indigo-300 flex items-center justify-center">
@@ -253,6 +277,12 @@ const Contact: React.FC = () => {
               <h3 className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-2">Direct Reach &amp; Channels</h3>
               
               <InfoRow
+                icon={<FiverrIcon size={15} />}
+                label="Fiverr Freelance Profile"
+                value="fiverr.com/s/zAd5R2z (Order Directly)"
+                href={FIVERR_PROFILE_URL}
+              />
+              <InfoRow
                 icon={<Mail size={15} />}
                 label="Official Email"
                 value="tusharsinghoffical@gmail.com"
@@ -278,8 +308,9 @@ const Contact: React.FC = () => {
 
               {/* Social Links */}
               <div className="pt-4 mt-2 border-t border-slate-200/80 dark:border-white/5">
-                <p className="text-[8px] font-black uppercase tracking-widest text-slate-400 mb-2.5">Connect on Social</p>
+                <p className="text-[8px] font-black uppercase tracking-widest text-slate-400 mb-2.5">Connect &amp; Hire</p>
                 <div className="flex flex-wrap gap-2">
+                  <SocialLink href={FIVERR_PROFILE_URL} icon={<FiverrIcon size={12} />} label="Fiverr" />
                   <SocialLink href="https://github.com/Tusharsinghoffical" icon={<Github size={12} />} label="GitHub" />
                   <SocialLink href="https://linkedin.com/in/tusharsingh2011" icon={<Linkedin size={12} />} label="LinkedIn" />
                   <SocialLink href="https://www.instagram.com/tushar.cms/" icon={<Instagram size={12} />} label="Instagram" />

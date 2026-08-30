@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowRight, ChevronRight, Minus
+  ArrowRight, ChevronRight, Minus, ArrowUpRight
 } from 'lucide-react';
 import SharePageButton from '../components/SharePageButton';
+import { FIVERR_PROFILE_URL } from '../constants';
+import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
 
 /* ─── Section divider ────────────────────────────────────── */
 const Divider = () => (
@@ -36,11 +38,14 @@ const About: React.FC = () => {
       ══════════════════════════════════════════════════ */}
       <section className="pt-32 pb-20 px-5 sm:px-10 border-b border-slate-100 dark:border-white/5">
         <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-8 h-px bg-indigo-500" />
-            <span className="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em]">
-              The Philosophy
-            </span>
+          <div className="flex flex-wrap items-center gap-3 mb-8">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-px bg-indigo-500" />
+              <span className="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.3em]">
+                The Philosophy
+              </span>
+            </div>
+            <FiverrBadge variant="pill" />
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight leading-[1.05] mb-8 speakable">
@@ -271,13 +276,23 @@ const About: React.FC = () => {
             <p>Design technology that continues delivering value long after it's deployed.</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3">
             <Link to="/contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-50 hover:scale-105 transition-all shadow-xl active:scale-95">
+              className="group inline-flex items-center gap-2 px-7 py-4 bg-white text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-50 hover:scale-105 transition-all shadow-xl active:scale-95">
               Let's Talk <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
+            <a
+              href={FIVERR_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:scale-105 transition-all shadow-xl active:scale-95"
+            >
+              <FiverrIcon size={14} className="brightness-125" />
+              <span>Hire on Fiverr</span>
+              <ArrowUpRight size={13} />
+            </a>
             <Link to="/projects"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95">
+              className="group inline-flex items-center gap-2 px-7 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95">
               View Projects <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <SharePageButton

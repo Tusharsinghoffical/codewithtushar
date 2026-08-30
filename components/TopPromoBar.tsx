@@ -6,9 +6,11 @@ import {
 } from 'lucide-react';
 import {
   GOOGLE_BUSINESS_URL,
-  BUSINESS_ADDRESS
+  BUSINESS_ADDRESS,
+  FIVERR_PROFILE_URL
 } from '../constants';
 import { GoogleGIcon } from './GoogleVerifiedBadge';
+import { FiverrIcon } from './FiverrBadge';
 
 const TopPromoBar: React.FC = () => {
   return (
@@ -92,6 +94,18 @@ const TopPromoBar: React.FC = () => {
             aria-label="Google Business Profile"
           >
             <GoogleGIcon size={12} />
+          </a>
+
+          {/* Fiverr Profile */}
+          <a
+            href={FIVERR_PROFILE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-1 rounded-md text-slate-300 hover:text-[#1DBF73] hover:bg-white/10 transition-colors inline-flex items-center"
+            title="Hire on Fiverr (Buyer Protection)"
+            aria-label="Fiverr Profile"
+          >
+            <FiverrIcon size={13} />
           </a>
 
           {/* GitHub */}

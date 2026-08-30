@@ -1,8 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { MoreVertical, X, ArrowRight, Sun, Moon, Cpu, Search } from 'lucide-react';
+import { MoreVertical, X, ArrowRight, Sun, Moon, Cpu, Search, ArrowUpRight } from 'lucide-react';
 import SearchBar from './SearchBar';
+import { FIVERR_PROFILE_URL } from '../constants';
+import { FiverrIcon } from './FiverrBadge';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -104,11 +106,24 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Utility Actions */}
-          <div className="flex items-center gap-1 pr-1">
+          <div className="flex items-center gap-1.5 pr-1">
             {/* Search Bar */}
             <div className="hidden sm:block">
               <SearchBar />
             </div>
+
+            {/* Direct Hire on Fiverr Desktop Button */}
+            <a
+              href={FIVERR_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Hire on Fiverr with 100% Escrow & Buyer Protection"
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300/80 dark:border-emerald-500/40 text-slate-900 dark:text-emerald-300 hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] transition-all duration-200 text-xs font-bold active:scale-95 shadow-2xs group"
+            >
+              <FiverrIcon size={14} />
+              <span className="text-[11px] font-extrabold tracking-tight">Fiverr</span>
+              <ArrowUpRight size={11} className="text-[#1DBF73] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
             
             <button
               onClick={toggleTheme}
@@ -161,7 +176,27 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
           </div>
-          <div className="mt-12">
+
+          {/* Mobile Fiverr Quick Hire Card */}
+          <div className="mt-8">
+            <a
+              href={FIVERR_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between w-full p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300/80 dark:border-emerald-500/30 text-slate-950 dark:text-white shadow-sm active:scale-95 transition-all group"
+            >
+              <div className="flex items-center gap-3">
+                <FiverrIcon size={28} />
+                <div className="text-left">
+                  <p className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">Hire Securely</p>
+                  <p className="text-sm font-bold text-slate-950 dark:text-white">Order on Fiverr (Buyer Protection)</p>
+                </div>
+              </div>
+              <ArrowUpRight size={18} className="text-[#1DBF73] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+          </div>
+
+          <div className="mt-4">
             <button
               onClick={toggleTheme}
               className="flex items-center justify-between w-full p-6 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/5 active:scale-95 transition-all shadow-sm"

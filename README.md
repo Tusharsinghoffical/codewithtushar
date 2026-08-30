@@ -205,6 +205,7 @@ All routes rewrite to `index.html` while serving static per-route files automati
 | | |
 |---|---|
 | Website | [codewithmrsingh.me](https://codewithmrsingh.me) |
+| Fiverr | [fiverr.com/s/zAd5R2z](https://www.fiverr.com/s/zAd5R2z) |
 | LinkedIn | [linkedin.com/in/tusharsingh2011](https://linkedin.com/in/tusharsingh2011) |
 | GitHub | [github.com/Tusharsinghoffical](https://github.com/Tusharsinghoffical) |
 | YouTube | [youtube.com/@codewithmrsingh4u](https://www.youtube.com/@codewithmrsingh4u) |

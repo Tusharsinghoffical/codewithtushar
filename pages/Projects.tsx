@@ -1,8 +1,9 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { PROJECTS, SITE_URL } from '../constants';
+import { PROJECTS, SITE_URL, FIVERR_PROFILE_URL } from '../constants';
 import { Project } from '../types';
 import SharePageButton from '../components/SharePageButton';
+import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
 import {
   Cpu, Zap, X, ShieldCheck, Target,
   TrendingUp, ArrowRight, Search, Filter,
@@ -222,14 +223,17 @@ const Projects: React.FC = () => {
       <section className="pt-28 pb-10 px-5 sm:px-10 border-b border-slate-100 dark:border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950 dark:bg-white text-white dark:text-slate-950 text-[9px] font-black uppercase tracking-widest mb-5">
-              <Cpu size={11} className="text-indigo-400" /> Case Study Registry
+            <div className="flex flex-wrap items-center gap-2.5 mb-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950 dark:bg-white text-white dark:text-slate-950 text-[9px] font-black uppercase tracking-widest">
+                <Cpu size={11} className="text-indigo-400" /> Case Study Registry
+              </div>
+              <FiverrBadge variant="pill" />
             </div>
             <h1 className="text-3xl sm:text-5xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight leading-tight mb-3">
               Proven ROI &amp; <span className="text-indigo-600 dark:text-indigo-400">Technical Briefs.</span>
             </h1>
             <p className="text-sm text-slate-500 dark:text-slate-400 max-w-lg leading-relaxed">
-              Real products submitted to clients — each project represents a tangible transformation using AI, Automation, and Data.
+              Real products submitted to clients — each project represents a tangible transformation using AI, Automation, and Data. Available for direct engagement or via Fiverr escrow.
             </p>
           </div>
 
@@ -461,12 +465,25 @@ const Projects: React.FC = () => {
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => navigate('/contact', { state: { service: selected.title } })}
-                    className="group w-full py-3.5 bg-indigo-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-950 dark:hover:bg-white dark:hover:text-slate-950 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer">
-                    Get Your Results Like This
-                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <button
+                      onClick={() => navigate('/contact', { state: { service: selected.title } })}
+                      className="group w-full py-3.5 bg-indigo-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-950 dark:hover:bg-white dark:hover:text-slate-950 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+                    >
+                      <span>Get Results Like This</span>
+                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
+                    <a
+                      href={FIVERR_PROFILE_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3.5 bg-emerald-50 dark:bg-emerald-950/50 hover:bg-[#1DBF73] text-emerald-700 dark:text-emerald-300 hover:text-white border border-emerald-300/80 dark:border-emerald-500/30 hover:border-[#1DBF73] rounded-xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-1.5 active:scale-95"
+                    >
+                      <FiverrIcon size={14} />
+                      <span>Order on Fiverr</span>
+                      <ArrowUpRight size={12} />
+                    </a>
+                  </div>
                 </div>
               </div>
 

@@ -395,6 +395,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
           "postalCode": "110044"
         },
         "sameAs": [
+          "https://www.fiverr.com/s/zAd5R2z",
           "https://share.google/ZDu1p0y00ioP6PWiA",
           "https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing",
           "https://github.com/Tusharsinghoffical",
