@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import {
-  ArrowLeft, Tag, Sparkles,
-  Brain, Zap, Code2, BookOpen, ChevronRight,
-  ArrowRight, Share2, Check, Copy, Link2
+  ArrowLeft, Tag, Sparkles, Brain, Zap, Code2, BookOpen,
+  ChevronRight, ArrowRight, Share2, Check, Copy, Link2,
+  Clock, Search, User, Youtube, Instagram, MessageCircle,
+  TrendingUp, Award, ExternalLink
 } from 'lucide-react';
-
 import postsData from '../content/posts.json';
+import SharePageButton from '../components/SharePageButton';
+import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
+import { FIVERR_PROFILE_URL } from '../constants';
 
 export interface BlogPost {
   id: string;
@@ -23,86 +26,73 @@ export interface BlogPost {
   content: string;
 }
 
-/* ─── Blog post data ─────────────────────────────────────── */
 export const BLOG_POSTS: BlogPost[] = postsData as BlogPost[];
-/* ─── Color maps ─────────────────────────────────────────── */
-const BADGE: Record<string, string> = {
-  indigo: 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border-indigo-100 dark:border-indigo-400/20',
-  emerald:'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border-emerald-100 dark:border-emerald-400/20',
-  violet: 'bg-violet-50 dark:bg-violet-950/40 text-violet-600 dark:text-violet-400 border-violet-100 dark:border-violet-400/20',
+
+const BADGE_COLOR: Record<string, string> = {
+  indigo:  'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-500/30',
+  emerald: 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/30',
+  violet:  'bg-violet-50 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300 border-violet-200 dark:border-violet-500/30',
 };
+
 const ICON_MAP: Record<string, React.ReactNode> = {
-  Code2: <Code2 size={14} />,
-  Zap:   <Zap size={14} />,
-  Brain: <Brain size={14} />,
+  Code2: <Code2 size={15} />,
+  Zap:   <Zap size={15} />,
+  Brain: <Brain size={15} />,
 };
 
-/* ─── Share Button ───────────────────────────────────────── */
-const ShareButton: React.FC<{ title: string; url: string; text: string }> = ({ title, url, text }) => {
-  const [copied, setCopied] = React.useState(false);
-
-  const handleShare = async () => {
-    try {
-      if (typeof navigator !== 'undefined' && navigator.share) {
-        await navigator.share({ title, text, url });
-      } else {
-        await navigator.clipboard.writeText(url);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2500);
-      }
-    } catch (e) {
-      // User cancelled or clipboard failed — fallback to copy
-      try {
-        await navigator.clipboard.writeText(url);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2500);
-      } catch (_) {}
-    }
-  };
-
-  return (
-    <button
-      onClick={handleShare}
-      className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all active:scale-95"
-      aria-label="Share this article"
-    >
-      {copied
-        ? <><Check size={13} className="text-emerald-500" /> Link Copied!</>
-        : <><Share2 size={13} /> Share Post</>
-      }
-    </button>
-  );
-};
-
-/* ─── Post card (list view) ──────────────────────────────── */
-const PostCard = ({ post, featured = false }: { post: typeof BLOG_POSTS[0]; featured?: boolean }) => {
+/* ─── Post Card Component ────────────────────────────────── */
+const PostCard: React.FC<{ post: BlogPost; featured?: boolean }> = ({ post, featured = false }) => {
   const navigate = useNavigate();
+
   return (
     <article
       onClick={() => navigate(`/blog/${post.id}`)}
-      className={`group cursor-pointer bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-white/5 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-slate-200/50 dark:hover:shadow-black/30 hover:-translate-y-1 transition-all duration-400 ${featured ? 'sm:col-span-2' : ''}`}
+      className={`group cursor-pointer relative bg-white dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between backdrop-blur-xl ${
+        featured ? 'md:col-span-2' : ''
+      }`}
     >
-      <div className={`h-2 bg-gradient-to-r ${post.heroGradient}`} />
-      <div className="p-7">
-        <div className="flex items-start gap-3 mb-4">
-          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border ${BADGE[post.color]}`}>
-            {ICON_MAP[post.icon]} {post.category}
-          </span>
+      {/* Top Gradient Stripe */}
+      <div className={`h-1.5 bg-gradient-to-r ${post.heroGradient || 'from-indigo-600 to-violet-600'}`} />
+
+      <div className="p-7 sm:p-8 flex flex-col flex-grow justify-between space-y-5">
+        <div>
+          {/* Header Row: Category Badge & Reading Time */}
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-wider border ${BADGE_COLOR[post.color] || BADGE_COLOR.indigo}`}>
+              {ICON_MAP[post.icon] || <BookOpen size={14} />}
+              <span>{post.category}</span>
+            </span>
+            <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
+              <Clock size={12} /> 5 min read
+            </span>
+          </div>
+
+          {/* Title */}
+          <h2 className={`font-outfit font-black text-slate-950 dark:text-white mb-3 leading-snug group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors ${
+            featured ? 'text-xl sm:text-2xl lg:text-3xl' : 'text-lg sm:text-xl'
+          }`}>
+            {post.title}
+          </h2>
+
+          {/* Excerpt */}
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3 font-medium">
+            {post.excerpt}
+          </p>
         </div>
-        <h2 className={`font-outfit font-extrabold text-slate-950 dark:text-white mb-3 leading-snug group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors ${featured ? 'text-xl sm:text-2xl' : 'text-lg'}`}>
-          {post.title}
-        </h2>
-        <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5 line-clamp-2">
-          {post.excerpt}
-        </p>
-        <div className="flex items-center justify-between">
+
+        {/* Footer: Tags & Read Link */}
+        <div className="flex items-center justify-between gap-3 pt-4 border-t border-slate-100 dark:border-white/5">
           <div className="flex flex-wrap gap-1.5">
-            {post.tags.slice(0, 3).map(t => (
-              <span key={t} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[8px] font-bold rounded-md">#{t}</span>
+            {post.tags.slice(0, 3).map(tag => (
+              <span key={tag} className="px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[9px] font-bold rounded-md">
+                #{tag}
+              </span>
             ))}
           </div>
-          <div className="flex items-center gap-1 text-[10px] font-black text-indigo-600 dark:text-indigo-400 group-hover:gap-2 transition-all">
-            Read <ArrowRight size={12} />
+
+          <div className="inline-flex items-center gap-1 text-[11px] font-black text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-all shrink-0">
+            <span>Read Article</span>
+            <ArrowRight size={13} />
           </div>
         </div>
       </div>
@@ -110,176 +100,267 @@ const PostCard = ({ post, featured = false }: { post: typeof BLOG_POSTS[0]; feat
   );
 };
 
-/* ─── Post detail view ───────────────────────────────────── */
-const PostView = ({ post }: { post: typeof BLOG_POSTS[0] }) => {
+/* ─── Detail Post View ───────────────────────────────────── */
+const PostView: React.FC<{ post: BlogPost }> = ({ post }) => {
   const navigate = useNavigate();
   const postUrl = `https://codewithmrsingh.me/blog/${post.id}`;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
-      {/* Hero gradient */}
-      <div className={`pt-28 pb-14 px-5 sm:px-10 bg-gradient-to-br ${post.heroGradient}`}>
-        <div className="max-w-3xl mx-auto">
-          <button onClick={() => navigate('/blog')}
-            className="flex items-center gap-2 text-white/70 hover:text-white text-[10px] font-black uppercase tracking-widest mb-8 transition-colors">
-            <ArrowLeft size={14} /> Back to Blog
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+      {/* Header Banner */}
+      <div className={`pt-32 pb-16 px-5 sm:px-10 bg-gradient-to-br ${post.heroGradient || 'from-slate-950 to-indigo-950'} text-white relative overflow-hidden border-b border-indigo-500/20`}>
+        <div className="max-w-4xl mx-auto space-y-6 relative z-10">
+          <button
+            onClick={() => navigate('/blog')}
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-black uppercase tracking-wider backdrop-blur-md transition-all cursor-pointer"
+          >
+            <ArrowLeft size={14} /> Back to All Articles
           </button>
-          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[9px] font-black uppercase tracking-widest mb-4`}>
-            {ICON_MAP[post.icon]} {post.category}
-          </span>
-          <h1 className="text-2xl sm:text-4xl font-outfit font-extrabold text-white leading-tight mb-2">
+
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[10px] font-black uppercase tracking-wider backdrop-blur-md border border-white/20">
+              {ICON_MAP[post.icon] || <BookOpen size={13} />}
+              <span>{post.category}</span>
+            </span>
+            <span className="text-xs text-white/80 font-bold">• 5 Min Read</span>
+          </div>
+
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-outfit font-black text-white leading-tight">
             {post.title}
           </h1>
+
+          <p className="text-sm sm:text-base text-white/85 leading-relaxed max-w-2xl font-medium">
+            {post.excerpt}
+          </p>
+
+          <div className="flex items-center gap-3 pt-2">
+            <div className="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center font-outfit font-black text-sm shadow-md">
+              TS
+            </div>
+            <div>
+              <p className="text-xs font-black text-white">Written by Tushar Singh</p>
+              <p className="text-[10px] text-white/70">AI Automation Expert &amp; Developer</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Body */}
-      <div className="max-w-3xl mx-auto px-5 sm:px-10 py-12">
+      {/* Article Content */}
+      <div className="max-w-4xl mx-auto px-5 sm:px-10 py-14">
         <div
-          className="text-slate-700 dark:text-slate-300 leading-relaxed mb-10"
-          style={{ fontSize: '1.05rem', lineHeight: 1.75 }}
+          className="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base space-y-5"
+          style={{ fontSize: '1.05rem', lineHeight: 1.8 }}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        {/* Tags + Share row */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-8 border-t border-slate-100 dark:border-white/5">
+        {/* Tags and Share Row */}
+        <div className="mt-12 pt-8 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-wrap gap-2">
             {post.tags.map(t => (
-              <span key={t} className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold rounded-full">
+              <span key={t} className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-xl">
                 #{t}
               </span>
             ))}
           </div>
-          {/* Share button */}
-          <ShareButton
-            title={post.title}
+
+          <SharePageButton
+            title={`${post.title} | Code with Mr Singh`}
+            text={post.excerpt}
             url={postUrl}
-            text={`${post.excerpt} — Read on Code with Mr Singh`}
+            buttonLabel="Share This Article"
           />
         </div>
 
-        {/* Copy URL row */}
-        <div className="mt-4 flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-white/5 rounded-xl">
-          <Link2 size={12} className="text-slate-400 shrink-0" />
-          <span className="text-xs text-slate-500 dark:text-slate-400 flex-1 truncate font-mono">{postUrl}</span>
-          <button
-            onClick={() => { navigator.clipboard.writeText(postUrl); }}
-            className="flex items-center gap-1 px-3 py-1 bg-indigo-600 text-white rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-indigo-700 transition-all active:scale-95"
-          >
-            <Copy size={10} /> Copy
-          </button>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-10 p-7 bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-400/20 rounded-3xl text-center">
-          <p className="text-base font-extrabold text-slate-900 dark:text-white mb-2">Need help implementing this?</p>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-5">Book a free consultation — I'll show you exactly how to apply this to your business.</p>
-          <Link to="/contact"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-600 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-700 transition-all">
-            Book Free Consultation <ChevronRight size={13} />
-          </Link>
+        {/* Author Callout Box */}
+        <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-slate-900 dark:to-indigo-950/40 border border-indigo-200 dark:border-indigo-500/20 flex flex-col sm:flex-row items-center gap-6 shadow-md">
+          <div className="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-outfit font-black text-xl shrink-0 shadow-lg">
+            TS
+          </div>
+          <div className="space-y-2 text-center sm:text-left">
+            <h3 className="text-lg font-outfit font-black text-slate-950 dark:text-white">
+              Need AI Automation or a Custom Web Platform?
+            </h3>
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Tushar Singh builds production-grade AI automations, chatbots, and web apps for businesses worldwide. Book a free 30-minute consultation or hire with Fiverr buyer protection.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2 justify-center sm:justify-start">
+              <button
+                onClick={() => navigate('/contact')}
+                className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-black uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
+              >
+                Book Free Consultation
+              </button>
+              <a
+                href={FIVERR_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 bg-[#1DBF73] hover:bg-[#19a463] text-white text-xs font-black uppercase tracking-wider rounded-xl transition-all shadow-md"
+              >
+                Hire on Fiverr
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-/* ─── Main Blog page ─────────────────────────────────────── */
+/* ─── Main Blog Component ────────────────────────────────── */
 const Blog: React.FC = () => {
-  const { postId } = useParams<{ postId?: string }>();
+  const { postId } = useParams<{ postId: string }>();
   const [activeTag, setActiveTag] = useState('All');
+  const [search, setSearch]       = useState('');
 
-  if (postId) {
-    const post = BLOG_POSTS.find(p => p.id === postId);
-    if (post) return <PostView post={post} />;
+  const activePost = useMemo(() => {
+    if (!postId) return null;
+    return BLOG_POSTS.find(p => p.id === postId) ?? null;
+  }, [postId]);
+
+  const allTags = useMemo(() => {
+    const s = new Set<string>();
+    s.add('All');
+    BLOG_POSTS.forEach(p => p.tags.forEach(t => s.add(t)));
+    return Array.from(s);
+  }, []);
+
+  const filteredPosts = useMemo(() => {
+    return BLOG_POSTS.filter(p => {
+      const matchTag = activeTag === 'All' || p.tags.includes(activeTag);
+      const matchSearch = search.trim() === '' ||
+        p.title.toLowerCase().includes(search.toLowerCase()) ||
+        p.excerpt.toLowerCase().includes(search.toLowerCase()) ||
+        p.category.toLowerCase().includes(search.toLowerCase());
+      return matchTag && matchSearch;
+    });
+  }, [activeTag, search]);
+
+  if (activePost) {
+    return <PostView post={activePost} />;
   }
 
-  const allTags = ['All', ...Array.from(new Set(BLOG_POSTS.flatMap(p => p.tags)))];
-  const filtered = activeTag === 'All' ? BLOG_POSTS : BLOG_POSTS.filter(p => p.tags.includes(activeTag));
-
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-      {/* Header */}
-      <section className="pt-28 pb-14 px-5 sm:px-10 border-b border-slate-100 dark:border-white/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-400/20 text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-widest mb-5">
-            <BookOpen size={11} /> Technical Insights &amp; Guides
+      {/* ── 1. HERO SECTION ─────────────────────────────────── */}
+      <section className="relative pt-32 pb-16 px-5 sm:px-10 overflow-hidden border-b border-slate-100 dark:border-white/5">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-gradient-to-tr from-indigo-600/20 via-violet-600/15 to-teal-500/10 blur-[140px] pointer-events-none rounded-full" />
+
+        <div className="max-w-5xl mx-auto text-center relative z-10 space-y-6">
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-300 text-[10px] font-black uppercase tracking-wider shadow-2xs">
+              <Sparkles size={12} className="text-indigo-500 animate-pulse" />
+              <span>Technical Guides &amp; Insights</span>
+            </div>
+            <FiverrBadge variant="pill" />
           </div>
-          <h1 className="text-3xl sm:text-5xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight mb-4 speakable">
-            Engineering <span className="text-indigo-600 dark:text-indigo-400">Blog.</span>
+
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-outfit font-black tracking-tight text-slate-950 dark:text-white leading-[1.15] speakable">
+            AI Engineering &amp; <br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-teal-500 bg-clip-text text-transparent">
+              Automation Insights
+            </span>
           </h1>
-          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Practical guides on AI automation, chatbot development, and full-stack web development — written from real project experience.
+
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-medium">
+            Actionable articles on building autonomous n8n workflows, custom RAG chatbots, coding roadmaps, and full-stack web applications from real client experience.
           </p>
         </div>
       </section>
 
-      {/* Tag filter */}
-      <div className="px-5 sm:px-10 py-6 border-b border-slate-100 dark:border-white/5 overflow-x-auto">
-        <div className="max-w-5xl mx-auto flex items-center gap-2 flex-nowrap">
-          <Tag size={12} className="text-slate-400 shrink-0" />
-          {allTags.slice(0, 9).map(tag => (
-            <button key={tag} onClick={() => setActiveTag(tag)}
-              className={`shrink-0 px-3.5 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all border ${
-                activeTag === tag
-                  ? 'bg-slate-950 dark:bg-white text-white dark:text-slate-950 border-slate-950 dark:border-white'
-                  : 'bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-white/10 hover:border-indigo-300'
-              }`}>
-              {tag}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Post grid */}
-      <section className="py-14 sm:py-20 px-5 sm:px-10">
-        <div className="max-w-5xl mx-auto">
-          {activeTag === 'All' && (
-            <div className="mb-8">
-              <div className="flex items-center gap-2 mb-5">
-                <Sparkles size={12} className="text-indigo-500" />
-                <span className="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Featured Post</span>
-              </div>
-              <PostCard post={BLOG_POSTS[0]} featured={true} />
-            </div>
-          )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {(activeTag === 'All' ? filtered.slice(1) : filtered).map(post => (
-              <PostCard key={post.id} post={post} />
+      {/* ── 2. SEARCH & TAG FILTERS ─────────────────────────── */}
+      <section className="py-8 px-5 sm:px-10 sticky top-16 z-40 bg-white/90 dark:bg-slate-950/90 backdrop-blur-xl border-b border-slate-100 dark:border-white/5">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Tag Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar w-full md:w-auto py-1">
+            {allTags.map(tag => (
+              <button
+                key={tag}
+                onClick={() => setActiveTag(tag)}
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  activeTag === tag
+                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25 scale-100'
+                    : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'
+                }`}
+              >
+                #{tag}
+              </button>
             ))}
           </div>
-          {filtered.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-4xl mb-4">📭</p>
-              <p className="text-slate-500 font-medium">No posts match this tag.</p>
-              <button onClick={() => setActiveTag('All')} className="mt-4 text-indigo-600 dark:text-indigo-400 text-sm font-bold hover:underline">
-                View all posts
+
+          {/* Search Bar */}
+          <div className="relative w-full md:w-72 shrink-0">
+            <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+            <input
+              type="text"
+              placeholder="Search tutorials & guides..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. BLOG POSTS GRID ──────────────────────────────── */}
+      <section className="py-16 px-5 sm:px-10">
+        <div className="max-w-6xl mx-auto">
+          {filteredPosts.length === 0 ? (
+            <div className="text-center py-20 bg-slate-50 dark:bg-slate-900/40 rounded-3xl border border-dashed border-slate-200 dark:border-white/10 p-8">
+              <BookOpen size={28} className="text-slate-400 mx-auto mb-3" />
+              <h3 className="font-outfit font-black text-lg text-slate-900 dark:text-white mb-1">No Articles Found</h3>
+              <p className="text-xs text-slate-500 max-w-sm mx-auto mb-4">Try clearing the search query or select another tag.</p>
+              <button
+                onClick={() => { setActiveTag('All'); setSearch(''); }}
+                className="px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold"
+              >
+                Reset Search
               </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {filteredPosts.map((post, idx) => (
+                <PostCard key={post.id} post={post} featured={idx === 0 && activeTag === 'All' && search === ''} />
+              ))}
             </div>
           )}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-14 px-5 sm:px-10 bg-slate-950 text-center">
-        <div className="max-w-xl mx-auto">
-          <p className="text-[9px] font-black text-indigo-400 uppercase tracking-widest mb-3">Stay Updated</p>
-          <h2 className="text-2xl font-outfit font-extrabold text-white mb-4">
-            Want more AI &amp; automation insights?
-          </h2>
-          <p className="text-slate-400 text-sm mb-7 leading-relaxed">
-            Follow on YouTube &amp; Instagram for tutorials, project breakdowns, and automation tips.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="https://www.youtube.com/@codewithmrsingh4u" target="_blank" rel="noopener noreferrer"
-              className="w-full sm:w-auto px-7 py-3.5 bg-white text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-50 transition-all">
-              YouTube Channel
-            </a>
-            <Link to="/contact"
-              className="w-full sm:w-auto px-7 py-3.5 bg-white/5 border border-white/10 text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all">
-              Work With Me
-            </Link>
+      {/* ── 4. COMMUNITY & SOCIAL CTA ───────────────────────── */}
+      <section className="pb-20 px-5 sm:px-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 border border-indigo-500/30 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+            <div className="space-y-2 text-center md:text-left">
+              <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Stay Ahead in Tech</span>
+              <h3 className="text-2xl font-outfit font-black text-white">
+                Learn AI, Automation &amp; Web Development
+              </h3>
+              <p className="text-xs text-slate-300 max-w-md">
+                Follow <strong>@codewithmrsingh</strong> on YouTube and Instagram for hands-on video tutorials and workflow blueprints.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://www.youtube.com/@codewithmrsingh4u"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95"
+              >
+                <Youtube size={16} />
+                <span>YouTube</span>
+              </a>
+              <a
+                href="https://www.instagram.com/tushar.cms/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95"
+              >
+                <Instagram size={16} />
+                <span>Instagram</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
