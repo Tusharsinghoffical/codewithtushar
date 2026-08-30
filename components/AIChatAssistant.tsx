@@ -40,12 +40,12 @@ export const AIChatAssistant: React.FC = () => {
       text: `👋 Namaste! I am **Tushar's AI Assistant**.\n\nAsk me anything about **Services**, **Projects**, **Pricing**, or **Timeline**. You can also book a free 30-min strategy call right here and confirm directly on WhatsApp! 🚀`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       quickActions: [
-        { label: '🚀 AI Automation', action: () => handleSendPreset('Tell me about AI Automation services') },
-        { label: '🤖 AI Chatbot Dev', action: () => handleSendPreset('How do custom AI chatbots work?') },
-        { label: '💻 Web Development', action: () => handleSendPreset('What web development services do you offer?') },
-        { label: '🏆 View Projects', action: () => handleSendPreset('Show me recent client projects and results') },
-        { label: '💰 Pricing & Timelines', action: () => handleSendPreset('What are the pricing and project timelines?') },
-        { label: '📅 Book Free Consultation', action: () => openBookingFlow() },
+        { label: '🌐 Website / Landing Page', action: () => handleSendPreset('I want to build a new website or landing page') },
+        { label: '🤖 WhatsApp & Website Chatbot', action: () => handleSendPreset('I need an automated AI chatbot for my business') },
+        { label: '⚡ Automate Manual Tasks', action: () => handleSendPreset('How can you automate my repetitive business tasks?') },
+        { label: '🎯 Get More Clients / Leads', action: () => handleSendPreset('Tell me about your lead generation outreach system') },
+        { label: '💰 Pricing & Timeline', action: () => handleSendPreset('What are your pricing packages and timelines?') },
+        { label: '📅 Book Free 30-Min Call', action: () => openBookingFlow() },
       ]
     }
   ]);
@@ -580,19 +580,19 @@ export const AIChatAssistant: React.FC = () => {
 
                   <div>
                     <label className="block text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-1">
-                      Service Required
+                      What do you need help with?
                     </label>
                     <select
                       value={bookingService}
                       onChange={(e) => setBookingService(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
+                      className="w-full px-3 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 font-medium"
                     >
-                      <option value="AI Automation (n8n &amp; Python)">🚀 AI Automation (n8n &amp; Python)</option>
-                      <option value="Custom AI Chatbot &amp; RAG Agent">🤖 Custom AI Chatbot &amp; RAG</option>
-                      <option value="Full-Stack Web Development">💻 Full-Stack Web Development</option>
-                      <option value="Lead Generation Systems">🎯 Lead Generation Systems</option>
-                      <option value="Sales Funnel &amp; Landing Page">📈 Sales Funnel &amp; Landing Page</option>
-                      <option value="General Consultation / Other">💡 General Project Consultation</option>
+                      <option value="New Website or Landing Page">🌐 New Website or Landing Page (Design, Speed, Online Store)</option>
+                      <option value="24/7 AI Chatbot for WhatsApp & Website">🤖 24/7 AI Chatbot (Auto-reply on WhatsApp & Website)</option>
+                      <option value="Automate Repetitive Manual Work">⚡ Automate Manual Work (Save 10+ hours/week with smart tools)</option>
+                      <option value="Get More Client Leads & Sales">🎯 Get More Client Leads (Automated outreach & prospecting)</option>
+                      <option value="Logo & Brand Identity Design">🎨 Logo & Branding Design (Logo, Social Graphics, Banners)</option>
+                      <option value="Free Consultation / Not Sure">💡 Not Sure / Free Advice (Help me choose the right solution)</option>
                     </select>
                   </div>
 

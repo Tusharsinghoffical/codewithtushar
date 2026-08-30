@@ -4,7 +4,9 @@ import SharePageButton from '../components/SharePageButton';
 import {
   Brain, Bot, Globe, Palette, ArrowRight, CheckCircle2,
   TrendingUp, AlertCircle, Sparkles, Clock, ChevronRight,
-  Instagram, Share2, Megaphone, ArrowUpRight
+  Instagram, Share2, Megaphone, ArrowUpRight, ShieldCheck,
+  Zap, Star, Layers, MessageSquare, PhoneCall, HelpCircle,
+  Code2, Rocket, Check
 } from 'lucide-react';
 import { FIVERR_PROFILE_URL } from '../constants';
 import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
@@ -12,86 +14,131 @@ import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
 /* ─── Types ──────────────────────────────────────────────── */
 interface ServiceDef {
   id: string;
+  category: 'all' | 'ai' | 'chatbots' | 'web' | 'branding';
   icon: React.ReactNode;
   badge: string;
+  badgeType: 'popular' | 'demand' | 'full' | 'brand';
   title: string;
+  simpleTitle: string; // Plain English for non-tech clients
   tagline: string;
   description: string;
   problem: string;
   features: string[];
   result: string;
+  deliveryTime: string;
   stack: string[];
-  color: string;
-  accent: string;
+  gradient: string;
+  borderGlow: string;
+  accentColor: string;
 }
 
-/* ─── Service Data (4 active + coming soon) ─────────────── */
+/* ─── Service Data with Plain English Clarifications ─────── */
 const ACTIVE_SERVICES: ServiceDef[] = [
   {
     id: 'ai-automation',
-    icon: <Brain size={24} />,
-    badge: 'Most Popular',
-    title: 'AI Automation',
-    tagline: 'Scale Your Workflows',
-    description: 'Eliminate manual tasks and optimise operations using autonomous AI agents and intelligent end-to-end workflows.',
-    problem: 'Manual data entry, repetitive copy-pasting, and disconnected tools are slowing your growth and causing costly errors.',
-    features: ['Workflow Automation', 'AI Agent Integration', 'System Connectivity', 'Process Scoping'],
-    result: '10+ hours saved per team member every week',
-    stack: ['n8n', 'OpenAI', 'Python', 'Zapier'],
-    color: 'from-indigo-500/10 to-violet-500/5',
-    accent: 'indigo',
+    category: 'ai',
+    icon: <Brain size={26} />,
+    badge: '🔥 Most Popular',
+    badgeType: 'popular',
+    title: 'AI Automation & Smart Workflows',
+    simpleTitle: 'Automate Manual & Repetitive Business Tasks',
+    tagline: 'Save 10+ Hours Every Week',
+    description: 'Eliminate boring manual work like data entry, copy-pasting between apps, invoice processing, and lead follow-ups using autonomous AI workflows.',
+    problem: 'Manual data entry, repetitive tasks, and disconnected software are slowing down your team and causing costly human mistakes.',
+    features: [
+      'Connect all your tools (Slack, Sheets, CRM, Gmail, WhatsApp)',
+      'Automated invoice & document data extraction',
+      'Autonomous multi-step AI agents for daily ops',
+      'Zero manual errors & 24/7 background operation'
+    ],
+    result: '10+ hours saved per team member every single week',
+    deliveryTime: '3 – 7 Days',
+    stack: ['n8n', 'Python', 'OpenAI', 'Zapier', 'Make.com'],
+    gradient: 'from-indigo-600/15 via-violet-600/10 to-transparent',
+    borderGlow: 'group-hover:border-indigo-500/50',
+    accentColor: 'indigo'
   },
   {
     id: 'chatbot',
-    icon: <Bot size={24} />,
-    badge: 'High Demand',
-    title: 'Chatbot Development',
-    tagline: '24/7 Support Assistant',
-    description: 'Intelligent AI assistants trained on your business data that handle inquiries, book appointments, and qualify leads around the clock.',
-    problem: 'Your business is losing sales because you cannot respond to inquiries 24/7 and your team is overwhelmed by repetitive questions.',
-    features: ['Custom Knowledge Base', 'Multilingual Support', 'Appointment Booking', 'CRM Integration'],
-    result: '70% reduction in support ticket volume',
-    stack: ['OpenAI', 'LangChain', 'Vector DB', 'Voiceflow'],
-    color: 'from-emerald-500/10 to-teal-500/5',
-    accent: 'emerald',
+    category: 'chatbots',
+    icon: <Bot size={26} />,
+    badge: '⭐ High Demand',
+    badgeType: 'demand',
+    title: '24/7 AI Customer Support Chatbots',
+    simpleTitle: 'Smart AI Chatbot for Website & WhatsApp',
+    tagline: 'Instant Automated Customer Replies',
+    description: 'Intelligent AI assistant trained specifically on your business FAQs, catalog, and documents. It answers queries, books appointments, and captures leads 24/7 while you sleep.',
+    problem: 'Losing high-intent sales because you cannot answer customer inquiries at night or on weekends, while your staff is overwhelmed by the same repetitive questions.',
+    features: [
+      'Trained on your private documents, PDFs & business knowledge',
+      'Multi-channel: Works on Website, WhatsApp Business API & Telegram',
+      'Automated meeting & appointment booking directly to your calendar',
+      'Multilingual support (English, Hindi, and 20+ global languages)'
+    ],
+    result: '70% reduction in customer support tickets & instant replies',
+    deliveryTime: '5 – 10 Days',
+    stack: ['OpenAI GPT-4o', 'LangChain', 'Vector DB', 'WhatsApp API', 'Python'],
+    gradient: 'from-emerald-600/15 via-teal-600/10 to-transparent',
+    borderGlow: 'group-hover:border-emerald-500/50',
+    accentColor: 'emerald'
   },
   {
     id: 'website',
-    icon: <Globe size={24} />,
-    badge: 'Full Service',
-    title: 'Website & Funnel Building',
-    tagline: 'High-Conversion UI',
-    description: 'Professional websites and sales funnels built for results — digital experiences that turn visitors into paying customers.',
-    problem: 'Your website looks outdated and does not convert. Traffic is wasted on pages that do not guide users toward a clear purchase or call.',
-    features: ['Sales Funnel Design', 'A/B Testing', 'Speed Optimisation', 'Landing Page Strategy'],
-    result: 'Significant increase in website conversion rate',
-    stack: ['React', 'Next.js', 'Tailwind', 'Django'],
-    color: 'from-blue-500/10 to-cyan-500/5',
-    accent: 'blue',
+    category: 'web',
+    icon: <Globe size={26} />,
+    badge: '🚀 High Converting',
+    badgeType: 'full',
+    title: 'High-Converting Websites & Sales Funnels',
+    simpleTitle: 'Modern Website, Landing Page & Online Store',
+    tagline: 'Turn Visitors into Paying Clients',
+    description: 'Ultra-fast, mobile-friendly websites and sales funnels designed to turn clicks into sales calls. Perfect for startups, agencies, local businesses, and SaaS products.',
+    problem: 'Your current website looks outdated, loads slowly on mobile phones, and fails to guide visitors toward buying or booking a call.',
+    features: [
+      '100/100 Google Lighthouse speed & mobile-first responsive UI',
+      'Built-in AEO (AI Engine Optimization) & Google SEO for top ranking',
+      'Seamless lead capture forms, WhatsApp buttons & CRM integration',
+      'Clean modern design with dark/light mode and rich animations'
+    ],
+    result: 'Significantly higher conversion rate & under-1s page load speed',
+    deliveryTime: '7 – 14 Days',
+    stack: ['React.js', 'Next.js', 'Tailwind CSS', 'Django', 'TypeScript'],
+    gradient: 'from-blue-600/15 via-cyan-600/10 to-transparent',
+    borderGlow: 'group-hover:border-blue-500/50',
+    accentColor: 'blue'
   },
   {
     id: 'design',
-    icon: <Palette size={24} />,
-    badge: 'Brand Identity',
-    title: 'Logo & Graphic Design',
-    tagline: 'Professional Branding',
-    description: 'Creative logo design and branding solutions that establish a strong, memorable visual identity for your business or personal brand.',
-    problem: 'Your brand lacks a professional visual identity. Inconsistent design and outdated logos are weakening your market presence.',
-    features: ['Logo Design', 'Brand Identity', 'Social Media Graphics', 'Marketing Materials'],
-    result: 'Professional, memorable brand identity delivered',
-    stack: ['Figma', 'Adobe Illustrator', 'Photoshop', 'Canva'],
-    color: 'from-rose-500/10 to-pink-500/5',
-    accent: 'rose',
+    category: 'branding',
+    icon: <Palette size={26} />,
+    badge: '🎨 Brand Identity',
+    badgeType: 'brand',
+    title: 'Logo & Professional Brand Identity',
+    simpleTitle: 'Creative Logo, Social Graphics & Brand Kit',
+    tagline: 'Stand Out with Premium Visuals',
+    description: 'Clean, memorable logos and cohesive brand identities that make your business look authoritative, credible, and trustworthy across social media and web.',
+    problem: 'Inconsistent graphics and generic DIY logos make your business look amateur, lowering trust with potential high-ticket clients.',
+    features: [
+      'Custom vector logo design with full copyright & vector source files',
+      'Complete social media kit (Banners, profile avatars, post templates)',
+      'Brand color palette, typography guidelines & stationery kit',
+      'Ready for digital screens, mobile apps, and high-res printing'
+    ],
+    result: 'Recognizable, high-trust brand identity across all platforms',
+    deliveryTime: '3 – 5 Days',
+    stack: ['Figma', 'Adobe Illustrator', 'Photoshop', 'Canva Pro'],
+    gradient: 'from-rose-600/15 via-pink-600/10 to-transparent',
+    borderGlow: 'group-hover:border-rose-500/50',
+    accentColor: 'rose'
   },
 ];
 
 const COMING_SOON = [
   { icon: <Instagram size={14} />, label: 'Social Media Management' },
-  { icon: <Share2 size={14} />, label: 'Content Strategy' },
+  { icon: <Share2 size={14} />, label: 'Content Strategy & SEO Copy' },
   { icon: <Megaphone size={14} />, label: 'Paid Ads (Meta & Google)' },
 ];
 
-/* ─── Schema injection ───────────────────────────────────── */
+/* ─── Schema injection for Services Page ─────────────────── */
 const injectSchema = () => {
   const el = document.getElementById('services-jsonld');
   if (el) el.remove();
@@ -105,9 +152,17 @@ const injectSchema = () => {
     "url": "https://codewithmrsingh.me/services",
     "numberOfItems": ACTIVE_SERVICES.length,
     "itemListElement": ACTIVE_SERVICES.map((s, i) => ({
-      "@type": "ListItem", "position": i + 1,
-      "item": { "@type": "Service", "name": s.title, "description": s.description,
-        "provider": { "@type": "Person", "@id": "https://codewithmrsingh.me/#person", "name": "Tushar Singh" },
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Service",
+        "name": s.title,
+        "description": s.description,
+        "provider": {
+          "@type": "Person",
+          "@id": "https://codewithmrsingh.me/#person",
+          "name": "Tushar Singh"
+        },
         "areaServed": "Worldwide"
       }
     }))
@@ -115,99 +170,11 @@ const injectSchema = () => {
   document.head.appendChild(script);
 };
 
-/* ─── Accent helpers ─────────────────────────────────────── */
-const ICON_BG: Record<string, string> = {
-  indigo: 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white',
-  emerald: 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white',
-  blue:    'bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white',
-  rose:    'bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 group-hover:bg-rose-600 group-hover:text-white',
-};
-const BADGE_COLOR: Record<string, string> = {
-  indigo: 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border-indigo-100 dark:border-indigo-400/20',
-  emerald:'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border-emerald-100 dark:border-emerald-400/20',
-  blue:   'bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-400/20',
-  rose:   'bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border-rose-100 dark:border-rose-400/20',
-};
-
-/* ─── Service Card ───────────────────────────────────────── */
-const ServiceCard = ({ s, onCTA }: { s: ServiceDef; onCTA: () => void }) => (
-  <div className={`group relative bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-white/5 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-slate-200/60 dark:hover:shadow-black/30 hover:-translate-y-1 transition-all duration-400`}>
-    {/* top gradient strip */}
-    <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${s.color.replace('/10','').replace('/5','')}`} />
-
-    <div className="p-7 sm:p-8">
-      {/* Icon + badge row */}
-      <div className="flex items-start justify-between mb-6">
-        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${ICON_BG[s.accent]}`}>
-          {s.icon}
-        </div>
-        <span className={`px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border ${BADGE_COLOR[s.accent]}`}>
-          {s.badge}
-        </span>
-      </div>
-
-      {/* Title */}
-      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">{s.tagline}</p>
-      <h2 className="text-xl font-outfit font-extrabold text-slate-900 dark:text-white mb-3">{s.title}</h2>
-      <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5">{s.description}</p>
-
-      {/* Problem */}
-      <div className="flex gap-2.5 p-3.5 bg-rose-50/60 dark:bg-rose-950/10 border border-rose-100 dark:border-rose-900/20 rounded-2xl mb-5">
-        <AlertCircle size={13} className="text-rose-500 mt-0.5 shrink-0" />
-        <p className="text-[11px] text-rose-700 dark:text-rose-400 font-medium leading-relaxed">{s.problem}</p>
-      </div>
-
-      {/* Features */}
-      <ul className="space-y-2 mb-5">
-        {s.features.slice(0, 3).map(f => (
-          <li key={f} className="flex items-center gap-2 text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">
-            <CheckCircle2 size={12} className="text-emerald-500 shrink-0" /> {f}
-          </li>
-        ))}
-      </ul>
-
-      {/* Result */}
-      <div className="flex items-center gap-2 p-3 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/20 rounded-xl mb-6">
-        <TrendingUp size={12} className="text-emerald-600 shrink-0" />
-        <p className="text-[10px] font-extrabold text-emerald-700 dark:text-emerald-400">{s.result}</p>
-      </div>
-
-      {/* Stack */}
-      <div className="flex flex-wrap gap-1.5 mb-6">
-        {s.stack.map(t => (
-          <span key={t} className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[9px] font-bold rounded-lg">{t}</span>
-        ))}
-      </div>
-
-      {/* CTA Buttons (Direct Quote + Fiverr Order) */}
-      <div className="grid grid-cols-2 gap-2">
-        <button
-          onClick={onCTA}
-          className="group/btn w-full flex items-center justify-center gap-1.5 py-3 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-extrabold text-[10px] uppercase tracking-wider hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all active:scale-95 cursor-pointer"
-          aria-label={`Get quote for ${s.title}`}
-        >
-          <span>Get Quote</span>
-          <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
-        </button>
-        <a
-          href={FIVERR_PROFILE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group/fiverr w-full flex items-center justify-center gap-1.5 py-3 bg-emerald-50 dark:bg-emerald-950/50 hover:bg-[#1DBF73] text-emerald-700 dark:text-emerald-300 hover:text-white border border-emerald-300/80 dark:border-emerald-500/30 hover:border-[#1DBF73] rounded-2xl font-extrabold text-[10px] uppercase tracking-wider transition-all active:scale-95"
-          aria-label={`Order ${s.title} on Fiverr`}
-        >
-          <FiverrIcon size={13} />
-          <span>Fiverr Gig</span>
-          <ArrowUpRight size={11} className="group-hover/fiverr:translate-x-0.5 group-hover/fiverr:-translate-y-0.5 transition-transform" />
-        </a>
-      </div>
-    </div>
-  </div>
-);
-
 /* ─── Main Component ─────────────────────────────────────── */
 const Services: React.FC = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState<'all' | 'ai' | 'chatbots' | 'web' | 'branding'>('all');
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
     injectSchema();
@@ -216,127 +183,412 @@ const Services: React.FC = () => {
 
   const handleCTA = (s: ServiceDef) => {
     sessionStorage.setItem('selectedService', JSON.stringify({
-      service: s.title, category: s.id, description: s.description
+      service: s.title,
+      category: s.id,
+      description: s.description
     }));
     navigate('/contact');
   };
 
-  return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
+  const filteredServices = activeTab === 'all'
+    ? ACTIVE_SERVICES
+    : ACTIVE_SERVICES.filter(s => s.category === activeTab);
 
-      {/* ── HEADER ─────────────────────────────────────────── */}
-      <section className="pt-28 pb-16 px-5 sm:px-10 border-b border-slate-100 dark:border-white/5">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-400/20 text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-widest">
-              <Sparkles size={11} /> Expert Freelance Services
+  const FAQ_ITEMS = [
+    {
+      q: 'Which service should I pick if I am not from a technical background?',
+      a: 'Don\'t worry at all! If you want a website or landing page for your business, pick "Website & Funnel". If you want automated 24/7 replies on WhatsApp or your website, pick "AI Chatbot". If you want to connect your apps and eliminate manual work, pick "AI Automation". You can also book a free 30-min consultation and Tushar will recommend the exact solution for your budget.'
+    },
+    {
+      q: 'Can I hire Tushar through Fiverr with Escrow & Buyer Protection?',
+      a: 'Yes! You can order directly through my official Fiverr profile (fiverr.com/s/zAd5R2z) where your payment is held securely in escrow until you are 100% satisfied with the deliverables.'
+    },
+    {
+      q: 'How fast can a project be delivered?',
+      a: 'Automations and branding packages are typically delivered within 3 to 7 business days. Custom AI chatbots take 5 to 10 days, and full-stack web applications or MVPs take 7 to 14 days.'
+    },
+    {
+      q: 'Do you provide post-launch support and training?',
+      a: 'Yes! Every project includes hands-on Loom video walkthroughs, system documentation, and 30 days of free ongoing support to ensure everything runs smoothly.'
+    },
+    {
+      q: 'How do we communicate during the project?',
+      a: 'We communicate via WhatsApp, Email, or Slack with guaranteed response times under 1 hour. We also conduct weekly or milestone video check-ins via Google Meet.'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+      {/* ── 1. HERO SECTION ─────────────────────────────────── */}
+      <section className="relative pt-32 pb-20 px-5 sm:px-10 overflow-hidden border-b border-slate-100 dark:border-white/5">
+        {/* Ambient Glowing Aura */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-indigo-600/20 via-violet-600/15 to-teal-500/10 blur-[130px] pointer-events-none rounded-full" />
+
+        <div className="max-w-5xl mx-auto text-center relative z-10 space-y-6">
+          {/* Trust Badges Row */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-500/30 text-indigo-700 dark:text-indigo-300 text-[10px] font-black uppercase tracking-wider shadow-2xs">
+              <Sparkles size={12} className="text-indigo-500 animate-pulse" />
+              <span>Full-Stack &amp; AI Engineering</span>
             </div>
             <FiverrBadge variant="pill" />
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-extrabold text-slate-950 dark:text-white tracking-tight mb-4 speakable">
-            AI Automation &amp; <span className="text-indigo-600 dark:text-indigo-400">Web Development</span> Services
-          </h1>
-          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Tushar Singh offers expert <strong className="text-slate-700 dark:text-slate-200">AI automation</strong>, <strong className="text-slate-700 dark:text-slate-200">chatbot development</strong>, <strong className="text-slate-700 dark:text-slate-200">website &amp; funnel building</strong>, and <strong className="text-slate-700 dark:text-slate-200">branding</strong> — order directly or hire on Fiverr with buyer protection.
-          </p>
-          <div className="mt-6 flex justify-center">
-            <SharePageButton
-              title="AI Automation & Web Development Services | Tushar Singh"
-              text="Explore top AI automation, chatbot, and full-stack development services by Tushar Singh"
-              buttonLabel="Share Services"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ── SERVICE CARDS ───────────────────────────────────── */}
-      <section className="py-16 sm:py-20 px-5 sm:px-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-            {ACTIVE_SERVICES.map(s => (
-              <ServiceCard key={s.id} s={s} onCTA={() => handleCTA(s)} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── COMING SOON ─────────────────────────────────────── */}
-      <section className="pb-16 px-5 sm:px-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="p-6 sm:p-8 bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-white/5 border-dashed rounded-3xl">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-5">
-              <div className="shrink-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <Clock size={13} className="text-amber-500" />
-                  <span className="text-[9px] font-black text-amber-500 uppercase tracking-widest">Coming Soon</span>
-                </div>
-                <p className="text-base font-outfit font-extrabold text-slate-900 dark:text-white">More Services Launching</p>
-                <p className="text-xs text-slate-400 mt-0.5">Expanding capabilities — stay tuned</p>
-              </div>
-              <div className="flex flex-wrap gap-2.5 sm:ml-auto">
-                {COMING_SOON.map(cs => (
-                  <span key={cs.label} className="flex items-center gap-1.5 px-3.5 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-xl text-[10px] font-bold text-slate-500 dark:text-slate-400">
-                    {cs.icon} {cs.label}
-                  </span>
-                ))}
-              </div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-[10px] font-black uppercase tracking-wider">
+              <ShieldCheck size={12} className="text-emerald-500" />
+              <span>10+ Client Deliverables • 4.0★</span>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ── FAQ ─────────────────────────────────────────────── */}
-      <section className="py-14 px-5 sm:px-10 bg-slate-50/50 dark:bg-slate-900/20 border-t border-slate-100 dark:border-white/5">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-xl font-outfit font-extrabold text-slate-900 dark:text-white mb-8 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              { q: 'What AI automation services does Tushar Singh offer?', a: 'Custom n8n and Python-based workflows, AI agents, RAG chatbots using OpenAI and LangChain, WhatsApp bots, and end-to-end business process automation that saves 10+ hours per week.' },
-              { q: 'Can I order services through Fiverr?', a: 'Yes! You can order directly through my official Fiverr profile (https://www.fiverr.com/s/zAd5R2z) with 100% Escrow and Buyer Protection for milestones and deliverables.' },
-              { q: 'How much does chatbot development cost?', a: 'Chatbot projects start from ₹80,000 for a simple FAQ bot to ₹3,00,000+ for a full RAG-based AI agent with CRM integration. Contact via WhatsApp or Fiverr for a custom quote.' },
-              { q: 'Does Tushar Singh build full-stack web applications?', a: 'Yes — React.js, Next.js, Django, and Python. Projects include startup MVPs, e-commerce platforms, SaaS dashboards, and agency white-label solutions.' },
-            ].map(({ q, a }) => (
-              <div key={q} className="p-5 bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-white/5 rounded-2xl" itemScope itemType="https://schema.org/Question">
-                <h3 className="text-sm font-extrabold text-slate-900 dark:text-white mb-2" itemProp="name">{q}</h3>
-                <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed" itemProp="text">{a}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Main Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-outfit font-black tracking-tight text-slate-950 dark:text-white leading-[1.15] speakable">
+            Everything You Need to <br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-teal-500 bg-clip-text text-transparent">
+              Automate &amp; Scale Your Business
+            </span>
+          </h1>
 
-      {/* ── FOOTER CTA ──────────────────────────────────────── */}
-      <section className="py-14 px-5 sm:px-10 text-center">
-        <div className="max-w-xl mx-auto">
-          <h2 className="text-2xl font-outfit font-extrabold text-slate-900 dark:text-white mb-3">Need a custom solution?</h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">Book a free 30-minute AI automation audit or order directly via Fiverr.</p>
-          <p className="text-xs text-slate-400 mb-7">
-            WhatsApp: <a href="https://wa.me/918851619647" className="text-emerald-600 dark:text-emerald-400 font-bold underline">+91-8851619647</a>
-            &nbsp;·&nbsp; Fiverr: <a href={FIVERR_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="text-[#1DBF73] font-bold underline">fiverr.com/s/zAd5R2z</a>
+          {/* Subheading in Plain English */}
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-medium">
+            From modern high-converting websites and 24/7 smart WhatsApp chatbots to automated background workflows — tailored solutions built to save you hours and drive real revenue.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+
+          {/* CTA & Share Row */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
             <button
               onClick={() => navigate('/contact')}
-              className="inline-flex items-center gap-2 px-7 py-4 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-xl font-extrabold text-[10px] uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all shadow-xl active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all duration-200 shadow-xl shadow-indigo-600/25 active:scale-95 cursor-pointer"
             >
-              Book Free Consultation <ChevronRight size={14} />
+              <span>Book Free 30-Min Audit</span>
+              <ChevronRight size={15} />
             </button>
             <a
               href={FIVERR_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-xl font-extrabold text-[10px] uppercase tracking-widest transition-all shadow-xl active:scale-95"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all duration-200 border border-slate-700 active:scale-95"
             >
-              <FiverrIcon size={14} className="brightness-125" />
+              <FiverrIcon size={16} />
+              <span>Hire with Escrow</span>
+              <ArrowUpRight size={14} className="text-emerald-400" />
+            </a>
+            <SharePageButton
+              title="AI Automation & Web Development Services | Tushar Singh"
+              text="Explore top AI automation, chatbot, and full-stack development services by Tushar Singh"
+              buttonLabel="Share"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── 2. FILTER TABS ─────────────────────────────────── */}
+      <section className="py-8 px-5 sm:px-10 sticky top-16 z-40 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl border-b border-slate-100 dark:border-white/5">
+        <div className="max-w-6xl mx-auto flex items-center justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar py-1">
+          {[
+            { id: 'all', label: 'All Services', icon: <Layers size={14} /> },
+            { id: 'ai', label: 'AI Automation', icon: <Brain size={14} /> },
+            { id: 'chatbots', label: 'Smart Chatbots', icon: <Bot size={14} /> },
+            { id: 'web', label: 'Websites & Funnels', icon: <Globe size={14} /> },
+            { id: 'branding', label: 'Branding & Logo', icon: <Palette size={14} /> },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                activeTab === tab.id
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-100'
+                  : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'
+              }`}
+            >
+              {tab.icon}
+              <span>{tab.label}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 3. SERVICE CARDS GRID ───────────────────────────── */}
+      <section className="py-16 sm:py-20 px-5 sm:px-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            {filteredServices.map((s) => (
+              <div
+                key={s.id}
+                className={`group relative bg-white dark:bg-slate-900/80 rounded-3xl p-7 sm:p-9 border border-slate-200/90 dark:border-white/10 ${s.borderGlow} shadow-xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-400 flex flex-col justify-between overflow-hidden`}
+              >
+                {/* Top Decorative Gradient Accent */}
+                <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${s.accentColor === 'indigo' ? 'from-indigo-500 via-violet-500 to-indigo-600' : s.accentColor === 'emerald' ? 'from-emerald-500 via-teal-400 to-green-500' : s.accentColor === 'blue' ? 'from-blue-500 via-cyan-400 to-indigo-500' : 'from-rose-500 via-pink-400 to-orange-400'}`} />
+
+                <div>
+                  {/* Icon & Badge Header */}
+                  <div className="flex items-center justify-between gap-3 mb-6">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md ${
+                      s.accentColor === 'indigo' ? 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/30' :
+                      s.accentColor === 'emerald' ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30' :
+                      s.accentColor === 'blue' ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30' :
+                      'bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30'
+                    }`}>
+                      {s.icon}
+                    </div>
+
+                    <div className="flex flex-col items-end gap-1">
+                      <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                        {s.badge}
+                      </span>
+                      <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
+                        <Clock size={11} /> Turnaround: {s.deliveryTime}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Title and Plain English Sub-Heading */}
+                  <p className="text-[11px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-1">
+                    {s.tagline}
+                  </p>
+                  <h2 className="text-xl sm:text-2xl font-outfit font-black text-slate-950 dark:text-white mb-2 leading-snug">
+                    {s.title}
+                  </h2>
+                  <p className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-4">
+                    👉 {s.simpleTitle}
+                  </p>
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    {s.description}
+                  </p>
+
+                  {/* Problem Callout Box */}
+                  <div className="flex gap-3 p-3.5 bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200/80 dark:border-rose-900/30 rounded-2xl mb-6">
+                    <AlertCircle size={15} className="text-rose-500 mt-0.5 shrink-0" />
+                    <div>
+                      <p className="text-[10px] font-black text-rose-600 dark:text-rose-400 uppercase tracking-wider">The Problem It Solves</p>
+                      <p className="text-xs text-rose-800 dark:text-rose-300 leading-relaxed mt-0.5">{s.problem}</p>
+                    </div>
+                  </div>
+
+                  {/* Key Deliverables / What You Get */}
+                  <div className="space-y-2.5 mb-6">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">What You Receive:</p>
+                    {s.features.map((feat, fIdx) => (
+                      <div key={fIdx} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-200 font-medium">
+                        <div className="w-4 h-4 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                          <Check size={11} />
+                        </div>
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Impact Result Box */}
+                  <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-500/20 mb-6">
+                    <TrendingUp size={15} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
+                    <p className="text-xs font-extrabold text-emerald-800 dark:text-emerald-300">{s.result}</p>
+                  </div>
+
+                  {/* Tech Stack Chips */}
+                  <div className="flex flex-wrap items-center gap-1.5 mb-8">
+                    {s.stack.map((stk) => (
+                      <span key={stk} className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-bold">
+                        {stk}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Action Buttons */}
+                <div className="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100 dark:border-white/5">
+                  <button
+                    onClick={() => handleCTA(s)}
+                    className="w-full flex items-center justify-center gap-2 py-3.5 px-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-black text-[11px] uppercase tracking-wider transition-all duration-200 shadow-md active:scale-95 cursor-pointer"
+                  >
+                    <span>Get Free Quote</span>
+                    <ArrowRight size={13} />
+                  </button>
+                  <a
+                    href={FIVERR_PROFILE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center gap-1.5 py-3.5 px-3 bg-[#1DBF73]/10 hover:bg-[#1DBF73] text-[#1DBF73] hover:text-white border border-[#1DBF73]/40 hover:border-[#1DBF73] rounded-2xl font-black text-[11px] uppercase tracking-wider transition-all duration-200 active:scale-95"
+                  >
+                    <FiverrIcon size={14} />
+                    <span>Order on Fiverr</span>
+                    <ArrowUpRight size={12} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. 4-STEP PROCESS / HOW WE WORK ─────────────────── */}
+      <section className="py-20 px-5 sm:px-10 bg-slate-50 dark:bg-slate-900/30 border-y border-slate-100 dark:border-white/5">
+        <div className="max-w-6xl mx-auto space-y-12">
+          <div className="text-center space-y-3">
+            <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-3 py-1.5 rounded-full border border-indigo-200 dark:border-indigo-500/30">
+              Simple &amp; Transparent
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-950 dark:text-white">
+              How We Work Together (4 Simple Steps)
+            </h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
+              From our first discovery message to full deployment — zero confusion, regular updates, and measurable results.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                step: '01',
+                title: 'Free 30-Min Audit',
+                desc: 'We hop on a quick call or WhatsApp chat to understand your bottlenecks, goals, and exact project needs.',
+                icon: <PhoneCall size={20} className="text-indigo-500" />
+              },
+              {
+                step: '02',
+                title: 'Custom Scope & Fixed Price',
+                desc: 'You receive a clear scope document with exact milestones, delivery timeline, and transparent pricing. No surprises.',
+                icon: <ShieldCheck size={20} className="text-emerald-500" />
+              },
+              {
+                step: '03',
+                title: 'Rapid Build & Previews',
+                desc: 'We build your solution with live staging previews so you test everything and share real-time feedback.',
+                icon: <Code2 size={20} className="text-violet-500" />
+              },
+              {
+                step: '04',
+                title: 'Launch & 30-Day Support',
+                desc: 'Full deployment on your domain or server, complete video walkthrough training, and 30 days of free ongoing support.',
+                icon: <Rocket size={20} className="text-amber-500" />
+              },
+            ].map((st) => (
+              <div
+                key={st.step}
+                className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/5 space-y-3 relative shadow-xs"
+              >
+                <span className="text-4xl font-outfit font-black text-slate-200 dark:text-slate-800 block">
+                  {st.step}
+                </span>
+                <div className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                  {st.icon}
+                </div>
+                <h3 className="font-outfit font-black text-base text-slate-950 dark:text-white">
+                  {st.title}
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                  {st.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. COMING SOON EXPANSION ────────────────────────── */}
+      <section className="py-12 px-5 sm:px-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="p-6 sm:p-8 bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-3xl border border-indigo-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xl">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Clock size={14} className="text-amber-400" />
+                <span className="text-[10px] font-black text-amber-400 uppercase tracking-widest">Upcoming Expansions</span>
+              </div>
+              <h3 className="text-xl font-outfit font-black text-white">Need Social Media &amp; Paid Ads?</h3>
+              <p className="text-xs text-slate-300 mt-1">Expanding our marketing suite with dedicated growth services.</p>
+            </div>
+            <div className="flex flex-wrap gap-2.5">
+              {COMING_SOON.map((cs) => (
+                <span key={cs.label} className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 border border-white/10 text-xs font-bold text-slate-200 backdrop-blur-md">
+                  {cs.icon} {cs.label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. ACCORDION FAQ SECTION ────────────────────────── */}
+      <section className="py-16 px-5 sm:px-10 bg-slate-50/50 dark:bg-slate-900/20 border-t border-slate-100 dark:border-white/5">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Got Questions?</span>
+            <h2 className="text-2xl sm:text-3xl font-outfit font-black text-slate-950 dark:text-white">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-3">
+            {FAQ_ITEMS.map((item, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/5 overflow-hidden transition-all shadow-2xs"
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-outfit font-bold text-sm text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  >
+                    <span>{item.q}</span>
+                    <ChevronRight size={18} className={`shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-90 text-indigo-600' : 'text-slate-400'}`} />
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 pb-5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-white/5 pt-3">
+                      {item.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. FOOTER HIGH-CONVERTING CTA ──────────────────── */}
+      <section className="py-20 px-5 sm:px-10 text-center relative overflow-hidden bg-gradient-to-b from-white to-slate-50 dark:from-slate-950 dark:to-slate-900">
+        <div className="max-w-2xl mx-auto space-y-6 relative z-10">
+          <span className="px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-300 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-[10px] font-black uppercase tracking-wider inline-flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+            <span>Guaranteed Response &lt; 1 Hour</span>
+          </span>
+
+          <h2 className="text-3xl sm:text-4xl font-outfit font-black text-slate-950 dark:text-white tracking-tight">
+            Ready to Build Your Solution?
+          </h2>
+          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-lg mx-auto">
+            Book a free 30-minute AI strategy audit, send a direct WhatsApp message, or hire securely on Fiverr with 100% buyer escrow protection.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
+            <button
+              onClick={() => navigate('/contact')}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-xl shadow-indigo-600/30 active:scale-95 cursor-pointer"
+            >
+              <span>Book Free Consultation</span>
+              <ChevronRight size={16} />
+            </button>
+            <a
+              href="https://wa.me/918851619647"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-xl shadow-emerald-600/30 active:scale-95"
+            >
+              <MessageSquare size={16} />
+              <span>Direct WhatsApp</span>
+            </a>
+            <a
+              href={FIVERR_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-xl shadow-emerald-600/30 active:scale-95"
+            >
+              <FiverrIcon size={16} className="brightness-125" />
               <span>Order on Fiverr</span>
               <ArrowUpRight size={14} />
             </a>
           </div>
-          <p className="text-[9px] text-slate-400 mt-4 uppercase tracking-widest font-bold">Available Worldwide · Mon–Sat · Escrow Protected</p>
+
+          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest pt-2">
+            Available Worldwide · Mon–Sat · Escrow Protected
+          </p>
         </div>
       </section>
 
