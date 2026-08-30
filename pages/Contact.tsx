@@ -383,29 +383,36 @@ const Contact: React.FC = () => {
                   {/* 1. Service Selector */}
                   <div className="space-y-2 text-left">
                     <label className="text-[9.5px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
-                      1. Select Required Service
+                      1. Select Required Service (What do you need?)
                     </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {[
-                        { id: 'AI Automation', label: 'AI Automation', icon: '🤖' },
-                        { id: 'Chatbot / AI Agent', label: 'AI Chatbots', icon: '💬' },
-                        { id: 'Website & Funnel', label: 'Web Platform', icon: '⚡' },
-                        { id: 'Logo & Branding', label: 'Brand Design', icon: '🎨' },
+                        { id: 'Website & Web Application', label: 'Website / Web App', sub: 'Custom business site, store, or portal', icon: '🌐' },
+                        { id: 'AI Chatbot & WhatsApp Bot', label: 'AI Chatbot & WhatsApp', sub: 'Auto-reply to customer questions 24/7', icon: '💬' },
+                        { id: 'AI Business Automation', label: 'AI Workflows & Automation', sub: 'Eliminate manual data entry & connect tools', icon: '🤖' },
+                        { id: 'Logo & Brand Identity Design', label: 'Logo & Graphic Design', sub: 'Professional logo & complete brand kit', icon: '🎨' },
                       ].map(item => {
-                        const active = selectedService.toLowerCase().includes(item.id.toLowerCase().split(' ')[0]);
+                        const active = selectedService === item.id;
                         return (
                           <button
                             type="button"
                             key={item.id}
                             onClick={() => setSelectedService(item.id)}
-                            className={`p-3 rounded-2xl border text-center transition-all cursor-pointer flex flex-col items-center justify-center gap-1 ${
+                            className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-3 ${
                               active
-                                ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-500/20 scale-[1.02]'
+                                ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-500/20 scale-[1.01]'
                                 : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200/90 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-indigo-300'
                             }`}
                           >
-                            <span className="text-sm">{item.icon}</span>
-                            <span className="text-[9.5px] font-black uppercase tracking-wider leading-tight">{item.label}</span>
+                            <span className="text-xl shrink-0 p-1.5 rounded-xl bg-white/10">{item.icon}</span>
+                            <div className="min-w-0">
+                              <span className={`text-[11px] font-black uppercase tracking-wider block leading-tight ${active ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
+                                {item.label}
+                              </span>
+                              <span className={`text-[10px] leading-tight block mt-0.5 ${active ? 'text-indigo-100' : 'text-slate-500 dark:text-slate-400'}`}>
+                                {item.sub}
+                              </span>
+                            </div>
                           </button>
                         );
                       })}

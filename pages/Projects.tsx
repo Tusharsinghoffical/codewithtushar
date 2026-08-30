@@ -19,16 +19,17 @@ const CAT_META: Record<string, { emoji: string; textCls: string; bgCls: string; 
   'Lead Gen':     { emoji: '🎯', textCls: 'text-emerald-700 dark:text-emerald-300',bgCls: 'bg-emerald-50 dark:bg-emerald-950/60', borderCls: 'border-emerald-200 dark:border-emerald-500/30' },
   'Web Dev':      { emoji: '🌐', textCls: 'text-blue-700 dark:text-blue-300',     bgCls: 'bg-blue-50 dark:bg-blue-950/60', borderCls: 'border-blue-200 dark:border-blue-500/30' },
 };
+
 const cmeta = (cat: string) =>
   CAT_META[cat] ?? { emoji: '📁', textCls: 'text-slate-600', bgCls: 'bg-slate-100', borderCls: 'border-slate-200' };
 
-/* ─── Project Card ───────────────────────────────────────── */
+/* ─── Project Card Component ─────────────────────────────── */
 const ProjectCard: React.FC<{
   project: Project;
   onClick: () => void;
 }> = ({ project, onClick }) => {
-  const m = cmeta(project.category);
-  const projectUrl = `${typeof window !== 'undefined' ? window.location.origin : SITE_URL}/projects?project=${project.id}`;
+  const m = cmeta(project.category || 'All');
+  const projectUrl = typeof window !== 'undefined' ? `${window.location.origin}/projects?project=${project.id}` : `${SITE_URL}/projects?project=${project.id}`;
 
   return (
     <div
@@ -41,7 +42,7 @@ const ProjectCard: React.FC<{
       {/* Thumbnail */}
       <div className="relative aspect-[16/10] bg-slate-950 overflow-hidden shrink-0">
         <img
-          src={project.imageUrl}
+          src={project.imageUrl || '/projects/p1.svg'}
           alt={project.title}
           loading="lazy"
           decoding="async"
@@ -72,7 +73,7 @@ const ProjectCard: React.FC<{
         </div>
 
         {/* Key Impact Metric if available */}
-        {project.results && project.results[0] && (
+        {project.results && project.results.length > 0 && (
           <div className="flex items-center gap-2 p-2.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-[11px] font-extrabold">
             <TrendingUp size={14} className="text-emerald-500 shrink-0" />
             <span className="truncate">{project.results[0]}</span>
@@ -82,7 +83,7 @@ const ProjectCard: React.FC<{
         {/* Tags & Action Row */}
         <div className="flex items-center justify-between gap-2 pt-3 border-t border-slate-100 dark:border-white/5">
           <div className="flex flex-wrap gap-1.5">
-            {project.tags.slice(0, 3).map(tag => (
+            {(project.tags || []).slice(0, 3).map(tag => (
               <span key={tag} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[9px] font-bold rounded-lg">
                 #{tag}
               </span>
@@ -98,7 +99,7 @@ const ProjectCard: React.FC<{
               className="!p-1.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400"
             />
             <span className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 group-hover:translate-x-0.5 transition-transform flex items-center gap-1">
-              Case Study <ChevronRight size={13} />
+              Case Study <ArrowRight size={12} />
             </span>
           </div>
         </div>
@@ -119,13 +120,19 @@ const Projects: React.FC = () => {
   const categories = useMemo(() => {
     const s = new Set<string>();
     s.add('All');
-    PROJECTS.forEach(p => s.add(p.category));
+    PROJECTS.forEach(p => {
+      if (p.category) s.add(p.category);
+    });
     return Array.from(s);
   }, []);
 
   const counts = useMemo(() => {
     const c: Record<string, number> = { All: PROJECTS.length };
-    PROJECTS.forEach(p => { c[p.category] = (c[p.category] ?? 0) + 1; });
+    PROJECTS.forEach(p => {
+      if (p.category) {
+        c[p.category] = (c[p.category] ?? 0) + 1;
+      }
+    });
     return c;
   }, []);
 
@@ -135,7 +142,7 @@ const Projects: React.FC = () => {
       const matchSearch = search.trim() === '' ||
         p.title.toLowerCase().includes(search.toLowerCase()) ||
         p.description.toLowerCase().includes(search.toLowerCase()) ||
-        p.tags.some(t => t.toLowerCase().includes(search.toLowerCase()));
+        (p.tags || []).some(t => t.toLowerCase().includes(search.toLowerCase()));
       return matchCat && matchSearch;
     });
   }, [activeCategory, search]);
@@ -144,7 +151,9 @@ const Projects: React.FC = () => {
     const pId = searchParams.get('project');
     if (pId) {
       const found = PROJECTS.find(p => p.id === pId);
-      if (found) setSelected(found);
+      if (found && selected?.id !== pId) {
+        setSelected(found);
+      }
     }
   }, [searchParams]);
 
@@ -159,7 +168,7 @@ const Projects: React.FC = () => {
   };
 
   const copyModalLink = (p: Project) => {
-    const url = `${window.location.origin}/projects?project=${p.id}`;
+    const url = `${typeof window !== 'undefined' ? window.location.origin : SITE_URL}/projects?project=${p.id}`;
     navigator.clipboard.writeText(url);
     setModalCopied(true);
     setTimeout(() => setModalCopied(false), 2500);
@@ -194,7 +203,7 @@ const Projects: React.FC = () => {
           </h1>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-medium">
-            Real products built and deployed for real clients across India and globally — AI automations, conversational bots, full-stack web platforms, and data intelligence dashboards.
+            Real products built and deployed for clients across India and worldwide — AI automations, conversational bots, full-stack web platforms, and data intelligence dashboards.
           </p>
 
           {/* Metric Bar */}
@@ -297,7 +306,7 @@ const Projects: React.FC = () => {
           >
             {/* Modal Header Image */}
             <div className="relative aspect-[21/9] bg-slate-950 overflow-hidden">
-              <img src={selected.imageUrl} alt={selected.title} className="w-full h-full object-cover opacity-85" />
+              <img src={selected.imageUrl || '/projects/p1.svg'} alt={selected.title} className="w-full h-full object-cover opacity-85" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
               <button
                 onClick={closeProject}
