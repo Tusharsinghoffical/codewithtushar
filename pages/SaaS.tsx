@@ -5,7 +5,7 @@ import {
   Zap, Bot, Layers, CheckCircle2, ChevronRight, Copy, Check,
   Terminal, Server, ExternalLink, Users, DollarSign, RefreshCw,
   Cpu, GitBranch, FileText, Database, Play, MessageSquare,
-  Mail, Cloud, Shield, CheckSquare, BarChart3, Clock, Share2
+  Mail, Cloud, Shield, CheckSquare, BarChart3, Clock, Share2, Globe
 } from 'lucide-react';
 import { TASQ_ONE_URL, TASQ_ONE_DOCKER_IMAGE, FIVERR_PROFILE_URL } from '../constants';
 
