@@ -694,6 +694,13 @@ const App: React.FC = () => {
               keywords="hire developer India, contact developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, hire AI automation expert India, hire web developer India, freelance developer contact India, book consultation India"
             ><Contact /></PageWrapper>} />
 
+            {/* Explicit 404 Route */}
+            <Route path="/404" element={<PageWrapper
+              title="404 — Page Not Found | CMS"
+              description="The page you requested does not exist or has been relocated."
+              noIndex={true}
+            ><NotFound /></PageWrapper>} />
+
             {/* Catch-all 404 Route */}
             <Route path="*" element={<PageWrapper
               title="404 — Page Not Found | CMS"

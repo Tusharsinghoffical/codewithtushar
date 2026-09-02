@@ -320,6 +320,16 @@ const pages = [
         "email": "tusharsinghoffical@gmail.com"
       }
     }
+  },
+  {
+    path: '/404',
+    title: '404 — Page Not Found | Code with Mr Singh',
+    description: 'The page you requested does not exist or has been relocated.',
+    keywords: `404, page not found, ${INDIA_STATES_KEYWORDS}`,
+    type: 'website',
+    image: DEFAULT_IMAGE,
+    alt: '404 Page Not Found | Code with Mr Singh',
+    noIndex: true
   }
 ];
 
@@ -456,6 +466,9 @@ pages.forEach((page) => {
 
   const html = generateHtmlForPage(page);
   fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf8');
+  if (page.path === '/404') {
+    fs.writeFileSync(path.join(distDir, '404.html'), html, 'utf8');
+  }
   console.log(`  ✓ Prerendered: ${page.path} -> dist/${relativePath}/index.html`);
   count++;
 });
