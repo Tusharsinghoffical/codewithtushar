@@ -10,7 +10,6 @@ import ClockDisplay from './components/ClockDisplay';
 import TopPromoBar from './components/TopPromoBar';
 import FiverrFloatingButton from './components/FiverrFloatingButton';
 import AIChatAssistant from './components/AIChatAssistant';
-import LiveVisitorCounter from './components/LiveVisitorCounter';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -106,15 +105,20 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
       <div className="relative flex flex-col items-center max-w-sm w-full px-6">
 
         {/* Main Branding Block */}
-        <div className="text-center relative z-10 space-y-4">
-          <div className="flex items-center justify-center gap-2 mb-2">
+        <div className="text-center relative z-10 space-y-3 flex flex-col items-center">
+          <div className="flex items-center justify-center gap-2 mb-1">
             <ShieldCheck size={14} className="text-indigo-500/50 animate-pulse" />
             <span className="text-[8px] font-black text-slate-600 uppercase tracking-[0.4em]">Secure Handshake</span>
           </div>
 
-          <h2 className={`text-white font-outfit font-black text-4xl sm:text-5xl tracking-[0.3em] uppercase transition-all duration-700 ${progress > 10 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-            CMS
-          </h2>
+          <div className="relative my-3">
+            <div className="absolute inset-0 bg-indigo-500/30 rounded-full blur-xl animate-pulse" />
+            <img
+              src="/logo/cms-logo.png"
+              alt="CMS Logo"
+              className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full object-contain shadow-2xl relative z-10 bg-white p-1.5 border border-white/20 transition-all duration-700 ${progress > 5 ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+            />
+          </div>
 
           <div className="flex flex-col items-center gap-1">
             <p className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.5em] ml-1 h-4 transition-all duration-300">
@@ -688,7 +692,6 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <AIChatAssistant />
-        <LiveVisitorCounter />
         <FiverrFloatingButton />
         <WhatsAppButton />
         <ScrollToTop />

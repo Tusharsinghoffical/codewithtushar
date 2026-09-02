@@ -75,15 +75,18 @@ const Navbar: React.FC = () => {
         >
 
           {/* Logo Section */}
-          <div className="flex items-center pl-4 pr-3 shrink-0 z-10">
+          <div className="flex items-center pl-3 pr-2 shrink-0 z-10">
             <Link
               to="/"
               onClick={handleLogoClick}
-              className={`flex items-center gap-3 group transition-transform duration-500 ${isBouncing ? 'animate-bounce-subtle' : ''}`}
+              aria-label="CMS Home"
+              className={`flex items-center group transition-transform duration-500 ${isBouncing ? 'animate-bounce-subtle' : ''}`}
             >
-              <span className={`font-outfit font-extrabold text-slate-950 dark:text-white transition-all duration-300 ${isScrolled ? 'text-base' : 'text-xl'}`}>
-                CMS
-              </span>
+              <img
+                src="/logo/cms-logo.png"
+                alt="CMS Logo"
+                className={`rounded-full object-contain transition-all duration-300 shadow-xs group-hover:scale-110 bg-white ${isScrolled ? 'w-8 h-8' : 'w-9 h-9'}`}
+              />
             </Link>
           </div>
 

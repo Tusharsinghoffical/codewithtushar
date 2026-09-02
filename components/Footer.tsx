@@ -117,10 +117,12 @@ export const Footer: React.FC = () => {
           {/* Col 1: About Tushar (4 cols on desktop) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="space-y-2.5">
-              <Link to="/" onClick={scrollToTop} className="inline-block">
-                <span className="text-3xl font-outfit font-black tracking-tight text-white hover:text-indigo-400 transition-colors">
-                  CMS
-                </span>
+              <Link to="/" onClick={scrollToTop} aria-label="CMS Home" className="inline-block group">
+                <img
+                  src="/logo/cms-logo.png"
+                  alt="CMS Logo"
+                  className="w-12 h-12 rounded-full object-contain shadow-lg bg-white p-0.5 group-hover:scale-110 transition-transform"
+                />
               </Link>
               <div className="flex items-center gap-2 text-xs font-semibold text-indigo-400">
                 <Building2 size={13} />
