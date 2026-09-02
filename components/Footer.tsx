@@ -57,19 +57,19 @@ export const Footer: React.FC = () => {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-gradient-to-t from-indigo-950/25 via-slate-900/10 to-transparent blur-[140px]" />
       </div>
 
-      {/* ── 1. TOP ACTION BANNER (CLEAN WHITE THEME) ─────────── */}
-      <div className="border-b border-slate-200/80 py-10 px-4 sm:px-6 lg:px-8 bg-white text-slate-900 shadow-xs">
+      {/* ── 1. TOP ACTION BANNER ─────────── */}
+      <div className="border-b border-slate-200/80 dark:border-white/10 py-10 px-4 sm:px-6 lg:px-8 bg-slate-100/90 dark:bg-slate-900/90 text-slate-900 dark:text-white shadow-xs backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
           
           <div className="space-y-2 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-[11px] font-bold text-indigo-700">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/80 dark:border-indigo-500/30 text-[11px] font-bold text-indigo-700 dark:text-indigo-300">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Open for New Projects &amp; Free Strategy Calls</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-outfit font-black text-slate-950 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-outfit font-black text-slate-950 dark:text-white tracking-tight">
               Want to automate your business or build a custom app?
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed">
               Free 30-minute consultation · Quick reply in under 1 hour · 100% safe with escrow payment options.
             </p>
           </div>
