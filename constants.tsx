@@ -70,7 +70,17 @@ export const PAGE_OG: Record<string, { image: string; alt: string; width?: strin
     image: SITE_DEFAULT_OG_IMAGE,
     alt: 'Contact Tushar Singh — Book a Free AI Automation Consultation',
   },
+  '/saas': {
+    image: `${SITE_URL}/tasq-one/tasq-one-banner.png`,
+    alt: 'TASQ-ONE — The Intelligent Task Operating System (SaaS) by Tushar Singh',
+    width: '462',
+    height: '197',
+  },
 };
+
+export const TASQ_ONE_URL = 'https://tasq-one.onrender.com';
+export const TASQ_ONE_DOCKER_IMAGE = 'tusharsinghoffical/tasq-one';
+
 
 export const SERVICES: Service[] = [
   {

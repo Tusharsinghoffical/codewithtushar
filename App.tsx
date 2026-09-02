@@ -499,6 +499,32 @@ const updateStructuredData = (title: string, description: string, path: string) 
       }
     });
   }
+
+  else if (path === '/saas' || path === '/saas/tasq-one') {
+    // SaaS: SoftwareApplication schema for TASQ-ONE
+    upsertSchema('schema-page-specific', {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": `${baseUrl}/saas#software`,
+      "name": "TASQ-ONE",
+      "operatingSystem": "Cloud, Web, Docker, Linux, macOS, Windows",
+      "applicationCategory": "BusinessApplication, ProjectManagementApplication",
+      "description": "TASQ-ONE is an intelligent task operating system (SaaS) that turns loosely defined ideas into fully-fledged, production-ready tasks in seconds using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, and cryptographic audit trails.",
+      "url": "https://tasq-one.onrender.com",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "0",
+        "highPrice": "19",
+        "offerCount": "3"
+      },
+      "creator": {
+        "@type": "Person",
+        "@id": `${baseUrl}/#person`,
+        "name": "Tushar Singh"
+      }
+    });
+  }
 };
 
 /* ─── BlogPostWrapper ────────────────────────────────────────
@@ -628,9 +654,15 @@ const App: React.FC = () => {
             ><Projects /></PageWrapper>} />
 
             <Route path="/saas" element={<PageWrapper
-              title="Next-Gen AI SaaS Platforms — Coming Soon | Tushar Singh Labs"
-              description="🚀 Disruptive autonomous AI SaaS suites by Tushar Singh Labs. Early VIP beta access, live countdown, and preview of upcoming enterprise automation tools."
-              keywords="AI SaaS products, next gen SaaS tools, autonomous lead generation AI, enterprise RAG bot SaaS, OCR invoice AI pipeline, Tushar Singh software suites"
+              title="TASQ-ONE — The Intelligent Task Operating System (SaaS) | Tushar Singh"
+              description="⚡ TASQ-ONE is a cloud-native SaaS platform turning loosely defined ideas into production-ready tasks with Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & Indian team ROI calculator. Try public beta."
+              keywords="TASQ-ONE, TASQ ONE, intelligent task operating system, AI task management SaaS, Groq Llama 3.3 70B, Kanban dependency DAG, cryptographic audit SaaS, Tushar Singh SaaS, software application Delhi India"
+            ><SaaS /></PageWrapper>} />
+
+            <Route path="/saas/tasq-one" element={<PageWrapper
+              title="TASQ-ONE — The Intelligent Task Operating System (SaaS) | Tushar Singh"
+              description="⚡ TASQ-ONE is a cloud-native SaaS platform turning loosely defined ideas into production-ready tasks with Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & Indian team ROI calculator. Try public beta."
+              keywords="TASQ-ONE, TASQ ONE, intelligent task operating system, AI task management SaaS, Groq Llama 3.3 70B, Kanban dependency DAG, cryptographic audit SaaS, Tushar Singh SaaS, software application Delhi India"
             ><SaaS /></PageWrapper>} />
 
             <Route path="/blog" element={<PageWrapper
