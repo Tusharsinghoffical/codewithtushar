@@ -40,15 +40,28 @@ const ProjectCard: React.FC<{
       className="group relative flex flex-col bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer"
     >
       {/* Thumbnail Section with Clear Badges */}
-      <div className="relative aspect-[16/9] w-full bg-slate-950 overflow-hidden shrink-0">
-        <img
-          src={project.imageUrl || '/projects/p1.svg'}
-          alt={project.title}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+      <div className="relative aspect-[16/9] w-full bg-slate-950 overflow-hidden shrink-0 flex items-center justify-center">
+        {project.category === 'SaaS Products' ? (
+          <div className="w-full h-full p-6 sm:p-7 flex items-center justify-center relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-2xl pointer-events-none" />
+            <img
+              src={project.imageUrl || '/projects/p1.svg'}
+              alt={project.title}
+              loading="lazy"
+              decoding="async"
+              className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] relative z-10"
+            />
+          </div>
+        ) : (
+          <img
+            src={project.imageUrl || '/projects/p1.svg'}
+            alt={project.title}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
 
         {/* Top Badges */}
         <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10">
@@ -333,9 +346,20 @@ const Projects: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header Hero */}
-            <div className="relative aspect-[21/9] bg-slate-950 overflow-hidden">
-              <img src={selected.imageUrl || '/projects/p1.svg'} alt={selected.title} className="w-full h-full object-cover opacity-85" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+            <div className="relative aspect-[21/9] bg-slate-950 overflow-hidden flex items-center justify-center">
+              {selected.category === 'SaaS Products' ? (
+                <div className="w-full h-full p-6 sm:p-8 flex items-center justify-center relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-2xl pointer-events-none" />
+                  <img
+                    src={selected.imageUrl || '/projects/p1.svg'}
+                    alt={selected.title}
+                    className="max-h-full max-w-full object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.5)] relative z-10"
+                  />
+                </div>
+              ) : (
+                <img src={selected.imageUrl || '/projects/p1.svg'} alt={selected.title} className="w-full h-full object-cover opacity-85" />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none" />
               
               <button
                 onClick={closeProject}

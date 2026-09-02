@@ -309,7 +309,7 @@ export const PROJECTS: Project[] = [
     id: 'p-tasq-one',
     title: 'TASQ-ONE | Intelligent Task Operating System (SaaS)',
     description: 'Cloud-native SaaS platform turning loosely defined ideas into production-ready tasks in seconds using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & PostgreSQL RLS.',
-    imageUrl: '/tasq-one/tasq-one-banner.png',
+    imageUrl: '/tasq-one/task-one-emblem.png',
     category: 'SaaS Products',
     tags: ['SaaS', 'Groq Llama 3.3', 'Next.js 14', 'PostgreSQL RLS', 'Dependency DAG', 'Docker'],
     date: '2026',

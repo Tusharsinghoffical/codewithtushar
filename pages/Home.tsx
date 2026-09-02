@@ -621,18 +621,31 @@ const Home: React.FC = () => {
               <Link
                 key={project.id}
                 to="/projects"
-                className="group relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 bg-slate-100 dark:bg-slate-900 flex flex-col justify-end h-80"
+                className="group relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 bg-slate-950 flex flex-col justify-end h-80"
               >
-                <div className="absolute inset-0 overflow-hidden">
-                  <img
-                    src={project.imageUrl}
-                    loading="lazy"
-                    decoding="async"
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                <div className="absolute inset-0 overflow-hidden flex items-center justify-center">
+                  {project.category === 'SaaS Products' ? (
+                    <div className="w-full h-full p-8 pb-28 flex items-center justify-center relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-2xl pointer-events-none" />
+                      <img
+                        src={project.imageUrl}
+                        loading="lazy"
+                        decoding="async"
+                        alt={project.title}
+                        className="max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_0_25px_rgba(255,255,255,0.45)] relative z-10"
+                      />
+                    </div>
+                  ) : (
+                    <img
+                      src={project.imageUrl}
+                      loading="lazy"
+                      decoding="async"
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  )}
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-90 group-hover:opacity-95 transition-opacity pointer-events-none" />
                 <div className="relative p-6 z-10">
                   <span className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.25em] mb-1.5 block">{project.category}</span>
                   <h4 className="text-base font-outfit font-black text-white leading-snug">{project.title}</h4>
