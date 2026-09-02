@@ -413,11 +413,12 @@ const Home: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="py-6 w-full flex items-center justify-center">
+                <div className="py-6 sm:py-8 w-full flex items-center justify-center relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-violet-500/20 to-cyan-500/20 rounded-full blur-2xl pointer-events-none" />
                   <img
-                    src="/tasq-one/tasq-one-banner.png"
-                    alt="TASQ-ONE Intelligent Task Operating System"
-                    className="max-h-24 sm:max-h-28 w-auto object-contain drop-shadow-[0_0_25px_rgba(99,102,241,0.4)]"
+                    src="/tasq-one/task-one-emblem.png"
+                    alt="TASK.ONE Intelligent Task Operating System Logo"
+                    className="max-h-24 sm:max-h-32 w-auto object-contain drop-shadow-[0_0_35px_rgba(255,255,255,0.45)] transition-transform hover:scale-105 duration-300 relative z-10"
                   />
                 </div>
 

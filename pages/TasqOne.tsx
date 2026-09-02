@@ -206,11 +206,12 @@ export const TasqOne: React.FC = () => {
           
           {/* Logo Card */}
           <div className="flex flex-col items-center justify-center">
-            <div className="p-4 sm:p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-2xl shadow-indigo-500/10 inline-flex items-center justify-center max-w-[280px] sm:max-w-[360px]">
+            <div className="p-4 sm:p-5 rounded-3xl bg-slate-950 border border-slate-800 dark:border-white/10 shadow-2xl shadow-indigo-500/15 inline-flex items-center justify-center max-w-[280px] sm:max-w-[360px] relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/15 to-cyan-500/15 rounded-3xl blur-md pointer-events-none" />
               <img
-                src="/tasq-one/tasq-one-banner.png"
-                alt="TASQ-ONE Logo"
-                className="w-full h-auto object-contain max-h-16 sm:max-h-20 dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                src="/tasq-one/task-one-emblem.png"
+                alt="TASK.ONE Logo"
+                className="w-full h-auto object-contain max-h-16 sm:max-h-20 drop-shadow-[0_0_20px_rgba(255,255,255,0.45)] relative z-10"
               />
             </div>
             <span className="text-[11px] font-black uppercase tracking-[0.25em] text-indigo-600 dark:text-indigo-400 mt-3 font-outfit">
