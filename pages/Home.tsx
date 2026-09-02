@@ -11,7 +11,7 @@ import {
   PROJECTS, SERVICES, TESTIMONIALS,
   GOOGLE_BUSINESS_NAME, GOOGLE_BUSINESS_URL,
   GOOGLE_VERIFICATION_PROOF_URL, BUSINESS_ADDRESS,
-  FIVERR_PROFILE_URL
+  FIVERR_PROFILE_URL, TASQ_ONE_URL
 } from '../constants';
 import OptimizedImage from '../components/OptimizedImage';
 import GoogleVerifiedBadge, { GoogleGIcon } from '../components/GoogleVerifiedBadge';
@@ -358,6 +358,148 @@ const Home: React.FC = () => {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════ 2.5. PROPRIETARY SAAS SPOTLIGHT ═══════════════════════ */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-950 text-white relative overflow-hidden border-y border-white/10" aria-labelledby="saas-spotlight-heading">
+        {/* Radiant Ambient Orb */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto relative z-10 space-y-10">
+          
+          {/* Header Row */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-[10px] font-black uppercase tracking-wider font-outfit">
+                <Sparkles size={12} className="text-indigo-400" />
+                <span>Proprietary Cloud Software · SaaS Suites</span>
+              </div>
+              <h2 id="saas-spotlight-heading" className="text-3xl sm:text-5xl font-outfit font-black text-white tracking-tight leading-tight">
+                Meet TASQ-ONE.
+              </h2>
+              <p className="text-xs sm:text-base text-slate-300 max-w-2xl font-medium">
+                The Intelligent Task Operating System built by Tushar Singh Labs. Autonomous AI decomposition, real-time Kanban dependency DAGs, and multi-tenant security.
+              </p>
+            </div>
+
+            <Link
+              to="/saas"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 text-white text-xs font-black uppercase tracking-wider transition-all self-start sm:self-auto shrink-0 shadow-xs"
+            >
+              <span>Explore All SaaS Apps</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          {/* High-Impact Split Showcase Card */}
+          <div className="rounded-3xl bg-slate-900/90 border border-indigo-500/30 p-6 sm:p-10 shadow-2xl shadow-indigo-950/40 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center backdrop-blur-md">
+            
+            {/* Left: Graphic & Benchmark Pills (6 Cols) */}
+            <div className="lg:col-span-6 space-y-6">
+              
+              {/* Image Frame with Glow */}
+              <div className="relative rounded-2xl overflow-hidden bg-slate-950 border border-white/15 p-4 sm:p-6 shadow-inner flex flex-col items-center justify-center">
+                <div className="flex items-center justify-between w-full pb-3 border-b border-white/10 text-xs">
+                  <span className="font-outfit font-black text-white tracking-wide">TASQ-ONE v1.4.0</span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+                    </span>
+                    Live Public Beta
+                  </span>
+                </div>
+
+                <div className="py-6 w-full flex items-center justify-center">
+                  <img
+                    src="/tasq-one/tasq-one-banner.png"
+                    alt="TASQ-ONE Intelligent Task Operating System"
+                    className="max-h-24 sm:max-h-28 w-auto object-contain drop-shadow-[0_0_25px_rgba(99,102,241,0.4)]"
+                  />
+                </div>
+
+                <div className="w-full pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                  <span>Groq Llama 3.3 70B</span>
+                  <span>Postgres 15 RLS</span>
+                  <span>Docker Ready</span>
+                </div>
+              </div>
+
+              {/* 4 Performance Metric Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                {[
+                  { label: 'Onboarding', val: '< 5 Mins' },
+                  { label: 'AI Latency', val: '< 400ms' },
+                  { label: 'Team Savings', val: '₹48k/mo' },
+                  { label: 'Audit Security', val: 'SHA-256' },
+                ].map((m, idx) => (
+                  <div key={idx} className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
+                    <span className="text-[9px] uppercase font-bold text-slate-400 block">{m.label}</span>
+                    <span className="text-sm font-outfit font-black text-emerald-400">{m.val}</span>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+
+            {/* Right: Architecture Value & Action Buttons (6 Cols) */}
+            <div className="lg:col-span-6 space-y-6 text-left">
+              
+              <div className="space-y-3">
+                <span className="text-xs font-black uppercase tracking-wider text-indigo-400 font-outfit">
+                  Turn 1-Sentence Thoughts Into Air-Tight Engineering Tickets
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-outfit font-black text-white leading-tight">
+                  Stop Wasting 10–15 Hours a Week in Chaotic Standups &amp; Vague Jira Tickets.
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  TASQ-ONE uses hardware-accelerated <strong>Groq Llama 3.3 70B</strong> to instantly decompose one sentence into production-ready tasks with story points, acceptance criteria, and topological DAG dependency constraints.
+                </p>
+              </div>
+
+              {/* Checklist */}
+              <div className="space-y-2.5 text-xs text-slate-200">
+                {[
+                  'Sub-400ms autonomous task breakdown via Groq LPU engine',
+                  'Topological Kanban DAG locks blocked tasks from premature execution',
+                  'Cryptographic SHA-256 audit trails ensure DPDP & SOC 2 readiness',
+                  'PostgreSQL Row-Level Security (RLS) hardware-grade data sandboxing',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2.5">
+                    <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTAs */}
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <a
+                  href={TASQ_ONE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-outfit font-black text-xs uppercase tracking-wider shadow-lg shadow-indigo-600/30 transition-all cursor-pointer"
+                >
+                  <span>Launch Free Beta App</span>
+                  <ArrowUpRight size={15} />
+                </a>
+
+                <Link
+                  to="/saas/tasq-one"
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-outfit font-bold text-xs uppercase tracking-wider transition-all"
+                >
+                  <span>View Product Specs &amp; ROI</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
       </section>
 

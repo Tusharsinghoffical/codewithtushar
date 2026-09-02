@@ -32,6 +32,8 @@ export interface Project {
     before: string;
     after: string;
   };
+  liveDemoUrl?: string;
+  saasPageUrl?: string;
 }
 
 export interface Testimonial {

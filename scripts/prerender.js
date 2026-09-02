@@ -176,25 +176,75 @@ const pages = [
     alt: 'TASQ-ONE — The Intelligent Task Operating System (SaaS) by Tushar Singh',
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/saas/tasq-one#software`,
-      "name": "TASQ-ONE",
-      "operatingSystem": "Cloud, Web, Docker, Linux, macOS, Windows",
-      "applicationCategory": "BusinessApplication, ProjectManagementApplication",
-      "description": "TASQ-ONE is an intelligent task operating system (SaaS) that turns loosely defined ideas into fully-fledged, production-ready tasks in seconds using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, and cryptographic audit trails.",
-      "url": "https://tasq-one.onrender.com",
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-        "lowPrice": "0",
-        "highPrice": "19",
-        "offerCount": "3"
-      },
-      "creator": {
-        "@type": "Person",
-        "@id": `${SITE_URL}/#person`,
-        "name": "Tushar Singh"
-      }
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": `${SITE_URL}/saas/tasq-one#software`,
+          "name": "TASQ-ONE",
+          "operatingSystem": "Cloud, Web, Docker, Linux, macOS, Windows",
+          "applicationCategory": "BusinessApplication, ProjectManagementApplication",
+          "description": "TASQ-ONE is an intelligent task operating system (SaaS) that turns loosely defined ideas into fully-fledged, production-ready tasks in seconds using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, and cryptographic audit trails.",
+          "url": "https://tasq-one.onrender.com",
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": "0",
+            "highPrice": "19",
+            "offerCount": "3"
+          },
+          "creator": {
+            "@type": "Person",
+            "@id": `${SITE_URL}/#person`,
+            "name": "Tushar Singh",
+            "jobTitle": "AI Automation Expert & Full-Stack Developer",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "New Delhi",
+              "addressRegion": "Delhi",
+              "postalCode": "110044",
+              "addressCountry": "IN"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${SITE_URL}/saas/tasq-one#faq`,
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is TASQ-ONE?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "TASQ-ONE is a cloud-native SaaS platform by Tushar Singh Labs that turns loosely defined ideas into production-ready developer tasks, acceptance criteria, story points, and dependency DAGs in under 400ms using Groq Llama 3.3 70B AI."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does TASQ-ONE save engineering costs?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "By eliminating 10–15 hours weekly of chaotic standup meetings and vague Jira ticket refinement, TASQ-ONE delivers ₹48,000+/month net engineering savings for standard 10-person Indian tech squads."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can TASQ-ONE be self-hosted with Docker?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, TASQ-ONE is containerized and published on DockerHub (tusharsinghoffical/tasq-one) for private cloud, AWS, Azure, GCP, or on-premise infrastructure."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who developed TASQ-ONE?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "TASQ-ONE was conceptualized, architected, and built by Tushar Singh, founder of Code with Mr Singh (Delhi, India)."
+              }
+            }
+          ]
+        }
+      ]
     }
   },
   {

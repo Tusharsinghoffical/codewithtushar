@@ -16,6 +16,7 @@ import {
 /* ─── Category Metadata ──────────────────────────────────── */
 const CAT_META: Record<string, { emoji: string; badgeCls: string; accentBorder: string }> = {
   All:            { emoji: '⚡', badgeCls: 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700', accentBorder: 'border-indigo-500' },
+  'SaaS Products': { emoji: '🚀', badgeCls: 'bg-rose-50 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-500/40', accentBorder: 'border-rose-500' },
   'AI Agents':    { emoji: '🤖', badgeCls: 'bg-indigo-50 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-500/40', accentBorder: 'border-indigo-500' },
   'Data Science': { emoji: '📊', badgeCls: 'bg-violet-50 dark:bg-violet-950/70 text-violet-700 dark:text-violet-300 border-violet-200 dark:border-violet-500/40', accentBorder: 'border-violet-500' },
   'Lead Gen':     { emoji: '🎯', badgeCls: 'bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/40', accentBorder: 'border-emerald-500' },
@@ -67,7 +68,7 @@ const ProjectCard: React.FC<{
         <div className="absolute bottom-3 left-3.5 right-3.5 z-10 flex items-center justify-between text-xs text-white font-bold">
           <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-emerald-400">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Verified Client Deliverable
+            {project.category === 'SaaS Products' ? 'Live Cloud SaaS Platform' : 'Verified Client Deliverable'}
           </span>
           <span className="p-1 rounded-lg bg-white/20 text-white group-hover:bg-indigo-600 transition-colors">
             <ArrowUpRight size={14} />
@@ -415,12 +416,35 @@ const Projects: React.FC = () => {
             <div className="p-5 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
               <button
                 onClick={() => copyModalLink(selected)}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:border-indigo-400 transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:border-indigo-400 transition-colors cursor-pointer"
               >
                 {modalCopied ? <><Check size={13} className="text-emerald-500" /> Copied</> : <><Copy size={13} /> Copy Link</>}
               </button>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                {selected.liveDemoUrl && (
+                  <a
+                    href={selected.liveDemoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-black uppercase tracking-wider transition-all shadow-md active:scale-95"
+                  >
+                    <span>Launch Live Demo</span>
+                    <ExternalLink size={13} />
+                  </a>
+                )}
+                {selected.saasPageUrl && (
+                  <button
+                    onClick={() => {
+                      setSelected(null);
+                      navigate(selected.saasPageUrl!);
+                    }}
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-black uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+                  >
+                    <span>Explore SaaS Page</span>
+                    <ArrowRight size={13} />
+                  </button>
+                )}
                 <a
                   href={`https://wa.me/918851619647?text=${encodeURIComponent(`Hi Tushar, I was looking at your project "${selected.title}" and want to discuss something similar for my business!`)}`}
                   target="_blank"

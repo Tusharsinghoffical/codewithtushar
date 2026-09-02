@@ -1,9 +1,9 @@
-import { PROJECTS, SERVICES } from '../constants';
+import { PROJECTS, SERVICES, SAAS_PRODUCTS } from '../constants';
 import { BLOG_POSTS } from '../pages/Blog';
 
 export interface SearchItem {
   id: string;
-  type: 'project' | 'service' | 'blog';
+  type: 'project' | 'service' | 'blog' | 'saas';
   title: string;
   description: string;
   link: string;
@@ -17,9 +17,20 @@ const projectItems: SearchItem[] = PROJECTS.map(project => ({
   type: 'project',
   title: project.title,
   description: project.description,
-  link: `/projects`,
+  link: `/projects?project=${project.id}`,
   image: project.imageUrl,
   tags: project.tags
+}));
+
+// Normalize SaaS products
+const saasItems: SearchItem[] = (SAAS_PRODUCTS || []).map(product => ({
+  id: `saas-${product.id}`,
+  type: 'saas',
+  title: `${product.title} — ${product.tagline}`,
+  description: product.description,
+  link: product.pageUrl,
+  image: product.bannerImage,
+  tags: [...product.tags, ...product.techStack]
 }));
 
 // Normalize services
@@ -44,6 +55,7 @@ const blogItems: SearchItem[] = BLOG_POSTS.map(blog => ({
 
 // Unified search data
 export const searchData: SearchItem[] = [
+  ...saasItems,
   ...projectItems,
   ...serviceItems,
   ...blogItems

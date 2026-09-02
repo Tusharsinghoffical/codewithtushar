@@ -38,26 +38,32 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
    Full-stack multi-tenant SaaS architecture, Stripe/Razorpay billing, AI agent integrations.
    URL: https://codewithmrsingh.me/saas
 
-2. AI Automation
+2. TASQ-ONE — The Intelligent Task Operating System (SaaS)
+   Proprietary cloud-native SaaS platform by Tushar Singh Labs. Turns raw ideas into production-ready tasks using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & PostgreSQL RLS.
+   Live Web App: https://tasq-one.onrender.com
+   URL: https://codewithmrsingh.me/saas/tasq-one
+
+3. AI Automation
    Build autonomous workflows using n8n, Python, Zapier, Make.com.
    Eliminate manual tasks. Save 10+ hours per week.
    URL: https://codewithmrsingh.me/services
 
-3. Chatbot Development (RAG)
+4. Chatbot Development (RAG)
    Custom AI chatbots trained on business data using OpenAI and LangChain.
    Deployed on website, WhatsApp, or Telegram. Reduces support workload by 70%.
    URL: https://codewithmrsingh.me/services
 
-4. Website & Funnel Building
+5. Website & Funnel Building
    High-conversion websites and sales funnels using React.js, Django, Next.js.
    URL: https://codewithmrsingh.me/services
 
-5. Logo & Graphic Design
+6. Logo & Graphic Design
    Professional brand identity — logo, social media graphics, marketing materials.
    Tools: Figma, Adobe Illustrator, Canva.
    URL: https://codewithmrsingh.me/services
 
 # ── PROJECTS (Real products submitted to clients) ───────────
+0. TASQ-ONE — Intelligent Task Operating System SaaS (Groq Llama 3.3 70B, PostgreSQL RLS, Docker, Dependency DAGs)
 1. Automated Lead Funnel — 250+ leads in 10 days (B2B SaaS automation)
 2. AI Support Agent — 70% ticket reduction (e-commerce RAG chatbot)
 3. WhatsApp AI Agent — 24/7 automated business communication (n8n + OpenAI)
@@ -86,8 +92,15 @@ Q: Who is Tushar Singh?
 A: Tushar Singh is an AI Automation Expert and Full-Stack Developer from Delhi, India.
    Founder of Code with Mr Singh. 10+ projects submitted to clients. ₹2L+ revenue.
 
+Q: What is TASQ-ONE and who built it?
+A: TASQ-ONE is an intelligent task operating system (SaaS) built by Tushar Singh (Tushar Singh Labs).
+   It decomposes single-sentence business requirements into production-ready tasks, acceptance criteria,
+   story points, and topological dependency DAGs in under 400ms using Groq Llama 3.3 70B AI.
+   It features multi-tenant PostgreSQL Row-Level Security (RLS) and cryptographic audit trails, saving
+   Indian engineering teams ₹48,000+/month. Live beta at https://tasq-one.onrender.com.
+
 Q: What services does Code with Mr Singh offer?
-A: AI Automation, RAG Chatbot Development, Website & Funnel Building, Logo & Graphic Design.
+A: Custom SaaS & Cloud MVP Engineering, AI Automation, RAG Chatbot Development, Website & Funnel Building, Logo & Graphic Design.
 
 Q: Does Tushar Singh work internationally?
 A: Yes. He works with clients worldwide — India, USA, UK, UAE, Australia, Canada, Singapore, and all countries.

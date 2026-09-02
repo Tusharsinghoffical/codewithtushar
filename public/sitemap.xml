@@ -54,16 +54,40 @@
     </image:image>
   </url>
 
-  <!-- ═══ 2.5. SAAS SUITES (COMING SOON / BETA) ═══ -->
+  <!-- ═══ 2.5. SAAS SUITES & CLOUD SOFTWARE ═══ -->
   <url>
     <loc>https://codewithmrsingh.me/saas</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/saas"/>
     <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/saas"/>
     <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/saas"/>
     <xhtml:link rel="alternate" hreflang="en-us"     href="https://codewithmrsingh.me/saas"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/tasq-one/tasq-one-banner.png</image:loc>
+      <image:title>Proprietary SaaS Suites &amp; Cloud Software by Tushar Singh Labs</image:title>
+      <image:caption>TASQ-ONE intelligent task operating system and autonomous AI cloud suites.</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- ═══ 2.6. TASQ-ONE SAAS PRODUCT ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/saas/tasq-one</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://codewithmrsingh.me/saas/tasq-one"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/tasq-one/tasq-one-banner.png</image:loc>
+      <image:title>TASQ-ONE — Intelligent Task Operating System (SaaS)</image:title>
+      <image:caption>Autonomous AI decomposition, Groq Llama 3.3 70B, real-time Kanban DAGs, and cryptographic audit trail.</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
   </url>
 
   <!-- ═══ 3. PROJECTS / PORTFOLIO ═══ -->

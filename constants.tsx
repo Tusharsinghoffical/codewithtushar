@@ -304,6 +304,33 @@ export const SERVICES: Service[] = [
 ];
 
 export const PROJECTS: Project[] = [
+  // ── 0. TASQ-ONE Flagship SaaS Platform ─────────────────────
+  {
+    id: 'p-tasq-one',
+    title: 'TASQ-ONE | Intelligent Task Operating System (SaaS)',
+    description: 'Cloud-native SaaS platform turning loosely defined ideas into production-ready tasks in seconds using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & PostgreSQL RLS.',
+    imageUrl: '/tasq-one/tasq-one-banner.png',
+    category: 'SaaS Products',
+    tags: ['SaaS', 'Groq Llama 3.3', 'Next.js 14', 'PostgreSQL RLS', 'Dependency DAG', 'Docker'],
+    date: '2026',
+    isFeatured: true,
+    clientBackground: 'Tushar Singh Labs proprietary SaaS engineering initiative for high-velocity software engineering and product teams in India & worldwide.',
+    problemStatement: 'Tech teams waste 10–15 hours weekly in tedious standup meetings, unstructured Slack chats, and writing vague Jira tickets, creating constant confusion for developers.',
+    strategy: 'Engineered an autonomous AI task operating system with Groq Llama 3.3 70B sub-400ms decomposition, topological acyclic DAG validation, immutable SHA-256 audit trails, and multi-tenant PostgreSQL RLS.',
+    results: [
+      '< 400ms autonomous AI task decomposition via Groq LPU.',
+      '₹48,000+/month net engineering savings for standard 10-person teams.',
+      '100% prevention of premature work on blocked tickets via DAG validation.',
+      'Cryptographic SHA-256 audit trails ensuring DPDP and SOC 2 readiness.'
+    ],
+    beforeAfter: {
+      before: '10–15 hrs/week wasted in standup chaos & vague Jira tickets',
+      after: '< 5-minute setup with instant AI task specs and live DAG tracking'
+    },
+    liveDemoUrl: 'https://tasq-one.onrender.com',
+    saasPageUrl: '/saas/tasq-one'
+  },
+
   // ── 1. Automated Lead Funnel ──────────────────────────────
   {
     id: 'p1',
