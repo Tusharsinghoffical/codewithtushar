@@ -85,7 +85,10 @@ const Navbar: React.FC = () => {
               <img
                 src="/logo/cms-logo.png"
                 alt="CMS Logo"
-                className={`rounded-full object-contain transition-all duration-300 shadow-xs group-hover:scale-110 bg-white ${isScrolled ? 'w-8 h-8' : 'w-8.5 h-8.5'}`}
+                width={36}
+                height={36}
+                style={{ width: isScrolled ? '32px' : '36px', height: isScrolled ? '32px' : '36px' }}
+                className={`rounded-full object-contain transition-all duration-300 shadow-xs group-hover:scale-110 bg-white shrink-0 ${isScrolled ? 'w-8 h-8' : 'w-9 h-9'}`}
               />
             </Link>
           </div>
@@ -139,7 +142,7 @@ const Navbar: React.FC = () => {
             <button
               onClick={toggleTheme}
               aria-label="Toggle Theme"
-              className="flex items-center justify-center w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full transition-all group shrink-0 bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-white/10"
+              className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-all group shrink-0 bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-white/10"
             >
               {isDark ? (
                 <Sun size={16} className="group-hover:rotate-90 transition-transform duration-500 text-amber-400" />
@@ -150,7 +153,7 @@ const Navbar: React.FC = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle Menu"
-              className="lg:hidden flex items-center justify-center w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full transition-all shrink-0 bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-white/10"
+              className="lg:hidden flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-all shrink-0 bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-white/10"
             >
               {isMenuOpen ? <X size={18} /> : <MoreVertical size={18} />}
             </button>
