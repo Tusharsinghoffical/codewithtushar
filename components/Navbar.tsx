@@ -69,13 +69,13 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed left-1/2 -translate-x-1/2 z-[110] transition-all duration-500 ease-in-out ${isScrolled ? 'top-10 sm:top-11 w-[98%] sm:w-fit' : 'top-11 sm:top-14 w-[95%] sm:w-fit'}`}>
+      <nav className={`fixed left-1/2 -translate-x-1/2 z-[110] transition-all duration-500 ease-in-out max-w-[96vw] ${isScrolled ? 'top-10 sm:top-11 w-[94%] sm:w-auto' : 'top-11 sm:top-14 w-[92%] sm:w-auto'}`}>
         <div
-          className="relative flex items-center justify-between sm:justify-start gap-1 p-1.5 rounded-full transition-all duration-300 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-xl shadow-slate-900/5 dark:shadow-black/20"
+          className="relative flex items-center justify-between sm:justify-start gap-1 sm:gap-2 px-2.5 py-1.5 rounded-full transition-all duration-300 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-xl shadow-slate-900/5 dark:shadow-black/20"
         >
 
           {/* Logo Section */}
-          <div className="flex items-center pl-3 pr-2 shrink-0 z-10">
+          <div className="flex items-center pl-1 pr-1.5 shrink-0 z-10">
             <Link
               to="/"
               onClick={handleLogoClick}
@@ -85,13 +85,13 @@ const Navbar: React.FC = () => {
               <img
                 src="/logo/cms-logo.png"
                 alt="CMS Logo"
-                className={`rounded-full object-contain transition-all duration-300 shadow-xs group-hover:scale-110 bg-white ${isScrolled ? 'w-8 h-8' : 'w-9 h-9'}`}
+                className={`rounded-full object-contain transition-all duration-300 shadow-xs group-hover:scale-110 bg-white ${isScrolled ? 'w-8 h-8' : 'w-8.5 h-8.5'}`}
               />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1 px-2">
+          <div className="hidden lg:flex items-center gap-0.5 xl:gap-1 px-1">
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
 
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-4 py-2.5 rounded-full text-[13px] font-semibold tracking-tight transition-all duration-300 flex items-center gap-1.5 ${isActive
+                  className={`px-3 xl:px-4 py-2 rounded-full text-[13px] font-semibold tracking-tight transition-all duration-300 flex items-center gap-1.5 ${isActive
                       ? 'bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-lg'
                       : 'text-slate-950 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-white/5'
                     }`}
@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Utility Actions */}
-          <div className="flex items-center gap-1.5 pr-1">
+          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0 pr-0.5">
             {/* Search Bar */}
             <div className="hidden sm:block">
               <SearchBar />
@@ -139,25 +139,20 @@ const Navbar: React.FC = () => {
             <button
               onClick={toggleTheme}
               aria-label="Toggle Theme"
-              className={`flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full transition-all group ${isScrolled
-                  ? 'bg-slate-50 dark:bg-slate-800 text-slate-950 dark:text-white border border-slate-200 dark:border-white/10'
-                  : 'bg-white/10 dark:bg-slate-800/20 text-slate-950 dark:text-white backdrop-blur-sm'
-                } hover:border-indigo-500`}
+              className="flex items-center justify-center w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full transition-all group shrink-0 bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-white/10"
             >
               {isDark ? (
-                <Sun size={18} className="group-hover:rotate-90 transition-transform duration-500" />
+                <Sun size={16} className="group-hover:rotate-90 transition-transform duration-500 text-amber-400" />
               ) : (
-                <Moon size={18} className="group-hover:-rotate-12 transition-transform duration-500" />
+                <Moon size={16} className="group-hover:-rotate-12 transition-transform duration-500 text-indigo-600" />
               )}
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle Menu"
-              className={`lg:hidden flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full transition-all ${isScrolled
-                  ? 'bg-slate-50 dark:bg-slate-800 text-slate-950 dark:text-white border border-slate-200 dark:border-white/10'
-                  : 'bg-white/10 dark:bg-slate-800/20 text-slate-950 dark:text-white backdrop-blur-sm'
-                }`}>
-              {isMenuOpen ? <X size={20} /> : <MoreVertical size={20} />}
+              className="lg:hidden flex items-center justify-center w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full transition-all shrink-0 bg-slate-100/80 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/60 dark:border-white/10"
+            >
+              {isMenuOpen ? <X size={18} /> : <MoreVertical size={18} />}
             </button>
           </div>
         </div>

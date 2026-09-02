@@ -143,10 +143,10 @@ const SearchBar: React.FC = () => {
         {!isExpanded && !query && (
           <button
             onClick={() => setIsExpanded(true)}
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
+            className="w-8 h-8 sm:w-8.5 sm:h-8.5 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-600 dark:text-slate-300 shrink-0"
             aria-label="Open search"
           >
-            <Search size={20} className="text-slate-600 dark:text-slate-300" />
+            <Search size={16} />
           </button>
         )}
       </div>
