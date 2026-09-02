@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 C.MS — Code with Mr Singh
+# 🚀 CMS — Code with Mr Singh
 ### Next-Gen AI Automation, Custom SaaS Suites & Full-Stack Engineering Platform
 
 [![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)

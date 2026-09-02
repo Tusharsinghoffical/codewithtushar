@@ -113,7 +113,7 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
           </div>
 
           <h2 className={`text-white font-outfit font-black text-4xl sm:text-5xl tracking-[0.3em] uppercase transition-all duration-700 ${progress > 10 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-            C.MS
+            CMS
           </h2>
 
           <div className="flex flex-col items-center gap-1">

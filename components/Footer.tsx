@@ -119,7 +119,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-2.5">
               <Link to="/" onClick={scrollToTop} className="inline-block">
                 <span className="text-3xl font-outfit font-black tracking-tight text-white hover:text-indigo-400 transition-colors">
-                  C.MS
+                  CMS
                 </span>
               </Link>
               <div className="flex items-center gap-2 text-xs font-semibold text-indigo-400">

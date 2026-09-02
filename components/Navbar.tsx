@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
               className={`flex items-center gap-3 group transition-transform duration-500 ${isBouncing ? 'animate-bounce-subtle' : ''}`}
             >
               <span className={`font-outfit font-extrabold text-slate-950 dark:text-white transition-all duration-300 ${isScrolled ? 'text-base' : 'text-xl'}`}>
-                C.MS
+                CMS
               </span>
             </Link>
           </div>
