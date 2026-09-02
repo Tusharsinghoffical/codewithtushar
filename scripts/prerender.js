@@ -137,28 +137,32 @@ const pages = [
   },
   {
     path: '/saas',
-    title: 'Proprietary SaaS Suites & Cloud Tools | Tushar Singh Labs',
-    description: '⚡ Explore proprietary cloud-native SaaS suites and autonomous tools by Tushar Singh Labs: TASQ-ONE (Intelligent Task OS), LeadFlow AI, and DocuParse Vault. Production live & beta access.',
-    keywords: `Tushar Singh Labs SaaS, proprietary SaaS products, TASQ-ONE, cloud platforms India, autonomous AI SaaS suites, full stack SaaS developer Delhi, ${INDIA_STATES_KEYWORDS}`,
+    title: 'TASQ-ONE — The Intelligent Task Operating System (SaaS) | Tushar Singh',
+    description: '⚡ TASQ-ONE is a cloud-native SaaS platform turning loosely defined ideas into production-ready tasks with Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & Indian team ROI calculator. Try public beta.',
+    keywords: `TASQ-ONE, TASQ ONE, intelligent task operating system, AI task management SaaS, Groq Llama 3.3 70B, Kanban dependency DAG, cryptographic audit SaaS, Tushar Singh SaaS, software application Delhi India, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: `${SITE_URL}/tasq-one/tasq-one-banner.png`,
-    alt: 'Proprietary SaaS Suites & Cloud Tools — Tushar Singh Labs',
+    alt: 'TASQ-ONE — The Intelligent Task Operating System (SaaS) by Tushar Singh',
     schema: {
       "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "@id": `${SITE_URL}/saas#saashub`,
-      "url": `${SITE_URL}/saas`,
-      "name": "Proprietary SaaS Suites & Cloud Tools | Tushar Singh Labs",
-      "description": "Explore proprietary cloud-native SaaS suites and autonomous tools by Tushar Singh Labs: TASQ-ONE (Intelligent Task OS), LeadFlow AI, and DocuParse Vault.",
-      "author": { "@id": `${SITE_URL}/#person` },
-      "mainEntity": {
-        "@type": "ItemList",
-        "name": "Tushar Singh Labs SaaS Products",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "TASQ-ONE", "url": `${SITE_URL}/saas/tasq-one` },
-          { "@type": "ListItem", "position": 2, "name": "LeadFlow AI", "url": `${SITE_URL}/contact` },
-          { "@type": "ListItem", "position": 3, "name": "DocuParse Vault", "url": `${SITE_URL}/contact` }
-        ]
+      "@type": "SoftwareApplication",
+      "@id": `${SITE_URL}/saas#software`,
+      "name": "TASQ-ONE",
+      "operatingSystem": "Cloud, Web, Docker, Linux, macOS, Windows",
+      "applicationCategory": "BusinessApplication, ProjectManagementApplication",
+      "description": "TASQ-ONE is an intelligent task operating system (SaaS) that turns loosely defined ideas into fully-fledged, production-ready tasks in seconds using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, and cryptographic audit trails.",
+      "url": "https://tasq-one.onrender.com",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "0",
+        "highPrice": "19",
+        "offerCount": "3"
+      },
+      "creator": {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        "name": "Tushar Singh"
       }
     }
   },

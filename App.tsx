@@ -501,34 +501,12 @@ const updateStructuredData = (title: string, description: string, path: string) 
     });
   }
 
-  else if (path === '/saas') {
-    // SaaS Directory: CollectionPage / ItemList schema
-    upsertSchema('schema-page-specific', {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "@id": `${pageUrl}#saashub`,
-      "url": pageUrl,
-      "name": "Proprietary SaaS Suites & Cloud Tools | Tushar Singh Labs",
-      "description": "Explore proprietary cloud-native SaaS suites and autonomous tools by Tushar Singh Labs: TASQ-ONE (Intelligent Task OS), LeadFlow AI, and DocuParse Vault.",
-      "author": { "@id": `${baseUrl}/#person` },
-      "mainEntity": {
-        "@type": "ItemList",
-        "name": "Tushar Singh Labs SaaS Products",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "TASQ-ONE", "url": `${baseUrl}/saas/tasq-one` },
-          { "@type": "ListItem", "position": 2, "name": "LeadFlow AI", "url": `${baseUrl}/contact` },
-          { "@type": "ListItem", "position": 3, "name": "DocuParse Vault", "url": `${baseUrl}/contact` }
-        ]
-      }
-    });
-  }
-
-  else if (path === '/saas/tasq-one') {
+  else if (path === '/saas' || path === '/saas/tasq-one') {
     // SaaS: SoftwareApplication schema for TASQ-ONE
     upsertSchema('schema-page-specific', {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "@id": `${baseUrl}/saas/tasq-one#software`,
+      "@id": `${baseUrl}/saas#software`,
       "name": "TASQ-ONE",
       "operatingSystem": "Cloud, Web, Docker, Linux, macOS, Windows",
       "applicationCategory": "BusinessApplication, ProjectManagementApplication",
@@ -677,9 +655,9 @@ const App: React.FC = () => {
             ><Projects /></PageWrapper>} />
 
             <Route path="/saas" element={<PageWrapper
-              title="Proprietary SaaS Suites & Cloud Tools | Tushar Singh Labs"
-              description="⚡ Explore proprietary cloud-native SaaS suites and autonomous tools by Tushar Singh Labs: TASQ-ONE (Intelligent Task OS), LeadFlow AI, and DocuParse Vault. Production live & beta access."
-              keywords="Tushar Singh Labs SaaS, proprietary SaaS products, TASQ-ONE, cloud platforms India, autonomous AI SaaS suites, full stack SaaS developer Delhi"
+              title="TASQ-ONE — The Intelligent Task Operating System (SaaS) | Tushar Singh"
+              description="⚡ TASQ-ONE is a cloud-native SaaS platform turning loosely defined ideas into production-ready tasks with Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & Indian team ROI calculator. Try public beta."
+              keywords="TASQ-ONE, TASQ ONE, intelligent task operating system, AI task management SaaS, Groq Llama 3.3 70B, Kanban dependency DAG, cryptographic audit SaaS, Tushar Singh SaaS, software application Delhi India"
             ><SaaS /></PageWrapper>} />
 
             <Route path="/saas/tasq-one" element={<PageWrapper
