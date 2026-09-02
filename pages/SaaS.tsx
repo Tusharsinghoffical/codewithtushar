@@ -469,47 +469,6 @@ export const SaaS: React.FC = () => {
 
         </section>
 
-        {/* ═══════════════════════ 4. DEVELOPER GUIDE: HOW TO ADD MORE SAAS PRODUCTS ═══════════════════════ */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-slate-100/80 dark:bg-slate-900/60 border border-slate-200 dark:border-white/10 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="p-3 rounded-2xl bg-indigo-600 text-white shrink-0">
-                <Code2 size={20} />
-              </div>
-              <div>
-                <h3 className="text-base font-outfit font-black text-slate-950 dark:text-white">
-                  Want to Upload / Add Another SaaS Product to This Page?
-                </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400">
-                  Adding your new SaaS products is 100% modular. Open <code className="text-indigo-600 dark:text-indigo-400 font-bold">constants.tsx</code> and add your new product to the <code className="text-indigo-600 dark:text-indigo-400 font-bold">SAAS_PRODUCTS</code> array.
-                </p>
-              </div>
-            </div>
-
-            <a
-              href="https://github.com/Tusharsinghoffical/Bussiness-website/blob/main/constants.tsx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 hover:border-indigo-400 transition-colors shrink-0"
-            >
-              <span>Inspect constants.tsx</span>
-              <ExternalLink size={13} />
-            </a>
-          </div>
-
-          {/* Code preview snippet */}
-          <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 text-[11px] font-mono text-slate-300 overflow-x-auto">
-            <span className="text-slate-500">// Example: Add your 2nd or 3rd SaaS product to SAAS_PRODUCTS in constants.tsx:</span><br/>
-            <span className="text-indigo-400">&#123;</span><br/>
-            &nbsp;&nbsp;id: <span className="text-emerald-300">'my-new-saas'</span>,<br/>
-            &nbsp;&nbsp;title: <span className="text-emerald-300">'My New SaaS App'</span>,<br/>
-            &nbsp;&nbsp;category: <span className="text-emerald-300">'AI & Automation'</span>,<br/>
-            &nbsp;&nbsp;statusLabel: <span className="text-emerald-300">'PUBLIC BETA'</span>,<br/>
-            &nbsp;&nbsp;demoUrl: <span className="text-emerald-300">'https://mye-saas.com'</span>,<br/>
-            &nbsp;&nbsp;pageUrl: <span className="text-emerald-300">'/saas/my-new-saas'</span><br/>
-            <span className="text-indigo-400">&#125;</span>
-          </div>
-        </section>
 
         {/* ═══════════════════════ 5. CUSTOM SAAS MVP DEVELOPMENT CTA ═══════════════════════ */}
         <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-800 text-white text-center space-y-6 shadow-2xl shadow-indigo-600/25">

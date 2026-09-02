@@ -8,7 +8,7 @@ import {
   Mail, Cloud, Shield, CheckSquare, BarChart3, Clock, Share2, Globe,
   AlertCircle, HelpCircle, BookOpen, ChevronDown, Award, Lightbulb, ArrowLeft
 } from 'lucide-react';
-import { TASQ_ONE_URL, TASQ_ONE_DOCKER_IMAGE, FIVERR_PROFILE_URL } from '../constants';
+import { TASQ_ONE_URL, TASQ_ONE_DOCKER_IMAGE } from '../constants';
 
 /* ─── Sample Prompts for Live AI Playground ──────────────────────────────── */
 const DEMO_PRESETS = [
@@ -91,9 +91,6 @@ export const TasqOne: React.FC = () => {
   const [copiedEmbed, setCopiedEmbed] = useState(false);
   const [copiedApi, setCopiedApi] = useState(false);
 
-  /* ── 4. View Tabs State for Clean Interface ── */
-  const [activeTab, setActiveTab] = useState<'overview' | 'simulator' | 'roi' | 'pricing' | 'tech'>('overview');
-
   /* ── Calculate ROI ── */
   const roiCalculations = useMemo(() => {
     const baseSavings = (hourlyRate * hoursSavedPerMonth);
@@ -168,7 +165,7 @@ export const TasqOne: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-24 space-y-12 sm:space-y-16">
 
-        {/* ── Navigation Breadcrumb Bar ── */}
+        {/* ═══════════════════════ TOP APP BAR & STATUS BAR ═══════════════════════ */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-b border-slate-200/80 dark:border-slate-800/80 pb-4">
           <Link
             to="/saas"
@@ -183,8 +180,12 @@ export const TasqOne: React.FC = () => {
               <span className="font-outfit font-black text-slate-950 dark:text-white tracking-tight text-base sm:text-lg">
                 TASQ-ONE
               </span>
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                Live Beta
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                </span>
+                <span>Live Public Beta</span>
               </span>
             </div>
 
@@ -200,7 +201,94 @@ export const TasqOne: React.FC = () => {
           </div>
         </div>
 
-        {/* ═══════════════════════ ⭐ 1. EXECUTIVE SUMMARY (STARTING ME SUMMARY) ⭐ ═══════════════════════ */}
+        {/* ═══════════════════════ 1. INTEGRATED HERO SHOWCASE ═══════════════════════ */}
+        <section className="text-center space-y-8 max-w-4xl mx-auto">
+          
+          {/* Logo Card */}
+          <div className="flex flex-col items-center justify-center">
+            <div className="p-4 sm:p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-2xl shadow-indigo-500/10 inline-flex items-center justify-center max-w-[280px] sm:max-w-[360px]">
+              <img
+                src="/tasq-one/tasq-one-banner.png"
+                alt="TASQ-ONE Logo"
+                className="w-full h-auto object-contain max-h-16 sm:max-h-20 dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+              />
+            </div>
+            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-indigo-600 dark:text-indigo-400 mt-3 font-outfit">
+              Tushar Singh Labs · Cloud-Native SaaS Platform
+            </span>
+          </div>
+
+          {/* Main Headline */}
+          <div className="space-y-4">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-outfit font-black tracking-tight text-slate-950 dark:text-white leading-[1.15]">
+              Turn Loosely Defined Ideas Into{' '}
+              <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-cyan-500 bg-clip-text text-transparent">
+                Production-Ready Tasks
+              </span>{' '}
+              in Seconds.
+            </h1>
+            <p className="text-sm sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              TASQ-ONE is the intelligent task operating system for high-velocity teams. Autonomous AI decomposition, real-time Kanban dependency DAGs, cryptographic audit trails, and multi-tenant PostgreSQL Row-Level Security.
+            </p>
+          </div>
+
+          {/* Primary Action Buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1">
+            <a
+              href={TASQ_ONE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-outfit font-black text-sm uppercase tracking-wider shadow-xl shadow-indigo-600/30 transition-all hover:scale-[1.02] active:scale-95 group cursor-pointer"
+            >
+              <span>Launch Web App (Free Beta)</span>
+              <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+
+            <a
+              href="#simulator"
+              className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-outfit font-bold text-sm transition-all shadow-sm"
+            >
+              <Bot size={17} className="text-violet-600 dark:text-violet-400" />
+              <span>Test Live AI Simulator</span>
+            </a>
+
+            <a
+              href="#roi-calculator"
+              className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-outfit font-bold text-sm transition-all"
+            >
+              <BarChart3 size={17} className="text-emerald-500" />
+              <span>Calculate ROI</span>
+            </a>
+          </div>
+
+          {/* 4 Quick Stat Pills */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto pt-2 text-left">
+            {[
+              { label: 'Onboarding Speed', val: '< 5 Minutes', sub: 'Sign up & add tasks' },
+              { label: 'AI Engine', val: 'Llama 3.3 70B', sub: 'Groq ultra-low latency' },
+              { label: 'Audit Trail', val: 'Cryptographic', sub: 'Tamper-evident logs' },
+              { label: 'Multi-Tenant', val: 'Postgres RLS', sub: 'Hard data isolation' },
+            ].map((stat, i) => (
+              <div
+                key={i}
+                className="p-3.5 sm:p-4 rounded-2xl bg-white/90 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 shadow-xs"
+              >
+                <div className="text-lg sm:text-xl font-outfit font-extrabold text-slate-950 dark:text-white">
+                  {stat.val}
+                </div>
+                <div className="text-xs font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">
+                  {stat.label}
+                </div>
+                <div className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                  {stat.sub}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </section>
+
+        {/* ═══════════════════════ ⭐ 2. INTEGRATED EXECUTIVE SUMMARY BENTO ⭐ ═══════════════════════ */}
         <section className="relative p-6 sm:p-9 rounded-3xl bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white border-2 border-indigo-500/30 shadow-2xl overflow-hidden">
           {/* Radiant decorative mesh */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
@@ -223,7 +311,7 @@ export const TasqOne: React.FC = () => {
 
             {/* Main Headline & 1-Liner */}
             <div className="space-y-2">
-              <h2 className="text-2xl sm:text-4xl font-outfit font-black tracking-tight text-white leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-outfit font-black tracking-tight text-white leading-tight">
                 Kya Hai TASQ-ONE? — What is TASQ-ONE in Plain Words?
               </h2>
               <p className="text-indigo-200 text-sm sm:text-base leading-relaxed max-w-4xl font-medium">
@@ -307,93 +395,6 @@ export const TasqOne: React.FC = () => {
             </div>
 
           </div>
-        </section>
-
-        {/* ═══════════════════════ 2. HERO SHOWCASE WITH BRAND EMBLEM ═══════════════════════ */}
-        <section className="text-center space-y-8 max-w-4xl mx-auto pt-2">
-          
-          {/* Logo Card */}
-          <div className="flex flex-col items-center justify-center">
-            <div className="p-4 sm:p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-2xl shadow-indigo-500/10 inline-flex items-center justify-center max-w-[280px] sm:max-w-[360px]">
-              <img
-                src="/tasq-one/tasq-one-banner.png"
-                alt="TASQ-ONE Logo"
-                className="w-full h-auto object-contain max-h-16 sm:max-h-20 dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-              />
-            </div>
-            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-indigo-600 dark:text-indigo-400 mt-3 font-outfit">
-              Tushar Singh Labs · Cloud-Native SaaS Platform
-            </span>
-          </div>
-
-          {/* Main Headline */}
-          <div className="space-y-4">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-outfit font-black tracking-tight text-slate-950 dark:text-white leading-[1.15]">
-              Turn Loosely Defined Ideas Into{' '}
-              <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-cyan-500 bg-clip-text text-transparent">
-                Production-Ready Tasks
-              </span>{' '}
-              in Seconds.
-            </h1>
-            <p className="text-sm sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              TASQ-ONE is the intelligent task operating system for high-velocity teams. Autonomous AI decomposition, real-time Kanban dependency DAGs, cryptographic audit trails, and multi-tenant PostgreSQL Row-Level Security.
-            </p>
-          </div>
-
-          {/* Primary Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1">
-            <a
-              href={TASQ_ONE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-outfit font-black text-sm uppercase tracking-wider shadow-xl shadow-indigo-600/30 transition-all hover:scale-[1.02] active:scale-95 group cursor-pointer"
-            >
-              <span>Launch Web App (Free Beta)</span>
-              <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-
-            <a
-              href="#roi-calculator"
-              className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 font-outfit font-bold text-sm transition-all shadow-sm"
-            >
-              <BarChart3 size={17} className="text-indigo-600 dark:text-indigo-400" />
-              <span>Calculate Indian Team ROI</span>
-            </a>
-
-            <a
-              href="#deployment"
-              className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-outfit font-bold text-sm transition-all"
-            >
-              <Terminal size={17} className="text-slate-500" />
-              <span>Self-Host Docker</span>
-            </a>
-          </div>
-
-          {/* 4 Quick Stat Pills */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto pt-2 text-left">
-            {[
-              { label: 'Onboarding Speed', val: '< 5 Minutes', sub: 'Sign up & add tasks' },
-              { label: 'AI Engine', val: 'Llama 3.3 70B', sub: 'Groq ultra-low latency' },
-              { label: 'Audit Trail', val: 'Cryptographic', sub: 'Tamper-evident logs' },
-              { label: 'Multi-Tenant', val: 'Postgres RLS', sub: 'Hard data isolation' },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                className="p-3.5 sm:p-4 rounded-2xl bg-white/90 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 shadow-xs"
-              >
-                <div className="text-lg sm:text-xl font-outfit font-extrabold text-slate-950 dark:text-white">
-                  {stat.val}
-                </div>
-                <div className="text-xs font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">
-                  {stat.label}
-                </div>
-                <div className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                  {stat.sub}
-                </div>
-              </div>
-            ))}
-          </div>
-
         </section>
 
         {/* ═══════════════════════ 3. INTERACTIVE LIVE SIMULATION ═══════════════════════ */}
