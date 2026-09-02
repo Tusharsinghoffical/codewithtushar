@@ -20,6 +20,8 @@ import TasqOne from './pages/TasqOne';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
 import Blog, { BLOG_POSTS } from './pages/Blog';
+import NotFound from './pages/NotFound';
+import ErrorBoundary from './components/ErrorBoundary';
 import {
   SITE_URL, SITE_NAME,
   SITE_DEFAULT_OG_IMAGE, SITE_DEFAULT_OG_ALT,
@@ -186,7 +188,7 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
 // All Indian states + UTs — used in every page's keywords for nationwide SEO coverage
 const INDIA_STATES_KEYWORDS = "freelance developer Delhi, AI developer Mumbai, developer Bangalore, developer Hyderabad, developer Chennai, developer Pune, developer Kolkata, developer Ahmedabad, developer Jaipur, developer Lucknow, developer Noida, developer Gurgaon, developer Chandigarh, developer Indore, developer Bhopal, developer Nagpur, developer Surat, developer Vadodara, developer Coimbatore, developer Kochi, developer Thiruvananthapuram, developer Visakhapatnam, developer Patna, developer Bhubaneswar, developer Guwahati, developer Dehradun, developer Shimla, developer Raipur, developer Ranchi, developer Jammu, developer Srinagar, developer Panaji, developer Imphal, developer Shillong, developer Aizawl, developer Kohima, developer Agartala, developer Itanagar, developer Gangtok, developer Puducherry, developer Andaman, developer Lakshadweep, AI automation Uttar Pradesh, AI automation Maharashtra, AI automation Karnataka, AI automation Tamil Nadu, AI automation Andhra Pradesh, AI automation Telangana, AI automation West Bengal, AI automation Gujarat, AI automation Rajasthan, AI automation Bihar, AI automation Madhya Pradesh, AI automation Haryana, AI automation Punjab, AI automation Kerala, AI automation Odisha, AI automation Jharkhand, AI automation Assam, AI automation Chhattisgarh, AI automation Uttarakhand, AI automation Himachal Pradesh, AI automation Tripura, AI automation Manipur, AI automation Meghalaya, AI automation Nagaland, AI automation Mizoram, AI automation Arunachal Pradesh, AI automation Sikkim, AI automation Goa, AI automation Jammu Kashmir, AI automation Ladakh, pan India developer, remote developer India, hire developer India";
 
-const PageWrapper: React.FC<{ children: React.ReactNode, title: string, description: string, keywords?: string }> = ({ children, title, description, keywords }) => {
+const PageWrapper: React.FC<{ children: React.ReactNode, title: string, description: string, keywords?: string, noIndex?: boolean }> = ({ children, title, description, keywords, noIndex }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -220,6 +222,7 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
       el.setAttribute('content', content);
     };
 
+    setMeta('meta[name="robots"]', noIndex ? 'noindex, nofollow' : 'index, follow');
     setMeta('meta[name="description"]', description);
 
     // Merge page-specific keywords WITH all Indian states — nationwide SEO on every page
@@ -633,7 +636,8 @@ const App: React.FC = () => {
         <ClockDisplay />
         <Navbar />
         <main id="main-content" className="flex-grow w-full overflow-x-hidden pt-7 sm:pt-8">
-          <Routes>
+          <ErrorBoundary>
+            <Routes>
             <Route path="/" element={<PageWrapper
               title="Tushar Singh — #1 AI Automation Expert & Full-Stack Developer | Delhi, India"
               description="⚡ 10+ Real Client Deliverables | ₹2L+ Value Delivered | 4.0★ Rated | Official Google Verified Owner. Hire Tushar Singh for Autonomous AI Agents, n8n Automations, 24/7 Smart Chatbots & Web Platforms. Free 30-Min Strategy Audit < 1 Hr."
@@ -689,7 +693,15 @@ const App: React.FC = () => {
               description="📞 Hire Tushar Singh for AI automation, smart chatbots & web engineering. Guaranteed response < 1 hour. Direct WhatsApp +91 88516 19647, Calendly schedule & official Google verified owner."
               keywords="hire developer India, contact developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, hire AI automation expert India, hire web developer India, freelance developer contact India, book consultation India"
             ><Contact /></PageWrapper>} />
+
+            {/* Catch-all 404 Route */}
+            <Route path="*" element={<PageWrapper
+              title="404 — Page Not Found | CMS"
+              description="The page you requested does not exist or has been relocated."
+              noIndex={true}
+            ><NotFound /></PageWrapper>} />
           </Routes>
+        </ErrorBoundary>
         </main>
         <AIChatAssistant />
         <FiverrFloatingButton />

@@ -28,7 +28,6 @@
   "author": "Tushar Singh",
   "license": "MIT",
   "dependencies": {
-    "@google/genai": "^1.40.0",
     "@vitejs/plugin-react": "^5.0.0",
     "fuse.js": "^7.1.0",
     "lucide-react": "^0.563.0",

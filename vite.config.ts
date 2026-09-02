@@ -13,10 +13,6 @@ export default defineConfig(({ mode }) => {
         historyApiFallback: true,
       },
       plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
@@ -28,7 +24,32 @@ export default defineConfig(({ mode }) => {
         assetsDir: 'assets',
         rollupOptions: {
           output: {
-            manualChunks: undefined,
+            manualChunks(id) {
+              if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router')) {
+                return 'vendor';
+              }
+              if (id.includes('node_modules/lucide-react')) {
+                return 'icons';
+              }
+              if (id.includes('node_modules/fuse.js')) {
+                return 'search';
+              }
+              if (id.includes('pages/TasqOne')) {
+                return 'page-tasqone';
+              }
+              if (id.includes('pages/Home')) {
+                return 'page-home';
+              }
+              if (id.includes('pages/Services')) {
+                return 'page-services';
+              }
+              if (id.includes('pages/Projects')) {
+                return 'page-projects';
+              }
+              if (id.includes('pages/Contact')) {
+                return 'page-contact';
+              }
+            },
           },
         },
       },
@@ -42,7 +63,7 @@ export default defineConfig(({ mode }) => {
       test: {
         globals: true,
         environment: 'jsdom',
-        setupFiles: ['./src/test/setup.ts'],
+        setupFiles: ['./test/setup.ts'],
         css: false,
       }
     };
