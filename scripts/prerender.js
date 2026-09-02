@@ -137,9 +137,9 @@ const pages = [
   },
   {
     path: '/saas',
-    title: 'TASQ-ONE — The Intelligent Task Operating System (SaaS) | Tushar Singh',
-    description: '⚡ TASQ-ONE is a cloud-native SaaS platform turning loosely defined ideas into production-ready tasks with Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & Indian team ROI calculator. Try public beta.',
-    keywords: `TASQ-ONE, TASQ ONE, intelligent task operating system, AI task management SaaS, Groq Llama 3.3 70B, Kanban dependency DAG, cryptographic audit SaaS, Tushar Singh SaaS, software application Delhi India, ${INDIA_STATES_KEYWORDS}`,
+    title: 'Proprietary SaaS Suites & Cloud Software | Tushar Singh Labs',
+    description: '⚡ Explore proprietary cloud-native SaaS platforms by Tushar Singh Labs: TASQ-ONE (The Intelligent Task OS) and scalable multi-tenant cloud software. Test live demos and view architectures.',
+    keywords: `Tushar Singh Labs SaaS, proprietary SaaS products, TASQ-ONE, cloud platforms India, autonomous AI SaaS suites, full stack SaaS developer Delhi, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: `${SITE_URL}/tasq-one/tasq-one-banner.png`,
     alt: 'TASQ-ONE — The Intelligent Task Operating System (SaaS) by Tushar Singh',

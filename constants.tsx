@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Database, Code, Cpu, BarChart, Zap, Globe, Brain, Terminal, Settings, Palette } from 'lucide-react';
-import { Service, Project, Testimonial } from './types';
+import { Service, Project, Testimonial, SaasProduct } from './types';
 
 // ─── Site-wide constants ──────────────────────────────────────────────────────
 export const SITE_URL             = 'https://codewithmrsingh.me';
@@ -81,6 +81,44 @@ export const PAGE_OG: Record<string, { image: string; alt: string; width?: strin
 export const TASQ_ONE_URL = 'https://tasq-one.onrender.com';
 export const TASQ_ONE_DOCKER_IMAGE = 'tusharsinghoffical/tasq-one';
 
+/* ─── Proprietary SaaS Products Directory ──────────────────────────────
+   💡 TO ADD A NEW SAAS PRODUCT:
+   Simply add a new object to the SAAS_PRODUCTS array below. It will
+   automatically appear on the /saas page with search, filters & cards!
+───────────────────────────────────────────────────────────────────────── */
+export const SAAS_PRODUCTS: SaasProduct[] = [
+  {
+    id: 'tasq-one',
+    title: 'TASQ-ONE',
+    tagline: 'The Intelligent Task Operating System',
+    description: 'Cloud-native SaaS platform turning loosely defined thoughts into production-ready developer tasks, acceptance criteria, story points and dependency DAGs in seconds using Groq Llama 3.3 70B AI.',
+    category: 'AI Task Management',
+    status: 'live',
+    statusLabel: 'PUBLIC BETA LIVE',
+    version: 'v1.4.0',
+    bannerImage: '/tasq-one/tasq-one-banner.png',
+    logoImage: '/tasq-one/tasq-one-logo.png',
+    tags: ['Groq Llama 3.3', 'PostgreSQL RLS', 'Dependency DAG', 'Redis Cache', 'Docker'],
+    metrics: [
+      { label: 'Onboarding Speed', value: '< 5 Mins' },
+      { label: 'AI Latency', value: '< 400ms' },
+      { label: 'Monthly Team ROI', value: '₹48k/mo' },
+      { label: 'Audit Security', value: 'SHA-256' },
+    ],
+    highlights: [
+      'Sub-second Groq Llama 3.3 70B AI task decomposition',
+      'Topological acyclic Kanban dependency DAG validation',
+      'Immutable cryptographic audit trail for DPDP & SOC2',
+      'Hardware-isolated PostgreSQL Row-Level Security (RLS)',
+      'Multi-channel real-time notifications via Slack & Resend'
+    ],
+    techStack: ['Next.js 14', 'Groq Llama 3.3 70B', 'Supabase Postgres RLS', 'Upstash Redis', 'Docker'],
+    demoUrl: TASQ_ONE_URL,
+    pageUrl: '/saas/tasq-one',
+    dockerSnippet: `docker run -d --name tasq-one -p 3000:3000 tusharsinghoffical/tasq-one:latest`,
+    isFlagship: true
+  }
+];
 
 export const SERVICES: Service[] = [
   {

@@ -57,3 +57,24 @@ export interface ContactFormData {
   priority: 'low' | 'medium' | 'high';
   message: string;
 }
+
+export interface SaasProduct {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  category: string;
+  status: 'live' | 'beta' | 'in-development';
+  statusLabel: string;
+  version: string;
+  bannerImage: string;
+  logoImage?: string;
+  tags: string[];
+  metrics: { label: string; value: string }[];
+  highlights: string[];
+  techStack: string[];
+  demoUrl?: string; // Live application URL (e.g. Render / Vercel link)
+  pageUrl: string; // Dedicated product landing page (e.g. /saas/tasq-one)
+  dockerSnippet?: string;
+  isFlagship?: boolean;
+}
