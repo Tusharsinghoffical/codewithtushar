@@ -249,11 +249,12 @@ export const SaaS: React.FC = () => {
                       </div>
 
                       {/* Brand Banner Card */}
-                      <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-sm flex items-center justify-center">
+                      <div className="p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 dark:border-white/10 shadow-lg shadow-indigo-500/10 flex items-center justify-center relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-xl pointer-events-none" />
                         <img
                           src={product.bannerImage}
                           alt={`${product.title} Logo Banner`}
-                          className="w-full h-auto object-contain max-h-16 dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"
+                          className="w-full h-auto object-contain max-h-16 sm:max-h-20 drop-shadow-[0_0_20px_rgba(255,255,255,0.45)] relative z-10"
                         />
                       </div>
 

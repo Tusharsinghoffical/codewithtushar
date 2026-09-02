@@ -96,8 +96,8 @@ export const SAAS_PRODUCTS: SaasProduct[] = [
     status: 'live',
     statusLabel: 'PUBLIC BETA LIVE',
     version: 'v1.4.0',
-    bannerImage: '/tasq-one/tasq-one-banner.png',
-    logoImage: '/tasq-one/tasq-one-logo.png',
+    bannerImage: '/tasq-one/task-one-emblem.png',
+    logoImage: '/tasq-one/task-one-emblem.png',
     tags: ['Groq Llama 3.3', 'PostgreSQL RLS', 'Dependency DAG', 'Redis Cache', 'Docker'],
     metrics: [
       { label: 'Onboarding Speed', value: '< 5 Mins' },
