@@ -174,6 +174,45 @@
     <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/blog"/>
   </url>
 
+  <!-- Blog post: env-schema-guard -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/env-schema-guard-zero-dependency-config-validator</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/env-schema-guard-zero-dependency-config-validator"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/blog/env-schema-guard.png</image:loc>
+      <image:title>env-schema-guard — Zero-Dependency Startup Config &amp; Schema Validator</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog post: retry-circuit -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/retry-circuit-distributed-resilience-engine</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/retry-circuit-distributed-resilience-engine"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/blog/retry-circuit.png</image:loc>
+      <image:title>retry-circuit — Distributed Systems Resilience Engine</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog post: prompt-kit-js -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/prompt-kit-js-versioned-llm-prompt-registry</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/prompt-kit-js-versioned-llm-prompt-registry"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/blog/prompt-kit-js.png</image:loc>
+      <image:title>prompt-kit-js — Versioned LLM Prompt Registry &amp; Token Estimator</image:title>
+    </image:image>
+  </url>
+
   <!-- Blog post 1: FAANG Coding Roadmap -->
   <url>
     <loc>https://codewithmrsingh.me/blog/faang-coding-roadmap-150-questions</loc>

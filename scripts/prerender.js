@@ -25,6 +25,10 @@ const SITE_DATE_MODIFIED = new Date().toISOString().split('T')[0];
 
 const INDIA_STATES_KEYWORDS = "freelance developer Delhi, AI developer Mumbai, developer Bangalore, developer Hyderabad, developer Chennai, developer Pune, developer Kolkata, developer Ahmedabad, developer Jaipur, developer Lucknow, developer Noida, developer Gurgaon, developer Chandigarh, developer Indore, developer Bhopal, developer Nagpur, developer Surat, developer Vadodara, developer Coimbatore, developer Kochi, developer Thiruvananthapuram, developer Visakhapatnam, developer Patna, developer Bhubaneswar, developer Guwahati, developer Dehradun, developer Shimla, developer Raipur, developer Ranchi, developer Jammu, developer Srinagar, developer Panaji, developer Imphal, developer Shillong, developer Aizawl, developer Kohima, developer Agartala, developer Itanagar, developer Gangtok, developer Puducherry, developer Andaman, developer Lakshadweep, AI automation Uttar Pradesh, AI automation Maharashtra, AI automation Karnataka, AI automation Tamil Nadu, AI automation Andhra Pradesh, AI automation Telangana, AI automation West Bengal, AI automation Gujarat, AI automation Rajasthan, AI automation Bihar, AI automation Madhya Pradesh, AI automation Haryana, AI automation Punjab, AI automation Kerala, AI automation Odisha, AI automation Jharkhand, AI automation Assam, AI automation Chhattisgarh, AI automation Uttarakhand, AI automation Himachal Pradesh, AI automation Tripura, AI automation Manipur, AI automation Meghalaya, AI automation Nagaland, AI automation Mizoram, AI automation Arunachal Pradesh, AI automation Sikkim, AI automation Goa, AI automation Jammu Kashmir, AI automation Ladakh, pan India developer, remote developer India, hire developer India";
 
+const PRODUCTION_TOOLKIT_KEYWORDS = "env-schema-guard, retry-circuit, prompt-kit-js, env-guard, retry-smart, open source developer India, TypeScript open source packages, zero-dependency NPM packages, startup config validator, process.env schema validator, async resilience engine, exponential backoff jitter, circuit breaker pattern TypeScript, LLM prompt registry, prompt engineering toolkit, token estimator LLM, prompt versioning TypeScript, microservices resilience, fail-fast config validation, thundering herd prevention, Node.js open source author Delhi, Tushar Singh open source packages, production engineering toolkit, full stack resilience, LLMOps prompt manager, enterprise cloud resilience, AI prompt manager";
+
+const ALL_KEYWORDS = `${INDIA_STATES_KEYWORDS}, ${PRODUCTION_TOOLKIT_KEYWORDS}`;
+
 const escapeAttr = (str) => {
   if (!str) return '';
   return String(str)
@@ -80,7 +84,9 @@ const pages = [
           "AI Automation", "n8n Workflow Automation", "RAG Chatbots", "LLM Integration",
           "Python Development", "React.js", "Next.js", "Django", "REST APIs",
           "Machine Learning", "Data Science", "Power BI", "Lead Generation",
-          "Sales Funnel Development", "Business Process Automation"
+          "Sales Funnel Development", "Business Process Automation",
+          "Open-Source Engineering", "env-schema-guard", "retry-circuit", "prompt-kit-js",
+          "Distributed Systems Resilience", "TypeScript NPM Package Authoring", "LLMOps"
         ],
         "alumniOf": { "@type": "EducationalOrganization", "name": "MIT Pune" },
         "hasCredential": { "@type": "EducationalOccupationalCredential", "credentialCategory": "Master of Computer Applications (MCA)" }
@@ -344,7 +350,7 @@ posts.forEach((post) => {
     path: `/blog/${post.id}`,
     title: post.title,
     description: post.excerpt,
-    keywords: `${post.tags.join(', ')}, ${INDIA_STATES_KEYWORDS}`,
+    keywords: `${post.tags.join(', ')}, ${ALL_KEYWORDS}`,
     type: 'article',
     image,
     alt: imageAlt,
