@@ -237,6 +237,42 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
     }
     keywordsEl.setAttribute('content', fullKeywords);
 
+    // Both Old & New Geo Tags
+    setMeta('meta[name="geo.region"]', 'IN-DL');
+    setMeta('meta[name="geo.placename"]', 'New Delhi, Badarpur, Meetha Pur, Saket, South Delhi, Noida, Gurgaon, Delhi NCR, India');
+    setMeta('meta[name="geo.position"]', '28.5034;77.3082');
+    setMeta('meta[name="ICBM"]', '28.5034, 77.3082');
+    setMeta('meta[name="geo.subregion"]', 'South Delhi, Badarpur, Okhla, Saket, Connaught Place, Noida Sector 62, Gurgaon DLF CyberHub');
+    setMeta('meta[name="city"]', 'New Delhi');
+    setMeta('meta[name="state"]', 'Delhi');
+    setMeta('meta[name="country"]', 'India');
+    setMeta('meta[name="zipcode"]', '110044');
+    setMeta('meta[name="address"]', '177/9b Sai Nagar, Meetha Pur, Badarpur, New Delhi, Delhi 110044, India');
+    setMeta('meta[name="geography"]', 'New Delhi, Delhi NCR, India, Global Remote (USA, UK, UAE, Singapore, Australia)');
+    setMeta('meta[name="location"]', 'New Delhi, India');
+    setMeta('meta[name="target_country"]', 'in, us, gb, ae, sg, ca, au, de');
+
+    // Both Old & New General Meta Tags
+    setMeta('meta[name="distribution"]', 'global');
+    setMeta('meta[name="rating"]', 'general');
+    setMeta('meta[name="revisit-after"]', '3 days');
+    setMeta('meta[name="publisher"]', 'Code with Mr Singh');
+    setMeta('meta[name="designer"]', 'Tushar Singh');
+    setMeta('meta[name="copyright"]', '© 2026 Code with Mr Singh. All rights reserved.');
+    setMeta('meta[name="owner"]', 'Tushar Singh');
+    setMeta('meta[name="category"]', 'Technology, Web Development, AI/ML, Data Science, Business Automation');
+    setMeta('meta[name="topic"]', 'AI Automation Services, Full-Stack Development, Chatbot Development, Freelance Developer India');
+    setMeta('meta[name="classification"]', 'Technology, Business Services, Software Development');
+    setMeta('meta[name="coverage"]', 'Worldwide');
+    setMeta('meta[name="target"]', 'all');
+    setMeta('meta[name="audience"]', 'Business Owners, Startups, Entrepreneurs, Agency Owners, Tech Companies');
+    setMeta('meta[name="page-topic"]', 'AI Automation, Full-Stack Development, Freelance Developer India');
+    setMeta('meta[name="page-type"]', 'Business Profile, Professional Portfolio, Service Listing');
+    setMeta('meta[name="format-detection"]', 'telephone=yes');
+    setMeta('meta[name="referrer"]', 'origin-when-cross-origin');
+    setMeta('meta[name="identifier-URL"]', 'https://codewithmrsingh.me/');
+    setMeta('meta[name="url"]', pageUrl);
+
     // Open Graph
     setMeta('meta[property="og:title"]', fullTitle);
     setMeta('meta[property="og:description"]', description);
