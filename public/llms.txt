@@ -68,9 +68,9 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
 2. AI-Powered HR Recruitment Screening Assistant — Enterprise recruitment workflow automation with n8n + LLMs, automated ATS scoring (0–100), skill matching, and interview question generation (Sold to enterprise client in Abu Dhabi, UAE)
 3. WhatsApp AI Agent — 24/7 automated business communication, instant message routing, and CRM booking (n8n + OpenAI)
 4. TakeOpinion Medical Tourism Platform — Full-stack global medical tourism web platform with Django 5, PostgreSQL, Stripe/Razorpay, hotel bookings, and doctor directory (Sold to healthcare client in Delhi, India | Demo: https://takeopinionclientprojectss.onrender.com)
-5. VAS QR Management System — Enterprise Django platform for loyalty programs and QR rewards (Sold to enterprise client in Maharashtra, India | Demo: https://vassystemclientproject.onrender.com/)
-6. RAG Chatbot — Knowledge base assistant for education platform
-7. Hospital Analytics Dashboard — Power BI healthcare intelligence
+5. VASS Smart Attendance System — Enterprise QR-based employee attendance & workforce platform with GPS geofencing, multi-branch tracking, and real-time admin analytics (Sold to enterprise client in Maharashtra, India | Demo: https://vassystemclientproject.onrender.com/)
+6. RAG Chatbot — Custom Knowledge Base Assistant for education & lead capture
+7. Hospital Analytics Dashboard — Multi-branch Power BI healthcare intelligence and bed utilization analytics
 
 # ── OPEN-SOURCE PRODUCTION TOOLKIT (NPM) ─────────────────
 1. env-schema-guard

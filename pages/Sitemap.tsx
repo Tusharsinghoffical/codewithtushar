@@ -144,7 +144,53 @@ const Sitemap: React.FC = () => {
           </div>
         </div>
 
-        {/* Section 2: Technical Blog Articles */}
+        {/* Section 2: Commercial Client Deliverables & Case Studies */}
+        <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 sm:p-8 backdrop-blur-sm space-y-6">
+          <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
+            <div className="w-9 h-9 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+              <FolderGit2 size={18} />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold font-outfit text-white">Client Deliverables &amp; Technical Case Studies</h2>
+              <p className="text-xs text-slate-400">Production-grade systems, AI workflows, web platforms, and business intelligence dashboards</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {PROJECTS.map((project) => (
+              <Link
+                key={project.id}
+                to={`/projects?project=${project.id}`}
+                className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/60 hover:border-violet-500/40 hover:bg-slate-900 transition-all group block flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                      {project.category}
+                    </span>
+                    <ArrowUpRight size={14} className="text-slate-400 group-hover:text-violet-400 shrink-0" />
+                  </div>
+                  <h3 className="font-semibold text-white group-hover:text-violet-400 transition-colors text-sm mt-2 line-clamp-1">
+                    {project.title.split('|')[0].trim()}
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                    {project.description}
+                  </p>
+                </div>
+                <div className="flex items-center justify-between gap-2 mt-3 pt-2 border-t border-slate-800/50 text-[10px] text-slate-400">
+                  <span className="text-emerald-400 font-bold truncate">
+                    {project.clientLocation || project.results[0]?.split('.')[0] || 'Verified Deliverable'}
+                  </span>
+                  {project.liveDemoUrl && (
+                    <span className="font-mono text-indigo-400 uppercase font-bold shrink-0">Live Demo</span>
+                  )}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Section 3: Technical Blog Articles */}
         <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 sm:p-8 backdrop-blur-sm space-y-6">
           <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
             <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">

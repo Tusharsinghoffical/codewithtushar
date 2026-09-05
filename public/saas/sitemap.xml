@@ -103,16 +103,32 @@
     <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/projects"/>
     <xhtml:link rel="alternate" hreflang="en-us"     href="https://codewithmrsingh.me/projects"/>
     <image:image>
-      <image:loc>https://codewithmrsingh.me/projects/p1.svg</image:loc>
-      <image:title>AI Agent &amp; Workflow Automation Project Deliverable</image:title>
+      <image:loc>https://codewithmrsingh.me/projects/task-one-platform.png</image:loc>
+      <image:title>TASQ-ONE Intelligent Task Operating System SaaS Platform</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://codewithmrsingh.me/projects/p2.svg</image:loc>
-      <image:title>RAG Customer Support Chatbot System</image:title>
+      <image:loc>https://codewithmrsingh.me/projects/ai-hr-recruitment-screening-assistant.png</image:loc>
+      <image:title>AI-Powered HR Recruitment Screening Assistant n8n Workflow</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://codewithmrsingh.me/projects/p3.svg</image:loc>
-      <image:title>Full-Stack Web App Platform by Tushar Singh</image:title>
+      <image:loc>https://codewithmrsingh.me/projects/whatsapp-ai-agent.png</image:loc>
+      <image:title>WhatsApp AI Business Communication Agent</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/takeopinion-platform.jpg</image:loc>
+      <image:title>TakeOpinion Global Medical Tourism Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/vas-qr-attendance-platform.jpg</image:loc>
+      <image:title>VASS Smart Attendance System for Modern Workplaces</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/rag-knowledge-base-chatbot.png</image:loc>
+      <image:title>RAG Knowledge Base Assistant AI Chatbot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/hospital-analytics-dashboard.jpg</image:loc>
+      <image:title>Hospital Analytics Power BI Healthcare Intelligence Dashboard</image:title>
     </image:image>
   </url>
 

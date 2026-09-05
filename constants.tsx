@@ -462,31 +462,31 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Tusharsinghoffical/TakeOpinionclient'
   },
 
-  // ── 5. VAS QR Management System (Maharashtra Client Deliverable - Pinned) ──────────────────────────────────────
+  // ── 5. VASS Smart Attendance System (Maharashtra Client Deliverable - Pinned) ──────────────────────────────────
   {
     id: 'p18',
-    title: 'VAS QR Management System | Full-Stack Enterprise Platform',
-    description: 'Enterprise Value Added Services platform using QR technology for managing customer loyalty programs, service subscriptions, and digital rewards — built with Django.',
+    title: 'VASS | Smart Attendance System for Modern Workplaces',
+    description: 'Enterprise QR-based smart employee attendance & workforce management platform featuring live GPS location verification, multi-branch tracking, employee portal, leave management, and real-time admin analytics.',
     imageUrl: '/projects/vas-qr-attendance-platform.jpg',
     category: 'Web Dev',
-    tags: ['Python', 'Django', 'QR Technology', 'REST API'],
+    tags: ['Python', 'Django', 'QR Technology', 'GPS Geofencing', 'Live Tracking', 'Workforce Analytics'],
     date: '2024',
     isFeatured: true,
     isPinned: true,
     clientLocation: 'Maharashtra, India',
-    clientBackground: 'Delivered and sold to an enterprise telecom-adjacent services client in Maharashtra, India, managing customer loyalty rewards, service subscriptions, and QR redemption workflows.',
-    problemStatement: 'The company was using spreadsheets to track thousands of customer subscriptions, causing errors, delays in rewards delivery, and no real-time visibility.',
-    strategy: 'Built a full-stack Django platform with QR code generation, customer service management, subscription tracking, rewards redemption engine, and admin analytics dashboard.',
+    clientBackground: 'Delivered and sold to a growing enterprise client in Maharashtra, India, managing 120+ employees across multiple branches needing automated QR attendance and live GPS location verification.',
+    problemStatement: 'Manual attendance registers and biometric scanners led to proxy check-ins, buddy-punching, zero geo-verification, and over 15 hours wasted every month reconciling payroll attendance data.',
+    strategy: 'Built a full-stack Django platform featuring dynamic QR code attendance with GPS geofence verification (Mumbai coordinates), role-based Employee & Admin portals, real-time presence overview dashboard (Present, Absent, On-Leave counters), automated leave management, and instant exportable analytics.',
     results: [
       'Successfully deployed and sold to client in Maharashtra, India.',
-      'Manual errors in reward allocation dropped to zero.',
-      'Customer redemption time reduced from 5 days to instant.',
-      'Admin team workload reduced by 60% through automation.',
-      'Subscription management scaled to 10,000+ customers.'
+      'Proxy check-ins and buddy-punching reduced to 0% via dynamic QR and live GPS verification.',
+      'Daily check-in time reduced from 5 minutes in line to under 3 seconds on mobile.',
+      'HR & Admin monthly payroll processing workload cut by 60%.',
+      'Unified multi-branch workforce visibility enabled for 120+ active employees.'
     ],
     beforeAfter: {
-      before: 'Manual spreadsheets | 5-day reward delays | Error-prone tracking',
-      after: 'Automated QR system | Instant redemption | Scalable to 10k+ users'
+      before: 'Biometric queues | Proxy check-ins | 15 hrs/month lost on manual payroll logs',
+      after: 'Instant QR check-in | GPS location verified | Real-time multi-branch workforce dashboard'
     },
     liveDemoUrl: 'https://vassystemclientproject.onrender.com/'
   },
@@ -521,25 +521,26 @@ export const PROJECTS: Project[] = [
   {
     id: 'p10',
     title: 'Hospital Analytics Dashboard | Power BI Healthcare Intelligence',
-    description: 'Interactive Power BI dashboard analyzing hospital patient flow, bed occupancy, staff efficiency, and resource utilization across multiple departments.',
+    description: 'Interactive Power BI dashboard analyzing hospital patient flow, bed occupancy, staff efficiency, and resource utilization across multiple departments and branches.',
     imageUrl: '/projects/hospital-analytics-dashboard.jpg',
     category: 'Data Science',
-    tags: ['Power BI', 'DAX', 'Healthcare Analytics', 'SQL'],
+    tags: ['Power BI', 'DAX', 'Healthcare Analytics', 'SQL', 'Hospital Intelligence', 'Patient Flow'],
     date: '2024',
     isFeatured: true,
     isPinned: true,
-    clientBackground: 'A hospital group with 3 branches struggling to track performance across departments without clear visibility into operational data.',
-    problemStatement: 'Hospital administrators were making decisions based on monthly paper reports with 30-day lag time, missing critical patterns in patient flow and resource usage.',
-    strategy: 'Built a real-time Power BI dashboard connecting hospital SQL databases — visualizing patient flow, bed availability, staff scheduling, and department KPIs with drill-down capability.',
+    clientBackground: 'Built for a multi-specialty healthcare network with 3 hospital branches struggling with disconnected data, paper reports, and delayed operational visibility.',
+    problemStatement: 'Hospital administrators were making resource and bed allocation decisions based on monthly paper reports with a 30-day lag time, leading to severe ICU bottlenecks and high overtime costs.',
+    strategy: 'Engineered a real-time Power BI intelligence dashboard unifying data from 3 hospital branches: automated patient flow (OPD/IPD/Emergency), departmental bed occupancy tracking (Medicine, Surgery, ICU, Pediatrics, Gynecology, Orthopedics), staff-on-duty scheduling, and wait-time diagnostics.',
     results: [
       'Decision-making cycle reduced from 30 days to real-time.',
-      'Bed utilization efficiency improved by 18%.',
-      'Staff overtime costs reduced through better scheduling insights.',
-      'Emergency department bottlenecks identified and resolved.'
+      'Bed utilization optimized by 18% across 6 core hospital departments.',
+      'Unified operational intelligence deployed across 3 hospital branches.',
+      'Emergency department wait times tracked and bottlenecks proactively resolved.',
+      'Significant reduction in clinical staff overtime expenses via predictive staffing.'
     ],
     beforeAfter: {
-      before: '30-day lag paper reports | No real-time visibility | Reactive decisions',
-      after: 'Real-time Power BI | Predictive insights | Proactive operations'
+      before: '30-day lag paper reports | No real-time visibility | Reactive emergency response',
+      after: 'Real-time Power BI | Predictive bed & staff insights | Unified 3-branch intelligence'
     }
   }
 ];
