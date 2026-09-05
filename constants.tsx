@@ -477,29 +477,31 @@ export const PROJECTS: Project[] = [
     }
   },
 
-  // ── 5. Hospital Website ───────────────────────────────────
+  // ── 5. TakeOpinion Medical Tourism Platform ─────────────────────────
   {
     id: 'p6',
-    title: 'Hospital Management Platform | Full-Stack Web App',
-    description: 'Full-stack hospital management system with online appointment booking, patient records, doctor scheduling, and admin dashboard built with Django and React.',
-    imageUrl: '/projects/p6.svg',
+    title: 'TakeOpinion | Global Medical Tourism & Hospital Platform',
+    description: 'Comprehensive Django 5-based global medical tourism platform connecting international patients with doctors, accredited hospitals, treatments, hotel bookings, and secure payment processing.',
+    imageUrl: '/projects/takeopinion-logo.png',
     category: 'Web Dev',
-    tags: ['Python', 'Django', 'React', 'PostgreSQL'],
+    tags: ['Django 5', 'Python', 'PostgreSQL', 'Stripe', 'Razorpay', 'Bootstrap 5', 'Celery & Redis'],
     date: '2024',
     isFeatured: true,
-    clientBackground: 'A multi-department hospital running all operations manually on paper and Excel spreadsheets.',
-    problemStatement: 'Patients had no way to book appointments online. Staff spent hours managing paper records and phone-based scheduling causing delays and errors.',
-    strategy: 'Built a full-stack platform with patient portal, doctor dashboard, admin panel, real-time appointment slots, and digital record management.',
+    clientBackground: 'Global medical tourism enterprise connecting overseas and domestic patients with accredited healthcare facilities, specialized doctors, treatments, and integrated hotel accommodations.',
+    problemStatement: 'Cross-border patients struggled with comparing treatment pricing, scheduling verified doctor consultations across timezones, booking nearby partner hotels, and processing secure international payments with transparent quotes.',
+    strategy: 'Architected and built full-stack Django 5 web application with 718+ fixture records: doctor directory, hospital network, treatment catalog with 15% platform discount calculations, hotel room booking (Normal to Executive Suites ₹2.5k–₹9k), guest checkout flows, Google Meet consultation integration, Celery/Redis background jobs, and Stripe/Razorpay gateways.',
     results: [
-      'Appointment booking time reduced from 15 min to 2 min.',
-      'Paper records completely eliminated for new patients.',
-      'Doctor schedule conflicts dropped to zero.',
-      'Patient satisfaction score improved significantly.'
+      'Appointment & consultation booking time reduced from 15 min to 2 min.',
+      'Over 718+ medical records, doctor profiles, and hospital listings synchronized.',
+      'Partnered hotel booking & guest consultation checkout enabled without mandatory login.',
+      'Secure dual payment processing (Stripe & Razorpay) with automated 15% discount engine.'
     ],
     beforeAfter: {
-      before: 'Manual paper records | Phone-only booking | Scheduling chaos',
-      after: 'Digital records | Online booking 24/7 | Automated scheduling'
-    }
+      before: 'Fragmented clinic directories | Manual quote requests | Phone-only hotel coordination',
+      after: 'End-to-end medical tourism portal | Instant treatment comparison | Integrated hospital & hotel booking'
+    },
+    liveDemoUrl: 'https://takeopinionclientprojects.onrender.com/',
+    githubUrl: 'https://github.com/Tusharsinghoffical/TakeOpinionclient'
   },
 
   // ── 6. Restaurant Website ─────────────────────────────────

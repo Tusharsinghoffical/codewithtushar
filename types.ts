@@ -34,6 +34,7 @@ export interface Project {
   };
   liveDemoUrl?: string;
   saasPageUrl?: string;
+  githubUrl?: string;
 }
 
 export interface Testimonial {

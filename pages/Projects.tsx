@@ -10,7 +10,7 @@ import {
   ArrowUpRight, Layers, Share2, Link2, Copy, Check,
   Sparkles, ExternalLink, MessageCircle, Clock, Award, Star,
   CheckCircle2, Flame, BarChart3, Code2, Bot, Globe, ChevronRight,
-  Briefcase, CheckCircle
+  Briefcase, CheckCircle, GitBranch, Github, Code
 } from 'lucide-react';
 
 /* ─── Category Metadata ──────────────────────────────────── */
@@ -41,16 +41,18 @@ const ProjectCard: React.FC<{
     >
       {/* Thumbnail Section with Clear Badges */}
       <div className="relative aspect-[16/9] w-full bg-slate-950 overflow-hidden shrink-0 flex items-center justify-center">
-        {project.category === 'SaaS Products' ? (
-          <div className="w-full h-full p-6 sm:p-7 flex items-center justify-center relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-2xl pointer-events-none" />
-            <img
-              src={project.imageUrl || '/projects/p1.svg'}
-              alt={project.title}
-              loading="lazy"
-              decoding="async"
-              className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] relative z-10"
-            />
+        {project.category === 'SaaS Products' || project.imageUrl?.endsWith('.png') ? (
+          <div className="w-full h-full p-6 sm:p-7 flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
+            <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 via-emerald-500/15 to-indigo-500/10 blur-2xl pointer-events-none" />
+            <div className="w-full h-full max-h-[140px] flex items-center justify-center p-3 rounded-2xl bg-white/95 shadow-inner backdrop-blur-sm relative z-10 border border-white/20">
+              <img
+                src={project.imageUrl || '/projects/p1.svg'}
+                alt={project.title}
+                loading="lazy"
+                decoding="async"
+                className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
           </div>
         ) : (
           <img
@@ -347,14 +349,16 @@ const Projects: React.FC = () => {
           >
             {/* Header Hero */}
             <div className="relative aspect-[21/9] bg-slate-950 overflow-hidden flex items-center justify-center">
-              {selected.category === 'SaaS Products' ? (
-                <div className="w-full h-full p-6 sm:p-8 flex items-center justify-center relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-2xl pointer-events-none" />
-                  <img
-                    src={selected.imageUrl || '/projects/p1.svg'}
-                    alt={selected.title}
-                    className="max-h-full max-w-full object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.5)] relative z-10"
-                  />
+              {selected.category === 'SaaS Products' || selected.imageUrl?.endsWith('.png') ? (
+                <div className="w-full h-full p-6 sm:p-8 flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
+                  <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 via-emerald-500/15 to-indigo-500/10 blur-2xl pointer-events-none" />
+                  <div className="w-full max-w-md max-h-[140px] flex items-center justify-center p-4 rounded-2xl bg-white/95 shadow-xl relative z-10 border border-white/20">
+                    <img
+                      src={selected.imageUrl || '/projects/p1.svg'}
+                      alt={selected.title}
+                      className="max-h-full max-w-full object-contain relative z-10"
+                    />
+                  </div>
                 </div>
               ) : (
                 <img src={selected.imageUrl || '/projects/p1.svg'} alt={selected.title} className="w-full h-full object-cover opacity-85" />
@@ -446,6 +450,17 @@ const Projects: React.FC = () => {
               </button>
 
               <div className="flex flex-wrap items-center gap-2">
+                {selected.githubUrl && (
+                  <a
+                    href={selected.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-black uppercase tracking-wider transition-all shadow-md active:scale-95 border border-white/10"
+                  >
+                    <Github size={13} />
+                    <span>View GitHub</span>
+                  </a>
+                )}
                 {selected.liveDemoUrl && (
                   <a
                     href={selected.liveDemoUrl}
