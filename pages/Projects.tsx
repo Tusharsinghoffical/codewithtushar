@@ -10,7 +10,7 @@ import {
   ArrowUpRight, Layers, Share2, Link2, Copy, Check,
   Sparkles, ExternalLink, MessageCircle, Clock, Award, Star,
   CheckCircle2, Flame, BarChart3, Code2, Bot, Globe, ChevronRight,
-  Briefcase, CheckCircle, GitBranch, Github, Code, Maximize2,
+  Briefcase, CheckCircle, GitBranch, Code, Maximize2,
   AlertTriangle, Lightbulb, MapPin
 } from 'lucide-react';
 
@@ -72,12 +72,20 @@ const ProjectCard: React.FC<{
         {/* Soft Bottom Gradient to enhance badge readability without obscuring image */}
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent pointer-events-none" />
 
-        {/* Top Badges (Category + Location / Date) */}
+        {/* Top Badges (Category + Pinned + Location / Date) */}
         <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10 pointer-events-none">
-          <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-md border ${m.badgeCls} shadow-md`}>
-            <span>{m.emoji}</span>
-            <span>{project.category}</span>
-          </span>
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-md border ${m.badgeCls} shadow-md`}>
+              <span>{m.emoji}</span>
+              <span>{project.category}</span>
+            </span>
+            {project.isPinned && (
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-600 text-white shadow-md flex items-center gap-1 font-outfit backdrop-blur-md border border-indigo-400/40">
+                <span>📌</span>
+                <span>Pinned</span>
+              </span>
+            )}
+          </div>
 
           <div className="flex items-center gap-1.5">
             {project.clientLocation && (
@@ -86,7 +94,7 @@ const ProjectCard: React.FC<{
                 <span>{project.clientLocation}</span>
               </span>
             )}
-            {project.date && (
+            {project.date && !project.clientLocation && (
               <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/90 text-slate-200 border border-white/20 backdrop-blur-md font-mono">
                 {project.date}
               </span>
@@ -207,6 +215,10 @@ const Projects: React.FC = () => {
         p.description.toLowerCase().includes(search.toLowerCase()) ||
         (p.tags || []).some(t => t.toLowerCase().includes(search.toLowerCase()));
       return matchCat && matchSearch;
+    }).sort((a, b) => {
+      if (a.isPinned && !b.isPinned) return -1;
+      if (!a.isPinned && b.isPinned) return 1;
+      return 0;
     });
   }, [activeCategory, search]);
 
@@ -400,6 +412,12 @@ const Projects: React.FC = () => {
                   <span>{cmeta(selected.category || 'All').emoji}</span>
                   <span>{selected.category}</span>
                 </span>
+
+                {selected.isPinned && (
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-600 text-white font-outfit inline-flex items-center gap-1 shadow-xs">
+                    <span>📌 Pinned Deliverable</span>
+                  </span>
+                )}
 
                 {selected.clientLocation && (
                   <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 font-outfit inline-flex items-center gap-1 shadow-xs">
@@ -600,18 +618,6 @@ const Projects: React.FC = () => {
               </div>
 
               <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto justify-end">
-                {selected.githubUrl && (
-                  <a
-                    href={selected.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-black uppercase tracking-wider transition-all shadow-md active:scale-95 border border-white/10"
-                  >
-                    <Github size={13} />
-                    <span>View GitHub</span>
-                  </a>
-                )}
-
                 {selected.liveDemoUrl && (
                   <a
                     href={selected.liveDemoUrl}

@@ -37,6 +37,7 @@ export interface Project {
   githubUrl?: string;
   clientLocation?: string;
   videoUrl?: string;
+  isPinned?: boolean;
 }
 
 export interface Testimonial {

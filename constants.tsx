@@ -351,7 +351,7 @@ export const SERVICES: Service[] = [
 ];
 
 export const PROJECTS: Project[] = [
-  // ── 0. TASQ-ONE Flagship SaaS Platform ─────────────────────
+  // ── 1. TASQ-ONE Flagship SaaS Platform (Pinned / Featured) ─────────────────────
   {
     id: 'p-tasq-one',
     title: 'TASQ-ONE | Intelligent Task Operating System (SaaS)',
@@ -361,6 +361,7 @@ export const PROJECTS: Project[] = [
     tags: ['SaaS', 'Groq Llama 3.3', 'Next.js 14', 'PostgreSQL RLS', 'Dependency DAG', 'Docker'],
     date: '2026',
     isFeatured: true,
+    isPinned: true,
     clientBackground: 'Tushar Singh Labs proprietary SaaS engineering initiative for high-velocity software engineering and product teams in India & worldwide.',
     problemStatement: 'Tech teams waste 10–15 hours weekly in tedious standup meetings, unstructured Slack chats, and writing vague Jira tickets, creating constant confusion for developers.',
     strategy: 'Engineered an autonomous AI task operating system with Groq Llama 3.3 70B sub-400ms decomposition, topological acyclic DAG validation, immutable SHA-256 audit trails, and multi-tenant PostgreSQL RLS.',
@@ -378,7 +379,93 @@ export const PROJECTS: Project[] = [
     saasPageUrl: '/saas/tasq-one'
   },
 
-  // ── 1. Automated Lead Funnel ──────────────────────────────
+  // ── 2. AI-Powered HR Recruitment Screening Assistant (Abu Dhabi Client Deliverable - Pinned) ──────
+  {
+    id: 'p7',
+    title: 'AI-Powered HR Recruitment Screening Assistant | n8n + LLMs',
+    description: 'Enterprise recruitment automation assistant built with n8n and LLMs that screens hundreds of candidate resumes in seconds, calculates ATS scores, identifies skill matches, generates interview questions, and notifies recruiters via Slack & Email.',
+    imageUrl: '/projects/ai-hr-recruitment-screening-assistant.png',
+    category: 'AI Agents',
+    tags: ['n8n', 'LLMs', 'OpenAI', 'Workflow Automation', 'ATS Scoring', 'Slack & Email Integration'],
+    date: '2026',
+    isFeatured: true,
+    isPinned: true,
+    clientLocation: 'Abu Dhabi, UAE',
+    clientBackground: 'Delivered and sold to an enterprise recruitment client in Abu Dhabi (UAE) needing to eliminate manual resume screening bottlenecks and accelerate hiring cycles.',
+    problemStatement: 'Hiring is one of the most time-consuming processes. HR teams spend endless hours manually reviewing hundreds of PDF resumes, matching skills with job descriptions, calculating fitment, and drafting interview questions — creating severe delays and recruiter burnout.',
+    strategy: 'Engineered an end-to-end multi-model AI recruitment workflow using n8n + LLMs: accepts multi-candidate PDF resumes, parses job descriptions, calculates 0–100 ATS scores, computes Skill/Experience/Education match, detects career gaps and missing competencies, classifies candidates (Qualified / Maybe Qualified / Not Qualified), formulates tailored technical interview questions, logs candidate records, and triggers automated Slack & Email alerts.',
+    results: [
+      'Successfully deployed & sold to enterprise client in Abu Dhabi, UAE.',
+      'Completed first-level candidate screening in seconds rather than 4–6 business days.',
+      'Automated ATS scoring (0–100) with precise skill, education & experience match metrics.',
+      'Reduced HR screening workload by 85%+ with instant Slack & Email candidate dossiers.'
+    ],
+    beforeAfter: {
+      before: 'Hundreds of resumes reviewed manually | Inconsistent evaluations | 4-6 day screening lag',
+      after: 'Sub-second AI resume screening | Standardized ATS scores | Automated interview questions & Slack alerts'
+    }
+  },
+
+  // ── 3. TakeOpinion Medical Tourism Platform (Delhi Client Deliverable - Pinned) ─────────────────────────
+  {
+    id: 'p6',
+    title: 'TakeOpinion | Global Medical Tourism & Hospital Platform',
+    description: 'Comprehensive Django 5-based global medical tourism platform connecting international patients with doctors, accredited hospitals, treatments, hotel bookings, and secure payment processing.',
+    imageUrl: '/projects/takeopinion-logo.png',
+    category: 'Web Dev',
+    tags: ['Django 5', 'Python', 'PostgreSQL', 'Stripe', 'Razorpay', 'Bootstrap 5', 'Celery & Redis'],
+    date: '2024',
+    isFeatured: true,
+    isPinned: true,
+    clientLocation: 'Delhi, India',
+    clientBackground: 'Delivered and sold to a prominent healthcare & medical tourism enterprise client in Delhi, India, connecting overseas and domestic patients with accredited healthcare facilities, specialized doctors, treatments, and integrated hotel accommodations.',
+    problemStatement: 'Cross-border patients struggled with comparing treatment pricing, scheduling verified doctor consultations across timezones, booking nearby partner hotels, and processing secure international payments with transparent quotes.',
+    strategy: 'Architected and built full-stack Django 5 web application with 718+ fixture records: doctor directory, hospital network, treatment catalog with 15% platform discount calculations, hotel room booking (Normal to Executive Suites ₹2.5k–₹9k), guest checkout flows, Google Meet consultation integration, Celery/Redis background jobs, and Stripe/Razorpay gateways.',
+    results: [
+      'Successfully delivered and sold to healthcare enterprise in Delhi, India.',
+      'Appointment & consultation booking time reduced from 15 min to 2 min.',
+      'Over 718+ medical records, doctor profiles, and hospital listings synchronized.',
+      'Partnered hotel booking & guest consultation checkout enabled without mandatory login.',
+      'Secure dual payment processing (Stripe & Razorpay) with automated 15% discount engine.'
+    ],
+    beforeAfter: {
+      before: 'Fragmented clinic directories | Manual quote requests | Phone-only hotel coordination',
+      after: 'End-to-end medical tourism portal | Instant treatment comparison | Integrated hospital & hotel booking'
+    },
+    liveDemoUrl: 'https://takeopinionclientprojectss.onrender.com',
+    githubUrl: 'https://github.com/Tusharsinghoffical/TakeOpinionclient'
+  },
+
+  // ── 4. VAS QR Management System (Maharashtra Client Deliverable - Pinned) ──────────────────────────────────────
+  {
+    id: 'p18',
+    title: 'VAS QR Management System | Full-Stack Enterprise Platform',
+    description: 'Enterprise Value Added Services platform using QR technology for managing customer loyalty programs, service subscriptions, and digital rewards — built with Django.',
+    imageUrl: '/projects/vas-qr-platform.jpg',
+    category: 'Web Dev',
+    tags: ['Python', 'Django', 'QR Technology', 'REST API'],
+    date: '2024',
+    isFeatured: true,
+    isPinned: true,
+    clientLocation: 'Maharashtra, India',
+    clientBackground: 'Delivered and sold to an enterprise telecom-adjacent services client in Maharashtra, India, managing customer loyalty rewards, service subscriptions, and QR redemption workflows.',
+    problemStatement: 'The company was using spreadsheets to track thousands of customer subscriptions, causing errors, delays in rewards delivery, and no real-time visibility.',
+    strategy: 'Built a full-stack Django platform with QR code generation, customer service management, subscription tracking, rewards redemption engine, and admin analytics dashboard.',
+    results: [
+      'Successfully deployed and sold to client in Maharashtra, India.',
+      'Manual errors in reward allocation dropped to zero.',
+      'Customer redemption time reduced from 5 days to instant.',
+      'Admin team workload reduced by 60% through automation.',
+      'Subscription management scaled to 10,000+ customers.'
+    ],
+    beforeAfter: {
+      before: 'Manual spreadsheets | 5-day reward delays | Error-prone tracking',
+      after: 'Automated QR system | Instant redemption | Scalable to 10k+ users'
+    },
+    liveDemoUrl: 'https://vassystemclientproject.onrender.com/'
+  },
+
+  // ── 5. Automated Lead Funnel ──────────────────────────────
   {
     id: 'p1',
     title: 'Automated Lead Funnel | 250+ Leads in 10 Days',
@@ -402,7 +489,8 @@ export const PROJECTS: Project[] = [
       after: '175 leads/week | $12 Average CPA | 0 hrs manual outreach/week'
     }
   },
-  // ── 2. AI Support Agent ──────────────────────────────────
+
+  // ── 6. AI Support Agent ──────────────────────────────────
   {
     id: 'p2',
     title: 'AI Support Agent | 70% Ticket Reduction',
@@ -427,7 +515,7 @@ export const PROJECTS: Project[] = [
     }
   },
 
-  // ── 3. WhatsApp Agent ─────────────────────────────────────
+  // ── 7. WhatsApp Agent ─────────────────────────────────────
   {
     id: 'p4',
     title: 'WhatsApp AI Agent | 24/7 Business Communication',
@@ -452,7 +540,7 @@ export const PROJECTS: Project[] = [
     }
   },
 
-  // ── 4. Chatbot Development ────────────────────────────────
+  // ── 8. Chatbot Development ────────────────────────────────
   {
     id: 'p_chat',
     title: 'RAG Chatbot | Custom Knowledge Base Assistant',
@@ -477,60 +565,7 @@ export const PROJECTS: Project[] = [
     }
   },
 
-  // ── 5. TakeOpinion Medical Tourism Platform ─────────────────────────
-  {
-    id: 'p6',
-    title: 'TakeOpinion | Global Medical Tourism & Hospital Platform',
-    description: 'Comprehensive Django 5-based global medical tourism platform connecting international patients with doctors, accredited hospitals, treatments, hotel bookings, and secure payment processing.',
-    imageUrl: '/projects/takeopinion-logo.png',
-    category: 'Web Dev',
-    tags: ['Django 5', 'Python', 'PostgreSQL', 'Stripe', 'Razorpay', 'Bootstrap 5', 'Celery & Redis'],
-    date: '2024',
-    isFeatured: true,
-    clientBackground: 'Global medical tourism enterprise connecting overseas and domestic patients with accredited healthcare facilities, specialized doctors, treatments, and integrated hotel accommodations.',
-    problemStatement: 'Cross-border patients struggled with comparing treatment pricing, scheduling verified doctor consultations across timezones, booking nearby partner hotels, and processing secure international payments with transparent quotes.',
-    strategy: 'Architected and built full-stack Django 5 web application with 718+ fixture records: doctor directory, hospital network, treatment catalog with 15% platform discount calculations, hotel room booking (Normal to Executive Suites ₹2.5k–₹9k), guest checkout flows, Google Meet consultation integration, Celery/Redis background jobs, and Stripe/Razorpay gateways.',
-    results: [
-      'Appointment & consultation booking time reduced from 15 min to 2 min.',
-      'Over 718+ medical records, doctor profiles, and hospital listings synchronized.',
-      'Partnered hotel booking & guest consultation checkout enabled without mandatory login.',
-      'Secure dual payment processing (Stripe & Razorpay) with automated 15% discount engine.'
-    ],
-    beforeAfter: {
-      before: 'Fragmented clinic directories | Manual quote requests | Phone-only hotel coordination',
-      after: 'End-to-end medical tourism portal | Instant treatment comparison | Integrated hospital & hotel booking'
-    },
-    liveDemoUrl: 'https://takeopinionclientprojectss.onrender.com',
-    githubUrl: 'https://github.com/Tusharsinghoffical/TakeOpinionclient'
-  },
-
-  // ── 6. AI-Powered HR Recruitment Screening Assistant (Abu Dhabi Client Deliverable) ──────
-  {
-    id: 'p7',
-    title: 'AI-Powered HR Recruitment Screening Assistant | n8n + LLMs',
-    description: 'Enterprise recruitment automation assistant built with n8n and LLMs that screens hundreds of candidate resumes in seconds, calculates ATS scores, identifies skill matches, generates interview questions, and notifies recruiters via Slack & Email.',
-    imageUrl: '/projects/ai-hr-recruitment-screening-assistant.png',
-    category: 'AI Agents',
-    tags: ['n8n', 'LLMs', 'OpenAI', 'Workflow Automation', 'ATS Scoring', 'Slack & Email Integration'],
-    date: '2026',
-    isFeatured: true,
-    clientLocation: 'Abu Dhabi, UAE',
-    clientBackground: 'Delivered and sold to an enterprise recruitment client in Abu Dhabi (UAE) needing to eliminate manual resume screening bottlenecks and accelerate hiring cycles.',
-    problemStatement: 'Hiring is one of the most time-consuming processes. HR teams spend endless hours manually reviewing hundreds of PDF resumes, matching skills with job descriptions, calculating fitment, and drafting interview questions — creating severe delays and recruiter burnout.',
-    strategy: 'Engineered an end-to-end multi-model AI recruitment workflow using n8n + LLMs: accepts multi-candidate PDF resumes, parses job descriptions, calculates 0–100 ATS scores, computes Skill/Experience/Education match, detects career gaps and missing competencies, classifies candidates (Qualified / Maybe Qualified / Not Qualified), formulates tailored technical interview questions, logs candidate records, and triggers automated Slack & Email alerts.',
-    results: [
-      'Successfully deployed & sold to enterprise client in Abu Dhabi, UAE.',
-      'Completed first-level candidate screening in seconds rather than 4–6 business days.',
-      'Automated ATS scoring (0–100) with precise skill, education & experience match metrics.',
-      'Reduced HR screening workload by 85%+ with instant Slack & Email candidate dossiers.'
-    ],
-    beforeAfter: {
-      before: 'Hundreds of resumes reviewed manually | Inconsistent evaluations | 4-6 day screening lag',
-      after: 'Sub-second AI resume screening | Standardized ATS scores | Automated interview questions & Slack alerts'
-    }
-  },
-
-  // ── 7. Hospital Analysis Dashboard ───────────────────────
+  // ── 9. Hospital Analysis Dashboard ───────────────────────
   {
     id: 'p10',
     title: 'Hospital Analytics Dashboard | Power BI Healthcare Intelligence',
@@ -553,32 +588,6 @@ export const PROJECTS: Project[] = [
       before: '30-day lag paper reports | No real-time visibility | Reactive decisions',
       after: 'Real-time Power BI | Predictive insights | Proactive operations'
     }
-  },
-
-  // ── 8. VAS QR System ──────────────────────────────────────
-  {
-    id: 'p18',
-    title: 'VAS QR Management System | Full-Stack Enterprise Platform',
-    description: 'Enterprise Value Added Services platform using QR technology for managing customer loyalty programs, service subscriptions, and digital rewards — built with Django.',
-    imageUrl: '/projects/vas-qr-platform.jpg',
-    category: 'Web Dev',
-    tags: ['Python', 'Django', 'QR Technology', 'REST API'],
-    date: '2024',
-    isFeatured: false,
-    clientBackground: 'A telecom-adjacent service company managing customer loyalty rewards and value-added service subscriptions manually.',
-    problemStatement: 'The company was using spreadsheets to track thousands of customer subscriptions, causing errors, delays in rewards delivery, and no real-time visibility.',
-    strategy: 'Built a full-stack Django platform with QR code generation, customer service management, subscription tracking, rewards redemption engine, and admin analytics dashboard.',
-    results: [
-      'Manual errors in reward allocation dropped to zero.',
-      'Customer redemption time reduced from 5 days to instant.',
-      'Admin team workload reduced by 60% through automation.',
-      'Subscription management scaled to 10,000+ customers.'
-    ],
-    beforeAfter: {
-      before: 'Manual spreadsheets | 5-day reward delays | Error-prone tracking',
-      after: 'Automated QR system | Instant redemption | Scalable to 10k+ users'
-    },
-    liveDemoUrl: 'https://vassystemclientproject.onrender.com/'
   }
 ];
 
