@@ -356,7 +356,7 @@ export const PROJECTS: Project[] = [
     id: 'p-tasq-one',
     title: 'TASQ-ONE | Intelligent Task Operating System (SaaS)',
     description: 'Cloud-native SaaS platform turning loosely defined ideas into production-ready tasks in seconds using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & PostgreSQL RLS.',
-    imageUrl: '/tasq-one/task-one-emblem.png',
+    imageUrl: '/tasq-one/tasq-one-logo.png',
     category: 'SaaS Products',
     tags: ['SaaS', 'Groq Llama 3.3', 'Next.js 14', 'PostgreSQL RLS', 'Dependency DAG', 'Docker'],
     date: '2026',
@@ -504,28 +504,29 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Tusharsinghoffical/TakeOpinionclient'
   },
 
-  // ── 6. Restaurant Website ─────────────────────────────────
+  // ── 6. AI-Powered HR Recruitment Screening Assistant (Abu Dhabi Client Deliverable) ──────
   {
     id: 'p7',
-    title: 'Restaurant Digital Platform | Online Ordering & Reservations',
-    description: 'Complete restaurant web platform with digital menu, online table reservations, food ordering system, and kitchen order management built with Django.',
-    imageUrl: '/projects/p7.svg',
-    category: 'Web Dev',
-    tags: ['Python', 'Django', 'HTML', 'JavaScript'],
-    date: '2024',
-    isFeatured: false,
-    clientBackground: 'A mid-size restaurant with no online presence, losing customers to competitors with digital ordering.',
-    problemStatement: 'The restaurant had no website, no online ordering, and relied entirely on walk-ins and phone calls for reservations — losing significant revenue.',
-    strategy: 'Developed a full restaurant web platform: digital menu with images, table reservation system, online ordering with payment integration, and owner admin panel.',
+    title: 'AI-Powered HR Recruitment Screening Assistant | n8n + LLMs',
+    description: 'Enterprise recruitment automation assistant built with n8n and LLMs that screens hundreds of candidate resumes in seconds, calculates ATS scores, identifies skill matches, generates interview questions, and notifies recruiters via Slack & Email.',
+    imageUrl: '/projects/ai-hr-recruitment-screening-assistant.png',
+    category: 'AI Agents',
+    tags: ['n8n', 'LLMs', 'OpenAI', 'Workflow Automation', 'ATS Scoring', 'Slack & Email Integration'],
+    date: '2026',
+    isFeatured: true,
+    clientLocation: 'Abu Dhabi, UAE',
+    clientBackground: 'Delivered and sold to an enterprise recruitment client in Abu Dhabi (UAE) needing to eliminate manual resume screening bottlenecks and accelerate hiring cycles.',
+    problemStatement: 'Hiring is one of the most time-consuming processes. HR teams spend endless hours manually reviewing hundreds of PDF resumes, matching skills with job descriptions, calculating fitment, and drafting interview questions — creating severe delays and recruiter burnout.',
+    strategy: 'Engineered an end-to-end multi-model AI recruitment workflow using n8n + LLMs: accepts multi-candidate PDF resumes, parses job descriptions, calculates 0–100 ATS scores, computes Skill/Experience/Education match, detects career gaps and missing competencies, classifies candidates (Qualified / Maybe Qualified / Not Qualified), formulates tailored technical interview questions, logs candidate records, and triggers automated Slack & Email alerts.',
     results: [
-      'Online orders constituted 30% of total revenue within 2 months.',
-      'Table reservation conflicts eliminated completely.',
-      'Average order value increased 20% with upsell features.',
-      'Google Business visibility improved significantly.'
+      'Successfully deployed & sold to enterprise client in Abu Dhabi, UAE.',
+      'Completed first-level candidate screening in seconds rather than 4–6 business days.',
+      'Automated ATS scoring (0–100) with precise skill, education & experience match metrics.',
+      'Reduced HR screening workload by 85%+ with instant Slack & Email candidate dossiers.'
     ],
     beforeAfter: {
-      before: 'Phone-only orders | No online presence | Lost to competitors',
-      after: 'Online ordering 24/7 | 30% digital revenue | Strong web presence'
+      before: 'Hundreds of resumes reviewed manually | Inconsistent evaluations | 4-6 day screening lag',
+      after: 'Sub-second AI resume screening | Standardized ATS scores | Automated interview questions & Slack alerts'
     }
   },
 

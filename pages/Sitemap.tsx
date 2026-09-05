@@ -177,7 +177,7 @@ const Sitemap: React.FC = () => {
                     {post.date}
                   </span>
                   <span>•</span>
-                  <span>{post.readTime}</span>
+                  <span className="text-indigo-400 font-medium">{post.category}</span>
                 </div>
               </Link>
             ))}

@@ -35,6 +35,8 @@ export interface Project {
   liveDemoUrl?: string;
   saasPageUrl?: string;
   githubUrl?: string;
+  clientLocation?: string;
+  videoUrl?: string;
 }
 
 export interface Testimonial {

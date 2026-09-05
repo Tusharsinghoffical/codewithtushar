@@ -72,11 +72,19 @@ const ProjectCard: React.FC<{
             <span>{project.category}</span>
           </span>
 
-          {project.date && (
-            <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-950/80 text-slate-300 border border-white/20 backdrop-blur-md">
-              {project.date}
-            </span>
-          )}
+          <div className="flex items-center gap-1.5">
+            {project.clientLocation && (
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500 text-slate-950 border border-amber-400 shadow-md flex items-center gap-1">
+                <span>📍</span>
+                <span>{project.clientLocation}</span>
+              </span>
+            )}
+            {project.date && (
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-950/80 text-slate-300 border border-white/20 backdrop-blur-md">
+                {project.date}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Verified Outcome Badge */}
@@ -374,9 +382,16 @@ const Projects: React.FC = () => {
               </button>
 
               <div className="absolute bottom-4 left-6 right-6 space-y-1">
-                <span className="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-wider bg-indigo-600 text-white inline-block">
-                  {selected.category}
-                </span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-wider bg-indigo-600 text-white inline-block">
+                    {selected.category}
+                  </span>
+                  {selected.clientLocation && (
+                    <span className="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-wider bg-amber-500 text-slate-950 font-outfit inline-flex items-center gap-1 shadow-md">
+                      <span>📍 Sold to Client in {selected.clientLocation}</span>
+                    </span>
+                  )}
+                </div>
                 <h2 className="text-xl sm:text-2xl font-outfit font-black text-white leading-tight">
                   {selected.title}
                 </h2>
