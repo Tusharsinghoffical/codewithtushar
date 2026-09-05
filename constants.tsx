@@ -467,7 +467,7 @@ export const PROJECTS: Project[] = [
     id: 'p18',
     title: 'VAS QR Management System | Full-Stack Enterprise Platform',
     description: 'Enterprise Value Added Services platform using QR technology for managing customer loyalty programs, service subscriptions, and digital rewards — built with Django.',
-    imageUrl: '/projects/vas-qr-platform.jpg',
+    imageUrl: '/projects/vas-qr-attendance-platform.jpg',
     category: 'Web Dev',
     tags: ['Python', 'Django', 'QR Technology', 'REST API'],
     date: '2024',
@@ -517,16 +517,17 @@ export const PROJECTS: Project[] = [
     }
   },
 
-  // ── 9. Hospital Analysis Dashboard ───────────────────────
+  // ── 7. Hospital Analytics Dashboard (Pinned) ───────────────────────
   {
     id: 'p10',
     title: 'Hospital Analytics Dashboard | Power BI Healthcare Intelligence',
     description: 'Interactive Power BI dashboard analyzing hospital patient flow, bed occupancy, staff efficiency, and resource utilization across multiple departments.',
-    imageUrl: '/projects/p10.svg',
+    imageUrl: '/projects/hospital-analytics-dashboard.jpg',
     category: 'Data Science',
     tags: ['Power BI', 'DAX', 'Healthcare Analytics', 'SQL'],
     date: '2024',
-    isFeatured: false,
+    isFeatured: true,
+    isPinned: true,
     clientBackground: 'A hospital group with 3 branches struggling to track performance across departments without clear visibility into operational data.',
     problemStatement: 'Hospital administrators were making decisions based on monthly paper reports with 30-day lag time, missing critical patterns in patient flow and resource usage.',
     strategy: 'Built a real-time Power BI dashboard connecting hospital SQL databases — visualizing patient flow, bed availability, staff scheduling, and department KPIs with drill-down capability.',
