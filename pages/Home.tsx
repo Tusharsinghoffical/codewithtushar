@@ -620,39 +620,76 @@ const Home: React.FC = () => {
             {featured.map((project) => (
               <Link
                 key={project.id}
-                to="/projects"
-                className="group relative overflow-hidden rounded-3xl border border-slate-200/80 dark:border-white/10 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 bg-slate-950 flex flex-col justify-end h-80"
+                to={`/projects?project=${project.id}`}
+                className="group relative flex flex-col bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/15 hover:-translate-y-1.5 transition-all duration-300 backdrop-blur-sm"
               >
-                <div className="absolute inset-0 overflow-hidden flex items-center justify-center">
-                  {project.category === 'SaaS Products' ? (
-                    <div className="w-full h-full p-8 pb-28 flex items-center justify-center relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-2xl pointer-events-none" />
-                      <img
-                        src={project.imageUrl}
-                        loading="lazy"
-                        decoding="async"
-                        alt={project.title}
-                        className="max-h-full max-w-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_0_25px_rgba(255,255,255,0.45)] relative z-10"
-                      />
+                {/* ── Contained 16:9 Thumbnail Frame (Strictly fitted within borders) ── */}
+                <div className="relative aspect-[16/9] w-full bg-slate-950 overflow-hidden shrink-0 flex items-center justify-center select-none border-b border-slate-100 dark:border-white/5">
+                  {/* Ambient blurred backdrop so graphic frames smoothly */}
+                  <img
+                    src={project.imageUrl || '/projects/p1.svg'}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover blur-xl opacity-35 scale-110 pointer-events-none"
+                  />
+                  {/* Main high-res thumbnail perfectly contained inside the border */}
+                  <img
+                    src={project.imageUrl || '/projects/p1.svg'}
+                    loading="lazy"
+                    decoding="async"
+                    alt={project.title}
+                    className="relative z-[1] w-full h-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                  {/* Subtle Hover Action Indicator */}
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 pointer-events-none">
+                    <span className="p-2 rounded-xl bg-slate-950/80 text-white backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-center">
+                      <ArrowUpRight size={14} />
+                    </span>
+                  </div>
+                </div>
+
+                {/* ── Body Content ── */}
+                <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 border border-slate-200/80 dark:border-white/10">
+                        {project.category}
+                      </span>
+                      {project.clientLocation ? (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 font-outfit shadow-2xs">
+                          <MapPin size={10} className="text-slate-950" />
+                          <span>{project.clientLocation}</span>
+                        </span>
+                      ) : (
+                        <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          <span>Verified Deliverable</span>
+                        </span>
+                      )}
                     </div>
-                  ) : (
-                    <img
-                      src={project.imageUrl}
-                      loading="lazy"
-                      decoding="async"
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+
+                    <h3 className="text-base font-outfit font-black text-slate-950 dark:text-white leading-snug group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium line-clamp-2">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {project.results && project.results.length > 0 && (
+                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-900 dark:text-emerald-300 text-[11px] font-bold flex items-center gap-2">
+                      <TrendingUp size={14} className="text-emerald-500 shrink-0" />
+                      <span className="truncate">{project.results[0]}</span>
+                    </div>
                   )}
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-90 group-hover:opacity-95 transition-opacity pointer-events-none" />
-                <div className="relative p-6 z-10">
-                  <span className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.25em] mb-1.5 block">{project.category}</span>
-                  <h4 className="text-base font-outfit font-black text-white leading-snug">{project.title}</h4>
-                  <p className="text-xs text-white/70 mt-1.5 line-clamp-2">{project.description}</p>
-                </div>
-                <div className="absolute top-5 right-5 w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all z-10">
-                  <ArrowUpRight size={15} className="text-white" />
+
+                  <div className="pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between text-xs">
+                    <span className="text-[11px] font-bold text-slate-400">View Case Study</span>
+                    <span className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 font-bold group-hover:translate-x-1 transition-transform">
+                      <span>Brief</span>
+                      <ChevronRight size={13} />
+                    </span>
+                  </div>
                 </div>
               </Link>
             ))}
