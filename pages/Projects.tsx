@@ -42,8 +42,8 @@ const ProjectCard: React.FC<{
       onClick={onClick}
       className="group relative flex flex-col bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/15 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer backdrop-blur-sm"
     >
-      {/* ── Fixed Height Aspect Ratio Thumbnail Container ── */}
-      <div className="relative h-60 sm:h-64 w-full bg-slate-950 overflow-hidden shrink-0 flex items-center justify-center select-none">
+      {/* ── Fixed Aspect Ratio (16:9) Contained Thumbnail ── */}
+      <div className="relative aspect-[16/9] w-full bg-slate-950 overflow-hidden shrink-0 flex items-center justify-center select-none border-b border-slate-100 dark:border-white/5">
         {isLogoImage ? (
           <div className="w-full h-full p-6 flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-2xl pointer-events-none" />
@@ -59,56 +59,27 @@ const ProjectCard: React.FC<{
           </div>
         ) : (
           <div className="w-full h-full relative overflow-hidden bg-slate-950 flex items-center justify-center">
+            {/* Ambient blurred backdrop to seamlessly frame graphics */}
+            <img
+              src={project.imageUrl || '/projects/p1.svg'}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover blur-xl opacity-35 scale-110 pointer-events-none"
+            />
+            {/* Primary Graphic fitted 100% inside container borders without clipping */}
             <img
               src={project.imageUrl || '/projects/p1.svg'}
               alt={project.title}
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+              className="relative z-[1] w-full h-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
             />
           </div>
         )}
 
-        {/* Soft Bottom Gradient to enhance badge readability without obscuring image */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent pointer-events-none" />
-
-        {/* Top Badges (Category + Pinned + Location / Date) */}
-        <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10 pointer-events-none">
-          <div className="flex items-center gap-1.5 flex-wrap">
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-md border ${m.badgeCls} shadow-md`}>
-              <span>{m.emoji}</span>
-              <span>{project.category}</span>
-            </span>
-            {project.isPinned && (
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-600 text-white shadow-md flex items-center gap-1 font-outfit backdrop-blur-md border border-indigo-400/40">
-                <span>📌</span>
-                <span>Pinned</span>
-              </span>
-            )}
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            {project.clientLocation && (
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 shadow-md flex items-center gap-1 font-outfit">
-                <MapPin size={11} className="text-slate-950" />
-                <span>{project.clientLocation}</span>
-              </span>
-            )}
-            {project.date && !project.clientLocation && (
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/90 text-slate-200 border border-white/20 backdrop-blur-md font-mono">
-                {project.date}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Bottom Deliverable Status */}
-        <div className="absolute bottom-3 left-3.5 right-3.5 z-10 flex items-center justify-between text-xs text-white font-bold pointer-events-none">
-          <span className="inline-flex items-center gap-1.5 text-[10.5px] font-black uppercase tracking-wider text-emerald-400 bg-slate-950/80 px-2.5 py-1 rounded-lg backdrop-blur-md border border-emerald-500/30 shadow-xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            {project.category === 'SaaS Products' ? 'Live Cloud SaaS' : 'Verified Client Deliverable'}
-          </span>
-          <span className="p-1.5 rounded-xl bg-white/20 text-white backdrop-blur-md group-hover:bg-indigo-600 transition-colors shadow-xs">
+        {/* Subtle Hover Action Indicator */}
+        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 pointer-events-none">
+          <span className="p-2 rounded-xl bg-slate-950/80 text-white backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-center">
             <ArrowUpRight size={14} />
           </span>
         </div>
@@ -116,7 +87,28 @@ const ProjectCard: React.FC<{
 
       {/* ── Body Content ── */}
       <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between space-y-5">
-        <div className="space-y-2.5">
+        <div className="space-y-3">
+          {/* Category, Location & Verification Status (Cleanly placed in body so thumbnail is 100% visible) */}
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-md border ${m.badgeCls} shadow-xs`}>
+                <span>{m.emoji}</span>
+                <span>{project.category}</span>
+              </span>
+              {project.clientLocation && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 font-outfit shadow-xs">
+                  <MapPin size={11} className="text-slate-950" />
+                  <span>{project.clientLocation}</span>
+                </span>
+              )}
+            </div>
+
+            <span className="inline-flex items-center gap-1.5 text-[10.5px] font-bold text-emerald-600 dark:text-emerald-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>{project.category === 'SaaS Products' ? 'Live Cloud SaaS' : 'Verified Deliverable'}</span>
+            </span>
+          </div>
+
           <h3 className="text-base sm:text-lg font-outfit font-black text-slate-950 dark:text-white leading-snug group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
             {project.title}
           </h3>
@@ -412,12 +404,6 @@ const Projects: React.FC = () => {
                   <span>{cmeta(selected.category || 'All').emoji}</span>
                   <span>{selected.category}</span>
                 </span>
-
-                {selected.isPinned && (
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-indigo-600 text-white font-outfit inline-flex items-center gap-1 shadow-xs">
-                    <span>📌 Pinned Deliverable</span>
-                  </span>
-                )}
 
                 {selected.clientLocation && (
                   <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 font-outfit inline-flex items-center gap-1 shadow-xs">
