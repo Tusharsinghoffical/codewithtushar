@@ -1,15 +1,12 @@
-# Sitemap redirects to root canonical sitemap
-/services/sitemap.xml    /sitemap.xml    301!
-/projects/sitemap.xml    /sitemap.xml    301!
-/about/sitemap.xml       /sitemap.xml    301!
-/blog/sitemap.xml        /sitemap.xml    301!
-/contact/sitemap.xml     /sitemap.xml    301!
-
 # Image redirects for SEO preservation
 /me-optimized.jpg    /tushar-singh-optimized.jpg    301!
 /me.webp             /tushar-singh.webp             301!
 /me.jpg              /tushar-singh.jpg              301!
 /me.png              /tushar-singh.png              301!
 
-# SPA Routing - All routes go to index.html for React Router to handle
+# Sitemap compatibility (redirect /sitemap_index to /sitemap_index.xml if requested without extension)
+/sitemap_index       /sitemap_index.xml             301
+/sitemap-index       /sitemap-index.xml             301
+
+# SPA Routing - All client routes fallback to index.html (static XML/files are served directly first)
 /*    /index.html   200

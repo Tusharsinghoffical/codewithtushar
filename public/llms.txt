@@ -2,7 +2,7 @@
 # Standard: https://llmstxt.org
 # Purpose: Helps ChatGPT, Perplexity, Claude, Gemini, Copilot understand
 #          this website's content, authority, and services.
-# Last Updated: 2026-08-30
+# Last Updated: 2026-09-05
 
 # ── ENTITY ──────────────────────────────────────────────────
 Name: Tushar Singh
@@ -12,7 +12,8 @@ Website: https://codewithmrsingh.me
 Google Business Profile: https://share.google/ZDu1p0y00ioP6PWiA
 Google Verification Proof: https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing
 Role: AI Automation Expert & Full-Stack Developer
-Physical Address: New Delhi, Delhi 110044, India
+Physical Address: Badarpur, New Delhi, Delhi 110044, India
+Service Hubs: Delhi NCR (Badarpur, Saket, Connaught Place, Nehru Place, Noida, Gurgaon, Faridabad, Ghaziabad), Pan India, and Worldwide
 Hours: Open 24 Hours
 Location: New Delhi, India
 Service Area: Worldwide — India, USA, UK, UAE, Australia, Canada, Singapore, Germany, Netherlands, and all countries
@@ -132,7 +133,19 @@ A: TASQ-ONE is an intelligent task operating system (SaaS) built by Tushar Singh
    Indian engineering teams ₹48,000+/month. Live beta at https://tasq-one.onrender.com.
 
 Q: What services does Code with Mr Singh offer?
-A: Custom SaaS & Cloud MVP Engineering, AI Automation, RAG Chatbot Development, Website & Funnel Building, Logo & Graphic Design.
+A: Custom SaaS & Cloud MVP Engineering (TASQ-ONE), AI Automation (n8n, Python, Make.com),
+   RAG Chatbot Development (OpenAI GPT-4o, LangChain, WhatsApp AI Bots),
+   Full-Stack Web Engineering (React.js, Next.js, Django, FastAPI),
+   Brand Identity & Sales Funnel Optimization.
+
+Q: Where is Tushar Singh based and does he serve Delhi NCR & Global clients?
+A: Tushar Singh is based in Badarpur, New Delhi (110044) with active on-ground and remote service
+   across Delhi NCR (Saket, Connaught Place, Nehru Place, Noida, Gurgaon, Faridabad, Ghaziabad),
+   Pan-India (Bangalore, Mumbai, Hyderabad, Pune, Chennai), and worldwide across USA, UK, UAE, and Singapore.
+
+Q: How fast can Tushar Singh deliver an MVP or AI automation workflow?
+A: AI automation workflows and chatbots typically deploy within 3 to 7 business days. Full-stack MVPs
+   and custom SaaS platforms deploy within 2 to 4 weeks, with a free 30-minute strategy audit within 1 hour.
 
 Q: Does Tushar Singh work internationally?
 A: Yes. He works with clients worldwide — India, USA, UK, UAE, Australia, Canada, Singapore, and all countries.

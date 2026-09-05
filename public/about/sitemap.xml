@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══ ABOUT ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/about</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/about"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/about"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/about"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/tushar-singh.webp</image:loc>
+      <image:title>About Tushar Singh — MCA Graduate, AI Automation Expert &amp; Developer</image:title>
+      <image:caption>Tushar Singh background, expertise in AI automation, full-stack development, and tech consulting.</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

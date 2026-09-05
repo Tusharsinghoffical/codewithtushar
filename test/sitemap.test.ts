@@ -1,0 +1,59 @@
+import { describe, it, expect } from 'vitest';
+import fs from 'fs';
+import path from 'path';
+
+describe('Sitemap Integrity & SEO Tests', () => {
+  const rootDir = path.resolve(__dirname, '..');
+  const publicDir = path.join(rootDir, 'public');
+
+  it('should have public/saas/sitemap.xml with both SaaS routes', () => {
+    const saasSitemapPath = path.join(publicDir, 'saas', 'sitemap.xml');
+    expect(fs.existsSync(saasSitemapPath)).toBe(true);
+
+    const content = fs.readFileSync(saasSitemapPath, 'utf8');
+    expect(content).toContain('https://codewithmrsingh.me/saas');
+    expect(content).toContain('https://codewithmrsingh.me/saas/tasq-one');
+    expect(content).toContain('<?xml version="1.0" encoding="UTF-8"?>');
+    expect(content).toContain('<urlset');
+  });
+
+  it('should have master public/sitemap.xml with all core pages and blog posts', () => {
+    const masterSitemapPath = path.join(publicDir, 'sitemap.xml');
+    expect(fs.existsSync(masterSitemapPath)).toBe(true);
+
+    const content = fs.readFileSync(masterSitemapPath, 'utf8');
+    expect(content).toContain('https://codewithmrsingh.me/');
+    expect(content).toContain('https://codewithmrsingh.me/services');
+    expect(content).toContain('https://codewithmrsingh.me/projects');
+    expect(content).toContain('https://codewithmrsingh.me/about');
+    expect(content).toContain('https://codewithmrsingh.me/contact');
+    expect(content).toContain('https://codewithmrsingh.me/testimonials');
+    expect(content).toContain('https://codewithmrsingh.me/saas');
+    expect(content).toContain('https://codewithmrsingh.me/saas/tasq-one');
+    expect(content).toContain('https://codewithmrsingh.me/blog');
+    expect(content).toContain('env-schema-guard-zero-dependency-config-validator');
+    expect(content).toContain('retry-circuit-distributed-resilience-engine');
+    expect(content).toContain('prompt-kit-js-versioned-llm-prompt-registry');
+  });
+
+  it('should have sitemap index linking to all section sitemaps', () => {
+    const sitemapIndexPath = path.join(publicDir, 'sitemap-index.xml');
+    expect(fs.existsSync(sitemapIndexPath)).toBe(true);
+
+    const content = fs.readFileSync(sitemapIndexPath, 'utf8');
+    expect(content).toContain('https://codewithmrsingh.me/sitemap.xml');
+    expect(content).toContain('https://codewithmrsingh.me/saas/sitemap.xml');
+    expect(content).toContain('https://codewithmrsingh.me/blog/sitemap.xml');
+    expect(content).toContain('https://codewithmrsingh.me/services/sitemap.xml');
+    expect(content).toContain('https://codewithmrsingh.me/projects/sitemap.xml');
+  });
+
+  it('should have robots.txt referencing saas and master sitemaps', () => {
+    const robotsPath = path.join(publicDir, 'robots.txt');
+    expect(fs.existsSync(robotsPath)).toBe(true);
+
+    const content = fs.readFileSync(robotsPath, 'utf8');
+    expect(content).toContain('Sitemap: https://codewithmrsingh.me/sitemap.xml');
+    expect(content).toContain('Sitemap: https://codewithmrsingh.me/saas/sitemap.xml');
+  });
+});

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══ 1. SAAS PORTFOLIO & CLOUD SOFTWARE ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/saas</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/saas"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/saas"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/saas"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://codewithmrsingh.me/saas"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://codewithmrsingh.me/saas"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/tasq-one/tasq-one-banner.png</image:loc>
+      <image:title>Proprietary SaaS Suites &amp; Cloud Software by Tushar Singh Labs</image:title>
+      <image:caption>TASQ-ONE intelligent task operating system and autonomous AI cloud suites.</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- ═══ 2. TASQ-ONE SAAS PRODUCT ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/saas/tasq-one</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://codewithmrsingh.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://codewithmrsingh.me/saas/tasq-one"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/tasq-one/tasq-one-banner.png</image:loc>
+      <image:title>TASQ-ONE — Intelligent Task Operating System (SaaS)</image:title>
+      <image:caption>Autonomous AI decomposition, Groq Llama 3.3 70B, real-time Kanban DAGs, and cryptographic audit trail.</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+  </url>
+
+</urlset>

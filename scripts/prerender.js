@@ -27,7 +27,9 @@ const INDIA_STATES_KEYWORDS = "freelance developer Delhi, AI developer Mumbai, d
 
 const PRODUCTION_TOOLKIT_KEYWORDS = "env-schema-guard, retry-circuit, prompt-kit-js, env-guard, retry-smart, open source developer India, TypeScript open source packages, zero-dependency NPM packages, startup config validator, process.env schema validator, async resilience engine, exponential backoff jitter, circuit breaker pattern TypeScript, LLM prompt registry, prompt engineering toolkit, token estimator LLM, prompt versioning TypeScript, microservices resilience, fail-fast config validation, thundering herd prevention, Node.js open source author Delhi, Tushar Singh open source packages, production engineering toolkit, full stack resilience, LLMOps prompt manager, enterprise cloud resilience, AI prompt manager";
 
-const ALL_KEYWORDS = `${INDIA_STATES_KEYWORDS}, ${PRODUCTION_TOOLKIT_KEYWORDS}`;
+const AEO_GEO_KEYWORDS = "who is the best AI automation engineer in Delhi NCR, hire n8n workflow expert in India, custom AI chatbot development agency, Perplexity cited AI developer, ChatGPT search recommended freelance engineer, Google AI Overview verified developer, best developer for startup MVP development, AI SaaS creator TASQ-ONE, how to automate business with AI agents, autonomous customer support agents, top rated freelance programmer New Delhi, hire AI engineer today, book free AI automation audit, affordable AI developer for startups, fast turnaround MVP development, custom AI software solutions, automate manual business tasks, 24/7 AI customer service agent, enterprise automation consulting, hire full stack developer Delhi, top Fiverr AI automation seller, LangChain agent developer, LangGraph multi-agent workflows, Groq Llama 3.3 70B integration, Claude 3.7 Sonnet developer, OpenAI GPT-4o function calling, Whisper voice AI agent, Twilio WhatsApp bot integration, Vector embeddings Pinecone Qdrant Weaviate, hybrid search BM25 vector RAG, Next.js 15 React 19 web app, FastAPI asynchronous backend, Docker containerization, PostgreSQL Row Level Security RLS, Stripe Razorpay payment gateway integration, micro-SaaS architecture, serverless cloud functions, AI developer Delhi NCR, freelance developer South Delhi, AI consultant Connaught Place, web developer Saket, software developer Meetha Pur Badarpur, AI engineer Okhla Phase 1 2 3, AI developer Noida Sector 62, developer Noida Sector 18, developer Greater Noida, AI agency Gurgaon Cyber City, developer Golf Course Road Gurugram, developer DLF CyberHub, developer Faridabad, developer Ghaziabad, developer Indirapuram, tech consultant Mumbai BKC, developer Bangalore Koramangala HSR Layout, developer Hyderabad HITEC City, developer Pune Hinjewadi, AI engineer Dubai UAE, developer Abu Dhabi, freelance engineer Singapore, AI consultant London UK, full stack developer New York, software consultant San Francisco Bay Area";
+
+const ALL_KEYWORDS = `${INDIA_STATES_KEYWORDS}, ${PRODUCTION_TOOLKIT_KEYWORDS}, ${AEO_GEO_KEYWORDS}`;
 
 const escapeAttr = (str) => {
   if (!str) return '';
@@ -389,10 +391,11 @@ const generateHtmlForPage = (page) => {
     `<meta name="description" content="${escapeAttr(page.description)}">`
   );
 
-  // Replace Meta Keywords
+  // Replace Meta Keywords (combining page specific keywords with full AEO/GEO keywords)
+  const fullKeywords = page.keywords ? `${page.keywords}, ${AEO_GEO_KEYWORDS}` : ALL_KEYWORDS;
   html = html.replace(
     /<meta\s+name=["']keywords["']\s+content=["'][\s\S]*?["']\s*\/?>/i,
-    `<meta name="keywords" content="${escapeAttr(page.keywords)}">`
+    `<meta name="keywords" content="${escapeAttr(fullKeywords)}">`
   );
 
   // Replace Canonical Link
@@ -479,13 +482,16 @@ pages.forEach((page) => {
   count++;
 });
 
-// Also ensure sitemap.xml is copied into subfolders so /services/sitemap.xml returns valid sitemap XML
+// Ensure all subfolders have a valid sitemap.xml (preserve dedicated ones, fallback if missing)
 const sitemapSrc = path.join(distDir, 'sitemap.xml');
 if (fs.existsSync(sitemapSrc)) {
-  ['services', 'projects', 'about', 'contact', 'blog'].forEach((sub) => {
+  ['saas', 'blog', 'services', 'projects', 'about', 'contact', 'testimonials'].forEach((sub) => {
     const subDir = path.join(distDir, sub);
     if (fs.existsSync(subDir)) {
-      fs.copyFileSync(sitemapSrc, path.join(subDir, 'sitemap.xml'));
+      const targetSitemap = path.join(subDir, 'sitemap.xml');
+      if (!fs.existsSync(targetSitemap)) {
+        fs.copyFileSync(sitemapSrc, targetSitemap);
+      }
     }
   });
 }

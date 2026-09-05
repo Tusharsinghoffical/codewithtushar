@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══ TESTIMONIALS & REVIEWS ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/testimonials</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/testimonials"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/testimonials"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/testimonials"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/google-business-qr.png</image:loc>
+      <image:title>Google Verified Customer Reviews for Tushar Singh</image:title>
+    </image:image>
+  </url>
+
+</urlset>

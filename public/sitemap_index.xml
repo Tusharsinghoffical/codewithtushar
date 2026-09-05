@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Master canonical sitemap containing all website pages -->
+  <sitemap>
+    <loc>https://codewithmrsingh.me/sitemap.xml</loc>
+    <lastmod>2026-09-05</lastmod>
+  </sitemap>
+
+  <!-- Proprietary SaaS suites & TASQ-ONE OS -->
+  <sitemap>
+    <loc>https://codewithmrsingh.me/saas/sitemap.xml</loc>
+    <lastmod>2026-09-05</lastmod>
+  </sitemap>
+
+  <!-- AI Automation & Full-Stack Blog Articles -->
+  <sitemap>
+    <loc>https://codewithmrsingh.me/blog/sitemap.xml</loc>
+    <lastmod>2026-09-05</lastmod>
+  </sitemap>
+
+  <!-- AI Automation & Development Services -->
+  <sitemap>
+    <loc>https://codewithmrsingh.me/services/sitemap.xml</loc>
+    <lastmod>2026-09-05</lastmod>
+  </sitemap>
+
+  <!-- Commercial Client Projects & Deliverables -->
+  <sitemap>
+    <loc>https://codewithmrsingh.me/projects/sitemap.xml</loc>
+    <lastmod>2026-09-05</lastmod>
+  </sitemap>
+
+  <!-- About Tushar Singh Background & Credentials -->
+  <sitemap>
+    <loc>https://codewithmrsingh.me/about/sitemap.xml</loc>
+    <lastmod>2026-09-05</lastmod>
+  </sitemap>
+
+  <!-- Contact & Free AI Consultation Booking -->
+  <sitemap>
+    <loc>https://codewithmrsingh.me/contact/sitemap.xml</loc>
+    <lastmod>2026-09-05</lastmod>
+  </sitemap>
+
+  <!-- Verified Client Reviews & Testimonials -->
+  <sitemap>
+    <loc>https://codewithmrsingh.me/testimonials/sitemap.xml</loc>
+    <lastmod>2026-09-05</lastmod>
+  </sitemap>
+</sitemapindex>

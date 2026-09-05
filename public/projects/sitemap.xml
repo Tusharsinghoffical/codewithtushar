@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══ PROJECTS / PORTFOLIO ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/projects</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/projects"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/projects"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/projects"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://codewithmrsingh.me/projects"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/p1.svg</image:loc>
+      <image:title>AI Agent &amp; Workflow Automation Project Deliverable</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/p2.svg</image:loc>
+      <image:title>RAG Customer Support Chatbot System</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/p3.svg</image:loc>
+      <image:title>Full-Stack Web App Platform by Tushar Singh</image:title>
+    </image:image>
+  </url>
+
+</urlset>

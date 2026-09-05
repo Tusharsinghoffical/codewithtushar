@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══ BLOG INDEX ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/blog"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/blog"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/blog"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/tushar-singh-optimized.jpg</image:loc>
+      <image:title>AI Automation &amp; Full-Stack Engineering Blog</image:title>
+      <image:caption>Technical articles and tutorials by Tushar Singh.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 1: env-schema-guard -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/env-schema-guard-zero-dependency-config-validator</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/env-schema-guard-zero-dependency-config-validator"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/blog/env-schema-guard.png</image:loc>
+      <image:title>env-schema-guard — Zero-Dependency Startup Config &amp; Schema Validator</image:title>
+    </image:image>
+  </url>
+
+  <!-- Post 2: retry-circuit -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/retry-circuit-distributed-resilience-engine</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/retry-circuit-distributed-resilience-engine"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/blog/retry-circuit.png</image:loc>
+      <image:title>retry-circuit — Distributed Systems Resilience Engine</image:title>
+    </image:image>
+  </url>
+
+  <!-- Post 3: prompt-kit-js -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/prompt-kit-js-versioned-llm-prompt-registry</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/prompt-kit-js-versioned-llm-prompt-registry"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/blog/prompt-kit-js.png</image:loc>
+      <image:title>prompt-kit-js — Versioned LLM Prompt Registry &amp; Token Estimator</image:title>
+    </image:image>
+  </url>
+
+  <!-- Post 4: FAANG Coding Roadmap -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/faang-coding-roadmap-150-questions</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/faang-coding-roadmap-150-questions"/>
+  </url>
+
+  <!-- Post 5: n8n Automation Guide -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/n8n-automation-guide-beginners-2026</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/n8n-automation-guide-beginners-2026"/>
+  </url>
+
+  <!-- Post 6: AI Chatbot Guide -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/ai-chatbot-for-business-complete-guide-2026</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/ai-chatbot-for-business-complete-guide-2026"/>
+  </url>
+
+</urlset>

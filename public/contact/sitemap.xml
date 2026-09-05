@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══ CONTACT ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/contact</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/contact"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/contact"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/contact"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://codewithmrsingh.me/contact"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://codewithmrsingh.me/contact"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/tushar-singh.webp</image:loc>
+      <image:title>Contact Tushar Singh — Hire for AI Automation &amp; Web Development</image:title>
+      <image:caption>Direct WhatsApp +91 88516 19647, Calendly consultation, New Delhi office.</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

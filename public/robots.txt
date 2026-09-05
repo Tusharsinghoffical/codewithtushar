@@ -66,5 +66,10 @@ Disallow: /
 User-agent: PetalBot
 Disallow: /
 
-# Canonical Sitemap
+# Canonical Sitemaps
 Sitemap: https://codewithmrsingh.me/sitemap.xml
+Sitemap: https://codewithmrsingh.me/sitemap-index.xml
+Sitemap: https://codewithmrsingh.me/saas/sitemap.xml
+Sitemap: https://codewithmrsingh.me/blog/sitemap.xml
+Sitemap: https://codewithmrsingh.me/services/sitemap.xml
+Sitemap: https://codewithmrsingh.me/projects/sitemap.xml

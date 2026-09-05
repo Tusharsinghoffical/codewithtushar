@@ -12,7 +12,54 @@ export const SITE_DEFAULT_OG_ALT    = 'Tushar Singh — AI Automation Expert & F
 export const SITE_DEFAULT_OG_WIDTH  = '800';
 export const SITE_DEFAULT_OG_HEIGHT = '800';
 /** Current deployment date — update on each redeploy for fresh dateModified signals */
-export const SITE_DATE_MODIFIED = '2026-08-26';
+export const SITE_DATE_MODIFIED = '2026-09-05';
+
+// ─── Search Engine, AEO & GEO Engagement Keywords ─────────────────────────────
+export const SEO_CORE_KEYWORDS = [
+  'Tushar Singh freelancing', 'Tushar Singh freelancing Delhi', 'Tushar Singh freelance developer',
+  'Code with Mr Singh', 'freelance developer Delhi', 'AI automation expert India',
+  'full stack developer India', 'Python developer India', 'React.js developer India',
+  'Django developer', 'n8n automation', 'RAG chatbot development', 'AI agent development',
+  'machine learning engineer India', 'data scientist India', 'web development India',
+  'hire freelance developer India', 'Custom SaaS Developer India', 'SaaS MVP Developer',
+  'Python SaaS Developer', 'Full-Stack SaaS Developer', 'AI SaaS Platform',
+  'Multi-Tenant Cloud Architecture', 'Next.js SaaS Developer', 'FastAPI SaaS Developer',
+  'LangChain agent developer', 'LangGraph multi-agent systems', 'Groq Llama 3.3 70B AI integration',
+  'OpenAI GPT-4o agent integration', 'Claude 3.7 Sonnet developer', 'Voice AI agent developer',
+  'Twilio WhatsApp bot integration', 'Vector database Pinecone Qdrant Weaviate'
+];
+
+export const AEO_INTENT_QUERIES = [
+  'who is the best AI automation engineer in Delhi NCR',
+  'hire n8n workflow expert in India',
+  'custom AI chatbot development agency for business',
+  'Perplexity cited AI developer Delhi',
+  'ChatGPT search recommended freelance engineer India',
+  'Google AI Overview verified developer Tushar Singh',
+  'best developer for startup AI MVP development',
+  'who created TASQ-ONE intelligent task operating system',
+  'how to automate business operations using n8n and Make.com',
+  '24/7 AI customer service agent for business WhatsApp',
+  'hire top rated freelance programmer New Delhi'
+];
+
+export const GEO_LOCAL_KEYWORDS = [
+  'AI developer Delhi NCR', 'freelance developer South Delhi', 'AI consultant Connaught Place',
+  'web developer Saket', 'software developer Meetha Pur Badarpur', 'AI engineer Okhla Phase 1 2 3',
+  'AI developer Noida Sector 62', 'developer Noida Sector 18', 'developer Greater Noida',
+  'AI agency Gurgaon Cyber City', 'developer Golf Course Road Gurugram', 'developer DLF CyberHub',
+  'developer Faridabad', 'developer Ghaziabad', 'developer Indirapuram',
+  'tech consultant Mumbai BKC', 'developer Bangalore Koramangala HSR Layout',
+  'developer Hyderabad HITEC City', 'developer Pune Hinjewadi', 'developer Chennai OMR',
+  'AI engineer Dubai UAE', 'developer Abu Dhabi', 'freelance engineer Singapore',
+  'AI consultant London UK', 'full stack developer New York', 'software consultant San Francisco Bay Area'
+];
+
+export const ALL_SITE_KEYWORDS = [
+  ...SEO_CORE_KEYWORDS,
+  ...AEO_INTENT_QUERIES,
+  ...GEO_LOCAL_KEYWORDS
+];
 
 // ─── Google Business Profile & Verification Constants ────────────────────────
 export const GOOGLE_BUSINESS_NAME = 'Tushar Singh freelancing';
