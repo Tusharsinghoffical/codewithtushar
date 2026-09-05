@@ -1,20 +1,98 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="450" fill="#10b981"/>
-  <rect x="0" y="0" width="800" height="450" fill="url(#gradient)" opacity="0.8"/>
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.3"/>
-      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.5"/>
+    <linearGradient id="p2_bg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#090d16"/>
+      <stop offset="0.5" stop-color="#0a1526"/>
+      <stop offset="1" stop-color="#07101e"/>
     </linearGradient>
+    <linearGradient id="p2_card" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="p2_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur"/>
+    </filter>
   </defs>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">
-    AI Support
-  </text>
-  <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.8">
-    Project Preview
-  </text>
-  <circle cx="50" cy="50" r="30" fill="white" opacity="0.2"/>
-  <circle cx="750" cy="400" r="40" fill="white" opacity="0.1"/>
-  <rect x="100" y="350" width="200" height="4" rx="2" fill="white" opacity="0.3"/>
+
+  <rect width="1200" height="675" fill="url(#p2_bg)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.07" stroke="#94a3b8" stroke-width="1">
+    <path d="M0 75 H1200 M0 150 H1200 M0 225 H1200 M0 300 H1200 M0 375 H1200 M0 450 H1200 M0 525 H1200 M0 600 H1200"/>
+    <path d="M100 0 V675 M200 0 V675 M300 0 V675 M400 0 V675 M500 0 V675 M600 0 V675 M700 0 V675 M800 0 V675 M900 0 V675 M1000 0 V675 M1100 0 V675"/>
+  </g>
+
+  <!-- Ambient Glow -->
+  <circle cx="200" cy="200" r="180" fill="#10b981" opacity="0.14" filter="url(#p2_glow)"/>
+  <circle cx="1000" cy="400" r="220" fill="#6366f1" opacity="0.16" filter="url(#p2_glow)"/>
+
+  <!-- Top Window Header -->
+  <rect x="70" y="55" width="1060" height="56" rx="16" fill="#1e293b" fill-opacity="0.5" stroke="#334155" stroke-width="1.5"/>
+  <circle cx="105" cy="83" r="6" fill="#ef4444"/>
+  <circle cx="125" cy="83" r="6" fill="#f59e0b"/>
+  <circle cx="145" cy="83" r="6" fill="#10b981"/>
+  <text x="175" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600">Enterprise AI Support Agent • Private Knowledge Base RAG</text>
+
+  <rect x="880" y="70" width="130" height="26" rx="8" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1"/>
+  <circle cx="895" cy="83" r="4" fill="#10b981"/>
+  <text x="908" y="87" fill="#34d399" font-family="sans-serif" font-size="11" font-weight="700">AGENT ACTIVE 24/7</text>
+
+  <!-- Left: Live Chat Assistant Interface -->
+  <rect x="70" y="130" width="560" height="490" rx="20" fill="url(#p2_card)" stroke="#334155" stroke-width="1.5"/>
+  
+  <rect x="95" y="155" width="510" height="60" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <circle cx="125" cy="185" r="18" fill="#6366f1"/>
+  <text x="117" y="192" fill="#ffffff" font-family="sans-serif" font-size="18">🤖</text>
+  <text x="155" y="180" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="700">Autonomous Support Agent</text>
+  <text x="155" y="198" fill="#10b981" font-family="sans-serif" font-size="11" font-weight="600">● 0.4s Average Latency • Vector RAG Active</text>
+
+  <!-- Message 1 (Customer) -->
+  <rect x="230" y="240" width="375" height="65" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="245" y="265" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="700">CUSTOMER #9421</text>
+  <text x="245" y="287" fill="#f8fafc" font-family="sans-serif" font-size="13">"Can I return my shipment if packaging was opened?"</text>
+
+  <!-- Message 2 (AI Agent) -->
+  <rect x="95" y="325" width="460" height="135" rx="16" fill="#0f172a" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="115" y="352" fill="#818cf8" font-family="sans-serif" font-size="11" font-weight="800">AI AGENT (RESOLVED VIA RETURN POLICY KB)</text>
+  <text x="115" y="378" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="500">"Yes! Under section 4.2 of our Returns Guarantee,</text>
+  <text x="115" y="400" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="500">you have 14 days to request an instant return even if unboxed.</text>
+  <text x="115" y="422" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="500">I have generated your return label #RTN-8829 below."</text>
+
+  <!-- Action Bar Inside Chat -->
+  <rect x="95" y="480" width="510" height="55" rx="14" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+  <circle cx="120" cy="507" r="10" fill="#10b981"/>
+  <text x="116" y="511" fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="900">✓</text>
+  <text x="140" y="503" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="700">Ticket Automatically Closed • Customer Satisfaction: 5.0 ★</text>
+  <text x="140" y="522" fill="#94a3b8" font-family="sans-serif" font-size="11">Human intervention avoided • 0 seconds wait time</text>
+
+  <!-- Right: Metrics & System Architecture Column -->
+  <rect x="650" y="130" width="480" height="490" rx="20" fill="url(#p2_card)" stroke="#334155" stroke-width="1.5"/>
+  <text x="680" y="175" fill="#f8fafc" font-family="sans-serif" font-size="18" font-weight="800">Performance Metrics</text>
+  <text x="680" y="198" fill="#64748b" font-family="sans-serif" font-size="12">Production Deployment Data</text>
+
+  <!-- Metric 1: 70% reduction -->
+  <rect x="680" y="225" width="420" height="110" rx="16" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="705" y="255" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="700">TICKET DEFLECTION</text>
+  <text x="705" y="305" fill="#10b981" font-family="sans-serif" font-size="44" font-weight="900">70%</text>
+  <text x="820" y="280" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="700">Workload Reduction</text>
+  <text x="820" y="300" fill="#64748b" font-family="sans-serif" font-size="11">From 500+ daily tickets</text>
+
+  <!-- Metric 2: 0s response time -->
+  <rect x="680" y="355" width="420" height="110" rx="16" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="705" y="385" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="700">RESPONSE LATENCY</text>
+  <text x="705" y="435" fill="#6366f1" font-family="sans-serif" font-size="44" font-weight="900">0s</text>
+  <text x="790" y="410" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="700">Instant AI Responses</text>
+  <text x="790" y="430" fill="#64748b" font-family="sans-serif" font-size="11">Reduced from 26 hours</text>
+
+  <!-- Tech tags -->
+  <g transform="translate(680, 490)">
+    <rect x="0" y="0" width="130" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="18" y="24" fill="#cbd5e1" font-family="sans-serif" font-size="12" font-weight="700">Python FastAPI</text>
+
+    <rect x="145" y="0" width="130" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="165" y="24" fill="#cbd5e1" font-family="sans-serif" font-size="12" font-weight="700">OpenAI GPT-4o</text>
+
+    <rect x="290" y="0" width="130" height="38" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="312" y="24" fill="#cbd5e1" font-family="sans-serif" font-size="12" font-weight="700">LangChain RAG</text>
+  </g>
 </svg>

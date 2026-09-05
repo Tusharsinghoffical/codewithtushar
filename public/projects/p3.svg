@@ -1,20 +1,107 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="450" fill="#f59e0b"/>
-  <rect x="0" y="0" width="800" height="450" fill="url(#gradient)" opacity="0.8"/>
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.3"/>
-      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.5"/>
+    <linearGradient id="p3_bg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b0817"/>
+      <stop offset="0.5" stop-color="#120c2b"/>
+      <stop offset="1" stop-color="#0a0718"/>
     </linearGradient>
+    <linearGradient id="p3_card" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#1f143d" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#0f0923" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="p3_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="35" result="blur"/>
+    </filter>
   </defs>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">
-    Marketing Bot
-  </text>
-  <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.8">
-    Project Preview
-  </text>
-  <circle cx="50" cy="50" r="30" fill="white" opacity="0.2"/>
-  <circle cx="750" cy="400" r="40" fill="white" opacity="0.1"/>
-  <rect x="100" y="350" width="200" height="4" rx="2" fill="white" opacity="0.3"/>
+
+  <rect width="1200" height="675" fill="url(#p3_bg)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.07" stroke="#c084fc" stroke-width="1">
+    <path d="M0 75 H1200 M0 150 H1200 M0 225 H1200 M0 300 H1200 M0 375 H1200 M0 450 H1200 M0 525 H1200 M0 600 H1200"/>
+    <path d="M100 0 V675 M200 0 V675 M300 0 V675 M400 0 V675 M500 0 V675 M600 0 V675 M700 0 V675 M800 0 V675 M900 0 V675 M1000 0 V675 M1100 0 V675"/>
+  </g>
+
+  <circle cx="200" cy="200" r="190" fill="#a855f7" opacity="0.18" filter="url(#p3_glow)"/>
+  <circle cx="1000" cy="450" r="220" fill="#6366f1" opacity="0.16" filter="url(#p3_glow)"/>
+
+  <!-- Top Header -->
+  <rect x="70" y="55" width="1060" height="56" rx="16" fill="#1d1338" fill-opacity="0.6" stroke="#3b2568" stroke-width="1.5"/>
+  <circle cx="105" cy="83" r="6" fill="#ef4444"/>
+  <circle cx="125" cy="83" r="6" fill="#f59e0b"/>
+  <circle cx="145" cy="83" r="6" fill="#a855f7"/>
+  <text x="175" y="88" fill="#e9d5ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600">Enterprise RAG Chatbot Architecture • Vector DB &amp; Multi-Channel Retrieval</text>
+  
+  <rect x="880" y="70" width="130" height="26" rx="8" fill="#a855f7" fill-opacity="0.25" stroke="#a855f7" stroke-width="1"/>
+  <circle cx="895" cy="83" r="4" fill="#a855f7"/>
+  <text x="908" y="87" fill="#d8b4fe" font-family="sans-serif" font-size="11" font-weight="700">RAG ENGINE SYNCED</text>
+
+  <!-- Left: Vector Search & Multi-Channel Pipeline -->
+  <rect x="70" y="130" width="580" height="490" rx="20" fill="url(#p3_card)" stroke="#3b2568" stroke-width="1.5"/>
+  <text x="100" y="175" fill="#f8fafc" font-family="sans-serif" font-size="18" font-weight="800">RAG Retrieval Pipeline</text>
+  <text x="100" y="198" fill="#a855f7" font-family="sans-serif" font-size="12">Document Ingestion -> Embeddings -> Real-Time Vector Context</text>
+
+  <!-- Pipeline Stage 1 -->
+  <rect x="95" y="225" width="530" height="80" rx="14" fill="#130b26" stroke="#3b2568" stroke-width="1"/>
+  <rect x="110" y="240" width="48" height="48" rx="10" fill="#a855f7" fill-opacity="0.2"/>
+  <text x="124" y="271" fill="#d8b4fe" font-size="20">📚</text>
+  <text x="175" y="256" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="700">Knowledge Base Ingestion</text>
+  <text x="175" y="276" fill="#cbd5e1" font-family="sans-serif" font-size="12">Course catalogs, FAQs, pricing tables, PDF guidelines</text>
+
+  <!-- Pipeline Stage 2 -->
+  <rect x="95" y="320" width="530" height="80" rx="14" fill="#130b26" stroke="#3b2568" stroke-width="1"/>
+  <rect x="110" y="335" width="48" height="48" rx="10" fill="#6366f1" fill-opacity="0.2"/>
+  <text x="124" y="366" fill="#818cf8" font-size="20">🧠</text>
+  <text x="175" y="351" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="700">Vector Embeddings &amp; Semantic Search</text>
+  <text x="175" y="371" fill="#cbd5e1" font-family="sans-serif" font-size="12">Cosine similarity search retrieval in &lt; 80ms</text>
+
+  <!-- Pipeline Stage 3 -->
+  <rect x="95" y="415" width="530" height="80" rx="14" fill="#130b26" stroke="#3b2568" stroke-width="1"/>
+  <rect x="110" y="430" width="48" height="48" rx="10" fill="#10b981" fill-opacity="0.2"/>
+  <text x="124" y="461" fill="#34d399" font-size="20">🌐</text>
+  <text x="175" y="446" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="700">Omnichannel Deployment</text>
+  <text x="175" y="466" fill="#cbd5e1" font-family="sans-serif" font-size="12">Website embed widget, Telegram channel, WhatsApp API</text>
+
+  <!-- Channels Pill Row -->
+  <g transform="translate(95, 520)">
+    <rect x="0" y="0" width="165" height="40" rx="10" fill="#1f143d" stroke="#3b2568" stroke-width="1"/>
+    <text x="25" y="25" fill="#e9d5ff" font-family="sans-serif" font-size="12" font-weight="700">🌐 Website Widget</text>
+
+    <rect x="180" y="0" width="165" height="40" rx="10" fill="#1f143d" stroke="#3b2568" stroke-width="1"/>
+    <text x="200" y="25" fill="#e9d5ff" font-family="sans-serif" font-size="12" font-weight="700">📱 WhatsApp Bot</text>
+
+    <rect x="360" y="0" width="170" height="40" rx="10" fill="#1f143d" stroke="#3b2568" stroke-width="1"/>
+    <text x="380" y="25" fill="#e9d5ff" font-family="sans-serif" font-size="12" font-weight="700">✈️ Telegram CRM</text>
+  </g>
+
+  <!-- Right: Measurable Impact Column -->
+  <rect x="680" y="130" width="450" height="490" rx="20" fill="url(#p3_card)" stroke="#3b2568" stroke-width="1.5"/>
+  <text x="710" y="175" fill="#f8fafc" font-family="sans-serif" font-size="18" font-weight="800">Deployment Impact</text>
+  <text x="710" y="198" fill="#a855f7" font-family="sans-serif" font-size="12">Education &amp; Admissions Client</text>
+
+  <!-- Stat 1 -->
+  <rect x="710" y="225" width="390" height="110" rx="16" fill="#130b26" stroke="#3b2568" stroke-width="1"/>
+  <text x="735" y="255" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="700">AUTOMATED QUERY RESOLUTION</text>
+  <text x="735" y="305" fill="#a855f7" font-family="sans-serif" font-size="44" font-weight="900">80%</text>
+  <text x="850" y="280" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="700">Zero Human Delay</text>
+  <text x="850" y="300" fill="#94a3b8" font-family="sans-serif" font-size="11">Resolved 24/7 in English &amp; Hindi</text>
+
+  <!-- Stat 2 -->
+  <rect x="710" y="355" width="390" height="110" rx="16" fill="#130b26" stroke="#3b2568" stroke-width="1"/>
+  <text x="735" y="385" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="700">LEAD CAPTURE INCREASE</text>
+  <text x="735" y="435" fill="#34d399" font-family="sans-serif" font-size="44" font-weight="900">+40%</text>
+  <text x="850" y="410" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="700">Conversational CRM</text>
+  <text x="850" y="430" fill="#94a3b8" font-family="sans-serif" font-size="11">Automated student intake</text>
+
+  <!-- Tech tags -->
+  <g transform="translate(710, 490)">
+    <rect x="0" y="0" width="120" height="38" rx="10" fill="#1f143d" stroke="#3b2568" stroke-width="1"/>
+    <text x="18" y="24" fill="#d8b4fe" font-family="sans-serif" font-size="12" font-weight="700">LangChain</text>
+
+    <rect x="135" y="0" width="120" height="38" rx="10" fill="#1f143d" stroke="#3b2568" stroke-width="1"/>
+    <text x="150" y="24" fill="#d8b4fe" font-family="sans-serif" font-size="12" font-weight="700">Vector DB</text>
+
+    <rect x="270" y="0" width="120" height="38" rx="10" fill="#1f143d" stroke="#3b2568" stroke-width="1"/>
+    <text x="295" y="24" fill="#d8b4fe" font-family="sans-serif" font-size="12" font-weight="700">OpenAI</text>
+  </g>
 </svg>

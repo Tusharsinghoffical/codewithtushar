@@ -69,10 +69,10 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
 2. AI Support Agent — 70% ticket reduction (e-commerce RAG chatbot)
 3. WhatsApp AI Agent — 24/7 automated business communication (n8n + OpenAI)
 4. RAG Chatbot — Knowledge base assistant for education platform
-5. TakeOpinion Medical Tourism Platform — Full-stack global medical tourism web platform with Django 5, PostgreSQL, Stripe/Razorpay, hotel bookings, and doctor directory (Demo: https://takeopinionclientprojects.onrender.com/ | GitHub: https://github.com/Tusharsinghoffical/TakeOpinionclient)
+5. TakeOpinion Medical Tourism Platform — Full-stack global medical tourism web platform with Django 5, PostgreSQL, Stripe/Razorpay, hotel bookings, and doctor directory (Demo: https://takeopinionclientprojectss.onrender.com | GitHub: https://github.com/Tusharsinghoffical/TakeOpinionclient)
 6. AI-Powered HR Recruitment Screening Assistant — Enterprise recruitment workflow automation with n8n + LLMs, automated ATS scoring (0–100), skill matching, and interview question generation (Sold to enterprise client in Abu Dhabi, UAE)
 7. Hospital Analytics Dashboard — Power BI healthcare intelligence
-8. VAS QR Management System — Enterprise Django platform for loyalty programs
+8. VAS QR Management System — Enterprise Django platform for loyalty programs (Demo: https://vassystemclientproject.onrender.com/)
 
 # ── OPEN-SOURCE PRODUCTION TOOLKIT (NPM) ─────────────────
 1. env-schema-guard

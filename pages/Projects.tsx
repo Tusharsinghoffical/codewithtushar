@@ -10,7 +10,8 @@ import {
   ArrowUpRight, Layers, Share2, Link2, Copy, Check,
   Sparkles, ExternalLink, MessageCircle, Clock, Award, Star,
   CheckCircle2, Flame, BarChart3, Code2, Bot, Globe, ChevronRight,
-  Briefcase, CheckCircle, GitBranch, Github, Code
+  Briefcase, CheckCircle, GitBranch, Github, Code, Maximize2,
+  AlertTriangle, Lightbulb, MapPin
 } from 'lucide-react';
 
 /* ─── Category Metadata ──────────────────────────────────── */
@@ -34,19 +35,21 @@ const ProjectCard: React.FC<{
   const m = cmeta(project.category || 'All');
   const projectUrl = typeof window !== 'undefined' ? `${window.location.origin}/projects?project=${project.id}` : `${SITE_URL}/projects?project=${project.id}`;
 
+  const isLogoImage = project.imageUrl?.includes('logo') || project.category === 'SaaS Products';
+
   return (
     <div
       onClick={onClick}
-      className="group relative flex flex-col bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer"
+      className="group relative flex flex-col bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-white/10 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/15 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer backdrop-blur-sm"
     >
-      {/* Thumbnail Section with Clear Badges */}
-      <div className="relative aspect-[16/9] w-full bg-slate-950 overflow-hidden shrink-0 flex items-center justify-center">
-        {project.category === 'SaaS Products' || project.imageUrl?.endsWith('.png') ? (
-          <div className="w-full h-full p-6 sm:p-7 flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
-            <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 via-emerald-500/15 to-indigo-500/10 blur-2xl pointer-events-none" />
-            <div className="w-full h-full max-h-[140px] flex items-center justify-center p-3 rounded-2xl bg-white/95 shadow-inner backdrop-blur-sm relative z-10 border border-white/20">
+      {/* ── Fixed Height Aspect Ratio Thumbnail Container ── */}
+      <div className="relative h-60 sm:h-64 w-full bg-slate-950 overflow-hidden shrink-0 flex items-center justify-center select-none">
+        {isLogoImage ? (
+          <div className="w-full h-full p-6 flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-2xl pointer-events-none" />
+            <div className="w-full max-w-[270px] h-28 flex items-center justify-center p-4 rounded-2xl bg-white shadow-xl relative z-10 border border-slate-200/40">
               <img
-                src={project.imageUrl || '/projects/p1.svg'}
+                src={project.imageUrl}
                 alt={project.title}
                 loading="lazy"
                 decoding="async"
@@ -55,18 +58,22 @@ const ProjectCard: React.FC<{
             </div>
           </div>
         ) : (
-          <img
-            src={project.imageUrl || '/projects/p1.svg'}
-            alt={project.title}
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
+          <div className="w-full h-full relative overflow-hidden bg-slate-950 flex items-center justify-center">
+            <img
+              src={project.imageUrl || '/projects/p1.svg'}
+              alt={project.title}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
 
-        {/* Top Badges */}
-        <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10">
+        {/* Soft Bottom Gradient to enhance badge readability without obscuring image */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent pointer-events-none" />
+
+        {/* Top Badges (Category + Location / Date) */}
+        <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10 pointer-events-none">
           <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-md border ${m.badgeCls} shadow-md`}>
             <span>{m.emoji}</span>
             <span>{project.category}</span>
@@ -74,51 +81,51 @@ const ProjectCard: React.FC<{
 
           <div className="flex items-center gap-1.5">
             {project.clientLocation && (
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500 text-slate-950 border border-amber-400 shadow-md flex items-center gap-1">
-                <span>📍</span>
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 shadow-md flex items-center gap-1 font-outfit">
+                <MapPin size={11} className="text-slate-950" />
                 <span>{project.clientLocation}</span>
               </span>
             )}
             {project.date && (
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-950/80 text-slate-300 border border-white/20 backdrop-blur-md">
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/90 text-slate-200 border border-white/20 backdrop-blur-md font-mono">
                 {project.date}
               </span>
             )}
           </div>
         </div>
 
-        {/* Verified Outcome Badge */}
-        <div className="absolute bottom-3 left-3.5 right-3.5 z-10 flex items-center justify-between text-xs text-white font-bold">
-          <span className="inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-emerald-400">
+        {/* Bottom Deliverable Status */}
+        <div className="absolute bottom-3 left-3.5 right-3.5 z-10 flex items-center justify-between text-xs text-white font-bold pointer-events-none">
+          <span className="inline-flex items-center gap-1.5 text-[10.5px] font-black uppercase tracking-wider text-emerald-400 bg-slate-950/80 px-2.5 py-1 rounded-lg backdrop-blur-md border border-emerald-500/30 shadow-xs">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            {project.category === 'SaaS Products' ? 'Live Cloud SaaS Platform' : 'Verified Client Deliverable'}
+            {project.category === 'SaaS Products' ? 'Live Cloud SaaS' : 'Verified Client Deliverable'}
           </span>
-          <span className="p-1 rounded-lg bg-white/20 text-white group-hover:bg-indigo-600 transition-colors">
+          <span className="p-1.5 rounded-xl bg-white/20 text-white backdrop-blur-md group-hover:bg-indigo-600 transition-colors shadow-xs">
             <ArrowUpRight size={14} />
           </span>
         </div>
       </div>
 
-      {/* Body Content — Clean, readable, non-hidden */}
-      <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between space-y-4">
+      {/* ── Body Content ── */}
+      <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between space-y-5">
         <div className="space-y-2.5">
-          <h3 className="text-base sm:text-lg font-outfit font-black text-slate-950 dark:text-white leading-snug group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+          <h3 className="text-base sm:text-lg font-outfit font-black text-slate-950 dark:text-white leading-snug group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
             {project.title}
           </h3>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium line-clamp-3">
             {project.description}
           </p>
         </div>
 
         {/* Key Measurable Outcome Callout */}
         {project.results && project.results.length > 0 && (
-          <div className="p-3.5 rounded-2xl bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-200/90 dark:border-emerald-500/30 text-emerald-950 dark:text-emerald-200 text-xs font-bold flex items-start gap-2.5">
+          <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-900 dark:text-emerald-300 text-xs font-bold flex items-start gap-2.5">
             <TrendingUp size={16} className="text-emerald-500 shrink-0 mt-0.5" />
-            <span className="leading-snug">{project.results[0]}</span>
+            <span className="leading-snug line-clamp-2">{project.results[0]}</span>
           </div>
         )}
 
-        {/* Tech Tags and Case Study Action Button */}
+        {/* Tech Tags and Action Buttons */}
         <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-1.5">
             {(project.tags || []).slice(0, 3).map(tag => (
@@ -129,6 +136,19 @@ const ProjectCard: React.FC<{
           </div>
 
           <div className="flex items-center gap-2">
+            {project.liveDemoUrl && (
+              <a
+                href={project.liveDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                title="Launch Live Platform"
+                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-[11px] font-black uppercase tracking-wider hover:bg-emerald-600 hover:text-white transition-all shadow-2xs"
+              >
+                <span>Live</span>
+                <ExternalLink size={11} />
+              </a>
+            )}
             <SharePageButton
               title={`${project.title} | Case Study`}
               text={`Check out this project: "${project.title}" by Tushar Singh`}
@@ -138,7 +158,7 @@ const ProjectCard: React.FC<{
             />
             <button
               onClick={onClick}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-black uppercase tracking-wider group-hover:bg-indigo-600 group-hover:text-white transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-black uppercase tracking-wider group-hover:bg-indigo-600 group-hover:text-white transition-all cursor-pointer shadow-xs"
             >
               <span>View Brief</span>
               <ChevronRight size={13} />
@@ -158,6 +178,7 @@ const Projects: React.FC = () => {
   const [search, setSearch]                 = useState('');
   const [selected, setSelected]             = useState<Project | null>(null);
   const [modalCopied, setModalCopied]       = useState(false);
+  const [lightboxImage, setLightboxImage]   = useState<{ src: string; title: string } | null>(null);
 
   const categories = useMemo(() => {
     const s = new Set<string>();
@@ -209,6 +230,21 @@ const Projects: React.FC = () => {
     }
   }, [searchParams, categories]);
 
+  // Handle ESC key to close modal or lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (lightboxImage) {
+          setLightboxImage(null);
+        } else if (selected) {
+          closeProject();
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxImage, selected]);
+
   const openProject = (p: Project) => {
     setSelected(p);
     setSearchParams({ project: p.id });
@@ -225,6 +261,8 @@ const Projects: React.FC = () => {
     setModalCopied(true);
     setTimeout(() => setModalCopied(false), 2500);
   };
+
+  const isModalLogo = selected?.imageUrl?.includes('logo') || selected?.category === 'SaaS Products';
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
@@ -330,7 +368,7 @@ const Projects: React.FC = () => {
               <p className="text-xs text-slate-500 max-w-sm mx-auto">Try clearing your search query or selecting "All" to view all case studies.</p>
               <button
                 onClick={() => { setActiveCategory('All'); setSearch(''); }}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold"
+                className="px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold cursor-pointer"
               >
                 Reset All Filters
               </button>
@@ -345,126 +383,223 @@ const Projects: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 4. DETAILED CASE STUDY MODAL ────────────────────── */}
+      {/* ── 4. COMPLETELY REDESIGNED CASE STUDY SUBPAGE / MODAL ── */}
       {selected && (
         <div
-          className="fixed inset-0 z-[250] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-in fade-in duration-200"
+          className="fixed inset-0 z-[250] bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-200"
           onClick={closeProject}
         >
           <div
-            className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-white/10 overflow-hidden my-8"
+            className="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200/80 dark:border-white/10 overflow-hidden my-auto max-h-[92vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header Hero */}
-            <div className="relative aspect-[21/9] bg-slate-950 overflow-hidden flex items-center justify-center">
-              {selected.category === 'SaaS Products' || selected.imageUrl?.endsWith('.png') ? (
-                <div className="w-full h-full p-6 sm:p-8 flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
-                  <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 via-emerald-500/15 to-indigo-500/10 blur-2xl pointer-events-none" />
-                  <div className="w-full max-w-md max-h-[140px] flex items-center justify-center p-4 rounded-2xl bg-white/95 shadow-xl relative z-10 border border-white/20">
+            {/* ── Modal Top Header Bar ── */}
+            <div className="px-6 py-4 border-b border-slate-100 dark:border-white/10 flex items-center justify-between gap-4 bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-md shrink-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${cmeta(selected.category || 'All').badgeCls}`}>
+                  <span>{cmeta(selected.category || 'All').emoji}</span>
+                  <span>{selected.category}</span>
+                </span>
+
+                {selected.clientLocation && (
+                  <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-slate-950 font-outfit inline-flex items-center gap-1 shadow-xs">
+                    <MapPin size={11} className="text-slate-950" />
+                    <span>Sold to Client in {selected.clientLocation}</span>
+                  </span>
+                )}
+
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-500/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  {selected.category === 'SaaS Products' ? 'Live Cloud SaaS' : 'Verified Deliverable'}
+                </span>
+
+                {selected.date && (
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    {selected.date}
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => copyModalLink(selected)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:border-indigo-400 transition-colors cursor-pointer"
+                  title="Copy shareable link"
+                >
+                  {modalCopied ? <><Check size={12} className="text-emerald-500" /> Copied</> : <><Copy size={12} /> Share</>}
+                </button>
+                <button
+                  onClick={closeProject}
+                  className="w-8 h-8 rounded-xl bg-slate-200/70 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-rose-500 hover:text-white transition-colors flex items-center justify-center cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            </div>
+
+            {/* ── Scrollable Modal Content ── */}
+            <div className="p-6 sm:p-8 space-y-8 overflow-y-auto flex-grow">
+
+              {/* Title & Subtitle (Clean & Spacious - NEVER overlapping the image) */}
+              <div className="space-y-2">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-outfit font-black text-slate-950 dark:text-white leading-tight">
+                  {selected.title}
+                </h2>
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                  {selected.description}
+                </p>
+              </div>
+
+              {/* ── Dedicated High-Definition Image Showcase ── */}
+              <div className="relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-200/60 dark:border-white/10 shadow-xl group/showcase">
+                {isModalLogo ? (
+                  <div className="w-full py-12 px-6 flex items-center justify-center relative bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 min-h-[220px]">
+                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-violet-500/15 to-cyan-500/10 blur-2xl pointer-events-none" />
+                    <div className="w-full max-w-sm h-32 flex items-center justify-center p-5 rounded-2xl bg-white shadow-2xl relative z-10 border border-white/20">
+                      <img
+                        src={selected.imageUrl}
+                        alt={selected.title}
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className="w-full bg-slate-950 flex items-center justify-center relative cursor-zoom-in"
+                    onClick={() => selected.imageUrl && setLightboxImage({ src: selected.imageUrl, title: selected.title })}
+                  >
                     <img
                       src={selected.imageUrl || '/projects/p1.svg'}
                       alt={selected.title}
-                      className="max-h-full max-w-full object-contain relative z-10"
+                      className="w-full max-h-[460px] object-contain rounded-xl"
                     />
+                    <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/90 text-white text-[11px] font-bold backdrop-blur-md border border-white/20 shadow-lg group-hover/showcase:bg-indigo-600 transition-colors pointer-events-none">
+                      <Maximize2 size={13} />
+                      <span>Click to Zoom Diagram</span>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <img src={selected.imageUrl || '/projects/p1.svg'} alt={selected.title} className="w-full h-full object-cover opacity-85" />
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none" />
-              
-              <button
-                onClick={closeProject}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-slate-800 transition-colors border border-white/20 cursor-pointer"
-                aria-label="Close modal"
-              >
-                <X size={18} />
-              </button>
+                )}
+              </div>
 
-              <div className="absolute bottom-4 left-6 right-6 space-y-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-wider bg-indigo-600 text-white inline-block">
-                    {selected.category}
-                  </span>
-                  {selected.clientLocation && (
-                    <span className="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-wider bg-amber-500 text-slate-950 font-outfit inline-flex items-center gap-1 shadow-md">
-                      <span>📍 Sold to Client in {selected.clientLocation}</span>
-                    </span>
+              {/* ── Case Study Sections Grid ── */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                {/* Left Column: Context, Problem & Strategy */}
+                <div className="space-y-5">
+                  {/* Client Context */}
+                  {selected.clientBackground && (
+                    <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/5 space-y-2">
+                      <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+                        <Briefcase size={16} />
+                        <h4 className="text-[11px] font-black uppercase tracking-wider">Client Context &amp; Regional Scope</h4>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                        {selected.clientBackground}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* The Problem */}
+                  {selected.problemStatement && (
+                    <div className="p-5 rounded-2xl bg-rose-50/80 dark:bg-rose-950/30 border border-rose-200/80 dark:border-rose-900/30 space-y-2">
+                      <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400">
+                        <AlertTriangle size={16} />
+                        <h4 className="text-[11px] font-black uppercase tracking-wider">The Problem &amp; Bottleneck</h4>
+                      </div>
+                      <p className="text-xs sm:text-sm text-rose-900 dark:text-rose-200 leading-relaxed font-medium">
+                        {selected.problemStatement}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Strategy */}
+                  {selected.strategy && (
+                    <div className="p-5 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-900/30 space-y-2">
+                      <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+                        <Lightbulb size={16} />
+                        <h4 className="text-[11px] font-black uppercase tracking-wider">Engineering Strategy &amp; Solution</h4>
+                      </div>
+                      <p className="text-xs sm:text-sm text-indigo-950 dark:text-indigo-200 leading-relaxed font-medium">
+                        {selected.strategy}
+                      </p>
+                    </div>
                   )}
                 </div>
-                <h2 className="text-xl sm:text-2xl font-outfit font-black text-white leading-tight">
-                  {selected.title}
-                </h2>
-              </div>
-            </div>
 
-            {/* Modal Body */}
-            <div className="p-6 sm:p-8 space-y-6 max-h-[60vh] overflow-y-auto">
-              <div>
-                <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5">Project Overview</h4>
-                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">{selected.description}</p>
-              </div>
-
-              {selected.clientBackground && (
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-white/5 space-y-1">
-                  <p className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">Client Context</p>
-                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">{selected.clientBackground}</p>
-                </div>
-              )}
-
-              {selected.problemStatement && (
-                <div className="p-4 rounded-2xl bg-rose-50/80 dark:bg-rose-950/30 border border-rose-200/80 dark:border-rose-900/30 space-y-1">
-                  <p className="text-[10px] font-black uppercase tracking-wider text-rose-600 dark:text-rose-400">The Problem &amp; Bottleneck</p>
-                  <p className="text-xs text-rose-800 dark:text-rose-300 leading-relaxed font-medium">{selected.problemStatement}</p>
-                </div>
-              )}
-
-              {selected.strategy && (
-                <div className="p-4 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-900/30 space-y-1">
-                  <p className="text-[10px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Engineering Strategy &amp; Solution</p>
-                  <p className="text-xs text-indigo-800 dark:text-indigo-300 leading-relaxed font-medium">{selected.strategy}</p>
-                </div>
-              )}
-
-              {selected.results && selected.results.length > 0 && (
-                <div className="space-y-2">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Key Deliverable Outcomes:</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {selected.results.map((res, rIdx) => (
-                      <div key={rIdx} className="flex items-center gap-2 p-3 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-500/20 text-xs font-bold text-emerald-800 dark:text-emerald-300">
-                        <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
-                        <span>{res}</span>
+                {/* Right Column: Outcomes, Before/After & Tech Stack */}
+                <div className="space-y-5">
+                  {/* Key Outcomes */}
+                  {selected.results && selected.results.length > 0 && (
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                        <TrendingUp size={16} />
+                        <h4 className="text-[11px] font-black uppercase tracking-widest">Key Deliverable Outcomes</h4>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+                      <div className="space-y-2.5">
+                        {selected.results.map((res, rIdx) => (
+                          <div
+                            key={rIdx}
+                            className="flex items-start gap-2.5 p-3.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-500/20 text-xs font-bold text-emerald-900 dark:text-emerald-300"
+                          >
+                            <CheckCircle2 size={15} className="text-emerald-500 shrink-0 mt-0.5" />
+                            <span className="leading-snug">{res}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
-              {selected.beforeAfter && (
-                <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-white/5 space-y-2">
-                  <p className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">Before vs After ROI Metric</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                    <div className="p-2.5 rounded-xl bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/20">
-                      <strong>Before:</strong> {selected.beforeAfter.before}
+                  {/* Before vs After */}
+                  {selected.beforeAfter && (
+                    <div className="p-5 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-white/5 space-y-3">
+                      <h4 className="text-[11px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                        Before vs After ROI Metric
+                      </h4>
+                      <div className="grid grid-cols-1 gap-2.5 text-xs">
+                        <div className="p-3 rounded-xl bg-rose-500/10 text-rose-800 dark:text-rose-300 border border-rose-500/20">
+                          <strong className="block text-[10px] uppercase tracking-wider text-rose-600 dark:text-rose-400 mb-0.5">Before:</strong>
+                          <span>{selected.beforeAfter.before}</span>
+                        </div>
+                        <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">
+                          <strong className="block text-[10px] uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-0.5">After:</strong>
+                          <span>{selected.beforeAfter.after}</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
-                      <strong>After:</strong> {selected.beforeAfter.after}
+                  )}
+
+                  {/* Tech Stack Pills */}
+                  {selected.tags && selected.tags.length > 0 && (
+                    <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/70 dark:border-white/5 space-y-2">
+                      <h4 className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                        Technologies Deployed
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {selected.tags.map(tag => (
+                          <span
+                            key={tag}
+                            className="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-slate-200 text-[11px] font-bold shadow-2xs"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
-              )}
+
+              </div>
+
             </div>
 
-            {/* Modal Footer */}
-            <div className="p-5 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center justify-between gap-3">
-              <button
-                onClick={() => copyModalLink(selected)}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:border-indigo-400 transition-colors cursor-pointer"
-              >
-                {modalCopied ? <><Check size={13} className="text-emerald-500" /> Copied</> : <><Copy size={13} /> Copy Link</>}
-              </button>
+            {/* ── Sticky Action Bar Footer ── */}
+            <div className="p-4 sm:p-5 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center justify-between gap-3 shrink-0">
+              <div className="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">
+                Built &amp; Verified by <span className="font-bold text-slate-900 dark:text-white">Tushar Singh</span>
+              </div>
 
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto justify-end">
                 {selected.githubUrl && (
                   <a
                     href={selected.githubUrl}
@@ -476,6 +611,7 @@ const Projects: React.FC = () => {
                     <span>View GitHub</span>
                   </a>
                 )}
+
                 {selected.liveDemoUrl && (
                   <a
                     href={selected.liveDemoUrl}
@@ -487,6 +623,7 @@ const Projects: React.FC = () => {
                     <ExternalLink size={13} />
                   </a>
                 )}
+
                 {selected.saasPageUrl && (
                   <button
                     onClick={() => {
@@ -499,6 +636,7 @@ const Projects: React.FC = () => {
                     <ArrowRight size={13} />
                   </button>
                 )}
+
                 <a
                   href={`https://wa.me/918851619647?text=${encodeURIComponent(`Hi Tushar, I was looking at your project "${selected.title}" and want to discuss something similar for my business!`)}`}
                   target="_blank"
@@ -514,7 +652,42 @@ const Projects: React.FC = () => {
         </div>
       )}
 
-      {/* ── 5. BOTTOM CTA ───────────────────────────────────── */}
+      {/* ── 5. FULLSCREEN LIGHTBOX FOR HIGH-RES DIAGRAMS ── */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-[300] bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 animate-in fade-in duration-200"
+          onClick={() => setLightboxImage(null)}
+        >
+          <div className="absolute top-4 right-4 flex items-center gap-3 z-10">
+            <span className="text-xs font-bold text-slate-400 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-white/10">
+              Press ESC to exit
+            </span>
+            <button
+              onClick={() => setLightboxImage(null)}
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-rose-600 text-white flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Close lightbox"
+            >
+              <X size={20} />
+            </button>
+          </div>
+
+          <div
+            className="max-w-6xl max-h-[85vh] w-full flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={lightboxImage.src}
+              alt={lightboxImage.title}
+              className="max-h-[80vh] max-w-full object-contain rounded-2xl border border-white/10 shadow-2xl"
+            />
+            <p className="mt-3 text-xs sm:text-sm font-bold text-slate-300 text-center font-outfit">
+              {lightboxImage.title}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* ── 6. BOTTOM CTA ───────────────────────────────────── */}
       <section className="py-20 px-5 sm:px-10 bg-slate-950 text-white text-center border-t border-white/5">
         <div className="max-w-2xl mx-auto space-y-6">
           <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400 bg-indigo-950/60 px-3.5 py-1.5 rounded-full border border-indigo-500/30">

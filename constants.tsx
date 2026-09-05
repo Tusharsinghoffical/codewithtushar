@@ -500,7 +500,7 @@ export const PROJECTS: Project[] = [
       before: 'Fragmented clinic directories | Manual quote requests | Phone-only hotel coordination',
       after: 'End-to-end medical tourism portal | Instant treatment comparison | Integrated hospital & hotel booking'
     },
-    liveDemoUrl: 'https://takeopinionclientprojects.onrender.com/',
+    liveDemoUrl: 'https://takeopinionclientprojectss.onrender.com',
     githubUrl: 'https://github.com/Tusharsinghoffical/TakeOpinionclient'
   },
 
@@ -560,7 +560,7 @@ export const PROJECTS: Project[] = [
     id: 'p18',
     title: 'VAS QR Management System | Full-Stack Enterprise Platform',
     description: 'Enterprise Value Added Services platform using QR technology for managing customer loyalty programs, service subscriptions, and digital rewards — built with Django.',
-    imageUrl: 'https://fairshare.tech/wp-content/uploads/2019/01/QR_code_attendance.jpg',
+    imageUrl: '/projects/vas-qr-platform.jpg',
     category: 'Web Dev',
     tags: ['Python', 'Django', 'QR Technology', 'REST API'],
     date: '2024',
@@ -577,7 +577,8 @@ export const PROJECTS: Project[] = [
     beforeAfter: {
       before: 'Manual spreadsheets | 5-day reward delays | Error-prone tracking',
       after: 'Automated QR system | Instant redemption | Scalable to 10k+ users'
-    }
+    },
+    liveDemoUrl: 'https://vassystemclientproject.onrender.com/'
   }
 ];
 

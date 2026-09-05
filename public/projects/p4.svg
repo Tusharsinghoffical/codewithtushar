@@ -1,20 +1,96 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="450" fill="#3b82f6"/>
-  <rect x="0" y="0" width="800" height="450" fill="url(#gradient)" opacity="0.8"/>
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.3"/>
-      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.5"/>
+    <linearGradient id="p4_bg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081014"/>
+      <stop offset="0.5" stop-color="#091a18"/>
+      <stop offset="1" stop-color="#061210"/>
     </linearGradient>
+    <filter id="p4_glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="35" result="blur"/>
+    </filter>
   </defs>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">
-    WhatsApp AI
-  </text>
-  <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.8">
-    Project Preview
-  </text>
-  <circle cx="50" cy="50" r="30" fill="white" opacity="0.2"/>
-  <circle cx="750" cy="400" r="40" fill="white" opacity="0.1"/>
-  <rect x="100" y="350" width="200" height="4" rx="2" fill="white" opacity="0.3"/>
+
+  <rect width="1200" height="675" fill="url(#p4_bg)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.06" stroke="#2dd4bf" stroke-width="1">
+    <path d="M0 75 H1200 M0 150 H1200 M0 225 H1200 M0 300 H1200 M0 375 H1200 M0 450 H1200 M0 525 H1200 M0 600 H1200"/>
+    <path d="M100 0 V675 M200 0 V675 M300 0 V675 M400 0 V675 M500 0 V675 M600 0 V675 M700 0 V675 M800 0 V675 M900 0 V675 M1000 0 V675 M1100 0 V675"/>
+  </g>
+
+  <circle cx="200" cy="200" r="180" fill="#25d366" opacity="0.16" filter="url(#p4_glow)"/>
+  <circle cx="950" cy="450" r="200" fill="#0d9488" opacity="0.14" filter="url(#p4_glow)"/>
+
+  <!-- Top Header -->
+  <rect x="70" y="55" width="1060" height="56" rx="16" fill="#132a26" fill-opacity="0.6" stroke="#1b4d44" stroke-width="1.5"/>
+  <circle cx="105" cy="83" r="6" fill="#ef4444"/>
+  <circle cx="125" cy="83" r="6" fill="#f59e0b"/>
+  <circle cx="145" cy="83" r="6" fill="#25d366"/>
+  <text x="175" y="88" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600">WhatsApp Business Cloud API • 24/7 Autonomous Routing &amp; Booking</text>
+  
+  <rect x="910" y="70" width="105" height="26" rx="8" fill="#25d366" fill-opacity="0.2" stroke="#25d366" stroke-width="1"/>
+  <circle cx="925" cy="83" r="4" fill="#25d366"/>
+  <text x="936" y="87" fill="#86efac" font-family="sans-serif" font-size="11" font-weight="700">ONLINE 24/7</text>
+
+  <!-- Left: Simulated WhatsApp Phone Interface -->
+  <rect x="70" y="130" width="520" height="490" rx="24" fill="#0b1b17" stroke="#1b4d44" stroke-width="1.5"/>
+
+  <!-- WhatsApp Header inside card -->
+  <rect x="70" y="130" width="520" height="65" rx="24" fill="#075e54"/>
+  <circle cx="115" cy="162" r="18" fill="#25d366"/>
+  <text x="107" y="169" fill="#ffffff" font-family="sans-serif" font-size="18">💬</text>
+  <text x="150" y="157" fill="#ffffff" font-family="sans-serif" font-size="15" font-weight="700">Service Assistant AI</text>
+  <text x="150" y="174" fill="#86efac" font-family="sans-serif" font-size="11">● Active • Instant Booking Enabled</text>
+
+  <!-- WhatsApp Message 1 (Customer) -->
+  <rect x="95" y="220" width="340" height="55" rx="14" fill="#132a26" stroke="#1b4d44" stroke-width="1"/>
+  <text x="110" y="244" fill="#e2e8f0" font-family="sans-serif" font-size="13">"Hi, I want to book a consultation for tomorrow 4 PM."</text>
+  <text x="380" y="266" fill="#64748b" font-family="sans-serif" font-size="10">10:42 PM</text>
+
+  <!-- WhatsApp Message 2 (AI Bot Response) -->
+  <rect x="190" y="295" width="375" height="150" rx="16" fill="#054740" stroke="#25d366" stroke-width="1.5"/>
+  <text x="210" y="322" fill="#86efac" font-family="sans-serif" font-size="11" font-weight="800">AUTOMATED AI AGENT RESPONSE</text>
+  <text x="210" y="348" fill="#f0fdf4" font-family="sans-serif" font-size="13">"Hello! Tomorrow at 4:00 PM is open.</text>
+  <text x="210" y="370" fill="#f0fdf4" font-family="sans-serif" font-size="13">I've reserved slot #SLOT-902 for you.</text>
+  <text x="210" y="392" fill="#f0fdf4" font-family="sans-serif" font-size="13">Synced directly with our Google Calendar &amp; CRM."</text>
+  <rect x="210" y="405" width="220" height="26" rx="6" fill="#25d366" fill-opacity="0.25"/>
+  <text x="220" y="422" fill="#86efac" font-family="sans-serif" font-size="11" font-weight="700">✓ Booking Confirmed &amp; Logged</text>
+  <text x="515" y="435" fill="#86efac" font-family="sans-serif" font-size="11">✓✓</text>
+
+  <!-- Bottom Message Bar -->
+  <rect x="95" y="475" width="470" height="48" rx="24" fill="#132a26" stroke="#1b4d44" stroke-width="1"/>
+  <text x="130" y="504" fill="#64748b" font-family="sans-serif" font-size="13">n8n Webhook listening for events...</text>
+  <circle cx="530" cy="499" r="16" fill="#25d366"/>
+  <text x="524" y="504" fill="#042f2e" font-size="14">➤</text>
+
+  <!-- Right: Flow Architecture & Value Stats -->
+  <rect x="620" y="130" width="510" height="490" rx="20" fill="#0b1b17" stroke="#1b4d44" stroke-width="1.5"/>
+  <text x="650" y="175" fill="#f8fafc" font-family="sans-serif" font-size="18" font-weight="800">Workflow Automation Stats</text>
+  <text x="650" y="198" fill="#64748b" font-family="sans-serif" font-size="12">n8n Engine + Cloud WhatsApp Webhooks</text>
+
+  <!-- Big Stat 1 -->
+  <rect x="650" y="225" width="450" height="100" rx="16" fill="#061210" stroke="#1b4d44" stroke-width="1"/>
+  <text x="675" y="255" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="700">HOURS SAVED PER DAY</text>
+  <text x="675" y="305" fill="#25d366" font-family="sans-serif" font-size="42" font-weight="900">4+ hrs</text>
+  <text x="820" y="280" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="700">Eliminated Manual Replies</text>
+  <text x="820" y="300" fill="#64748b" font-family="sans-serif" font-size="11">Zero missed leads after-hours</text>
+
+  <!-- Big Stat 2 -->
+  <rect x="650" y="345" width="450" height="100" rx="16" fill="#061210" stroke="#1b4d44" stroke-width="1"/>
+  <text x="675" y="375" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="700">APPOINTMENT CONVERSION</text>
+  <text x="675" y="425" fill="#38bdf8" font-family="sans-serif" font-size="42" font-weight="900">+35%</text>
+  <text x="820" y="400" fill="#f8fafc" font-family="sans-serif" font-size="13" font-weight="700">Higher Booking Velocity</text>
+  <text x="820" y="420" fill="#64748b" font-family="sans-serif" font-size="11">From immediate automated follow-up</text>
+
+  <!-- Technology Badges -->
+  <g transform="translate(650, 480)">
+    <rect x="0" y="0" width="140" height="38" rx="10" fill="#132a26" stroke="#1b4d44" stroke-width="1"/>
+    <text x="25" y="24" fill="#a7f3d0" font-family="sans-serif" font-size="12" font-weight="700">WhatsApp API</text>
+
+    <rect x="155" y="0" width="130" height="38" rx="10" fill="#132a26" stroke="#1b4d44" stroke-width="1"/>
+    <text x="182" y="24" fill="#a7f3d0" font-family="sans-serif" font-size="12" font-weight="700">n8n Automation</text>
+
+    <rect x="300" y="0" width="130" height="38" rx="10" fill="#132a26" stroke="#1b4d44" stroke-width="1"/>
+    <text x="325" y="24" fill="#a7f3d0" font-family="sans-serif" font-size="12" font-weight="700">OpenAI LLMs</text>
+  </g>
 </svg>
