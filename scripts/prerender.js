@@ -330,6 +330,23 @@ const pages = [
     }
   },
   {
+    path: '/sitemap',
+    title: 'HTML Sitemap & Complete Website Directory Index | Code with Mr Singh',
+    description: 'Explore the complete directory index of Code with Mr Singh. Quick direct access to AI automation services, SaaS suites (TASQ-ONE), engineering portfolio, technical blog articles, and XML sitemaps.',
+    keywords: `html sitemap, website directory, site index, all pages, AI automation services directory, Tushar Singh portfolio index, ${INDIA_STATES_KEYWORDS}`,
+    type: 'website',
+    image: DEFAULT_IMAGE,
+    alt: 'HTML Sitemap & Directory Index — Code with Mr Singh',
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/sitemap#webpage`,
+      "url": `${SITE_URL}/sitemap`,
+      "name": "HTML Sitemap & Website Directory Index — Code with Mr Singh",
+      "description": "Comprehensive HTML sitemap and directory index of Code with Mr Singh."
+    }
+  },
+  {
     path: '/404',
     title: '404 — Page Not Found | Code with Mr Singh',
     description: 'The page you requested does not exist or has been relocated.',
@@ -485,7 +502,7 @@ pages.forEach((page) => {
 // Ensure all subfolders have a valid sitemap.xml (preserve dedicated ones, fallback if missing)
 const sitemapSrc = path.join(distDir, 'sitemap.xml');
 if (fs.existsSync(sitemapSrc)) {
-  ['saas', 'blog', 'services', 'projects', 'about', 'contact', 'testimonials'].forEach((sub) => {
+  ['saas', 'blog', 'services', 'projects', 'about', 'contact', 'testimonials', 'sitemap'].forEach((sub) => {
     const subDir = path.join(distDir, sub);
     if (fs.existsSync(subDir)) {
       const targetSitemap = path.join(subDir, 'sitemap.xml');

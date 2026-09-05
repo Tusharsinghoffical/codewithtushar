@@ -242,4 +242,15 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/ai-chatbot-for-business-complete-guide-2026"/>
   </url>
 
+  <!-- ═══ 8. HTML SITEMAP & DIRECTORY INDEX ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/sitemap</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/sitemap"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/sitemap"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/sitemap"/>
+  </url>
+
 </urlset>

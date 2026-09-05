@@ -20,6 +20,7 @@ import TasqOne from './pages/TasqOne';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
 import Blog, { BLOG_POSTS } from './pages/Blog';
+import Sitemap from './pages/Sitemap';
 import NotFound from './pages/NotFound';
 import ErrorBoundary from './components/ErrorBoundary';
 import {
@@ -729,6 +730,12 @@ const App: React.FC = () => {
               description="📞 Hire Tushar Singh for AI automation, smart chatbots & web engineering. Guaranteed response < 1 hour. Direct WhatsApp +91 88516 19647, Calendly schedule & official Google verified owner."
               keywords="hire developer India, contact developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, hire AI automation expert India, hire web developer India, freelance developer contact India, book consultation India"
             ><Contact /></PageWrapper>} />
+
+            <Route path="/sitemap" element={<PageWrapper
+              title="HTML Sitemap & Complete Page Index | Code with Mr Singh"
+              description="🗺️ Complete HTML sitemap and directory of all pages, SaaS suites, client projects, services, and technical blog posts by Tushar Singh."
+              keywords="HTML sitemap, website directory, page index, all pages Tushar Singh, Code with Mr Singh sitemap"
+            ><Sitemap /></PageWrapper>} />
 
             {/* Explicit 404 Route */}
             <Route path="/404" element={<PageWrapper

@@ -184,6 +184,7 @@ export const Footer: React.FC = () => {
               <FooterLink to="/blog" label="Blog &amp; Guides" />
               <FooterLink to="/testimonials" label="Client Reviews (4.0★)" />
               <FooterLink to="/contact" label="Contact &amp; Free Audit" />
+              <FooterLink to="/sitemap" label="HTML Sitemap &amp; Index" />
             </ul>
           </div>
 
@@ -284,6 +285,21 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4">
+            <Link
+              to="/sitemap"
+              onClick={scrollToTop}
+              className="text-slate-400 hover:text-indigo-400 transition-colors text-[11px] font-medium"
+            >
+              HTML Sitemap
+            </Link>
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-emerald-400 transition-colors text-[11px] font-medium"
+            >
+              XML Sitemap
+            </a>
             <button
               onClick={scrollToTop}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white transition-all text-[11px] font-semibold cursor-pointer active:scale-95"
