@@ -8,5 +8,10 @@
 /sitemap_index       /sitemap_index.xml             301
 /sitemap-index       /sitemap-index.xml             301
 
+# Legacy URL 301 redirects to consolidate SEO equity and fix GSC 404s
+/blog/post/150-coding-questions-faang-interviews    /blog/faang-coding-roadmap-150-questions    301!
+/blog/post/*                                        /blog                                       301!
+/license                                            /about                                      301!
+
 # SPA Routing - All client routes fallback to index.html (static XML/files are served directly first)
 /*    /index.html   200

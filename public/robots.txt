@@ -8,6 +8,9 @@ Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /.github/
 Disallow: /.vscode/
+Disallow: /*?s=*
+Disallow: /?s=*
+Disallow: /license
 
 # Google Image & Mobile Bots
 User-agent: Googlebot
