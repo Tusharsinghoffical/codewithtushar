@@ -66,13 +66,11 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
 # ── PINNED PROJECTS & CLIENT DELIVERABLES ───────────────────
 1. TASQ-ONE — Intelligent Task Operating System SaaS (Groq Llama 3.3 70B, PostgreSQL RLS, Docker, Dependency DAGs) [Demo: https://tasq-one.onrender.com]
 2. AI-Powered HR Recruitment Screening Assistant — Enterprise recruitment workflow automation with n8n + LLMs, automated ATS scoring (0–100), skill matching, and interview question generation (Sold to enterprise client in Abu Dhabi, UAE)
-3. TakeOpinion Medical Tourism Platform — Full-stack global medical tourism web platform with Django 5, PostgreSQL, Stripe/Razorpay, hotel bookings, and doctor directory (Sold to healthcare client in Delhi, India | Demo: https://takeopinionclientprojectss.onrender.com)
-4. VAS QR Management System — Enterprise Django platform for loyalty programs and QR rewards (Sold to enterprise client in Maharashtra, India | Demo: https://vassystemclientproject.onrender.com/)
-5. Automated Lead Funnel — 250+ leads in 10 days (B2B SaaS automation)
-6. AI Support Agent — 70% ticket reduction (e-commerce RAG chatbot)
-7. WhatsApp AI Agent — 24/7 automated business communication (n8n + OpenAI)
-8. RAG Chatbot — Knowledge base assistant for education platform
-9. Hospital Analytics Dashboard — Power BI healthcare intelligence
+3. WhatsApp AI Agent — 24/7 automated business communication, instant message routing, and CRM booking (n8n + OpenAI)
+4. TakeOpinion Medical Tourism Platform — Full-stack global medical tourism web platform with Django 5, PostgreSQL, Stripe/Razorpay, hotel bookings, and doctor directory (Sold to healthcare client in Delhi, India | Demo: https://takeopinionclientprojectss.onrender.com)
+5. VAS QR Management System — Enterprise Django platform for loyalty programs and QR rewards (Sold to enterprise client in Maharashtra, India | Demo: https://vassystemclientproject.onrender.com/)
+6. RAG Chatbot — Knowledge base assistant for education platform
+7. Hospital Analytics Dashboard — Power BI healthcare intelligence
 
 # ── OPEN-SOURCE PRODUCTION TOOLKIT (NPM) ─────────────────
 1. env-schema-guard

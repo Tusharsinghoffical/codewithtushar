@@ -406,7 +406,33 @@ export const PROJECTS: Project[] = [
     }
   },
 
-  // ── 3. TakeOpinion Medical Tourism Platform (Delhi Client Deliverable - Pinned) ─────────────────────────
+  // ── 3. WhatsApp AI Agent (Pinned) ─────────────────────
+  {
+    id: 'p4',
+    title: 'WhatsApp AI Agent | 24/7 Business Communication',
+    description: 'Automated WhatsApp business agent that handles message routing, template responses, appointment booking, and customer inquiries around the clock.',
+    imageUrl: '/projects/whatsapp-ai-agent.png',
+    category: 'AI Agents',
+    tags: ['WhatsApp', 'n8n', 'OpenAI', 'Automation'],
+    date: '2025',
+    isFeatured: true,
+    isPinned: true,
+    clientBackground: 'A service business receiving 200+ WhatsApp messages daily with no automated response system.',
+    problemStatement: 'The business owner was manually responding to every WhatsApp message, consuming 4+ hours daily and missing leads after hours.',
+    strategy: 'Built an n8n-powered WhatsApp automation with AI intent detection, auto-replies, appointment booking, and CRM integration.',
+    results: [
+      '100% automated responses for common inquiries.',
+      '4+ hours per day saved for the business owner.',
+      'Zero missed leads — all inquiries captured 24/7.',
+      'Appointment booking rate increased by 35%.'
+    ],
+    beforeAfter: {
+      before: '4 hrs/day manual replies | Missed after-hours leads',
+      after: '0 hrs manual work | 24/7 automated lead capture'
+    }
+  },
+
+  // ── 4. TakeOpinion Medical Tourism Platform (Delhi Client Deliverable - Pinned) ─────────────────────────
   {
     id: 'p6',
     title: 'TakeOpinion | Global Medical Tourism & Hospital Platform',
@@ -436,7 +462,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/Tusharsinghoffical/TakeOpinionclient'
   },
 
-  // ── 4. VAS QR Management System (Maharashtra Client Deliverable - Pinned) ──────────────────────────────────────
+  // ── 5. VAS QR Management System (Maharashtra Client Deliverable - Pinned) ──────────────────────────────────────
   {
     id: 'p18',
     title: 'VAS QR Management System | Full-Stack Enterprise Platform',
@@ -465,82 +491,7 @@ export const PROJECTS: Project[] = [
     liveDemoUrl: 'https://vassystemclientproject.onrender.com/'
   },
 
-  // ── 5. Automated Lead Funnel ──────────────────────────────
-  {
-    id: 'p1',
-    title: 'Automated Lead Funnel | 250+ Leads in 10 Days',
-    description: 'High-conversion marketing automation project for a B2B SaaS client.',
-    imageUrl: '/projects/p1.svg',
-    category: 'Lead Gen',
-    tags: ['Automation', 'Marketing', 'Funnels', 'AI'],
-    date: '2025',
-    isFeatured: true,
-    clientBackground: 'A niche B2B SaaS company struggling to get appointments from cold traffic.',
-    problemStatement: 'Manual LinkedIn outreach was too slow, and the cost per lead on Google ads was skyrocketing to $80+.',
-    strategy: 'Built a multi-channel automated funnel: Cold LinkedIn automation -> Personalised landing page -> High-intent email sequence -> Automated booking.',
-    results: [
-      '250+ qualified leads generated in first 10 days.',
-      'Cost per lead dropped from $80 to $12.',
-      '40% increase in monthly sales calls booked.',
-      '100% automated outreach eliminating manual burnout.'
-    ],
-    beforeAfter: {
-      before: '4 leads/week | $320 Average CPA | 15 hrs manual outreach/week',
-      after: '175 leads/week | $12 Average CPA | 0 hrs manual outreach/week'
-    }
-  },
-
-  // ── 6. AI Support Agent ──────────────────────────────────
-  {
-    id: 'p2',
-    title: 'AI Support Agent | 70% Ticket Reduction',
-    description: 'Autonomous AI customer support system trained on private business knowledge base using RAG architecture.',
-    imageUrl: '/projects/p2.svg',
-    category: 'AI Agents',
-    tags: ['Python', 'OpenAI', 'RAG', 'LangChain'],
-    date: '2025',
-    isFeatured: true,
-    clientBackground: 'An e-commerce brand handling 500+ repetitive support tickets daily.',
-    problemStatement: 'Response times were exceeding 24 hours, leading to customer frustration and cancelled orders.',
-    strategy: 'Deployed an RAG-based AI Agent that ingested all product manuals, return policies, and past tickets to answer questions instantly.',
-    results: [
-      '70% reduction in human support agent workload.',
-      'Instant response time (0 seconds) for common queries.',
-      '15% increase in repeat orders due to faster resolution.',
-      'Zero oversight required for 90% of basic inquiries.'
-    ],
-    beforeAfter: {
-      before: '26 Hour Avg Response Time | 4 Human Agents Overworked',
-      after: '0 Second Response Time | 1 Manager Monitoring AI'
-    }
-  },
-
-  // ── 7. WhatsApp Agent ─────────────────────────────────────
-  {
-    id: 'p4',
-    title: 'WhatsApp AI Agent | 24/7 Business Communication',
-    description: 'Automated WhatsApp business agent that handles message routing, template responses, appointment booking, and customer inquiries around the clock.',
-    imageUrl: '/projects/p4.svg',
-    category: 'AI Agents',
-    tags: ['WhatsApp', 'n8n', 'OpenAI', 'Automation'],
-    date: '2025',
-    isFeatured: true,
-    clientBackground: 'A service business receiving 200+ WhatsApp messages daily with no automated response system.',
-    problemStatement: 'The business owner was manually responding to every WhatsApp message, consuming 4+ hours daily and missing leads after hours.',
-    strategy: 'Built an n8n-powered WhatsApp automation with AI intent detection, auto-replies, appointment booking, and CRM integration.',
-    results: [
-      '100% automated responses for common inquiries.',
-      '4+ hours per day saved for the business owner.',
-      'Zero missed leads — all inquiries captured 24/7.',
-      'Appointment booking rate increased by 35%.'
-    ],
-    beforeAfter: {
-      before: '4 hrs/day manual replies | Missed after-hours leads',
-      after: '0 hrs manual work | 24/7 automated lead capture'
-    }
-  },
-
-  // ── 8. Chatbot Development ────────────────────────────────
+  // ── 6. Chatbot Development ────────────────────────────────
   {
     id: 'p_chat',
     title: 'RAG Chatbot | Custom Knowledge Base Assistant',

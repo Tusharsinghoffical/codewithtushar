@@ -304,7 +304,7 @@ const Projects: React.FC = () => {
           </h1>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed font-medium">
-            Explore 8 production-grade systems built and delivered for clients — including autonomous AI agents, smart customer support chatbots, full-stack hospital &amp; restaurant platforms, and Power BI dashboards.
+            Explore production-grade systems built and delivered for clients — including autonomous AI agents, WhatsApp business automations, full-stack hospital &amp; enterprise platforms, and Power BI dashboards.
           </p>
 
           {/* Metric Bar */}
