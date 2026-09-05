@@ -35,7 +35,7 @@ const ProjectCard: React.FC<{
   const m = cmeta(project.category || 'All');
   const projectUrl = typeof window !== 'undefined' ? `${window.location.origin}/projects?project=${project.id}` : `${SITE_URL}/projects?project=${project.id}`;
 
-  const isLogoImage = project.imageUrl?.includes('logo') || project.category === 'SaaS Products';
+  const isLogoImage = Boolean(project.imageUrl?.includes('logo'));
 
   return (
     <div
@@ -274,7 +274,7 @@ const Projects: React.FC = () => {
     setTimeout(() => setModalCopied(false), 2500);
   };
 
-  const isModalLogo = selected?.imageUrl?.includes('logo') || selected?.category === 'SaaS Products';
+  const isModalLogo = Boolean(selected?.imageUrl?.includes('logo'));
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">

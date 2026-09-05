@@ -356,7 +356,7 @@ export const PROJECTS: Project[] = [
     id: 'p-tasq-one',
     title: 'TASQ-ONE | Intelligent Task Operating System (SaaS)',
     description: 'Cloud-native SaaS platform turning loosely defined ideas into production-ready tasks in seconds using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & PostgreSQL RLS.',
-    imageUrl: '/tasq-one/tasq-one-logo.png',
+    imageUrl: '/projects/task-one-platform.png',
     category: 'SaaS Products',
     tags: ['SaaS', 'Groq Llama 3.3', 'Next.js 14', 'PostgreSQL RLS', 'Dependency DAG', 'Docker'],
     date: '2026',
@@ -437,7 +437,7 @@ export const PROJECTS: Project[] = [
     id: 'p6',
     title: 'TakeOpinion | Global Medical Tourism & Hospital Platform',
     description: 'Comprehensive Django 5-based global medical tourism platform connecting international patients with doctors, accredited hospitals, treatments, hotel bookings, and secure payment processing.',
-    imageUrl: '/projects/takeopinion-logo.png',
+    imageUrl: '/projects/takeopinion-platform.jpg',
     category: 'Web Dev',
     tags: ['Django 5', 'Python', 'PostgreSQL', 'Stripe', 'Razorpay', 'Bootstrap 5', 'Celery & Redis'],
     date: '2024',
@@ -491,16 +491,17 @@ export const PROJECTS: Project[] = [
     liveDemoUrl: 'https://vassystemclientproject.onrender.com/'
   },
 
-  // ── 6. Chatbot Development ────────────────────────────────
+  // ── 6. RAG Chatbot (Pinned) ────────────────────────────────
   {
     id: 'p_chat',
     title: 'RAG Chatbot | Custom Knowledge Base Assistant',
     description: 'Intelligent AI chatbot trained on proprietary business data using Retrieval-Augmented Generation — deployed on website, WhatsApp, and Telegram.',
-    imageUrl: '/projects/p3.svg',
+    imageUrl: '/projects/rag-knowledge-base-chatbot.png',
     category: 'AI Agents',
     tags: ['OpenAI', 'LangChain', 'Vector DB', 'Voiceflow'],
     date: '2025',
     isFeatured: true,
+    isPinned: true,
     clientBackground: 'An education platform needing a 24/7 assistant to handle student queries about courses and admissions.',
     problemStatement: 'The support team was overwhelmed by repetitive questions about course details, fees, and admission process, causing delays and poor student experience.',
     strategy: 'Built a RAG chatbot ingesting all course documents, FAQs, and policies into a vector database. Deployed on website widget and WhatsApp with CRM lead capture.',
