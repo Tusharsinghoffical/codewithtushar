@@ -448,7 +448,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
           "https://share.google/ZDu1p0y00ioP6PWiA",
           "https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing",
           "https://github.com/Tusharsinghoffical",
-          "https://linkedin.com/in/tusharsingh2011",
+          "https://linkedin.com/in/tusharsingh2002",
           "https://www.youtube.com/@codewithmrsingh4u",
           "https://www.instagram.com/tushar.cms/"
         ],

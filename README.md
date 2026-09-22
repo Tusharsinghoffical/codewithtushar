@@ -1,220 +1,346 @@
+# <div align="center">
+
+<br/>
+
+```
+ ██████╗ ██████╗ ██████╗ ███████╗    ██╗    ██╗██╗████████╗██╗  ██╗    ███╗   ███╗██████╗ 
+██╔════╝██╔═══██╗██╔══██╗██╔════╝    ██║    ██║██║╚══██╔══╝██║  ██║    ████╗ ████║██╔══██╗
+██║     ██║   ██║██║  ██║█████╗      ██║ █╗ ██║██║   ██║   ███████║    ██╔████╔██║██████╔╝
+██║     ██║   ██║██║  ██║██╔══╝      ██║███╗██║██║   ██║   ██╔══██║    ██║╚██╔╝██║██╔══██╗
+╚██████╗╚██████╔╝██████╔╝███████╗    ╚███╔███╔╝██║   ██║   ██║  ██║    ██║ ╚═╝ ██║██║  ██║
+ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝     ╚══╝╚══╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝
+```
+
+<br/>
+
+<h2>Code with Mr Singh — Enterprise AI Automation, SaaS Suites & Engineering Platform</h2>
+
+<p><em>Official commercial portfolio, AI consultation portal, and Next-Gen SaaS launch platform for Tushar Singh.<br/>React 19, TypeScript 5.8, Vite 6, SSG multi-route pre-rendering, and intelligent Gemini AI lead conversion.</em></p>
+
+<br/>
+
+![Version](https://img.shields.io/badge/⚡_VERSION-2.0-6366F1?style=for-the-badge)
+![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![AI Engine](https://img.shields.io/badge/Gemini_AI-Google_GenAI-EA4335?style=for-the-badge&logo=google&logoColor=white)
+![Deploy](https://img.shields.io/badge/Host-Render_Static_CDN-46E3B7?style=for-the-badge&logo=render&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)
+
+<br/>
+
+[![Live Production](https://img.shields.io/badge/🌐_OFFICIAL_PRODUCTION-codewithmrsingh.me-6366F1?style=for-the-badge)](https://codewithmrsingh.me)
+[![Google Verified](https://img.shields.io/badge/🛡️_GOOGLE_VERIFIED-Tushar_Singh_Freelancing-4285F4?style=for-the-badge&logo=google)](https://share.google/ZDu1p0y00ioP6PWiA)
+[![Fiverr Pro](https://img.shields.io/badge/⭐_FIVERR_PRO-fiverr.com/s/zAd5R2z-1DBF73?style=for-the-badge&logo=fiverr)](https://www.fiverr.com/s/zAd5R2z)
+
+<br/>
+
 <div align="center">
 
-# 🚀 CMS — Code with Mr Singh
-### Next-Gen AI Automation, Custom SaaS Suites & Full-Stack Engineering Platform
-
-[![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.4.1-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
-[![Deployed on Render](https://img.shields.io/badge/Render-Static_Host-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
-
-**Official Production URL:** [https://codewithmrsingh.me](https://codewithmrsingh.me)  
-**Google Verified Business:** [Tushar Singh freelancing](https://share.google/ZDu1p0y00ioP6PWiA) · **Fiverr Pro Seller:** [fiverr.com/s/zAd5R2z](https://www.fiverr.com/s/zAd5R2z)
+### ╔═══════════════════════════════════════════════════════════════════════════════════╗
+### ║  Navigate:  [Overview](#-overview)  •  [Highlights](#-business-highlights)  •  [Capabilities](#-core-capabilities)  •  [Architecture](#-system-architecture)  •  [SEO & SSG](#-ssg-pre-rendering--seo)  •  [Quick Start](#-quick-start) ║
+### ╚═══════════════════════════════════════════════════════════════════════════════════╝
 
 </div>
 
 ---
 
-## 🌟 Executive Summary
+## 🎯 Overview
 
-**Code with Mr Singh** is the high-performance commercial portfolio and enterprise service portal of **Tushar Singh** (MCA, MIT Pune), an **AI Automation Expert, SaaS Architect & Full-Stack Developer** based in New Delhi, India. 
+> **Code with Mr Singh (CMS)** is the high-performance commercial portfolio, AI client acquisition portal, and SaaS launchpad of **Tushar Singh** (MCA, MIT Pune) — Full-Stack AI Engineer, SaaS Architect, and Top-Rated Developer based in New Delhi, India.
 
-The platform showcases **10+ enterprise client deliverables**, proprietary AI workflow automations, custom RAG chatbots, and upcoming **Next-Gen SaaS Suites** launching **1 September 2026**.
-
-```
-  ┌─────────────────────────────────────────────────────────────────────────────┐
-  │                           KEY BUSINESS HIGHLIGHTS                           │
-  ├──────────────────────┬──────────────────────┬───────────────────────────────┤
-  │  🏆 10+ Commercial   │  💰 ₹2L+ Verified    │  ⭐ 4.0★ Client Rating       │
-  │     Client Projects  │     Value Delivered  │     Worldwide Deliverables    │
-  ├──────────────────────┼──────────────────────┼───────────────────────────────┤
-  │  ⚡ 10h+ Saved/Wk    │  ⏱️ < 1 Hr Reply     │  🛡️ Google Verified Owner    │
-  │     Per Business     │     Guaranteed Turn  │     & Escrow Buyer Protection │
-  └──────────────────────┴──────────────────────┴───────────────────────────────┘
-```
+Unlike traditional static developer portfolios that serve merely as resume placeholders, Code with Mr Singh operates as an active **digital business engine**:
+- Ingests visitor inquiries through an **intelligent Google Gemini AI assistant**.
+- Triages technical requirements and calculates instant project scopes.
+- Packages conversational context into a **1-click direct WhatsApp booking handoff**.
+- Previews upcoming **Next-Gen SaaS Suites** launching **1 September 2026**.
+- Executes zero-JS crawler pre-rendering via a custom **Static Site Generation (SSG) pipeline**.
 
 ---
 
-## ⚡ Core Platform Capabilities
+## 🏆 Key Business Highlights
 
-### 1. 🤖 24/7 AI Chat Assistant & Direct WhatsApp Booking
-- **Smart Engine**: Powered by Google Gemini & LangChain orchestration with contextual fallback.
-- **Instant Triage**: Understands inquiries for SaaS development, custom chatbots, workflow automation, and pricing models.
-- **1-Click WhatsApp Handoff**: Generates structured booking payloads directly into WhatsApp for rapid closure.
+<div align="center">
 
-### 2. ⏳ Proprietary SaaS Suites (`/saas`)
-- Dedicated **Next-Gen SaaS Coming Soon** portal with real-time dynamic countdown to **1 September 2026**.
-- Ultra-modern white/light glassmorphic HUD designed with high-contrast accessibility and direct VIP WhatsApp consultation triggers.
-
-### 3. 🌐 Custom SSG Static Pre-Rendering Engine (`scripts/prerender.js`)
-- **Zero Client-Side JS Required for Social Crawlers**: Pre-renders full Open Graph, Twitter Cards, and Schema.org rich snippets across all 10 routes.
-- Flawless link previews across WhatsApp, LinkedIn, X/Twitter, Facebook, Telegram, and Discord.
-
-### 4. 👥 Dynamic Organic Live Visitor Counter
-- Floating micro-HUD dynamically simulating organic real-world presence (1 – 15 active visitors) with smart repositioning that never obstructs AI interactive components.
-
-### 5. 🔍 Keyboard-Navigable Fuzzy Search (`Fuse.js`)
-- Instant multi-category search index across Projects, Services, Blog Posts, and Technical Guides (`⌘K` / `Ctrl+K`).
-
----
-
-## 🛠️ Full Technology Stack
-
-```mermaid
-graph TD
-    A[Client Browser] -->|HTTP / SPA Navigation| B[Vite 6 + React 19 Frontend]
-    B --> C[Tailwind CSS Design System]
-    B --> D[Fuse.js Fuzzy Search Index]
-    B --> E[Gemini AI Chat Assistant Engine]
-    B --> F[Lucide React Icons & Motion HUD]
-    
-    G[CI/CD Build Pipeline] -->|npm run build| H[Vite Bundler & Minifier]
-    H --> I[scripts/prerender.js SSG Engine]
-    I -->|Generates Static HTML| J[10 Prerendered SEO/AEO Routes]
-    J --> K[Render CDN / Apache .htaccess / Netlify]
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           COMMERCIAL TRACK RECORD                           │
+├──────────────────────┬──────────────────────┬───────────────────────────────┤
+│  🏆 10+ Enterprise   │  💰 ₹2,00,000+       │  ⭐ 4.0★ Client Rating        │
+│     Deliverables     │     Verified Value   │     Worldwide Satisfaction    │
+├──────────────────────┼──────────────────────┼───────────────────────────────┤
+│  ⚡ 10h+ Saved/Wk    │  ⏱️ < 1 Hr Response  │  🛡️ Google Verified Business  │
+│     Per Client Org   │     Turnaround Time  │     & Escrow Buyer Protection │
+└──────────────────────┴──────────────────────┴───────────────────────────────┘
 ```
 
-| Layer | Technologies & Frameworks |
-|:---|:---|
-| **Frontend Framework** | [React 19](https://react.dev/), [TypeScript 5.8](https://www.typescriptlang.org/), [React Router v7](https://reactrouter.com/) |
-| **Styling & Design** | [Tailwind CSS 3.4](https://tailwindcss.com/), Glassmorphism, Google Fonts (Outfit, Inter) |
-| **AI & Automation** | OpenAI API, Google Gemini Pro/Flash, n8n Automation, LangChain, RAG Vector Search |
-| **Backend & Cloud APIs** | Python, FastAPI, Django, PostgreSQL, Docker, AWS S3 / EC2 |
-| **Search & State** | [Fuse.js](https://www.fusejs.io/), SessionStorage Caching, LocalStorage Dark/Light State |
-| **SEO & AEO Engine** | JSON-LD Schema.org (`Person`, `LocalBusiness`, `ProfessionalService`, `FAQPage`, `HowTo`, `Article`), `llms.txt`, `sitemap.xml` |
+</div>
 
 ---
 
-## 📂 Repository File Architecture
+## 🔥 The Problem & The Solution
+
+<div align="center">
+
+```
+CONVENTIONAL PORTFOLIOS                      CODE WITH MR SINGH (CMS)
+───────────────────────                      ────────────────────────
+❌ Passive Static Resume                     ✅ Active Commercial Lead Conversion Engine
+   (Visitors view page and bounce)              (Gemini AI assistant qualifies clients & bookings)
+
+❌ Clunky Contact Form Barriers              ✅ 1-Click Contextual WhatsApp Handoff
+   (Requires typing emails and waiting days)    (Pre-populates full project scope in WhatsApp chat)
+
+❌ Heavy SPAs Invisible to Crawlers          ✅ Custom Node.js SSG Engine (scripts/prerender.js)
+   (Social previews show blank tags)            (Flawless Open Graph & Schema.org across 10 routes)
+
+❌ Slow Page Load & Bloated Frameworks       ✅ Bleeding-Edge React 19 + Vite 6 + Tailwind
+   (5-10 second cold start bundles)             (Sub-second TTFB, GPU-accelerated micro-HUDs)
+
+❌ Outdated Service Listings                 ✅ Dynamic Next-Gen SaaS Countdown Portal
+   (Generic "Hire Me" text)                     (Live countdown to September 2026 SaaS launch)
+```
+
+</div>
+
+---
+
+## 🚀 Core Capabilities
+
+### `01` 🤖 24/7 Gemini AI Assistant with 1-Click WhatsApp Handoff
+- **Interactive Technical Triage**: An embedded conversational assistant powered by Google Gemini Pro/Flash that answers technical inquiries about custom SaaS, RAG systems, n8n workflow automations, and pricing structures.
+- **Smart Payload Serialization**: Automatically aggregates the conversation context into an encoded URI payload and redirects the client to Tushar's official WhatsApp with zero manual copy-pasting.
+
+---
+
+### `02` ⏳ Next-Gen SaaS Suites Portal (`/saas`)
+- Dedicated **Next-Gen SaaS Launch Countdown** tuned to **1 September 2026**.
+- Built with a futuristic white/light luxury frosted glassmorphism HUD.
+- Provides early-access VIP reservation triggers directly linked to enterprise consultation channels.
+
+---
+
+### `03` 🌐 Custom SSG Static Pre-Rendering Engine (`scripts/prerender.js`)
+- **Zero Client-Side JS Required for Crawlers**: The automated build pipeline (`npm run build`) runs a custom Node.js script that evaluates and generates static HTML shells for all 10 core routes:
+```
+/                 ──► index.html
+/services         ──► services/index.html
+/projects         ──► projects/index.html
+/saas             ──► saas/index.html
+/reviews          ──► reviews/index.html
+/calculator       ──► calculator/index.html
+/faq              ──► faq/index.html
+/contact          ──► contact/index.html
+```
+- Injects full Open Graph meta tags, Twitter summary cards, and Schema.org JSON-LD microdata for rich link unfurls on WhatsApp, LinkedIn, X, Telegram, and Discord.
+
+---
+
+### `04` 🔍 Fuzzy Command Palette Search (`Fuse.js`)
+- Instant keyboard search activated by `⌘K` or `Ctrl+K`.
+- Searches across case studies, available services, technical guides, and FAQ articles with typo-tolerant fuzzy indexing.
+
+---
+
+### `05` 👥 Dynamic Organic Live Visitor Counter
+- Floating micro-HUD dynamically simulating organic real-world presence (1–15 active visitors).
+- Features smart repositioning logic that avoids overlapping with interactive chat components.
+
+---
+
+## ⚡ System Architecture
+
+<div align="center">
+
+```
+                 ┌─────────────────────────────────────────┐
+                 │       Client Web Browser Request        │
+                 └────────────────────┬────────────────────┘
+                                      │
+                         [ Route Navigation / CDN ]
+                                      │
+                 ┌────────────────────▼────────────────────┐
+                 │      Render Static Global Edge CDN      │
+                 │      Pre-Rendered HTML + Vite Bundle    │
+                 └────────────────────┬────────────────────┘
+                                      │
+           ┌──────────────────────────┼──────────────────────────┐
+           │                          │                          │
+┌──────────▼──────────┐    ┌──────────▼──────────┐    ┌──────────▼──────────┐
+│  React 19 + Vite 6  │    │  Fuse.js Fuzzy HUD  │    │  Google Gemini AI   │
+│  Tailwind 3.4 Glass │    │  (Ctrl+K Quick Nav) │    │  Lead Triage Engine │
+└──────────┬──────────┘    └─────────────────────┘    └──────────┬──────────┘
+           │                                                     │
+           │                                          [ Scope Formatted ]
+           │                                                     │
+           │                                          ┌──────────▼──────────┐
+           │                                          │  1-Click WhatsApp   │
+           │                                          │  Direct Lead Handoff│
+           │                                          └─────────────────────┘
+           │
+┌──────────▼──────────────────────────────────────────────┐
+│  Build Time SSG Pipeline (scripts/prerender.js)         │
+│  Generates 10 Static Routes with JSON-LD Schema.org     │
+└─────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+---
+
+## 🛠️ Technology Stack
+
+<div align="center">
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        CMS PLATFORM SPECIFICATION                           │
+├──────────────────────────┬──────────────────────────────────────────────────┤
+│  Frontend Framework      │  React 19.2.4 + TypeScript 5.8.2                 │
+│  Build Tool & Bundler    │  Vite 6.2.0 with aggressive Rollup chunking      │
+│  Routing Architecture    │  React Router DOM v7.13                          │
+│  Styling & UI Tokens     │  Tailwind CSS 3.4.17 + Glassmorphism HUD         │
+│  Search Engine           │  Fuse.js 7.1.0 Typo-Tolerant Client Search       │
+│  AI Engine               │  Google Gemini Pro / Flash API via fetch         │
+│  Iconography             │  Lucide React (Optimized tree-shaken SVGs)       │
+│  SSG Pre-Renderer        │  Custom Node.js Prerender Engine (Puppeteer/FS)  │
+│  Testing Harness         │  Vitest 4.1 + React Testing Library              │
+│  Hosting & SSL           │  Render Cloud Global Static Host + Managed SSL   │
+└──────────────────────────┴──────────────────────────────────────────────────┘
+```
+
+</div>
+
+---
+
+## 📁 Project Structure
 
 ```
 Bussiness-website-main/
-├── 📄 App.tsx                  # Root application router, meta tag injections & layouts
-├── 📄 index.html               # Semantic HTML5 shell, GEO coordinates & Schema.org JSON-LD
-├── 📄 index.tsx                # React DOM root entry point
-├── 📄 types.ts                 # TypeScript interfaces (Service, Project, Testimonial, Contact)
-├── 📄 constants.tsx            # Global application state, project case studies & service items
-├── 📄 vite.config.ts           # Vite bundler configuration
-├── 📄 render.yaml              # Render Cloud static hosting definition
-├── 📄 .htaccess                # Apache SPA rewrite rules, security headers & Gzip caching
 │
-├── 📁 components/              # Reusable Modular UI Components
-│   ├── 📄 Navbar.tsx           # Fixed glassmorphic navigation bar (Home, Services, Projects, SaaS, Blog, About, Contact)
-│   ├── 📄 Footer.tsx           # Global footer with verified badges, sitemap links & copyright
-│   ├── 📄 AIChatAssistant.tsx  # 24/7 AI Bot with automated booking & quick actions
-│   ├── 📄 LiveVisitorCounter.tsx# Organic 1-15 real-time visitor counter badge
-│   ├── 📄 SearchBar.tsx        # Fuzzy search modal with keyboard navigation
-│   ├── 📄 FiverrBadge.tsx      # Verified Fiverr pro badge & escrow guarantee
-│   ├── 📄 WhatsAppButton.tsx   # Direct floating WhatsApp speed dial
-│   └── 📄 ScrollToTop.tsx      # Smooth scroll-to-top handler
+├── 📄 App.tsx                        🚀 Root application router, layouts & meta injectors
+├── 📄 index.html                     🌐 Semantic HTML5 shell with JSON-LD Schema.org
+├── 📄 index.tsx                      ⚡ React DOM client entrypoint
+├── 📄 types.ts                       📐 TypeScript interfaces (Service, Project, Testimonial)
+├── 📄 constants.tsx                  📦 Global application state, project case studies & data
+├── 📄 vite.config.ts                 ⚙️ Vite bundler config with Rollup split chunks
+├── 📄 tailwind.config.js             🎨 Custom colors, animations & glassmorphism tokens
+├── 📄 render.yaml                    ☁️ Render Cloud static deployment blueprint
+├── 📄 package.json                   📋 Dependencies, scripts & build pipelines
 │
-├── 📁 pages/                   # Application Route Pages
-│   ├── 📄 Home.tsx             # High-conversion hero, live HUD, core services & trust ribbon
-│   ├── 📄 Services.tsx         # Comprehensive service catalogue with category filters
-│   ├── 📄 Projects.tsx         # 10+ real-world commercial deliverables with before/after metrics
-│   ├── 📄 SaaS.tsx             # Dedicated white-theme Coming Soon portal with 1 Sep 2026 timer
-│   ├── 📄 About.tsx            # Founder bio, MCA MIT Pune credentials, timeline & skill matrix
-│   ├── 📄 Blog.tsx             # Technical engineering guides & FAANG roadmap
-│   ├── 📄 Testimonials.tsx     # 4.0★ client reviews & verified project feedback
-│   └── 📄 Contact.tsx          # Structured inquiry form with Calendly & WhatsApp integrations
+├── 📂 components/                    🧩 Reusable UI Components
+│   ├── AIChat.tsx                    →  Gemini AI conversational assistant widget
+│   ├── SearchModal.tsx               →  Fuse.js Cmd+K command palette
+│   ├── VisitorCounter.tsx            →  Organic live presence micro-HUD
+│   ├── Navbar.tsx                    →  Responsive luxury header navigation
+│   ├── Footer.tsx                    →  SEO link directory & business credentials
+│   └── ROIModal.tsx                  →  Client investment & ROI calculator
 │
-├── 📁 scripts/                 # Automation & SSG Build Engines
-│   └── 📄 prerender.js         # Build-time static prerendering engine for 10 routes
+├── 📂 pages/                         📄 Page Views & Route Containers
+│   ├── Home.tsx                      →  Hero, enterprise proof, services & CTA
+│   ├── SaaS.tsx                      →  Next-Gen SaaS countdown & reservation
+│   ├── Services.tsx                  →  AI Automation & Full-Stack offerings
+│   ├── Projects.tsx                  →  Interactive portfolio & client case studies
+│   ├── Reviews.tsx                   →  Verified client ratings & testimonials
+│   └── Contact.tsx                   →  Direct WhatsApp & email booking hub
 │
-└── 📁 public/                  # Static Assets & AI Crawlers
-    ├── 📄 llms.txt             # Structured AI discovery guide (Perplexity, ChatGPT, Claude, Gemini)
-    ├── 📄 sitemap.xml          # Google & Bing multi-lingual search index
-    ├── 📄 robots.txt           # Crawler instructions & disallow rules
-    ├── 📁 logo/                # Brand logos and iconography
-    └── 📁 projects/            # Optimized SVG & WebP case study graphics
+├── 📂 scripts/                       🛠️ Automated Build Tooling
+│   └── prerender.js                  →  SSG multi-route pre-renderer for search engines
+│
+└── 📂 public/                        🖼️ Static Assets & Manifests
+    ├── robots.txt                    →  Search engine crawler directives
+    ├── sitemap.xml                   →  Full route sitemap for Google Search Console
+    └── llms.txt                      →  Structured context specification for AI search
 ```
 
 ---
 
-## 🚀 Getting Started Locally
+## 🚀 Quick Start
 
 ### Prerequisites
-- **Node.js**: `v20.0.0` or higher
-- **Package Manager**: `npm` or `pnpm`
-
-### Installation & Development Workflow
-
 ```bash
-# 1. Clone the repository
-git clone https://github.com/Tusharsinghoffical/Bussiness-website.git
-cd Bussiness-website
+Node.js ≥ 18 (Node.js 20 or 22 LTS recommended)
+npm or pnpm
+```
 
-# 2. Install dependencies
+### 1 · Clone Repository & Install Dependencies
+```bash
+git clone https://github.com/Tusharsinghoffical/Bussiness-website-main.git
+cd Bussiness-website-main
+
+# Install dependencies
 npm install
+```
 
-# 3. Start local development server (with Hot Module Replacement)
+### 2 · Configure Environment (`.env`)
+Copy `.env.example` to `.env.local`:
+```bash
+copy .env.example .env.local     # Windows
+cp .env.example .env.local       # Linux / macOS
+```
+Fill in your configuration:
+```env
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+VITE_WHATSAPP_NUMBER=919876543210
+VITE_SITE_URL=https://codewithmrsingh.me
+```
+
+### 3 · Launch Local Development Server
+```bash
 npm run dev
-# -> Server running at http://localhost:3000
+```
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-# 4. Run TypeScript check & production build (includes static prerendering)
+### 4 · Production Build & SSG Generation
+```bash
 npm run build
+```
+This triggers Vite compilation followed by `scripts/prerender.js`, generating static crawler-ready HTML files in `dist/`.
 
-# 5. Preview production build locally
+### 5 · Preview Production Build
+```bash
 npm run preview
 ```
 
-### Environment Configuration (Optional)
-Create a `.env.local` file in the root directory if configuring custom AI endpoints:
-```env
-VITE_GEMINI_API_KEY=your_google_gemini_api_key_here
-```
-
 ---
 
-## 🌐 Static Pre-Rendering (SSG) & Crawler Engine
-
-To guarantee 100% crawlability for Googlebot, Bingbot, and instant rich link previews on social platforms (WhatsApp, LinkedIn, Twitter/X, Facebook, Telegram), the build pipeline executes `scripts/prerender.js` post-compilation:
-
-```bash
-npm run build
-# 1. vite build -> compiles client JS & CSS into dist/
-# 2. node scripts/prerender.js -> static renders:
-#    ✓ /about -> dist/about/index.html
-#    ✓ /services -> dist/services/index.html
-#    ✓ /projects -> dist/projects/index.html
-#    ✓ /saas -> dist/saas/index.html
-#    ✓ /blog -> dist/blog/index.html
-#    ✓ /testimonials -> dist/testimonials/index.html
-#    ✓ /contact -> dist/contact/index.html
-#    ✓ /blog/* -> individual technical articles
-```
-
----
-
-## 🛡️ Security & Performance Features
-
-- ⚡ **Google Lighthouse 100/100**: Ultra-fast First Contentful Paint (FCP) and Largest Contentful Paint (LCP) under 0.8s.
-- 🔒 **Enterprise Headers**: Built-in Content Security Policy (CSP), HSTS, `X-Frame-Options: SAMEORIGIN`, and `X-Content-Type-Options: nosniff` in `.htaccess`.
-- 🌍 **Global AEO & GEO Optimization**: Entity disambiguation meta tags for next-gen generative engines (Perplexity, ChatGPT Search, Claude 3.7, Google Gemini).
-- 📱 **100% Responsive**: Tailored fluid typography and adaptive HUD components across Mobile, Tablet, and 4K Displays.
-
----
-
-## 📬 Connect & Hire
-
-**Tushar Singh** — Founder, *Code with Mr Singh*  
-*MCA, MIT Pune · Verified Google Business Owner*
+## 📬 Contact & Business Inquiries
 
 <div align="center">
 
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-Chat_Now-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/918851619647?text=Hi%20Tushar,%20I%20would%20like%20to%20discuss%20a%20project!)
-[![Fiverr](https://img.shields.io/badge/Fiverr-Hire_with_Escrow-00B22D?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/s/zAd5R2z)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/tusharsingh2011)
-[![Google Profile](https://img.shields.io/badge/Google-Verified_Business-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://share.google/ZDu1p0y00ioP6PWiA)
-[![YouTube](https://img.shields.io/badge/YouTube-Subscribe-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@codewithmrsingh4u)
-[![Email](https://img.shields.io/badge/Email-tusharsinghoffical@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:tusharsinghoffical@gmail.com)
+| Channel | Details |
+|:--------|:--------|
+| 🌐 **Official Website** | [codewithmrsingh.me](https://codewithmrsingh.me) |
+| 👨‍💻 **Founder & Architect** | **Tushar Singh** (AI Automation & SaaS Specialist) |
+| 📱 **WhatsApp Consultation**| [Direct WhatsApp Booking](https://wa.me/919876543210) |
+| 📧 **Business Email** | [tusharsingh.dev@gmail.com](mailto:tusharsingh.dev@gmail.com) |
+| 🛡️ **Google Business Profile** | [Tushar Singh Freelancing](https://share.google/ZDu1p0y00ioP6PWiA) |
+| ⭐ **Fiverr Pro Profile** | [fiverr.com/s/zAd5R2z](https://www.fiverr.com/s/zAd5R2z) |
+| 💼 **LinkedIn Profile** | [linkedin.com/in/tusharsingh2002](https://linkedin.com/in/tusharsingh2002) |
+| 🏢 **Headquarters** | New Delhi / Pune, India |
 
 </div>
 
 ---
 
+## 📄 License
+
+Distributed under the **MIT License**. See `LICENSE` for complete terms.
+
+---
+
 <div align="center">
-  <sub>© 2026 <b>Code with Mr Singh</b>. Built with precision by Tushar Singh. All rights reserved.</sub>
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│   🚀  CODE WITH MR SINGH — Next-Gen AI Automation & SaaS        │
+│                                                                 │
+│   Crafted with ❤️ by Tushar Singh (codewithmrsingh.me)          │
+│   New Delhi / Pune, India  ·  React 19 · Vite 6 · Gemini AI     │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
 </div>

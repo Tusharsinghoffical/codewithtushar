@@ -139,7 +139,7 @@ export const Footer: React.FC = () => {
                 Social Profiles
               </p>
               <div className="flex items-center gap-2">
-                <SocialIconBtn href="https://linkedin.com/in/tusharsingh2011" icon={<Linkedin size={15} />} label="LinkedIn" />
+                <SocialIconBtn href="https://linkedin.com/in/tusharsingh2002" icon={<Linkedin size={15} />} label="LinkedIn" />
                 <SocialIconBtn href="https://github.com/Tusharsinghoffical" icon={<Github size={15} />} label="GitHub" />
                 <SocialIconBtn href={FIVERR_PROFILE_URL} icon={<FiverrIcon size={15} />} label="Fiverr Profile" />
                 <SocialIconBtn href="https://www.youtube.com/@codewithmrsingh4u" icon={<Youtube size={15} />} label="YouTube" />

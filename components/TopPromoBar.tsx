@@ -122,7 +122,7 @@ const TopPromoBar: React.FC = () => {
 
           {/* LinkedIn */}
           <a
-            href="https://linkedin.com/in/tusharsingh2011"
+            href="https://linkedin.com/in/tusharsingh2002"
             target="_blank"
             rel="noopener noreferrer"
             className="p-1 rounded-md text-slate-300 hover:text-sky-400 hover:bg-white/10 transition-colors"
