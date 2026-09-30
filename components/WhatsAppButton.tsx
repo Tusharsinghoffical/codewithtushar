@@ -6,7 +6,7 @@ const WhatsAppButton: React.FC = () => {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi Tushar, I'd like to discuss a project with you!`;
 
   return (
-    <div className="group fixed bottom-6 right-6 sm:right-8 z-[120]">
+    <div className="group fixed bottom-[5.25rem] sm:bottom-[5.5rem] right-6 sm:right-8 z-[120]">
       <a
         href={whatsappUrl}
         target="_blank"

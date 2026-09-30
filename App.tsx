@@ -10,6 +10,7 @@ import ClockDisplay from './components/ClockDisplay';
 import TopPromoBar from './components/TopPromoBar';
 import FiverrFloatingButton from './components/FiverrFloatingButton';
 import AIChatAssistant from './components/AIChatAssistant';
+import SaathiBotWidget from './components/SaathiBotWidget';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -754,6 +755,7 @@ const App: React.FC = () => {
         </ErrorBoundary>
         </main>
         <AIChatAssistant />
+        <SaathiBotWidget botId="bot_9f223d8f29b999e81e" />
         <FiverrFloatingButton />
         <WhatsAppButton />
         <ScrollToTop />

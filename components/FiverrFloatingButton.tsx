@@ -21,7 +21,7 @@ const FiverrIconSvg: React.FC<{ className?: string }> = ({ className = '' }) => 
 
 const FiverrFloatingButton: React.FC = () => {
   return (
-    <div className="group fixed bottom-[5.25rem] sm:bottom-[5.5rem] right-6 sm:right-8 z-[120]">
+    <div className="group fixed bottom-[9.25rem] sm:bottom-[9.5rem] right-6 sm:right-8 z-[120]">
       <a
         href={FIVERR_PROFILE_URL}
         target="_blank"
