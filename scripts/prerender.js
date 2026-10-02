@@ -256,6 +256,87 @@ const pages = [
     }
   },
   {
+    path: '/saas/saathi-bot',
+    title: 'Saathi Bot — Grounded Enterprise AI Chatbot & Lead Booking SaaS | Tushar Singh',
+    description: '🤖 Saathi Bot is an autonomous multilingual RAG conversational assistant with sub-second streaming, pre-LLM Confidence Gate, Shadow DOM embed widget & Google Sheets lead sync.',
+    keywords: `Saathi Bot, AI chatbot SaaS, RAG chatbot, multilingual chatbot, conversational AI SaaS, shadow DOM widget, Tushar Singh SaaS, Zero AWS SaaS, ${INDIA_STATES_KEYWORDS}`,
+    type: 'website',
+    image: `${SITE_URL}/saathi-bot/saathi-bot-banner.jpg`,
+    alt: 'Saathi Bot — Grounded Enterprise AI Chatbot Architecture by Tushar Singh',
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": `${SITE_URL}/saas/saathi-bot#software`,
+          "name": "Saathi Bot",
+          "operatingSystem": "Cloud, Web, Shadow DOM, Next.js, Vercel, Supabase",
+          "applicationCategory": "BusinessApplication, CustomerSupportApplication, ConversationalAI",
+          "description": "Saathi Bot is an enterprise-grade autonomous AI chatbot and conversational commerce platform that ingests websites, sitemaps, PDFs, and DOCX into grounded, multilingual assistants with pre-LLM confidence gating and in-chat lead booking.",
+          "url": "https://saathi-bot.vercel.app",
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "INR",
+            "lowPrice": "0",
+            "highPrice": "4999",
+            "offerCount": "4"
+          },
+          "creator": {
+            "@type": "Person",
+            "@id": `${SITE_URL}/#person`,
+            "name": "Tushar Singh",
+            "jobTitle": "AI Automation Expert & Full-Stack Developer",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "New Delhi",
+              "addressRegion": "Delhi",
+              "postalCode": "110044",
+              "addressCountry": "IN"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${SITE_URL}/saas/saathi-bot#faq`,
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Saathi Bot?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Saathi Bot is a production-grade multi-tenant B2B AI SaaS that turns any website or documentation into an accurate, grounded, multilingual chatbot with sub-second streaming, zero hallucinations, and pre-LLM confidence gating."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Saathi Bot prevent hallucinations?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Saathi Bot uses hybrid dense and sparse search (RRF) with a pre-LLM Confidence Gate (threshold 0.55). If facts are not documented in the verified sources, it returns an instant fallback without calling an LLM, saving up to 41% on API costs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Saathi Bot understand Hindi and Hinglish?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, Saathi Bot natively understands queries typed in Hindi, English, and Romanized Hinglish (e.g. 'Refund kitne din me milega?'), accurately resolving them against English documentation."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the embed widget work without CSS bleeding?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Saathi Bot's client widget is encapsulated within an isolated Shadow DOM tree measuring only 18 KB (5.5 KB gzipped). Host page styles cannot alter the widget, and widget styles cannot alter the host site."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     path: '/blog',
     title: 'AI Automation & Full-Stack Engineering Blog | Tushar Singh',
     description: '💡 Actionable guides on AI automation, n8n workflows, RAG conversational chatbots & full-stack development — written from real production experience by Tushar Singh.',

@@ -37,6 +37,9 @@ export default defineConfig(({ mode }) => {
               if (id.includes('pages/TasqOne')) {
                 return 'page-tasqone';
               }
+              if (id.includes('pages/SaathiBot')) {
+                return 'page-saathibot';
+              }
               if (id.includes('pages/Home')) {
                 return 'page-home';
               }

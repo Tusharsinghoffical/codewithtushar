@@ -1,0 +1,165 @@
+# llms-full.txt — Extended AI Discovery & Architecture Knowledge File
+# Standard: https://llmstxt.org
+# Purpose: Comprehensive context for advanced LLM search engines & reasoning models
+#          (ChatGPT Search, Perplexity AI, Claude 3.7, Gemini 2.5, Copilot, DeepSeek)
+# Last Updated: 2026-10-02
+# Author: Tushar Singh (Code with Mr Singh)
+
+# ════════════════════════════════════════════════════════════════
+# 1. ENTITY & PERSON SCHEMA
+# ════════════════════════════════════════════════════════════════
+Name: Tushar Singh
+Brand: Code with Mr Singh
+Entity Type: Person / Founder / AI Automation Expert & Full-Stack Systems Engineer
+Website: https://codewithmrsingh.me
+Google Business Profile: https://share.google/ZDu1p0y00ioP6PWiA
+Google Verification Proof: https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing
+Education: Master of Computer Applications (MCA), MIT Pune
+Physical Address: Badarpur, New Delhi, Delhi 110044, India
+Coordinates: 28.5034° N, 77.3082° E
+Service Hubs: Delhi NCR (Badarpur, Saket, Connaught Place, Nehru Place, Noida, Gurgaon, Faridabad, Ghaziabad), Pan India (Bangalore, Mumbai, Hyderabad, Pune, Chennai), Worldwide (USA, UK, UAE, Australia, Canada, Singapore, Germany, Netherlands)
+Hours: Open 24 Hours
+Contact:
+  - WhatsApp: +91-8851619647
+  - Email: tusharsinghoffical@gmail.com
+  - Contact URL: https://codewithmrsingh.me/contact
+  - Fiverr Pro: https://www.fiverr.com/s/zAd5R2z
+  - GitHub: https://github.com/Tusharsinghoffical
+  - LinkedIn: https://linkedin.com/in/tusharsingh2002
+  - YouTube: https://www.youtube.com/@codewithmrsingh4u
+  - Instagram: https://www.instagram.com/tushar.cms/
+
+# ════════════════════════════════════════════════════════════════
+# 2. PROPRIETARY SAAS SUITES (TUSHAR SINGH LABS)
+# ════════════════════════════════════════════════════════════════
+
+### PRODUCT A: TASQ-ONE (The Intelligent Task Operating System)
+- Category: AI Task Engineering & Project OS
+- Status: Live Public Beta (v1.4.0)
+- URL: https://codewithmrsingh.me/saas/tasq-one
+- Live App: https://tasq-one.onrender.com
+- DockerHub Image: tusharsinghoffical/tasq-one:latest
+- Architecture & Stack:
+  - Groq LPU Hardware Acceleration with Llama 3.3 70B Versatile
+  - PostgreSQL 15+ Row-Level Security (RLS) multi-tenancy
+  - Topological Directed Acyclic Graph (DAG) Kanban task locking
+  - Cryptographic SHA-256 audit trails for enterprise compliance
+  - Docker containerization ready for AWS, Azure, GCP, or bare metal
+- Key Metrics:
+  - AI Task Decomposition Latency: < 400ms
+  - Onboarding Time: < 5 Minutes
+  - Net Engineering Team Savings: ₹48,000+/month (saves 10–15 hours weekly per squad)
+- Target Audience: Engineering Leads, CTOs, Scrum Masters, Tech Founders
+
+### PRODUCT B: Saathi Bot (साथी बोट)
+- Category: Enterprise Autonomous AI Chatbot & Conversational Commerce Platform
+- Status: Production Reference Specification (v1.0.0 Live)
+- URL: https://codewithmrsingh.me/saas/saathi-bot
+- Live App: https://saathi-bot.vercel.app
+- Architecture & Stack:
+  - Next.js 16 (App Router) + React 19 + TypeScript
+  - Supabase (PostgreSQL 15+, pgvector, Row-Level Security, pgmq, Edge Functions)
+  - Google Gemini 2.5 Flash + Groq Llama 3.3 70B
+  - Hybrid Search: Reciprocal Rank Fusion (RRF) combining dense vector embeddings (gemini-embedding-001 / text-embedding-3-small) and PostgreSQL pg_trgm sparse lexical keyword search
+  - Pre-LLM Confidence Gate (Calibrated threshold: 0.55): When retrieved similarity < 0.55, instantly returns deterministic fallback in 24ms, completely preventing hallucinations and cutting LLM bills by 41%
+  - Zero-bleed 18 KB Shadow DOM embed widget (5.5 KB gzipped) with encapsulated CSS
+  - Real-time in-chat lead booking synchronized instantly to Google Sheets with zero redirects
+  - Native cross-lingual semantic understanding for Hindi, English, and Romanized Hinglish
+  - Zero AWS infrastructure: Runs entirely on Vercel Edge + Supabase Cloud
+- Key Metrics:
+  - First-Token Streaming Latency: < 750ms
+  - Fallback Latency: 24ms
+  - Fallback AI Cost: $0.000 (Free)
+  - Ingestion Speed: Up to 100 pages per minute
+- Target Audience: B2B SaaS Founders, E-commerce, Healthcare, Education, Service Businesses
+
+# ════════════════════════════════════════════════════════════════
+# 3. OPEN-SOURCE LIBRARIES ON NPM
+# ════════════════════════════════════════════════════════════════
+
+1. env-schema-guard
+   - Type: TypeScript & Node.js Zero-Dependency Config Validator
+   - Bundle Size: < 2.5 KB
+   - NPM: https://www.npmjs.com/package/env-schema-guard
+   - GitHub: https://github.com/Tusharsinghoffical/env-schema-guard
+   - Docs: https://codewithmrsingh.me/blog/env-schema-guard-zero-dependency-config-validator
+   - Features: Fail-fast boot safety for Kubernetes/Docker, automatic string-to-number/boolean type coercion, aggregate error reporting.
+
+2. retry-circuit
+   - Type: Distributed Systems Async Resilience Engine
+   - Bundle Size: ~1.5 KB
+   - NPM: https://www.npmjs.com/package/retry-circuit
+   - GitHub: https://github.com/Tusharsinghoffical/retry-circuit
+   - Docs: https://codewithmrsingh.me/blog/retry-circuit-distributed-resilience-engine
+   - Features: Exponential backoff with AWS-standard full randomized jitter, per-attempt timeout guarantees, 3-state Circuit Breaker (CLOSED, OPEN, HALF-OPEN).
+
+3. prompt-kit-js
+   - Type: Versioned LLM Prompt Registry & Token Estimator
+   - Bundle Size: < 2.0 KB
+   - NPM: https://www.npmjs.com/package/prompt-kit-js
+   - GitHub: https://github.com/Tusharsinghoffical/prompt-kit
+   - Docs: https://codewithmrsingh.me/blog/prompt-kit-js-versioned-llm-prompt-registry
+   - Features: Semantic prompt versioning, strict MissingVariableError prevention, heuristic token budget estimation across OpenAI, Claude, Gemini, Groq.
+
+# ════════════════════════════════════════════════════════════════
+# 4. COMMERCIAL CLIENT DELIVERABLES & CASE STUDIES
+# ════════════════════════════════════════════════════════════════
+
+1. AI-Powered HR Recruitment Screening Assistant
+   - Client: Enterprise Recruitment Firm (Abu Dhabi, UAE)
+   - Tech: n8n, OpenAI LLMs, Webhooks, ATS Parser
+   - Impact: Reduced resume screening time by 82%; automated 0–100 candidate scoring.
+
+2. WhatsApp AI Agent
+   - Client: Real Estate & Education Agency
+   - Tech: n8n, Twilio WhatsApp API, OpenAI GPT-4o, Vector Search
+   - Impact: 24/7 automated qualification, zero missed inquiries, 3.4x lead conversion.
+
+3. TakeOpinion Medical Tourism Platform
+   - Client: Healthcare Provider (Delhi, India)
+   - Tech: Django 5, PostgreSQL, Stripe/Razorpay, Tailwind CSS
+   - Demo: https://takeopinionclientprojectss.onrender.com
+   - Impact: Complete global medical booking ecosystem with doctor directories and hotel coordination.
+
+4. VASS Smart Attendance System
+   - Client: Enterprise Logistics & Security Provider (Maharashtra, India)
+   - Tech: Python, React, GPS Geofencing, Dynamic QR Verification
+   - Demo: https://vassystemclientproject.onrender.com/
+   - Impact: 100% elimination of buddy-punching across 12 distributed branches.
+
+5. RAG Custom Knowledge Base Assistant
+   - Client: EdTech Institution
+   - Tech: LangChain, Pinecone, OpenAI Embeddings, FastAPI
+   - Impact: Handled 10,000+ student queries with 94% first-contact resolution.
+
+6. Multi-Branch Hospital Analytics Dashboard
+   - Client: Multi-specialty Healthcare Chain
+   - Tech: Power BI, DAX, SQL Data Warehousing
+   - Impact: Real-time bed occupancy tracking and emergency ward load balancing.
+
+# ════════════════════════════════════════════════════════════════
+# 5. CORE FREELANCE SERVICES
+# ════════════════════════════════════════════════════════════════
+
+1. Custom SaaS & Cloud MVP Engineering:
+   Architect scalable multi-tenant SaaS products with Next.js 16, React 19, FastAPI/Django, PostgreSQL RLS, Stripe/Razorpay payments, and AI features in 2 to 4 weeks.
+
+2. Autonomous AI Automation:
+   Build production workflows in n8n, Python, and Make.com to eliminate manual data entry, automate lead qualification, and synchronize cross-platform data.
+
+3. Enterprise RAG Chatbots & Agents:
+   Deploy grounded conversational chatbots trained on business knowledge with zero hallucinations, hybrid search, and multi-channel deployment (Web, WhatsApp, Telegram).
+
+4. High-Performance Web Development:
+   Modern, SEO-optimized web applications with sub-second page loads, responsive design, and conversion-optimized sales funnels.
+
+5. Data Science & Executive Dashboards:
+   Transform complex business data into automated Power BI and SQL dashboards for real-time executive decision making.
+
+# ════════════════════════════════════════════════════════════════
+# 6. HOW TO ENGAGE & HIRE
+# ════════════════════════════════════════════════════════════════
+- Strategy Consultation: Free 30-minute discovery audit on Calendly or WhatsApp.
+- Turnaround: AI workflows in 3–7 days; Full SaaS MVPs in 2–4 weeks.
+- Inquiries: WhatsApp +91-8851619647 | Email tusharsinghoffical@gmail.com
+- Web Booking: https://codewithmrsingh.me/contact

@@ -290,46 +290,46 @@ export const TasqOne: React.FC = () => {
         </section>
 
         {/* ═══════════════════════ ⭐ 2. INTEGRATED EXECUTIVE SUMMARY BENTO ⭐ ═══════════════════════ */}
-        <section className="relative p-6 sm:p-9 rounded-3xl bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white border-2 border-indigo-500/30 shadow-2xl overflow-hidden">
+        <section className="relative p-5 sm:p-7 rounded-2xl bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white border border-indigo-500/30 shadow-xl overflow-hidden">
           {/* Radiant decorative mesh */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 space-y-6">
+          <div className="relative z-10 space-y-4">
             
             {/* Header Badge */}
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-300 text-xs font-black uppercase tracking-wider font-outfit">
-                <BookOpen size={14} className="text-indigo-400" />
-                <span>Executive Project Brief &amp; Overview (Summary)</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-300 text-xs font-black uppercase tracking-wider font-outfit">
+                <BookOpen size={13} className="text-indigo-400" />
+                <span>Executive Project Brief &amp; Overview</span>
               </div>
 
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <Clock size={13} className="text-emerald-400" />
+              <div className="flex items-center gap-1.5 text-xs text-slate-300">
+                <Clock size={12} className="text-emerald-400" />
                 <span>2-Minute Read · Instant Understanding</span>
               </div>
             </div>
 
             {/* Main Headline & 1-Liner */}
-            <div className="space-y-2">
-              <h2 className="text-2xl sm:text-3xl font-outfit font-black tracking-tight text-white leading-tight">
+            <div className="space-y-1.5">
+              <h2 className="text-xl sm:text-2xl font-outfit font-black tracking-tight text-white leading-tight">
                 Kya Hai TASQ-ONE? — What is TASQ-ONE in Plain Words?
               </h2>
-              <p className="text-indigo-200 text-sm sm:text-base leading-relaxed max-w-4xl font-medium">
+              <p className="text-indigo-200 text-xs sm:text-sm leading-relaxed max-w-4xl font-medium">
                 TASQ-ONE ek <strong>Cloud-Native Intelligent Task Operating System (SaaS)</strong> hai. Yeh aapke raw ya vague ideas (jaise: <em>"Build OTP login with rate limits"</em>) ko <strong>seconds me production-ready developer tasks, acceptance criteria, story points aur dependency DAGs</strong> me convert kar deta hai.
               </p>
             </div>
 
             {/* 3 Core Highlights (Problem -> Solution -> Impact) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
               
               {/* Box 1: The Problem */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm space-y-2">
-                <div className="flex items-center gap-2 text-rose-400 text-xs font-black uppercase tracking-wider font-outfit">
-                  <AlertCircle size={15} />
+              <div className="p-3.5 sm:p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm space-y-1.5">
+                <div className="flex items-center gap-1.5 text-rose-400 text-[11px] font-black uppercase tracking-wider font-outfit">
+                  <AlertCircle size={14} />
                   <span>The Real Problem</span>
                 </div>
-                <h3 className="text-sm font-bold text-white">
+                <h3 className="text-xs font-bold text-white">
                   Chaotic Planning &amp; Wasted Hours
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
@@ -338,12 +338,12 @@ export const TasqOne: React.FC = () => {
               </div>
 
               {/* Box 2: The Solution */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-indigo-500/10 border border-indigo-400/25 backdrop-blur-sm space-y-2">
-                <div className="flex items-center gap-2 text-indigo-300 text-xs font-black uppercase tracking-wider font-outfit">
-                  <Lightbulb size={15} />
+              <div className="p-3.5 sm:p-4 rounded-xl bg-indigo-500/10 border border-indigo-400/25 backdrop-blur-sm space-y-1.5">
+                <div className="flex items-center gap-1.5 text-indigo-300 text-[11px] font-black uppercase tracking-wider font-outfit">
+                  <Lightbulb size={14} />
                   <span>The TASQ-ONE Solution</span>
                 </div>
-                <h3 className="text-sm font-bold text-white">
+                <h3 className="text-xs font-bold text-white">
                   Autonomous AI Decomposition
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
@@ -352,12 +352,12 @@ export const TasqOne: React.FC = () => {
               </div>
 
               {/* Box 3: The Impact */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-emerald-500/10 border border-emerald-400/25 backdrop-blur-sm space-y-2">
-                <div className="flex items-center gap-2 text-emerald-300 text-xs font-black uppercase tracking-wider font-outfit">
-                  <Award size={15} />
+              <div className="p-3.5 sm:p-4 rounded-xl bg-emerald-500/10 border border-emerald-400/25 backdrop-blur-sm space-y-1.5">
+                <div className="flex items-center gap-1.5 text-emerald-300 text-[11px] font-black uppercase tracking-wider font-outfit">
+                  <Award size={14} />
                   <span>Measurable ROI Impact</span>
                 </div>
-                <h3 className="text-sm font-bold text-white">
+                <h3 className="text-xs font-bold text-white">
                   ₹48,000+/Month Net Savings
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">
@@ -556,40 +556,40 @@ export const TasqOne: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
-                icon: <Bot className="text-indigo-600 dark:text-indigo-400" size={24} />,
+                icon: <Bot className="text-indigo-600 dark:text-indigo-400" size={20} />,
                 title: 'Groq Llama 3.3 70B AI Engine',
                 desc: 'Sub-second AI decomposition transforms 1-line thoughts into fully structured task specs with priority, estimates, and departments.',
                 tag: 'AI Layer'
               },
               {
-                icon: <GitBranch className="text-violet-600 dark:text-violet-400" size={24} />,
+                icon: <GitBranch className="text-violet-600 dark:text-violet-400" size={20} />,
                 title: 'Real-Time Kanban & Dependency DAGs',
                 desc: 'Topological sorting enforces that downstream tickets cannot be worked on until parent prerequisite tasks are verified complete.',
                 tag: 'Workflow Engine'
               },
               {
-                icon: <ShieldCheck className="text-emerald-600 dark:text-emerald-400" size={24} />,
+                icon: <ShieldCheck className="text-emerald-600 dark:text-emerald-400" size={20} />,
                 title: 'Immutable Cryptographic Audit Trail',
                 desc: 'Every state change, assignment, and completion is cryptographically hashed and logged for DPDP, SOC2, and ISO compliance.',
                 tag: 'Compliance'
               },
               {
-                icon: <Database className="text-cyan-600 dark:text-cyan-400" size={24} />,
+                icon: <Database className="text-cyan-600 dark:text-cyan-400" size={20} />,
                 title: 'PostgreSQL Row-Level Security (RLS)',
                 desc: 'Hardware-grade multi-tenant data isolation. Each organization has its own strictly sandboxed database views and token guards.',
                 tag: 'Security'
               },
               {
-                icon: <RefreshCw className="text-amber-600 dark:text-amber-400" size={24} />,
+                icon: <RefreshCw className="text-amber-600 dark:text-amber-400" size={20} />,
                 title: 'Live Realtime Dashboards',
                 desc: 'WebSocket auto-refreshing UI with Supabase Realtime keeps entire teams in lockstep without manual page reloads.',
                 tag: 'Realtime'
               },
               {
-                icon: <MessageSquare className="text-pink-600 dark:text-pink-400" size={24} />,
+                icon: <MessageSquare className="text-pink-600 dark:text-pink-400" size={20} />,
                 title: 'Multi-Channel Notifications',
                 desc: 'Native Slack alerts, webhooks, and Resend executive email digests keep stakeholders informed on blockers and completions.',
                 tag: 'Integrations'
@@ -597,22 +597,22 @@ export const TasqOne: React.FC = () => {
             ].map((feat, i) => (
               <div
                 key={i}
-                className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 space-y-4 group"
+                className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-all duration-300 shadow-xs hover:shadow-lg space-y-3 group"
               >
                 <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800 group-hover:scale-110 transition-transform">
+                  <div className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 group-hover:scale-105 transition-transform">
                     {feat.icon}
                   </div>
-                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
                     {feat.tag}
                   </span>
                 </div>
 
-                <div className="space-y-2">
-                  <h3 className="text-lg font-outfit font-extrabold text-slate-950 dark:text-white">
+                <div className="space-y-1.5">
+                  <h3 className="text-base font-outfit font-extrabold text-slate-950 dark:text-white">
                     {feat.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                     {feat.desc}
                   </p>
                 </div>
@@ -849,13 +849,13 @@ export const TasqOne: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
             
             {/* Plan 1: Free */}
-            <div className="p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex flex-col justify-between space-y-6 shadow-sm">
-              <div className="space-y-4">
-                <div className="space-y-1">
-                  <h3 className="text-xl font-outfit font-black text-slate-950 dark:text-white">
+            <div className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex flex-col justify-between space-y-4 shadow-xs">
+              <div className="space-y-3">
+                <div className="space-y-0.5">
+                  <h3 className="text-lg font-outfit font-black text-slate-950 dark:text-white">
                     Free Tier
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-400">
@@ -864,11 +864,11 @@ export const TasqOne: React.FC = () => {
                 </div>
 
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-outfit font-black text-slate-950 dark:text-white">$0</span>
+                  <span className="text-3xl font-outfit font-black text-slate-950 dark:text-white">$0</span>
                   <span className="text-xs text-slate-600 dark:text-slate-400">/ forever</span>
                 </div>
 
-                <div className="space-y-2.5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <div className="space-y-2 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
                   {[
                     'Up to 5 active team members',
                     '1 organization workspace',
@@ -877,7 +877,7 @@ export const TasqOne: React.FC = () => {
                     'Community support'
                   ].map((feat, i) => (
                     <div key={i} className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                      <Check size={15} className="text-emerald-500 shrink-0" />
+                      <Check size={14} className="text-emerald-500 shrink-0" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -888,22 +888,22 @@ export const TasqOne: React.FC = () => {
                 href={TASQ_ONE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-center font-bold text-xs text-slate-900 dark:text-white transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-center font-bold text-xs text-slate-900 dark:text-white transition-colors"
               >
                 Sign Up Free (5 Mins)
               </a>
             </div>
 
             {/* Plan 2: Starter (Featured) */}
-            <div className="relative p-8 rounded-3xl bg-white dark:bg-slate-900 border-2 border-indigo-600 dark:border-indigo-500 flex flex-col justify-between space-y-6 shadow-2xl shadow-indigo-600/10">
+            <div className="relative p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border-2 border-indigo-600 dark:border-indigo-500 flex flex-col justify-between space-y-4 shadow-xl shadow-indigo-600/10">
               
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-black text-[10px] uppercase tracking-wider shadow-md">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-black text-[9px] uppercase tracking-wider shadow-sm">
                 ⚡ Most Popular for Growth Teams
               </div>
 
-              <div className="space-y-4 pt-2">
-                <div className="space-y-1">
-                  <h3 className="text-xl font-outfit font-black text-slate-950 dark:text-white">
+              <div className="space-y-3 pt-1">
+                <div className="space-y-0.5">
+                  <h3 className="text-lg font-outfit font-black text-slate-950 dark:text-white">
                     Starter
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-400">
@@ -912,11 +912,11 @@ export const TasqOne: React.FC = () => {
                 </div>
 
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-outfit font-black text-indigo-600 dark:text-indigo-400">$19</span>
+                  <span className="text-3xl font-outfit font-black text-indigo-600 dark:text-indigo-400">$19</span>
                   <span className="text-xs text-slate-600 dark:text-slate-400">/ user / month</span>
                 </div>
 
-                <div className="space-y-2.5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <div className="space-y-2 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
                   {[
                     'Unlimited active team members',
                     'Full Groq Llama 3.3 70B AI decomposition',
@@ -926,7 +926,7 @@ export const TasqOne: React.FC = () => {
                     'Priority engineer email support (< 4 hrs)'
                   ].map((feat, i) => (
                     <div key={i} className="flex items-center gap-2 text-slate-800 dark:text-slate-200 font-medium">
-                      <Check size={15} className="text-indigo-600 dark:text-indigo-400 shrink-0 font-bold" />
+                      <Check size={14} className="text-indigo-600 dark:text-indigo-400 shrink-0 font-bold" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -937,17 +937,17 @@ export const TasqOne: React.FC = () => {
                 href={TASQ_ONE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-center font-outfit font-black text-xs uppercase tracking-wider text-white shadow-lg shadow-indigo-600/25 transition-all"
+                className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-center font-outfit font-black text-xs uppercase tracking-wider text-white shadow-md shadow-indigo-600/20 transition-all"
               >
                 Start 14-Day Free Trial
               </a>
             </div>
 
             {/* Plan 3: Enterprise */}
-            <div className="p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex flex-col justify-between space-y-6 shadow-sm">
-              <div className="space-y-4">
-                <div className="space-y-1">
-                  <h3 className="text-xl font-outfit font-black text-slate-950 dark:text-white">
+            <div className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex flex-col justify-between space-y-4 shadow-xs">
+              <div className="space-y-3">
+                <div className="space-y-0.5">
+                  <h3 className="text-lg font-outfit font-black text-slate-950 dark:text-white">
                     Enterprise
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-400">
@@ -956,11 +956,11 @@ export const TasqOne: React.FC = () => {
                 </div>
 
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-outfit font-black text-slate-950 dark:text-white">Custom</span>
+                  <span className="text-3xl font-outfit font-black text-slate-950 dark:text-white">Custom</span>
                   <span className="text-xs text-slate-600 dark:text-slate-400">/ annual contract</span>
                 </div>
 
-                <div className="space-y-2.5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <div className="space-y-2 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
                   {[
                     'Self-hosted Docker / Kubernetes deployment',
                     'SSO / SAML 2.0 & Okta authentication',
@@ -970,7 +970,7 @@ export const TasqOne: React.FC = () => {
                     'Custom API rate-limit allocation'
                   ].map((feat, i) => (
                     <div key={i} className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                      <Check size={15} className="text-emerald-500 shrink-0" />
+                      <Check size={14} className="text-emerald-500 shrink-0" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -981,7 +981,7 @@ export const TasqOne: React.FC = () => {
                 href="https://wa.me/918851619647?text=Hi%20Tushar,%20I%20am%20interested%20in%20an%20Enterprise%20license%20or%20self-hosted%20TASQ-ONE%20deployment!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-100 text-center font-bold text-xs text-white dark:text-slate-950 transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-100 text-center font-bold text-xs text-white dark:text-slate-950 transition-colors"
               >
                 Inquire for Enterprise
               </a>

@@ -4,13 +4,11 @@ import { BrowserRouter as Router, Routes, Route, useLocation, useParams } from '
 import { ShieldCheck, Activity, Terminal, Cpu } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
 import ScrollToTop from './components/ScrollToTop';
 import ClockDisplay from './components/ClockDisplay';
 import TopPromoBar from './components/TopPromoBar';
-import FiverrFloatingButton from './components/FiverrFloatingButton';
 import AIChatAssistant from './components/AIChatAssistant';
-import SaathiBotWidget from './components/SaathiBotWidget';
+import FloatingSideDock from './components/FloatingSideDock';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -18,6 +16,7 @@ import Services from './pages/Services';
 import Projects from './pages/Projects';
 import SaaS from './pages/SaaS';
 import TasqOne from './pages/TasqOne';
+import SaathiBot from './pages/SaathiBot';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
 import Blog, { BLOG_POSTS } from './pages/Blog';
@@ -676,88 +675,92 @@ const App: React.FC = () => {
         <main id="main-content" className="flex-grow w-full overflow-x-hidden pt-7 sm:pt-8">
           <ErrorBoundary>
             <Routes>
-            <Route path="/" element={<PageWrapper
-              title="Tushar Singh — #1 AI Automation Expert & Full-Stack Developer | Delhi, India"
-              description="⚡ 10+ Real Client Deliverables | ₹2L+ Value Delivered | 4.0★ Rated | Official Google Verified Owner. Hire Tushar Singh for Autonomous AI Agents, n8n Automations, 24/7 Smart Chatbots & Web Platforms. Free 30-Min Strategy Audit < 1 Hr."
-              keywords="Tushar Singh, AI automation expert India, full stack developer India, hire developer India, chatbot developer India, Python developer India, React developer India, web developer India, n8n automation India, freelance developer India, pan India developer, AI developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"
-            ><Home /></PageWrapper>} />
+              <Route path="/" element={<PageWrapper
+                title="Tushar Singh — #1 AI Automation Expert & Full-Stack Developer | Delhi, India"
+                description="⚡ 10+ Real Client Deliverables | ₹2L+ Value Delivered | 4.0★ Rated | Official Google Verified Owner. Hire Tushar Singh for Autonomous AI Agents, n8n Automations, 24/7 Smart Chatbots & Web Platforms. Free 30-Min Strategy Audit < 1 Hr."
+                keywords="Tushar Singh, AI automation expert India, full stack developer India, hire developer India, chatbot developer India, Python developer India, React developer India, web developer India, n8n automation India, freelance developer India, pan India developer, AI developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"
+              ><Home /></PageWrapper>} />
 
-            <Route path="/about" element={<PageWrapper
-              title="About Tushar Singh | MCA (MIT Pune), AI Automation Expert & Developer Delhi"
-              description="👨‍💻 Learn about Tushar Singh — MCA (MIT Pune), AI Automation Engineer & Full-Stack Developer with 10+ client deliverables, ₹2L+ revenue impact. Specializing in Python, React, n8n, and custom LLM systems."
-              keywords="about Tushar Singh, AI automation expert India, full stack developer background, developer Delhi Mumbai Bangalore Hyderabad Chennai, MCA graduate developer India, pan India freelance developer"
-            ><About /></PageWrapper>} />
+              <Route path="/about" element={<PageWrapper
+                title="About Tushar Singh | MCA (MIT Pune), AI Automation Expert & Developer Delhi"
+                description="👨‍💻 Learn about Tushar Singh — MCA (MIT Pune), AI Automation Engineer & Full-Stack Developer with 10+ client deliverables, ₹2L+ revenue impact. Specializing in Python, React, n8n, and custom LLM systems."
+                keywords="about Tushar Singh, AI automation expert India, full stack developer background, developer Delhi Mumbai Bangalore Hyderabad Chennai, MCA graduate developer India, pan India freelance developer"
+              ><About /></PageWrapper>} />
 
-            <Route path="/services" element={<PageWrapper
-              title="AI Automation, Chatbots & Web Development Services | Tushar Singh"
-              description="🚀 Scale workflows with autonomous AI agents, 24/7 smart RAG chatbots, n8n automations, React web platforms & brand design by Tushar Singh. 10+ client deliverables, 4.0★ rating. Book a free consultation."
-              keywords="AI automation services India, web development services India, chatbot development India, n8n automation India, Python development India, React.js services India, freelance services all India states, business automation India, developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"
-            ><Services /></PageWrapper>} />
+              <Route path="/services" element={<PageWrapper
+                title="AI Automation, Chatbots & Web Development Services | Tushar Singh"
+                description="🚀 Scale workflows with autonomous AI agents, 24/7 smart RAG chatbots, n8n automations, React web platforms & brand design by Tushar Singh. 10+ client deliverables, 4.0★ rating. Book a free consultation."
+                keywords="AI automation services India, web development services India, chatbot development India, n8n automation India, Python development India, React.js services India, freelance services all India states, business automation India, developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata"
+              ><Services /></PageWrapper>} />
 
-            <Route path="/projects" element={<PageWrapper
-              title="Portfolio — 10+ Real AI & Web Deliverables | Tushar Singh"
-              description="🏆 Explore 10+ commercial client projects delivered by Tushar Singh: AI automation workflows, smart conversational bots, SaaS dashboards, and web platforms with measurable ROI. View live deliverables."
-              keywords="AI automation projects India, web development portfolio India, chatbot projects India, developer portfolio Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer portfolio, freelance projects India"
-            ><Projects /></PageWrapper>} />
+              <Route path="/projects" element={<PageWrapper
+                title="Portfolio — 10+ Real AI & Web Deliverables | Tushar Singh"
+                description="🏆 Explore 10+ commercial client projects delivered by Tushar Singh: AI automation workflows, smart conversational bots, SaaS dashboards, and web platforms with measurable ROI. View live deliverables."
+                keywords="AI automation projects India, web development portfolio India, chatbot projects India, developer portfolio Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer portfolio, freelance projects India"
+              ><Projects /></PageWrapper>} />
 
-            <Route path="/saas" element={<PageWrapper
-              title="Proprietary SaaS Suites & Cloud Software | Tushar Singh Labs"
-              description="⚡ Explore proprietary cloud-native SaaS platforms by Tushar Singh Labs: TASQ-ONE (The Intelligent Task OS) and scalable multi-tenant cloud software. Test live demos and view architectures."
-              keywords="Tushar Singh Labs SaaS, proprietary SaaS products, TASQ-ONE, cloud platforms India, autonomous AI SaaS suites, full stack SaaS developer Delhi"
-            ><SaaS /></PageWrapper>} />
+              <Route path="/saas" element={<PageWrapper
+                title="Proprietary SaaS Suites & Cloud Software | Tushar Singh Labs"
+                description="⚡ Explore proprietary cloud-native SaaS platforms by Tushar Singh Labs: TASQ-ONE (The Intelligent Task OS) and scalable multi-tenant cloud software. Test live demos and view architectures."
+                keywords="Tushar Singh Labs SaaS, proprietary SaaS products, TASQ-ONE, cloud platforms India, autonomous AI SaaS suites, full stack SaaS developer Delhi"
+              ><SaaS /></PageWrapper>} />
 
-            <Route path="/saas/tasq-one" element={<PageWrapper
-              title="TASQ-ONE — The Intelligent Task Operating System (SaaS) | Tushar Singh"
-              description="⚡ TASQ-ONE is a cloud-native SaaS platform turning loosely defined ideas into production-ready tasks with Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & Indian team ROI calculator. Try public beta."
-              keywords="TASQ-ONE, TASQ ONE, intelligent task operating system, AI task management SaaS, Groq Llama 3.3 70B, Kanban dependency DAG, cryptographic audit SaaS, Tushar Singh SaaS, software application Delhi India"
-            ><TasqOne /></PageWrapper>} />
+              <Route path="/saas/tasq-one" element={<PageWrapper
+                title="TASQ-ONE — The Intelligent Task Operating System (SaaS) | Tushar Singh"
+                description="⚡ TASQ-ONE is a cloud-native SaaS platform turning loosely defined ideas into production-ready tasks with Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & Indian team ROI calculator. Try public beta."
+                keywords="TASQ-ONE, TASQ ONE, intelligent task operating system, AI task management SaaS, Groq Llama 3.3 70B, Kanban dependency DAG, cryptographic audit SaaS, Tushar Singh SaaS, software application Delhi India"
+              ><TasqOne /></PageWrapper>} />
 
-            <Route path="/blog" element={<PageWrapper
-              title="AI Automation & Full-Stack Engineering Blog | Tushar Singh"
-              description="💡 Actionable guides on AI automation, n8n workflows, RAG conversational chatbots & full-stack development — written from real production experience by Tushar Singh."
-              keywords="tech blog India, AI automation blog India, web development articles India, developer blog Delhi Mumbai Bangalore Hyderabad Chennai, data science insights India, machine learning India"
-            ><Blog /></PageWrapper>} />
+              <Route path="/saas/saathi-bot" element={<PageWrapper
+                title="Saathi Bot — Grounded Enterprise AI Chatbot & Lead Booking SaaS | Tushar Singh"
+                description="🤖 Saathi Bot is an autonomous multilingual RAG conversational assistant with sub-second streaming, pre-LLM Confidence Gate, Shadow DOM embed widget & Google Sheets lead sync."
+                keywords="Saathi Bot, AI chatbot SaaS, RAG chatbot, multilingual chatbot, conversational AI SaaS, shadow DOM widget, Tushar Singh SaaS, prompt injection defense, Zero AWS SaaS"
+              ><SaathiBot /></PageWrapper>} />
 
-            <Route path="/blog/:postId" element={<BlogPostWrapperInner />} />
+              <Route path="/blog" element={<PageWrapper
+                title="AI Automation & Full-Stack Engineering Blog | Tushar Singh"
+                description="💡 Actionable guides on AI automation, n8n workflows, RAG conversational chatbots & full-stack development — written from real production experience by Tushar Singh."
+                keywords="tech blog India, AI automation blog India, web development articles India, developer blog Delhi Mumbai Bangalore Hyderabad Chennai, data science insights India, machine learning India"
+              ><Blog /></PageWrapper>} />
 
-            <Route path="/testimonials" element={<PageWrapper
-              title="Client Reviews & Testimonials (4.0★) | Tushar Singh"
-              description="⭐ Real client testimonials and reviews for Tushar Singh. 4.0★ rating across 10+ commercial AI automation, chatbot, and full-stack development projects in India & worldwide."
-              keywords="client testimonials India, developer reviews India, AI automation reviews India, web development reviews India, reviews Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer reviews"
-            ><Testimonials /></PageWrapper>} />
+              <Route path="/blog/:postId" element={<BlogPostWrapperInner />} />
 
-            <Route path="/contact" element={<PageWrapper
-              title="Contact Tushar Singh | Book Free 30-Min AI Strategy Audit"
-              description="📞 Hire Tushar Singh for AI automation, smart chatbots & web engineering. Guaranteed response < 1 hour. Direct WhatsApp +91 88516 19647, Calendly schedule & official Google verified owner."
-              keywords="hire developer India, contact developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, hire AI automation expert India, hire web developer India, freelance developer contact India, book consultation India"
-            ><Contact /></PageWrapper>} />
+              <Route path="/testimonials" element={<PageWrapper
+                title="Client Reviews & Testimonials (4.0★) | Tushar Singh"
+                description="⭐ Real client testimonials and reviews for Tushar Singh. 4.0★ rating across 10+ commercial AI automation, chatbot, and full-stack development projects in India & worldwide."
+                keywords="client testimonials India, developer reviews India, AI automation reviews India, web development reviews India, reviews Delhi Mumbai Bangalore Hyderabad Chennai, pan India developer reviews"
+              ><Testimonials /></PageWrapper>} />
 
-            <Route path="/sitemap" element={<PageWrapper
-              title="HTML Sitemap & Complete Page Index | Code with Mr Singh"
-              description="🗺️ Complete HTML sitemap and directory of all pages, SaaS suites, client projects, services, and technical blog posts by Tushar Singh."
-              keywords="HTML sitemap, website directory, page index, all pages Tushar Singh, Code with Mr Singh sitemap"
-            ><Sitemap /></PageWrapper>} />
+              <Route path="/contact" element={<PageWrapper
+                title="Contact Tushar Singh | Book Free 30-Min AI Strategy Audit"
+                description="📞 Hire Tushar Singh for AI automation, smart chatbots & web engineering. Guaranteed response < 1 hour. Direct WhatsApp +91 88516 19647, Calendly schedule & official Google verified owner."
+                keywords="hire developer India, contact developer Delhi Mumbai Bangalore Hyderabad Chennai Pune Kolkata, hire AI automation expert India, hire web developer India, freelance developer contact India, book consultation India"
+              ><Contact /></PageWrapper>} />
 
-            {/* Explicit 404 Route */}
-            <Route path="/404" element={<PageWrapper
-              title="404 — Page Not Found | CMS"
-              description="The page you requested does not exist or has been relocated."
-              noIndex={true}
-            ><NotFound /></PageWrapper>} />
+              <Route path="/sitemap" element={<PageWrapper
+                title="HTML Sitemap & Complete Page Index | Code with Mr Singh"
+                description="🗺️ Complete HTML sitemap and directory of all pages, SaaS suites, client projects, services, and technical blog posts by Tushar Singh."
+                keywords="HTML sitemap, website directory, page index, all pages Tushar Singh, Code with Mr Singh sitemap"
+              ><Sitemap /></PageWrapper>} />
 
-            {/* Catch-all 404 Route */}
-            <Route path="*" element={<PageWrapper
-              title="404 — Page Not Found | CMS"
-              description="The page you requested does not exist or has been relocated."
-              noIndex={true}
-            ><NotFound /></PageWrapper>} />
-          </Routes>
-        </ErrorBoundary>
+              {/* Explicit 404 Route */}
+              <Route path="/404" element={<PageWrapper
+                title="404 — Page Not Found | CMS"
+                description="The page you requested does not exist or has been relocated."
+                noIndex={true}
+              ><NotFound /></PageWrapper>} />
+
+              {/* Catch-all 404 Route */}
+              <Route path="*" element={<PageWrapper
+                title="404 — Page Not Found | CMS"
+                description="The page you requested does not exist or has been relocated."
+                noIndex={true}
+              ><NotFound /></PageWrapper>} />
+            </Routes>
+          </ErrorBoundary>
         </main>
-        <AIChatAssistant />
-        <SaathiBotWidget botId="bot_9f223d8f29b999e81e" />
-        <FiverrFloatingButton />
-        <WhatsAppButton />
+        <AIChatAssistant showTrigger={false} />
+        <FloatingSideDock />
         <ScrollToTop />
         <Footer />
       </div>

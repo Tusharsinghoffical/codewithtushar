@@ -53,6 +53,15 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
 # Block spam backlink scrapers
 User-agent: AhrefsBot
 Disallow: /
@@ -68,6 +77,9 @@ Disallow: /
 
 User-agent: PetalBot
 Disallow: /
+# LLM Context Files for Answer Engine Optimization (AEO / GEO / Perplexity / ChatGPT / Claude)
+# LLMs-Txt: https://codewithmrsingh.me/llms.txt
+# LLMs-Full: https://codewithmrsingh.me/llms-full.txt
 
 # Canonical Sitemaps
 Sitemap: https://codewithmrsingh.me/sitemap.xml
@@ -76,3 +88,6 @@ Sitemap: https://codewithmrsingh.me/saas/sitemap.xml
 Sitemap: https://codewithmrsingh.me/blog/sitemap.xml
 Sitemap: https://codewithmrsingh.me/services/sitemap.xml
 Sitemap: https://codewithmrsingh.me/projects/sitemap.xml
+Sitemap: https://codewithmrsingh.me/about/sitemap.xml
+Sitemap: https://codewithmrsingh.me/contact/sitemap.xml
+Sitemap: https://codewithmrsingh.me/testimonials/sitemap.xml

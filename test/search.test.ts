@@ -20,6 +20,12 @@ describe('Search Engine Smoke Tests', () => {
     expect(results[0].title).toContain('TASQ-ONE');
   });
 
+  it('should find Saathi Bot in search results', () => {
+    const results = search('Saathi Bot');
+    expect(results.length).toBeGreaterThan(0);
+    expect(results[0].title).toContain('Saathi Bot');
+  });
+
   it('should handle empty or whitespace search queries gracefully', () => {
     const emptyResults = search('');
     expect(Array.isArray(emptyResults)).toBe(true);

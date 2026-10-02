@@ -77,6 +77,17 @@ const Sitemap: React.FC = () => {
             </Link>
 
             <Link
+              to="/saas/saathi-bot"
+              className="p-4 rounded-xl bg-slate-950/60 border border-cyan-500/30 hover:border-cyan-500 hover:bg-slate-900 transition-all group block"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-cyan-400 group-hover:text-cyan-300 transition-colors">Saathi Bot</span>
+                <ArrowUpRight size={14} className="text-slate-400 group-hover:text-cyan-400" />
+              </div>
+              <p className="text-xs text-slate-400 mt-1">Autonomous multilingual AI chatbot with Confidence Gate, Hybrid RAG &amp; in-chat booking.</p>
+            </Link>
+
+            <Link
               to="/services"
               className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/60 hover:border-indigo-500/40 hover:bg-slate-900 transition-all group block"
             >

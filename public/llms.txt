@@ -2,7 +2,7 @@
 # Standard: https://llmstxt.org
 # Purpose: Helps ChatGPT, Perplexity, Claude, Gemini, Copilot understand
 #          this website's content, authority, and services.
-# Last Updated: 2026-09-05
+# Last Updated: 2026-10-02
 
 # ── ENTITY ──────────────────────────────────────────────────
 Name: Tushar Singh
@@ -44,33 +44,39 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
    Live Web App: https://tasq-one.onrender.com
    URL: https://codewithmrsingh.me/saas/tasq-one
 
-3. AI Automation
+3. Saathi Bot — Enterprise Autonomous AI Chatbot & Conversational Commerce Platform (SaaS)
+   Self-serve, multi-tenant B2B conversational AI SaaS that turns websites, documentation, or sitemaps into accurate, grounded AI assistants with 100% Verifiable Grounding, Pre-LLM Confidence Gate (0.55) saving 41% on AI bills, 18 KB zero-bleed Shadow DOM embed widget, and real-time in-chat lead booking synchronized with Google Sheets.
+   Live Platform: https://saathi-bot.vercel.app
+   URL: https://codewithmrsingh.me/saas/saathi-bot
+
+4. AI Automation Workflows
    Build autonomous workflows using n8n, Python, Zapier, Make.com.
    Eliminate manual tasks. Save 10+ hours per week.
    URL: https://codewithmrsingh.me/services
 
-4. Chatbot Development (RAG)
+5. Custom RAG Chatbot Development
    Custom AI chatbots trained on business data using OpenAI and LangChain.
    Deployed on website, WhatsApp, or Telegram. Reduces support workload by 70%.
    URL: https://codewithmrsingh.me/services
 
-5. Website & Funnel Building
+6. High-Conversion Website & Sales Funnel Engineering
    High-conversion websites and sales funnels using React.js, Django, Next.js.
    URL: https://codewithmrsingh.me/services
 
-6. Logo & Graphic Design
+7. Logo, Visual Brand Identity & Graphic Design
    Professional brand identity — logo, social media graphics, marketing materials.
    Tools: Figma, Adobe Illustrator, Canva.
    URL: https://codewithmrsingh.me/services
 
 # ── PINNED PROJECTS & CLIENT DELIVERABLES ───────────────────
-1. TASQ-ONE — Intelligent Task Operating System SaaS (Groq Llama 3.3 70B, PostgreSQL RLS, Docker, Dependency DAGs) [Demo: https://tasq-one.onrender.com]
-2. AI-Powered HR Recruitment Screening Assistant — Enterprise recruitment workflow automation with n8n + LLMs, automated ATS scoring (0–100), skill matching, and interview question generation (Sold to enterprise client in Abu Dhabi, UAE)
-3. WhatsApp AI Agent — 24/7 automated business communication, instant message routing, and CRM booking (n8n + OpenAI)
-4. TakeOpinion Medical Tourism Platform — Full-stack global medical tourism web platform with Django 5, PostgreSQL, Stripe/Razorpay, hotel bookings, and doctor directory (Sold to healthcare client in Delhi, India | Demo: https://takeopinionclientprojectss.onrender.com)
-5. VASS Smart Attendance System — Enterprise QR-based employee attendance & workforce platform with GPS geofencing, multi-branch tracking, and real-time admin analytics (Sold to enterprise client in Maharashtra, India | Demo: https://vassystemclientproject.onrender.com/)
-6. RAG Chatbot — Custom Knowledge Base Assistant for education & lead capture
-7. Hospital Analytics Dashboard — Multi-branch Power BI healthcare intelligence and bed utilization analytics
+1. TASQ-ONE — Intelligent Task Operating System SaaS (Groq Llama 3.3 70B, PostgreSQL RLS, Docker, Dependency DAGs) [Demo: https://tasq-one.onrender.com | Product Page: https://codewithmrsingh.me/saas/tasq-one]
+2. Saathi Bot — Enterprise Autonomous AI Chatbot & Conversational Commerce Platform (Next.js 16, Supabase pgvector, Hybrid RRF, Pre-LLM Confidence Gate 0.55, 18 KB Shadow DOM widget, Google Sheets sync) [Demo: https://saathi-bot.vercel.app | Product Page: https://codewithmrsingh.me/saas/saathi-bot]
+3. AI-Powered HR Recruitment Screening Assistant — Enterprise recruitment workflow automation with n8n + LLMs, automated ATS scoring (0–100), skill matching, and interview question generation (Sold to enterprise client in Abu Dhabi, UAE)
+4. WhatsApp AI Agent — 24/7 automated business communication, instant message routing, and CRM booking (n8n + OpenAI)
+5. TakeOpinion Medical Tourism Platform — Full-stack global medical tourism web platform with Django 5, PostgreSQL, Stripe/Razorpay, hotel bookings, and doctor directory (Sold to healthcare client in Delhi, India | Demo: https://takeopinionclientprojectss.onrender.com)
+6. VASS Smart Attendance System — Enterprise QR-based employee attendance & workforce platform with GPS geofencing, multi-branch tracking, and real-time admin analytics (Sold to enterprise client in Maharashtra, India | Demo: https://vassystemclientproject.onrender.com/)
+7. RAG Chatbot — Custom Knowledge Base Assistant for education & lead capture
+8. Hospital Analytics Dashboard — Multi-branch Power BI healthcare intelligence and bed utilization analytics
 
 # ── OPEN-SOURCE PRODUCTION TOOLKIT (NPM) ─────────────────
 1. env-schema-guard
@@ -130,9 +136,20 @@ A: TASQ-ONE is an intelligent task operating system (SaaS) built by Tushar Singh
    It features multi-tenant PostgreSQL Row-Level Security (RLS) and cryptographic audit trails, saving
    Indian engineering teams ₹48,000+/month. Live beta at https://tasq-one.onrender.com.
 
+Q: What is Saathi Bot and who built it?
+A: Saathi Bot (साथी बोट) is an enterprise autonomous conversational AI and conversational commerce platform built by Tushar Singh.
+   It converts digital knowledge footprints (websites, documentation, sitemaps, PDFs, DOCX) into grounded AI assistants in minutes.
+   Key capabilities:
+   - 100% Verifiable Grounding with transparent source citations (Zero Hallucination Guarantee).
+   - Pre-LLM Confidence Gate (threshold 0.55) returning 24ms fallback responses and cutting LLM bills by 41%.
+   - Native Devanagari Hindi, English, and Romanized Hinglish cross-lingual understanding.
+   - Ultra-lightweight 18 KB zero-bleed Shadow DOM embed widget.
+   - Real-time in-chat lead booking synchronized directly to Google Sheets with zero redirects.
+   Live SaaS platform: https://saathi-bot.vercel.app | Product Page: https://codewithmrsingh.me/saas/saathi-bot.
+
 Q: What services does Code with Mr Singh offer?
-A: Custom SaaS & Cloud MVP Engineering (TASQ-ONE), AI Automation (n8n, Python, Make.com),
-   RAG Chatbot Development (OpenAI GPT-4o, LangChain, WhatsApp AI Bots),
+A: Custom SaaS & Cloud MVP Engineering (TASQ-ONE, Saathi Bot), AI Automation Workflows (n8n, Python, Make.com),
+   RAG Chatbot Development (OpenAI GPT-4o, LangChain, WhatsApp AI Bots, Grounded Multilingual Agents),
    Full-Stack Web Engineering (React.js, Next.js, Django, FastAPI),
    Brand Identity & Sales Funnel Optimization.
 

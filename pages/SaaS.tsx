@@ -221,177 +221,126 @@ export const SaaS: React.FC = () => {
             </div>
           ) : viewMode === 'cards' ? (
             
-            /* ── VIEW MODE 1: RICH SHOWCASE CARDS ── */
-            <div className="grid grid-cols-1 gap-8">
+            /* ── VIEW MODE 1: COMPACT, SLEEK SHOWCASE CARDS ── */
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
               {filteredProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="rounded-3xl bg-white dark:bg-slate-900 border-2 border-indigo-500/20 hover:border-indigo-500/40 shadow-xl shadow-indigo-500/5 transition-all duration-300 overflow-hidden flex flex-col lg:flex-row items-stretch"
+                  className="group rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-white/10 hover:border-indigo-500/50 shadow-md hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden"
                 >
-                  
-                  {/* Left Column: Brand Identity, Banner & Quick Actions (40% width) */}
-                  <div className="lg:w-5/12 p-6 sm:p-8 bg-slate-50/70 dark:bg-slate-950/60 border-b lg:border-b-0 lg:border-r border-slate-200/80 dark:border-slate-800/80 flex flex-col justify-between space-y-6">
-                    
-                    <div className="space-y-4">
-                      {/* Top Badges */}
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shadow-xs">
-                          <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                          </span>
-                          <span>{product.statusLabel}</span>
-                        </span>
+                  {/* Subtle Top Gradient Accent Line */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 opacity-60 group-hover:opacity-100 transition-opacity" />
 
-                        <span className="font-mono text-xs text-slate-500 px-2.5 py-0.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                          {product.version}
-                        </span>
-                      </div>
-
-                      {/* Brand Banner Card */}
-                      <div className="p-4 sm:p-5 rounded-2xl bg-slate-950 border border-slate-800 dark:border-white/10 shadow-lg shadow-indigo-500/10 flex items-center justify-center relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/15 via-violet-500/20 to-cyan-500/15 blur-xl pointer-events-none" />
-                        <img
-                          src={product.bannerImage}
-                          alt={`${product.title} Logo Banner`}
-                          className="w-full h-auto object-contain max-h-16 sm:max-h-20 drop-shadow-[0_0_20px_rgba(255,255,255,0.45)] relative z-10"
-                        />
-                      </div>
-
-                      {/* Title & Tagline */}
-                      <div className="space-y-1">
-                        <div className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-outfit">
-                          {product.category}
+                  <div className="space-y-4">
+                    {/* Header Row: Logo Avatar + Meta + Status Pill */}
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="h-12 w-12 rounded-xl bg-slate-950 border border-slate-800 dark:border-white/10 flex items-center justify-center p-1.5 shadow-sm shrink-0 overflow-hidden group-hover:scale-105 transition-transform">
+                          <img
+                            src={product.bannerImage}
+                            alt={`${product.title} icon`}
+                            className="max-h-full max-w-full object-contain"
+                          />
                         </div>
-                        <h2 className="text-2xl font-outfit font-black text-slate-950 dark:text-white">
-                          {product.title}
-                        </h2>
-                        <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">
-                          {product.tagline}
-                        </p>
+                        <div>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-outfit">
+                              {product.category}
+                            </span>
+                            <span className="font-mono text-[10px] text-slate-500 dark:text-slate-400 px-1.5 py-0.2 rounded bg-slate-100 dark:bg-slate-800">
+                              {product.version}
+                            </span>
+                          </div>
+                          <h2 className="text-lg font-outfit font-black text-slate-950 dark:text-white tracking-tight leading-snug">
+                            {product.title}
+                          </h2>
+                        </div>
                       </div>
 
-                      {/* Description Summary */}
-                      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {/* Live Status Pill */}
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 shrink-0">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                        </span>
+                        <span>Live</span>
+                      </span>
+                    </div>
+
+                    {/* Tagline & Short Description */}
+                    <div className="space-y-1">
+                      <p className="text-xs font-semibold text-slate-700 dark:text-slate-200 line-clamp-1">
+                        {product.tagline}
+                      </p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
                         {product.description}
                       </p>
                     </div>
 
-                    {/* Left Bottom Direct CTAs */}
-                    <div className="flex flex-col sm:flex-row gap-2.5 pt-2">
-                      <Link
-                        to={product.pageUrl}
-                        className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-outfit font-black text-xs uppercase tracking-wider shadow-md shadow-indigo-600/20 transition-all text-center cursor-pointer"
-                      >
-                        <span>Explore Product Page</span>
-                        <ArrowRight size={14} />
-                      </Link>
-
-                      {product.demoUrl && (
-                        <a
-                          href={product.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-emerald-600/20 transition-all text-center cursor-pointer"
-                        >
-                          <span>Launch Demo</span>
-                          <ExternalLink size={13} />
-                        </a>
-                      )}
-                    </div>
-
-                  </div>
-
-                  {/* Right Column: Key Metrics, Features, Specs & Docker Snippet (60% width) */}
-                  <div className="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-                    
-                    {/* Key Metrics Grid */}
-                    <div className="space-y-2">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                        Operational Benchmarks &amp; Verified Metrics:
-                      </span>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        {product.metrics.map((metric, idx) => (
-                          <div
-                            key={idx}
-                            className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-center sm:text-left"
-                          >
-                            <span className="text-[10px] uppercase font-bold text-slate-600 dark:text-slate-400 block">
-                              {metric.label}
-                            </span>
-                            <span className="text-base font-outfit font-black text-slate-950 dark:text-white">
-                              {metric.value}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Highlight Checklist */}
-                    <div className="space-y-2">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                        Core Capabilities &amp; Architecture Primitives:
-                      </span>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {product.highlights.map((h, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200/70 dark:border-slate-800/80 text-xs text-slate-700 dark:text-slate-300"
-                          >
-                            <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
-                            <span>{h}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Tech Stack Chips */}
-                    <div className="space-y-2">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                        Engineered With:
-                      </span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {product.techStack.map((tech, idx) => (
-                          <span
-                            key={idx}
-                            className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60"
-                          >
-                            {tech}
+                    {/* Compact 4-Metric Strip */}
+                    <div className="grid grid-cols-4 gap-1.5 p-2 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/70 dark:border-slate-800/80 text-center">
+                      {product.metrics.map((metric, idx) => (
+                        <div key={idx} className="min-w-0">
+                          <span className="text-[9px] uppercase font-bold text-slate-500 dark:text-slate-400 block truncate">
+                            {metric.label}
                           </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Docker Run Snippet Box with 1-Click Copy */}
-                    {product.dockerSnippet && (
-                      <div className="p-3.5 rounded-2xl bg-slate-950 text-slate-200 border border-slate-800 flex items-center justify-between gap-3 text-xs font-mono">
-                        <div className="flex items-center gap-2 overflow-x-auto">
-                          <Terminal size={14} className="text-indigo-400 shrink-0" />
-                          <span className="truncate text-[11px] text-slate-300">
-                            {product.dockerSnippet}
+                          <span className="text-xs sm:text-sm font-outfit font-black text-slate-950 dark:text-white block mt-0.5 truncate">
+                            {metric.value}
                           </span>
                         </div>
-                        <button
-                          onClick={() => copyDockerCommand(product.dockerSnippet!, product.id)}
-                          className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-[11px] transition-colors cursor-pointer"
-                        >
-                          {copiedDockerId === product.id ? (
-                            <>
-                              <Check size={12} className="text-emerald-400" />
-                              <span className="text-emerald-400">Copied</span>
-                            </>
-                          ) : (
-                            <>
-                              <Copy size={12} />
-                              <span>Copy Run</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
-                    )}
+                      ))}
+                    </div>
 
+                    {/* Top 3 Capabilities with Green Checks */}
+                    <div className="space-y-1">
+                      {product.highlights.slice(0, 3).map((h, idx) => (
+                        <div key={idx} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
+                          <CheckCircle2 size={13} className="text-emerald-500 shrink-0" />
+                          <span className="truncate leading-none">{h}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Compact Tech Stack Badges */}
+                    <div className="flex flex-wrap items-center gap-1 pt-0.5">
+                      {product.techStack.slice(0, 5).map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/60"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {product.techStack.length > 5 && (
+                        <span className="text-[10px] text-slate-500 font-bold">
+                          +{product.techStack.length - 5}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
+                  {/* Card Action Footer: Dual CTAs */}
+                  <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2.5">
+                    <Link
+                      to={product.pageUrl}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-outfit font-black text-xs uppercase tracking-wider shadow-sm shadow-indigo-600/20 transition-all text-center"
+                    >
+                      <span>Explore Product Page</span>
+                      <ArrowRight size={13} />
+                    </Link>
+
+                    {product.demoUrl && (
+                      <a
+                        href={product.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold text-xs uppercase tracking-wider border border-slate-200 dark:border-slate-700 transition-all"
+                      >
+                        <span>Demo</span>
+                        <ExternalLink size={12} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

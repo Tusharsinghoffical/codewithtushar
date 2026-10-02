@@ -119,14 +119,29 @@ export const PAGE_OG: Record<string, { image: string; alt: string; width?: strin
   },
   '/saas': {
     image: `${SITE_URL}/tasq-one/tasq-one-banner.png`,
+    alt: 'TASQ-ONE & Saathi Bot — Proprietary SaaS Suites by Tushar Singh',
+    width: '462',
+    height: '197',
+  },
+  '/saas/tasq-one': {
+    image: `${SITE_URL}/tasq-one/tasq-one-banner.png`,
     alt: 'TASQ-ONE — The Intelligent Task Operating System (SaaS) by Tushar Singh',
     width: '462',
     height: '197',
+  },
+  '/saas/saathi-bot': {
+    image: `${SITE_URL}/saathi-bot/saathi-bot-logo.svg`,
+    alt: 'Saathi Bot — Grounded Enterprise AI Chatbot & Conversational Commerce Platform by Tushar Singh',
+    width: '240',
+    height: '64',
   },
 };
 
 export const TASQ_ONE_URL = 'https://tasq-one.onrender.com';
 export const TASQ_ONE_DOCKER_IMAGE = 'tusharsinghoffical/tasq-one';
+
+export const SAATHI_BOT_URL = 'https://saathi-bot.vercel.app';
+export const SAATHI_BOT_WIDGET_SCRIPT = 'https://saathi-bot.vercel.app/widget.js';
 
 /* ─── Proprietary SaaS Products Directory ──────────────────────────────
    💡 TO ADD A NEW SAAS PRODUCT:
@@ -134,6 +149,39 @@ export const TASQ_ONE_DOCKER_IMAGE = 'tusharsinghoffical/tasq-one';
    automatically appear on the /saas page with search, filters & cards!
 ───────────────────────────────────────────────────────────────────────── */
 export const SAAS_PRODUCTS: SaasProduct[] = [
+  {
+    id: 'saathi-bot',
+    title: 'Saathi Bot',
+    tagline: 'Enterprise Autonomous AI Chatbot & Conversational Commerce Platform',
+    description: 'Self-serve, multi-tenant B2B AI SaaS that converts any digital knowledge footprint (websites, sitemaps, PDFs, DOCX) into an accurate, grounded, multilingual AI assistant in under 10 minutes with pre-LLM Confidence Gating, zero hallucinations, cross-lingual semantic retrieval, and zero-redirect lead booking.',
+    category: 'Conversational AI & Lead Gen',
+    status: 'live',
+    statusLabel: 'PRODUCTION V1.0 LIVE',
+    version: 'v1.0.0',
+    bannerImage: '/saathi-bot/saathi-bot-banner.jpg',
+    logoImage: '/saathi-bot/saathi-bot-icon.svg',
+    tags: ['Hybrid RAG (RRF)', 'Confidence Gate', 'Multilingual RAG', 'Shadow DOM (18KB)', 'Google Sheets Sync', 'Supabase pgvector', 'Zero-AWS'],
+    metrics: [
+      { label: 'First-Token Latency', value: '< 750ms' },
+      { label: 'Fallback Latency', value: '24ms' },
+      { label: 'Fallback AI Cost', value: '$0.000 (Free)' },
+      { label: 'Widget Payload', value: '18 KB (5.5 KB gz)' },
+    ],
+    highlights: [
+      '100% Verifiable Grounding with transparent source citations',
+      'Pre-LLM Confidence Gate saving up to 41% on operational AI bills',
+      'Cross-lingual multilingual semantic understanding & retrieval',
+      'In-chat lead booking form with real-time 2-way Google Sheets mirror',
+      'Zero-dependency Shadow DOM embed widget immune to host CSS bleeding',
+      'Mathematical multi-tenant isolation via PostgreSQL RLS & denormalized bot_id',
+      'High-throughput Multi-Model AI Gateway (Groq Llama 3.3 70B & Gemini 2.5 Pro)'
+    ],
+    techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Supabase pgvector', 'Google Gemini 2.5', 'Groq Cloud', 'Vercel Edge'],
+    demoUrl: SAATHI_BOT_URL,
+    pageUrl: '/saas/saathi-bot',
+    dockerSnippet: `<script src="https://saathi-bot.vercel.app/widget.js" data-bot="YOUR_PUBLIC_BOT_ID" async></script>`,
+    isFlagship: true
+  },
   {
     id: 'tasq-one',
     title: 'TASQ-ONE',
@@ -377,6 +425,34 @@ export const PROJECTS: Project[] = [
     },
     liveDemoUrl: 'https://tasq-one.onrender.com',
     saasPageUrl: '/saas/tasq-one'
+  },
+
+  // ── 2. Saathi Bot Flagship Conversational AI SaaS (Pinned / Featured) ──────────
+  {
+    id: 'p-saathi-bot',
+    title: 'Saathi Bot | Autonomous AI Chatbot & Conversational Commerce Platform',
+    description: 'Self-serve, multi-tenant B2B AI SaaS that turns any website, documentation, or sitemap into an accurate, grounded AI assistant with Pre-LLM Confidence Gating, zero hallucinations, 18 KB Shadow DOM widget, and in-chat lead booking.',
+    imageUrl: '/saathi-bot/saathi-bot-banner.jpg',
+    category: 'SaaS Products',
+    tags: ['SaaS', 'Hybrid RAG', 'Confidence Gate', 'Next.js 16', 'Supabase pgvector', 'Shadow DOM', 'Google Sheets'],
+    date: '2026',
+    isFeatured: true,
+    isPinned: true,
+    clientBackground: 'Tushar Singh Labs proprietary multi-tenant B2B conversational AI platform for e-commerce stores, healthcare clinics, and service businesses worldwide.',
+    problemStatement: 'Businesses lose high-intent leads and burn expensive LLM tokens when traditional chatbots hallucinate incorrect policies, clash with host website CSS, or bounce users to external booking forms.',
+    strategy: 'Engineered an autonomous conversational commerce platform with dense+sparse Hybrid RAG, a 0.55 Pre-LLM Confidence Gate that drops off-topic queries in 24ms at $0 cost, an 18 KB zero-bleed Shadow DOM widget, and in-chat lead booking synced to Google Sheets via encrypted OAuth.',
+    results: [
+      'Sub-second first-token streaming latency (< 750ms).',
+      'Up to 41% operational AI cost reduction via Pre-LLM Confidence Gate.',
+      'Zero CSS bleeding with host websites via 18 KB native Web Component Shadow DOM.',
+      'Real-time 2-way lead booking synchronization with Google Sheets API.'
+    ],
+    beforeAfter: {
+      before: 'Hallucinating bots, runaway token bills, iframe CSS collisions & 60%+ booking drop-off',
+      after: '100% grounded answers, $0 fallback cost, 18 KB widget & seamless in-chat booking'
+    },
+    liveDemoUrl: SAATHI_BOT_URL,
+    saasPageUrl: '/saas/saathi-bot'
   },
 
   // ── 2. AI-Powered HR Recruitment Screening Assistant (Abu Dhabi Client Deliverable - Pinned) ──────

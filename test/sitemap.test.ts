@@ -13,6 +13,7 @@ describe('Sitemap Integrity & SEO Tests', () => {
     const content = fs.readFileSync(saasSitemapPath, 'utf8');
     expect(content).toContain('https://codewithmrsingh.me/saas');
     expect(content).toContain('https://codewithmrsingh.me/saas/tasq-one');
+    expect(content).toContain('https://codewithmrsingh.me/saas/saathi-bot');
     expect(content).toContain('<?xml version="1.0" encoding="UTF-8"?>');
     expect(content).toContain('<urlset');
   });
@@ -30,6 +31,7 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(content).toContain('https://codewithmrsingh.me/testimonials');
     expect(content).toContain('https://codewithmrsingh.me/saas');
     expect(content).toContain('https://codewithmrsingh.me/saas/tasq-one');
+    expect(content).toContain('https://codewithmrsingh.me/saas/saathi-bot');
     expect(content).toContain('https://codewithmrsingh.me/blog');
     expect(content).toContain('env-schema-guard-zero-dependency-config-validator');
     expect(content).toContain('retry-circuit-distributed-resilience-engine');
@@ -48,12 +50,38 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(content).toContain('https://codewithmrsingh.me/projects/sitemap.xml');
   });
 
-  it('should have robots.txt referencing saas and master sitemaps', () => {
+  it('should have robots.txt referencing all sitemaps and modern AI search crawlers', () => {
     const robotsPath = path.join(publicDir, 'robots.txt');
     expect(fs.existsSync(robotsPath)).toBe(true);
 
     const content = fs.readFileSync(robotsPath, 'utf8');
     expect(content).toContain('Sitemap: https://codewithmrsingh.me/sitemap.xml');
     expect(content).toContain('Sitemap: https://codewithmrsingh.me/saas/sitemap.xml');
+    expect(content).toContain('Sitemap: https://codewithmrsingh.me/projects/sitemap.xml');
+    expect(content).toContain('User-agent: GPTBot');
+    expect(content).toContain('User-agent: ClaudeBot');
+    expect(content).toContain('User-agent: PerplexityBot');
+    expect(content).toContain('User-agent: OAI-SearchBot');
+    expect(content).toContain('User-agent: Meta-ExternalAgent');
+  });
+
+  it('should have llms.txt and llms-full.txt with TASQ-ONE and Saathi Bot documentation', () => {
+    const llmsPath = path.join(publicDir, 'llms.txt');
+    const llmsFullPath = path.join(publicDir, 'llms-full.txt');
+    expect(fs.existsSync(llmsPath)).toBe(true);
+    expect(fs.existsSync(llmsFullPath)).toBe(true);
+
+    const llms = fs.readFileSync(llmsPath, 'utf8');
+    expect(llms).toContain('TASQ-ONE');
+    expect(llms).toContain('Saathi Bot');
+    expect(llms).toContain('https://saathi-bot.vercel.app');
+    expect(llms).toContain('https://codewithmrsingh.me/saas/saathi-bot');
+
+    const llmsFull = fs.readFileSync(llmsFullPath, 'utf8');
+    expect(llmsFull).toContain('TASQ-ONE');
+    expect(llmsFull).toContain('Saathi Bot');
+    expect(llmsFull).toContain('Pre-LLM Confidence Gate');
+    expect(llmsFull).toContain('Shadow DOM');
   });
 });
+
