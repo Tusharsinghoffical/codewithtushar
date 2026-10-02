@@ -45,8 +45,8 @@ const ScrollToTop: React.FC = () => {
         ${isVisible
           ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
           : 'opacity-0 translate-y-10 scale-50 pointer-events-none'}
-        /* Bottom-Right Corner Position */
-        bottom-6 sm:bottom-8 right-6 sm:right-8
+        /* Positioned above Saathi Bot popup widget and demo badge */
+        bottom-[7.75rem] sm:bottom-[8rem] right-6 sm:right-8
         /* Modern Glassmorphic Colors */
         bg-slate-900/85 dark:bg-slate-900/90
         border-indigo-500/30 dark:border-indigo-400/30
