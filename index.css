@@ -51,4 +51,40 @@
   .safe-bottom {
     padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
+
+  /* Chatbot Custom Animations */
+  @keyframes botFloat {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-8px) rotate(2.5deg);
+    }
+  }
+
+  @keyframes soundWave {
+    0%, 100% {
+      transform: scaleY(0.35);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+
+  .animate-bot-float {
+    animation: botFloat 3.5s ease-in-out infinite;
+  }
+
+  .animate-soundwave-1 {
+    animation: soundWave 0.5s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+  .animate-soundwave-2 {
+    animation: soundWave 0.5s ease-in-out infinite 0.15s;
+    transform-origin: bottom;
+  }
+  .animate-soundwave-3 {
+    animation: soundWave 0.5s ease-in-out infinite 0.3s;
+    transform-origin: bottom;
+  }
 }

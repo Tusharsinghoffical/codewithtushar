@@ -898,14 +898,24 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               onClick={handleOpen}
               aria-label="Open Tushar AI Assistant Chatbot"
               title="Tushar AI Assistant — Services, Projects & Instant Booking"
-              className="relative flex items-center justify-center p-0 transition-all duration-300 active:scale-95 hover:scale-110 hover:-translate-y-1.5 focus:outline-none cursor-pointer"
+              className="relative flex items-center justify-center p-0 transition-all duration-300 active:scale-95 hover:scale-110 hover:-translate-y-1.5 focus:outline-none cursor-pointer animate-bot-float group/mascot"
             >
+              {/* Pulsing ambient halo behind mascot */}
+              <span className="absolute inset-0 rounded-full bg-cyan-400/25 blur-md animate-ping -z-10 [animation-duration:3s]" />
+              <span className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-cyan-400/30 via-indigo-500/20 to-emerald-400/25 blur-sm animate-pulse -z-10" />
+
               {/* AI Assistant Mascot Icon Only */}
               <img
                 src="/tushar-ai-icon.png"
                 alt="Tushar AI Assistant Mascot"
-                className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-[0_10px_25px_rgba(34,211,238,0.45)] hover:drop-shadow-[0_16px_35px_rgba(34,211,238,0.7)] transition-all duration-300"
+                className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-[0_10px_25px_rgba(34,211,238,0.45)] group-hover/mascot:drop-shadow-[0_16px_35px_rgba(34,211,238,0.75)] transition-all duration-300 select-none pointer-events-none"
               />
+
+              {/* Live Status indicator beacon */}
+              <span className="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5 sm:h-4 sm:w-4">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 sm:h-4 sm:w-4 bg-emerald-500 border-2 border-slate-950 shadow-xs" />
+              </span>
             </button>
           )}
 
@@ -924,7 +934,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       {/* ─── Chat Window Modal ────────────────────────────────────── */}
       {isOpen && (
         <div
-          className="fixed inset-x-2 bottom-2 sm:inset-x-auto sm:left-6 md:left-8 sm:bottom-6 z-[200] w-[calc(100vw-1rem)] sm:w-[440px] md:w-[460px] max-h-[calc(100dvh-1rem)] sm:max-h-[85vh] h-[min(650px,calc(100dvh-1.5rem))] sm:h-[660px] flex flex-col bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.4)] border border-slate-200 dark:border-indigo-500/30 overflow-hidden animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-bottom-6 duration-300 backdrop-blur-xl"
+          className="fixed inset-x-2 bottom-2 sm:inset-x-auto sm:left-6 md:left-8 sm:bottom-6 z-[200] w-[calc(100vw-1rem)] sm:w-[440px] md:w-[460px] max-h-[calc(100dvh-1rem)] sm:max-h-[85vh] h-[min(650px,calc(100dvh-1.5rem))] sm:h-[660px] flex flex-col bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.5)] border border-slate-200 dark:border-indigo-500/30 overflow-hidden animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-6 duration-300 backdrop-blur-xl"
           role="dialog"
           aria-label="Tushar AI Assistant"
         >
@@ -936,7 +946,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                   <img
                     src="/tushar-ai-icon.png"
                     alt="Tushar AI Assistant Logo"
-                    className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]"
+                    className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(34,211,238,0.5)] animate-pulse [animation-duration:4s]"
                   />
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full border-2 border-slate-950" />
@@ -946,7 +956,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                   <h3 className="font-outfit font-black text-xs sm:text-sm text-white tracking-wide truncate">
                     Tushar AI Assistant
                   </h3>
-                  <span className="px-1.5 py-0.5 bg-indigo-500/30 text-indigo-300 text-[8px] font-black rounded-md uppercase tracking-wider border border-indigo-400/30 shrink-0">
+                  <span className="px-1.5 py-0.5 bg-indigo-500/30 text-indigo-300 text-[8px] font-black rounded-md uppercase tracking-wider border border-indigo-400/30 shrink-0 animate-pulse">
                     Live
                   </span>
                 </div>
@@ -961,14 +971,14 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               <button
                 onClick={handleResetChat}
                 title="Reset Conversation"
-                className="p-1.5 sm:p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all cursor-pointer"
+                className="p-1.5 sm:p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-200 hover:rotate-180 cursor-pointer"
                 aria-label="Reset Chat"
               >
                 <RefreshCw size={14} className="sm:w-[15px] sm:h-[15px]" />
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 sm:p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all cursor-pointer"
+                className="p-1.5 sm:p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-200 hover:scale-110 cursor-pointer"
                 aria-label="Close Assistant"
               >
                 <X size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -984,7 +994,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
             </div>
             <button
               onClick={() => sendDirectWhatsApp('Hi Tushar, I want to connect directly from your AI Assistant.')}
-              className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-[9px] sm:text-[10px] font-bold transition-all active:scale-95 shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-[9px] sm:text-[10px] font-bold transition-all duration-200 hover:scale-105 active:scale-95 shrink-0 cursor-pointer"
             >
               <MessageCircle size={11} className="text-emerald-400 sm:w-3 sm:h-3" />
               <span>Direct WhatsApp</span>
@@ -996,7 +1006,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className={`flex gap-2 sm:gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex gap-2 sm:gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-in fade-in-0 slide-in-from-bottom-2 duration-300`}
               >
                 {msg.sender === 'bot' && (
                   <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 mt-0.5 border border-cyan-500/30 shadow-2xs overflow-hidden">
@@ -1010,7 +1020,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
                 <div className="max-w-[90%] sm:max-w-[86%] space-y-1.5 sm:space-y-2">
                   <div
-                    className={`p-2.5 sm:p-3.5 rounded-2xl leading-relaxed text-[11px] sm:text-[12px] shadow-xs relative group/msg ${
+                    className={`p-2.5 sm:p-3.5 rounded-2xl leading-relaxed text-[11px] sm:text-[12px] shadow-xs relative group/msg transition-all duration-200 ${
                       msg.sender === 'user'
                         ? 'bg-indigo-600 text-white rounded-tr-none font-medium'
                         : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-none border border-slate-200/80 dark:border-white/5'
@@ -1070,7 +1080,11 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                             className="p-1 hover:text-indigo-500 rounded transition-colors"
                           >
                             {speakingId === msg.id ? (
-                              <VolumeX size={11} className="text-cyan-400 animate-pulse" />
+                              <div className="flex items-center gap-0.5 px-0.5 text-cyan-400">
+                                <span className="w-0.5 h-3 bg-cyan-400 rounded-full animate-soundwave-1" />
+                                <span className="w-0.5 h-2 bg-cyan-400 rounded-full animate-soundwave-2" />
+                                <span className="w-0.5 h-3.5 bg-cyan-400 rounded-full animate-soundwave-3" />
+                              </div>
                             ) : (
                               <Volume2 size={11} />
                             )}
@@ -1087,7 +1101,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                         <button
                           key={qaIdx}
                           onClick={qa.action}
-                          className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20 text-[9px] sm:text-[10px] font-bold transition-all active:scale-95 shadow-2xs cursor-pointer"
+                          className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20 text-[9px] sm:text-[10px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs active:scale-95 shadow-2xs cursor-pointer"
                         >
                           <span>{qa.label}</span>
                         </button>
@@ -1107,10 +1121,10 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                           <button
                             key={qIdx}
                             onClick={() => handleSendMessage(qText)}
-                            className="w-full text-left px-2 sm:px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-950/70 hover:bg-indigo-50/80 dark:hover:bg-indigo-950/70 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-300 border border-slate-200/70 dark:border-slate-800 text-[9.5px] sm:text-[10.5px] leading-snug transition-all flex items-center justify-between group/q cursor-pointer"
+                            className="w-full text-left px-2 sm:px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-950/70 hover:bg-indigo-50/80 dark:hover:bg-indigo-950/70 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-300 border border-slate-200/70 dark:border-slate-800 text-[9.5px] sm:text-[10.5px] leading-snug transition-all duration-200 hover:translate-x-1 hover:border-indigo-400/40 flex items-center justify-between group/q cursor-pointer"
                           >
                             <span className="line-clamp-2 pr-1">{qText}</span>
-                            <ChevronRight size={12} className="opacity-40 group-hover/q:opacity-100 group-hover/q:translate-x-0.5 transition-all shrink-0 text-cyan-400" />
+                            <ChevronRight size={12} className="opacity-40 group-hover/q:opacity-100 group-hover/q:translate-x-1 transition-all shrink-0 text-cyan-400" />
                           </button>
                         ))}
                       </div>
@@ -1128,18 +1142,18 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
             {/* Typing Indicator */}
             {isTyping && (
-              <div className="flex gap-2 sm:gap-2.5 items-center">
-                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-cyan-500/30 overflow-hidden">
+              <div className="flex gap-2 sm:gap-2.5 items-center animate-in fade-in-0 slide-in-from-bottom-1 duration-200">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-cyan-500/30 overflow-hidden shadow-2xs animate-pulse">
                   <img
                     src="/tushar-ai-icon.png"
                     alt="Tushar AI"
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div className="bg-slate-100 dark:bg-slate-800 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl rounded-tl-none border border-slate-200/80 dark:border-white/5 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce" />
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce [animation-delay:0.2s]" />
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce [animation-delay:0.4s]" />
+                <div className="bg-slate-100 dark:bg-slate-800 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl rounded-tl-none border border-slate-200/80 dark:border-white/5 flex items-center gap-1.5 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-cyan-400 animate-bounce [animation-duration:0.8s]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-cyan-400 animate-bounce [animation-duration:0.8s] [animation-delay:0.15s]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-cyan-400 animate-bounce [animation-duration:0.8s] [animation-delay:0.3s]" />
                 </div>
               </div>
             )}
@@ -1262,31 +1276,31 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               </span>
               <button
                 onClick={() => handleSendMessage('What are your pricing packages and rates?')}
-                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 💰 Cost &amp; Rates?
               </button>
               <button
                 onClick={() => handleSendMessage('How does Saathi Bot capture leads and handle FAQs?')}
-                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 🤖 Saathi Bot Demo?
               </button>
               <button
                 onClick={() => handleSendMessage('What is your delivery timeline for an MVP?')}
-                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 ⏱️ Delivery Timeline?
               </button>
               <button
                 onClick={() => handleSendMessage('How does TASQ-ONE break down project tasks?')}
-                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 ⚡ TASQ-ONE AI?
               </button>
               <button
                 onClick={() => openBookingFlow()}
-                className="shrink-0 px-2 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 text-[9.5px] sm:text-[10px] text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 font-bold transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 text-[9.5px] sm:text-[10px] text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 font-bold transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 📅 Free Audit Call
               </button>
@@ -1312,10 +1326,10 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               <button
                 type="submit"
                 disabled={!inputText.trim()}
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:hover:bg-indigo-600 text-white flex items-center justify-center transition-all shrink-0 active:scale-95 shadow-md shadow-indigo-600/30 cursor-pointer"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:hover:bg-indigo-600 text-white flex items-center justify-center transition-all duration-200 shrink-0 active:scale-95 shadow-md shadow-indigo-600/30 cursor-pointer disabled:cursor-not-allowed disabled:shadow-none hover:scale-105"
                 aria-label="Send message"
               >
-                <Send size={14} className="sm:w-4 sm:h-4" />
+                <Send size={14} className={`sm:w-4 sm:h-4 transition-transform duration-200 ${inputText.trim() ? 'translate-x-0.5 -translate-y-0.5 scale-110' : ''}`} />
               </button>
             </form>
           </div>
