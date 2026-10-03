@@ -2,16 +2,24 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
   MessageSquare, X, Send, Bot, User, Sparkles, CheckCircle2,
   Calendar, Phone, ArrowRight, ExternalLink, RefreshCw, Zap,
-  Layers, ShieldCheck, Clock, MessageCircle, ChevronDown, Award
+  Layers, ShieldCheck, Clock, MessageCircle, ChevronDown, Award,
+  Copy, Check, Volume2, VolumeX, Lightbulb, ChevronRight, HelpCircle
 } from 'lucide-react';
 import { SERVICES, PROJECTS, FIVERR_PROFILE_URL, GOOGLE_BUSINESS_NAME } from '../constants';
+
+interface QuickAction {
+  label: string;
+  action: () => void;
+  icon?: React.ReactNode;
+}
 
 interface ChatMessage {
   id: string;
   sender: 'bot' | 'user';
   text: string;
   timestamp: string;
-  quickActions?: { label: string; action: () => void; icon?: React.ReactNode }[];
+  quickActions?: QuickAction[];
+  assumptionQuestions?: string[];
   isBookingPrompt?: boolean;
 }
 
@@ -27,6 +35,9 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
   const [isTyping, setIsTyping] = useState(false);
   const [showBookingForm, setShowBookingForm] = useState(false);
   const [unreadCount, setUnreadCount] = useState(1);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [speakingId, setSpeakingId] = useState<string | null>(null);
+  const [showAssumptionBar, setShowAssumptionBar] = useState(true);
 
   // Booking form state
   const [bookingName, setBookingName] = useState('');
@@ -37,20 +48,26 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
+  // Initial Welcome Message with comprehensive services & assumption questions
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'm-welcome',
       sender: 'bot',
-      text: `👋 Namaste! I am **Tushar's AI Assistant**.\n\nAsk me anything about **Services**, **Projects**, **Pricing**, or **Timeline**. You can also book a free 30-min strategy call right here and confirm directly on WhatsApp! 🚀`,
+      text: `👋 Namaste! I am **Tushar's AI Assistant**.\n\nI can answer anything about **Services**, **Live Projects**, **Pricing**, **SaaS Platforms (Saathi Bot & TASQ-ONE)**, or **Delivery Timelines**.\n\nYou can also click any of the **Assumption Questions** below or book a **Free 30-Min Strategy Audit** with direct WhatsApp confirmation! 🚀`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       quickActions: [
-        { label: '🚀 Custom SaaS / MVP', action: () => handleSendPreset('Tell me about your custom SaaS and MVP engineering services') },
-        { label: '🌐 Website / Landing Page', action: () => handleSendPreset('I want to build a new website or landing page') },
-        { label: '🤖 WhatsApp & Website Chatbot', action: () => handleSendPreset('I need an automated AI chatbot for my business') },
-        { label: '⚡ Automate Manual Tasks', action: () => handleSendPreset('How can you automate my repetitive business tasks?') },
-        { label: '🎯 Get More Clients / Leads', action: () => handleSendPreset('Tell me about your lead generation outreach system') },
-        { label: '💰 Pricing & Timeline', action: () => handleSendPreset('What are your pricing packages and timelines?') },
-        { label: '📅 Book Free 30-Min Call', action: () => openBookingFlow() },
+        { label: '🚀 AI Automation', action: () => handleSendPreset('Tell me about AI Automation and n8n workflows') },
+        { label: '🤖 AI Chatbot Dev', action: () => handleSendPreset('How do custom AI chatbots and RAG assistants work?') },
+        { label: '💻 Web Development', action: () => handleSendPreset('What full-stack web development services do you offer?') },
+        { label: '📅 Book Strategy Call', action: () => openBookingFlow() },
+        { label: '☁️ SaaS Ecosystem', action: () => handleSendPreset('Tell me about Saathi Bot and TASQ-ONE SaaS products') },
+        { label: '💰 Pricing & ROI', action: () => handleSendPreset('What are your pricing packages, rates and guarantees?') }
+      ],
+      assumptionQuestions: [
+        'How much does a custom AI automation or chatbot cost?',
+        'Can I test the Saathi Bot demo widget right now?',
+        'How fast can Tushar deliver a working MVP?',
+        'What tech stack do you recommend for high-scale SaaS?'
       ]
     }
   ]);
@@ -82,6 +99,31 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
     setUnreadCount(0);
   };
 
+  const copyToClipboard = (id: string, text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  const toggleSpeech = (id: string, text: string) => {
+    if (!('speechSynthesis' in window)) return;
+    if (speakingId === id) {
+      window.speechSynthesis.cancel();
+      setSpeakingId(null);
+      return;
+    }
+    window.speechSynthesis.cancel();
+    // Clean markdown symbols for cleaner speech
+    const cleanText = text.replace(/[*_#`•]/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.rate = 1.05;
+    utterance.pitch = 1.0;
+    utterance.onend = () => setSpeakingId(null);
+    utterance.onerror = () => setSpeakingId(null);
+    setSpeakingId(id);
+    window.speechSynthesis.speak(utterance);
+  };
+
   const openBookingFlow = (presetService?: string) => {
     if (presetService) setBookingService(presetService);
     setShowBookingForm(true);
@@ -90,16 +132,21 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       sender: 'bot',
       text: `✨ Please fill out the quick booking form below. Once confirmed, your complete details will be sent directly to Tushar's WhatsApp for instant confirmation!`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      isBookingPrompt: true
+      isBookingPrompt: true,
+      assumptionQuestions: [
+        'Is the initial consultation completely free?',
+        'Can we connect on Google Meet or Zoom?',
+        'What should I prepare before the strategy call?'
+      ]
     };
     setMessages(prev => [...prev, botMsg]);
   };
 
-  // Automated Query Intelligence Engine
-  const generateBotReply = (query: string): { replyText: string; quickActions?: { label: string; action: () => void }[] } => {
+  // Comprehensive Knowledge Engine with Deep Assumptions & Next-Step Guidance
+  const generateBotReply = (query: string): { replyText: string; quickActions?: QuickAction[]; assumptionQuestions?: string[] } => {
     const q = query.toLowerCase().trim();
 
-    // 1. Booking / Meeting / Call / Consultation
+    // 1. Booking / Meeting / Call / Consultation / Hire
     if (
       q.includes('book') || q.includes('meeting') || q.includes('call') ||
       q.includes('consultation') || q.includes('appointment') || q.includes('talk') ||
@@ -107,158 +154,217 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
     ) {
       setTimeout(() => setShowBookingForm(true), 600);
       return {
-        replyText: `📅 **Book Free 30-Min AI Strategy Audit with Tushar Singh:**\n\n• **Guaranteed Response:** Under 1 Hour\n• **Format:** Google Meet / Zoom or WhatsApp Call\n• **Cost:** 100% Free Strategy Session\n\nPlease fill out the quick details below or tap the button to chat directly on WhatsApp!`,
+        replyText: `📅 **Book Free 30-Min AI Strategy Audit with Tushar Singh:**\n\n• **Guaranteed Response:** Under 1 Hour (< 60 mins)\n• **Meeting Formats:** Google Meet, Zoom, or WhatsApp Direct Call\n• **Cost:** 100% Free Consultation & Architecture Blueprint\n• **Direct Line:** +91 88516 19647\n\nFill out the in-chat form below or click **Open WhatsApp Directly** for immediate scheduling!`,
         quickActions: [
           { label: '📝 Fill Booking Form', action: () => openBookingFlow() },
           { label: '💬 Open WhatsApp Directly', action: () => sendDirectWhatsApp('Hi Tushar, I want to book a free 30-min strategy audit call.') }
+        ],
+        assumptionQuestions: [
+          'What happens during the 30-min strategy audit?',
+          'Can we sign an NDA before discussing project details?',
+          'What are your available meeting time slots this week?'
         ]
       };
     }
 
-    // 2. AI Automation / n8n / Workflows
+    // 2. AI Automation / n8n / Workflows / Multi-Agent Systems
     if (
       q.includes('automation') || q.includes('n8n') || q.includes('workflow') ||
-      q.includes('zapier') || q.includes('make.com') || q.includes('agent')
+      q.includes('zapier') || q.includes('make.com') || q.includes('agent') || q.includes('automate')
     ) {
       return {
-        replyText: `🚀 **AI Workflow Automation with n8n & Python:**\n\n• **What We Build:** Autonomous AI multi-step agents, CRM syncs, automated email sequences, invoice/lead processing, and webhook pipelines.\n• **Result:** Saves **10+ hours per week** per team member with zero data entry errors.\n• **Tech Stack:** n8n, Python, OpenAI, LangChain, Zapier, Webhooks.\n\nReady to automate your manual repetitive tasks?`,
+        replyText: `🚀 **AI Workflow Automation & Multi-Agent Orchestration:**\n\n• **What We Build:** Autonomous AI pipelines, n8n self-hosted workflows, CRM auto-syncs (HubSpot/Notion/Airtable), AI email processing, and webhook ETL pipelines.\n• **Tangible Impact:** Clients save **10+ hours per week** per team member with 0% data entry mistakes.\n• **Tech Stack:** n8n, Python, OpenAI GPT-4o, LangChain, Webhooks, Docker, Redis.\n• **Typical Timeline:** 3 to 7 business days from roadmap to production deployment.`,
         quickActions: [
           { label: '📅 Book Automation Audit', action: () => openBookingFlow('AI Automation') },
           { label: '🏆 View Automation Projects', action: () => handleSendPreset('Show me automation case studies') },
-          { label: '💬 Ask Tushar on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to discuss automating our business workflows with n8n.') }
+          { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to discuss automating our business workflows with n8n.') }
+        ],
+        assumptionQuestions: [
+          'Which business workflows can n8n automate?',
+          'What are the hosting & API costs of running n8n?',
+          'Can n8n connect with WhatsApp and Google Sheets?',
+          'How does automated error handling work in production?'
         ]
       };
     }
 
-    // 3. AI Chatbots / Customer Support / WhatsApp Bot
+    // 3. AI Chatbots / Customer Support / WhatsApp Bot / RAG Systems
     if (
       q.includes('chatbot') || q.includes('bot') || q.includes('rag') ||
-      q.includes('support agent') || q.includes('whatsapp bot') || q.includes('telegram')
+      q.includes('support agent') || q.includes('whatsapp bot') || q.includes('telegram') || q.includes('saathi')
     ) {
       return {
-        replyText: `🤖 **Custom AI Chatbot & RAG Assistant Development:**\n\n• **Capabilities:** 24/7 multilingual support, appointment scheduling, product recommendations, trained on your custom PDFs/Docs/DB.\n• **Channels:** Website Widget, WhatsApp Business API, Telegram, Slack.\n• **Key Impact:** **70% support ticket reduction** and 0-second customer response time.\n• **Tech:** OpenAI GPT-4o, LangChain, Vector Databases (Pinecone/Chroma), Python.`,
+        replyText: `🤖 **Enterprise AI Chatbots, RAG Knowledge Bases & WhatsApp Commerce:**\n\n• **Capabilities:** 24/7 multilingual assistance, document-trained RAG (PDFs, Notion, DBs), automated lead qualification, and appointment booking.\n• **Channels:** Web embed widget, WhatsApp Business Cloud API, Telegram, and Slack.\n• **Proven Results:** **70% support ticket reduction** and immediate 0-second customer response time.\n• **Live SaaS Showcase:** Try our proprietary **Saathi Bot** live on the right side of the screen right now!\n• **Tech:** OpenAI, LangChain, Pinecone vector search, Python FastAPI, React.`,
         quickActions: [
+          { label: '🤖 Test Saathi Bot Widget', action: () => { window.dispatchEvent(new CustomEvent('open-saathi-widget')); } },
           { label: '📅 Book Chatbot Consultation', action: () => openBookingFlow('Chatbot Development') },
-          { label: '🏆 See 70% Ticket Reduction Case Study', action: () => handleSendPreset('Tell me about the AI support chatbot project') },
           { label: '💬 Discuss on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I need a custom AI Chatbot for my business.') }
+        ],
+        assumptionQuestions: [
+          'How does WhatsApp Business API integration work?',
+          'How does RAG prevent hallucinations in bot answers?',
+          'Can the chatbot speak Hindi, English and regional languages?',
+          'What are the server & OpenAI API costs for a chatbot?'
         ]
       };
     }
 
-    // 4. Web Development / React / Django / Frontend / Full Stack
+    // 4. Custom SaaS Products / TASQ-ONE / Cloud Platforms
+    if (
+      q.includes('saas') || q.includes('software') || q.includes('tasq') ||
+      q.includes('product') || q.includes('multi tenant') || q.includes('subscription') || q.includes('microservice')
+    ) {
+      return {
+        replyText: `☁️ **Tushar's Proprietary SaaS Ecosystem & Custom MVP Engineering:**\n\n1. **Saathi Bot (v1.0.0):** Autonomous B2B AI Chatbot platform with embeddable zero-latency widget, FAQ crawler, and live lead qualification.\n2. **TASQ-ONE (v1.4.0):** The Intelligent Task OS with Groq Llama 3.3 70B AI task decomposition, topological acyclic Kanban DAG validation, sub-400ms latency, and cryptographic audit trails.\n3. **Custom SaaS MVP Engineering:** Multi-tenant architecture, Supabase PostgreSQL RLS, Stripe/Razorpay billing, and Docker containerization.\n• **Delivery Timeline:** Fully functional production MVP in **2 to 4 weeks**.`,
+        quickActions: [
+          { label: '🚀 Explore SaaS Suites Page', action: () => { window.location.href = '/saas'; } },
+          { label: '⚡ Test TASQ-ONE Platform', action: () => { window.location.href = '/saas/tasq-one'; } },
+          { label: '📅 Book SaaS MVP Call', action: () => openBookingFlow('Custom SaaS & MVP Engineering') }
+        ],
+        assumptionQuestions: [
+          'How does TASQ-ONE validate dependency DAGs?',
+          'What database and authentication do you use for SaaS?',
+          'Can you build a private SaaS platform for my company?',
+          'How do you handle automated Stripe & Razorpay recurring billing?'
+        ]
+      };
+    }
+
+    // 5. Full-Stack Web Development / React / Next.js / Django
     if (
       q.includes('web') || q.includes('website') || q.includes('react') ||
       q.includes('django') || q.includes('next.js') || q.includes('frontend') ||
       q.includes('full stack') || q.includes('landing page') || q.includes('funnel')
     ) {
       return {
-        replyText: `💻 **Full-Stack Web Development & High-Converting Funnels:**\n\n• **Core Tech:** React.js, Next.js, Django, Python, TypeScript, Tailwind CSS, REST APIs.\n• **Deliverables:** SaaS Dashboards, Startup MVPs, High-Converting Sales Funnels, E-Commerce platforms.\n• **Speed & SEO:** 100/100 Google Lighthouse speed, AEO/GEO optimized, responsive UI.\n• **Timeline:** MVP delivered in 7 to 14 business days.`,
+        replyText: `💻 **Full-Stack Web Development & High-Converting Funnels:**\n\n• **Core Tech:** React 19, Next.js 14/15, Django, Python, TypeScript, Tailwind CSS, REST APIs.\n• **Deliverables:** SaaS Dashboards, Startup MVPs, E-Commerce platforms, High-speed Landing Pages.\n• **Performance Standards:** 100/100 Google Lighthouse speed, AEO/GEO semantic SEO, mobile-first responsive UX.\n• **Turnaround:** 7 to 14 business days from wireframe to live production launch.`,
         quickActions: [
           { label: '📅 Book Web Project Call', action: () => openBookingFlow('Full-Stack Web Dev') },
           { label: '🏆 View Web Projects', action: () => handleSendPreset('Show me web development case studies') },
-          { label: '💬 Message Tushar on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to build a high-performance website/web app.') }
+          { label: '💬 Chat on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to build a high-performance web platform.') }
+        ],
+        assumptionQuestions: [
+          'Do you ensure 100/100 Google Lighthouse and SEO ranking?',
+          'Can you redesign my existing slow WordPress or Wix site?',
+          'Can I manage content easily without touching code?',
+          'What is the turnaround time for a complete web MVP?'
         ]
       };
     }
 
-    // 4.5. Custom SaaS & Cloud MVP Engineering
+    // 6. Pricing / Rates / Budget / Escrow
     if (
-      q.includes('saas') || q.includes('software') || q.includes('mvp') ||
-      q.includes('product') || q.includes('multi tenant') || q.includes('subscription')
+      q.includes('price') || q.includes('cost') || q.includes('rate') ||
+      q.includes('kitna') || q.includes('budget') || q.includes('charges') || q.includes('fee') || q.includes('rupee')
     ) {
       return {
-        replyText: `🚀 **Custom SaaS & Cloud MVP Engineering:**\n\n• **Capabilities:** Full-stack multi-tenant SaaS architecture, automated Stripe & Razorpay subscriptions, role-based auth, and scalable cloud deployments.\n• **AI Integrations:** Native OpenAI, LangChain, RAG vector embeddings, and autonomous agent backends.\n• **Upcoming Products:** AutoLead AI Studio, OmniBot RAG Orchestrator, DocuFlow Document Pipeline (Public Beta Reveal 1 Sep 2026).\n• **Timeline:** Production-ready MVP launched in 2 to 4 weeks with sub-second speeds.`,
+        replyText: `💰 **Pricing, Engagement Models & Guarantees:**\n\n• **Free Initial Consultation:** 100% Free 30-min architecture & strategy audit.\n• **Fixed-Price Milestones:** Transparent scopes with 0 hidden costs (Automations, Chatbots, Web MVPs).\n• **Fiverr Escrow Buyer Protection:** Option to hire via Fiverr with full milestone protection.\n• **Guaranteed ROI:** Projects engineered to save 10+ hrs/week or generate immediate qualified pipeline.\n• **Hourly Consulting & Retainer:** Available for ongoing AI ops & technical advisory.`,
         quickActions: [
-          { label: '🚀 Explore SaaS Suites', action: () => { window.location.href = '/saas'; } },
-          { label: '📅 Book SaaS MVP Call', action: () => openBookingFlow('Custom SaaS & MVP Engineering') },
-          { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to build a custom SaaS software platform.') }
+          { label: '📅 Get Custom Quote', action: () => openBookingFlow('Custom Quote') },
+          { label: '⭐ Hire via Fiverr Escrow', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
+          { label: '💬 Get Instant Estimate on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, can you give me an estimate for my project?') }
+        ],
+        assumptionQuestions: [
+          'Can we start with a small paid pilot or proof-of-concept?',
+          'How does payment milestone structuring work?',
+          'Do you offer free post-launch support and bug fixes?',
+          'What are the typical costs for an n8n automation project?'
         ]
       };
     }
 
-    // 5. Lead Generation / Outreach
+    // 7. Lead Generation / Cold Outreach
     if (
       q.includes('lead') || q.includes('prospect') || q.includes('cold email') ||
       q.includes('outreach') || q.includes('apollo') || q.includes('instantly')
     ) {
       return {
-        replyText: `🎯 **Automated Lead Generation Systems:**\n\n• **Approach:** AI-personalized cold outreach on Email & LinkedIn targeting your exact Ideal Customer Profile (ICP).\n• **Deliverables:** Apollo/LinkedIn scraping, domain warmup, Smartlead/Instantly inbox management, CRM integration.\n• **Results:** Generated **250+ verified leads in 10 days** with 40% higher booked calls.`,
+        replyText: `🎯 **B2B Lead Generation & Automated Outreach Engines:**\n\n• **Methodology:** Multi-channel cold outreach on Email & LinkedIn targeting your exact buyer personas (ICP).\n• **Deliverables:** Apollo/LinkedIn scrapers, mailbox domain warmup, Instantly/Smartlead setup, AI copywriting.\n• **Track Record:** **250+ verified enterprise leads in 10 days** with 40% higher booked meeting rates.`,
         quickActions: [
           { label: '📅 Book Lead Gen Strategy', action: () => openBookingFlow('Lead Generation Systems') },
           { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to scale my lead generation pipeline.') }
+        ],
+        assumptionQuestions: [
+          'How do you protect email deliverability and avoid spam?',
+          'What data sources (Apollo/LinkedIn) are used for leads?',
+          'Can leads automatically sync to our HubSpot or Notion CRM?'
         ]
       };
     }
 
-    // 6. Pricing / Cost / Rates / Budget
+    // 8. Timelines & Delivery Speeds
     if (
-      q.includes('price') || q.includes('cost') || q.includes('rate') ||
-      q.includes('kitna') || q.includes('budget') || q.includes('charges') || q.includes('fee')
+      q.includes('time') || q.includes('timeline') || q.includes('duration') ||
+      q.includes('kab tak') || q.includes('days') || q.includes('fast') || q.includes('delivery') || q.includes('speed')
     ) {
       return {
-        replyText: `💰 **Pricing & Engagement Models:**\n\n• **Free Initial Consultation:** 100% Free 30-min strategy audit & architecture roadmap.\n• **Fixed-Price Projects:** Clearly scoped milestones with zero hidden charges (MVPs, Chatbots, Automations).\n• **Escrow & Fiverr Protection:** You can also hire Tushar via Fiverr with 100% buyer escrow protection.\n• **ROI Focus:** Every project aims for tangible ROI (hours saved, qualified leads, or automated revenue).\n\nLet's understand your exact requirements to give an accurate estimate!`,
+        replyText: `⏱️ **Project Delivery Timelines:**\n\n• **AI Automations & n8n Workflows:** 3 to 7 business days\n• **Custom AI Chatbots (RAG / WhatsApp):** 5 to 10 business days\n• **Full-Stack MVPs & Web Platforms:** 7 to 14 business days\n• **Express 48-Hour Sprint:** Available for urgent client requirements.\n\nWe provide daily milestone previews on staging URLs so you see live progress every step of the way!`,
         quickActions: [
-          { label: '📅 Get Custom Quote', action: () => openBookingFlow('Custom Quote') },
-          { label: '⭐ Hire via Fiverr Escrow', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
-          { label: '💬 Ask Price on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, can you provide a pricing quote for my project?') }
+          { label: '📅 Plan My Timeline', action: () => openBookingFlow('Timeline Planning') },
+          { label: '💬 Check Availability on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I have an urgent project requirement and want to check your availability.') }
+        ],
+        assumptionQuestions: [
+          'Can you deliver an emergency prototype in 48 hours?',
+          'How often will I receive progress updates and staging previews?',
+          'Can we launch in phased milestones?'
         ]
       };
     }
 
-    // 7. Projects / Portfolio / Case Studies
-    if (
-      q.includes('project') || q.includes('portfolio') || q.includes('case study') ||
-      q.includes('work') || q.includes('deliverable') || q.includes('examples') || q.includes('proof')
-    ) {
-      const topProjects = PROJECTS.slice(0, 3).map(p => `• **${p.title}**\n  _${p.category} | ${p.results[0]}_`).join('\n\n');
-      return {
-        replyText: `🏆 **Tushar's Top Client Deliverables (10+ Commercial Projects):**\n\n${topProjects}\n\n• Total Value Generated: **₹2L+**\n• Average Client Rating: **4.0 ★**\n• Response Time: **< 1 Hour**`,
-        quickActions: [
-          { label: '🚀 Explore All Projects', action: () => { window.location.href = '/projects'; } },
-          { label: '📅 Book Call to Discuss Similar Project', action: () => openBookingFlow('Project Inquiry') },
-          { label: '💬 WhatsApp Tushar', action: () => sendDirectWhatsApp('Hi Tushar, I saw your portfolio and want to discuss a similar project.') }
-        ]
-      };
-    }
-
-    // 8. About Tushar / Background / Experience / Location
+    // 9. About Tushar / Background / Credentials / Location
     if (
       q.includes('about') || q.includes('who is') || q.includes('tushar') ||
       q.includes('education') || q.includes('location') || q.includes('mca') ||
-      q.includes('experience') || q.includes('delhi') || q.includes('kahan')
+      q.includes('experience') || q.includes('delhi') || q.includes('kahan') || q.includes('singh')
     ) {
       return {
-        replyText: `👨‍💻 **About Tushar Singh (Code with Mr Singh):**\n\n• **Role:** AI Automation Expert & Full-Stack Developer\n• **Education:** Master of Computer Applications (MCA), MIT Pune\n• **Location:** Badarpur, New Delhi, India (Serving clients nationwide & globally)\n• **Credentials:** Google Verified Business Owner, Fiverr Verified Seller, ₹2L+ Value Delivered across 10+ real client products.\n• **Core Tech:** Python, React, n8n, OpenAI, Django, LangChain, PostgreSQL.`,
+        replyText: `👨‍💻 **About Tushar Singh (Code with Mr Singh):**\n\n• **Role:** AI Automation Engineer, Full-Stack Architect & SaaS Founder\n• **Education:** Master of Computer Applications (MCA), MIT Pune\n• **Location:** Badarpur, New Delhi, India (Serving clients across India, US, UK & Middle East)\n• **Verified Badges:** Google Verified Business Owner, Fiverr Verified Seller with 4.0 ★ rating\n• **Track Record:** ₹2L+ Commercial Value Delivered across 10+ production software products\n• **Core Tech:** Python, React, Next.js, n8n, OpenAI, Django, PostgreSQL, Docker.`,
         quickActions: [
           { label: '📄 View About Page', action: () => { window.location.href = '/about'; } },
           { label: '⭐ Fiverr Profile', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
           { label: '💬 Connect on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, nice to connect with you!') }
+        ],
+        assumptionQuestions: [
+          'Are you available for international / remote freelance contracts?',
+          'Can I see client reviews and ratings on Fiverr?',
+          'What is your primary tech stack preference for new projects?'
         ]
       };
     }
 
-    // 9. Timeline / Delivery time
+    // 10. Security / Pentesting / Compliance
     if (
-      q.includes('time') || q.includes('timeline') || q.includes('duration') ||
-      q.includes('kab tak') || q.includes('days') || q.includes('fast') || q.includes('delivery')
+      q.includes('security') || q.includes('pentest') || q.includes('safe') ||
+      q.includes('gdpr') || q.includes('soc2') || q.includes('encryption') || q.includes('hack')
     ) {
       return {
-        replyText: `⏱️ **Project Timelines & Delivery Speeds:**\n\n• **AI Automations & n8n Workflows:** 3 to 7 business days\n• **Custom AI Chatbots (RAG / WhatsApp):** 5 to 10 business days\n• **Full-Stack MVPs & Web Platforms:** 7 to 14 business days\n• **Emergency / Sprint Delivery:** Available upon request.\n\nWe provide continuous milestone updates and staging previews so you are always in the loop!`,
+        replyText: `🛡️ **Enterprise Security, Pentesting & Data Protection:**\n\n• **Security Hardening:** Strict HSTS, CSP headers, XSS prevention, and CSRF protection.\n• **Data Privacy:** PostgreSQL Row-Level Security (RLS) ensuring strict multi-tenant tenant isolation.\n• **Cryptographic Auditing:** SHA-256 immutable audit trails compliant with DPDP & SOC2 guidelines.\n• **Zero Secret Leakage:** Environment variables and secrets strictly validated with automated Vitest suites.`,
         quickActions: [
-          { label: '📅 Plan My Timeline', action: () => openBookingFlow('Timeline Planning') },
-          { label: '💬 Discuss Urgency on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I have an urgent project requirement and want to check your availability.') }
+          { label: '🛡️ View Security Architecture', action: () => { window.location.href = '/saas/tasq-one'; } },
+          { label: '📅 Book Security Audit Call', action: () => openBookingFlow('Security Audit') }
+        ],
+        assumptionQuestions: [
+          'How do you protect database data against SQL injection?',
+          'Do you follow OWASP Top 10 security standards?',
+          'How is customer data isolated in multi-tenant SaaS?'
         ]
       };
     }
 
     // Default Fallback
     return {
-      replyText: `🤖 Thanks for your question! Tushar specializes in:\n\n1. **AI Automation** (n8n, Python, AI agents, automated ops)\n2. **Custom Chatbots** (OpenAI RAG, 24/7 customer support, WhatsApp)\n3. **Full-Stack Web Dev** (React.js, Next.js, Django)\n4. **Lead Generation & High-Converting Funnels**\n\nWould you like to book a free 30-min strategy call or connect directly on WhatsApp?`,
+      replyText: `🤖 Thanks for your question! Tushar Singh specializes across:\n\n1. **AI Automation** (n8n workflows, Python autonomous agents, CRM syncs)\n2. **Custom AI Chatbots & RAG** (WhatsApp Business API, Web Widgets, Saathi Bot)\n3. **Full-Stack Web Development** (React 19, Next.js 14, Django, 100/100 Lighthouse)\n4. **Proprietary SaaS Suites** (Saathi Bot, TASQ-ONE, Cloud MVPs)\n5. **B2B Lead Generation Engines** (Apollo, LinkedIn, cold email infrastructure)\n\nWould you like to book a free 30-min strategy call or explore any of the assumption questions below?`,
       quickActions: [
         { label: '📅 Book Free 30-Min Audit', action: () => openBookingFlow() },
         { label: '🚀 AI Automation Info', action: () => handleSendPreset('Tell me about AI Automation') },
         { label: '🤖 AI Chatbot Info', action: () => handleSendPreset('Tell me about AI Chatbot Development') },
         { label: '💬 Direct WhatsApp Chat', action: () => sendDirectWhatsApp(`Hi Tushar, I had a question regarding: "${query}"`) }
+      ],
+      assumptionQuestions: [
+        'How much does a typical project cost?',
+        'Can I test the Saathi Bot demo widget right now?',
+        'How fast can you deliver an MVP?',
+        'Can you show me real client case studies?'
       ]
     };
   };
@@ -279,17 +385,18 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
     setIsTyping(true);
 
     setTimeout(() => {
-      const { replyText, quickActions } = generateBotReply(text);
+      const { replyText, quickActions, assumptionQuestions } = generateBotReply(text);
       const botMsg: ChatMessage = {
         id: `bot-${Date.now()}`,
         sender: 'bot',
         text: replyText,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        quickActions
+        quickActions,
+        assumptionQuestions
       };
       setMessages(prev => [...prev, botMsg]);
       setIsTyping(false);
-    }, 600);
+    }, 500);
   };
 
   const handleSendPreset = (presetText: string) => {
@@ -319,7 +426,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       bookingDate ? `📅 *Preferred Date/Time:* ${bookingDate}` : '',
       bookingNotes ? `📝 *Project Brief:* ${bookingNotes}` : '',
       `━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
-      `🌐 *Source:* Code with Mr Singh AI Assistant`
+      `🌐 *Source:* Tushar AI Assistant Live`
     ].filter(Boolean).join('\n');
 
     // Add confirmation message to chat
@@ -330,6 +437,10 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       quickActions: [
         { label: '🚀 Confirm on WhatsApp Now', action: () => sendDirectWhatsApp(formattedWhatsAppMsg) }
+      ],
+      assumptionQuestions: [
+        'How soon will Tushar confirm my booking slot?',
+        'Can I send project files or wireframes on WhatsApp?'
       ]
     };
 
@@ -352,6 +463,11 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
           { label: '🤖 AI Chatbot Dev', action: () => handleSendPreset('How do custom AI chatbots work?') },
           { label: '💻 Web Development', action: () => handleSendPreset('What web development services do you offer?') },
           { label: '📅 Book Strategy Call', action: () => openBookingFlow() },
+        ],
+        assumptionQuestions: [
+          'What are your fixed-price packages and hourly rates?',
+          'Can I test the Saathi Bot demo widget right now?',
+          'What is the turnaround time for a custom landing page?'
         ]
       }
     ]);
@@ -360,17 +476,17 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
   return (
     <>
-      {/* ─── Floating Trigger Button (Bottom-Left, conditionally shown) ────────────────── */}
+      {/* ─── Floating Trigger Button (Bottom-Left, pure mascot icon without orb or badge) ─── */}
       {showTrigger && (
         <div className="fixed bottom-6 left-6 sm:left-8 z-[120] group">
           {!isOpen && (
             <button
               onClick={handleOpen}
               aria-label="Open Tushar AI Assistant Chatbot"
-              title="Tushar AI Assistant — Services, Projects & WhatsApp Booking"
+              title="Tushar AI Assistant — Services, Projects & Instant Booking"
               className="relative flex items-center justify-center p-0 transition-all duration-300 active:scale-95 hover:scale-110 hover:-translate-y-1.5 focus:outline-none cursor-pointer"
             >
-              {/* AI Assistant Mascot Icon Only (No orb background, no badge) */}
+              {/* AI Assistant Mascot Icon Only */}
               <img
                 src="/tushar-ai-icon.png"
                 alt="Tushar AI Assistant Mascot"
@@ -384,7 +500,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
             <div className="absolute bottom-full left-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-1 group-hover:translate-y-0 hidden sm:block">
               <div className="bg-slate-900/95 backdrop-blur-md text-white text-[10px] font-bold px-3.5 py-2 rounded-xl border border-indigo-500/30 shadow-2xl whitespace-nowrap flex items-center gap-2">
                 <Sparkles size={12} className="text-amber-400" />
-                <span>Tushar AI Assistant · 1-Click WhatsApp Booking</span>
+                <span>Tushar AI Assistant · Free Consultation &lt; 1 Hr</span>
               </div>
             </div>
           )}
@@ -394,11 +510,11 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       {/* ─── Chat Window Modal ────────────────────────────────────── */}
       {isOpen && (
         <div
-          className="fixed bottom-4 left-4 sm:bottom-6 sm:left-8 z-[200] w-[calc(100vw-2rem)] sm:w-[410px] max-h-[85vh] h-[640px] flex flex-col bg-white dark:bg-slate-900 rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.35)] border border-slate-200 dark:border-indigo-500/20 overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-300 backdrop-blur-xl"
+          className="fixed bottom-4 left-4 sm:bottom-6 sm:left-8 z-[200] w-[calc(100vw-2rem)] sm:w-[420px] max-h-[88vh] h-[660px] flex flex-col bg-white dark:bg-slate-900 rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.4)] border border-slate-200 dark:border-indigo-500/30 overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-300 backdrop-blur-xl"
           role="dialog"
-          aria-label="AI Project Assistant"
+          aria-label="Tushar AI Assistant"
         >
-          {/* ── Header ── */}
+          {/* ── Top Header ── */}
           <div className="bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 p-4 border-b border-indigo-500/20 text-white flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
               <div className="relative">
@@ -416,7 +532,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                   <h3 className="font-outfit font-black text-sm text-white tracking-wide">
                     Tushar AI Assistant
                   </h3>
-                  <span className="px-1.5 py-0.2 bg-indigo-500/30 text-indigo-300 text-[8px] font-black rounded-md uppercase tracking-wider border border-indigo-400/30">
+                  <span className="px-1.5 py-0.5 bg-indigo-500/30 text-indigo-300 text-[8px] font-black rounded-md uppercase tracking-wider border border-indigo-400/30">
                     Live
                   </span>
                 </div>
@@ -431,39 +547,38 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               <button
                 onClick={handleResetChat}
                 title="Reset Conversation"
-                className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all"
+                className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all cursor-pointer"
                 aria-label="Reset Chat"
               >
                 <RefreshCw size={15} />
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                title="Close Chat"
-                className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all"
-                aria-label="Close Chat"
+                className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all cursor-pointer"
+                aria-label="Close Assistant"
               >
                 <X size={18} />
               </button>
             </div>
           </div>
 
-          {/* ── Sub-header Trust Bar ── */}
-          <div className="bg-indigo-50/80 dark:bg-indigo-950/40 px-3.5 py-1.5 border-b border-indigo-100 dark:border-indigo-500/10 flex items-center justify-between text-[9px] font-bold text-indigo-700 dark:text-indigo-300 shrink-0">
-            <span className="flex items-center gap-1">
-              <ShieldCheck size={12} className="text-emerald-500" />
-              <span>Free Consultation • &lt; 1 Hr Response</span>
-            </span>
+          {/* ── Sub-header Banner: Free Consultation & Direct WhatsApp ── */}
+          <div className="bg-slate-950/95 px-4 py-2 border-b border-indigo-500/20 flex items-center justify-between text-[11px] shrink-0">
+            <div className="flex items-center gap-1.5 text-cyan-300 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span className="truncate">Free Consultation • &lt; 1 Hr Response</span>
+            </div>
             <button
-              onClick={() => sendDirectWhatsApp()}
-              className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-extrabold hover:underline"
+              onClick={() => sendDirectWhatsApp('Hi Tushar, I want to connect directly from your AI Assistant.')}
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold transition-all active:scale-95 shrink-0 cursor-pointer"
             >
-              <MessageCircle size={11} />
+              <MessageCircle size={12} className="text-emerald-400" />
               <span>Direct WhatsApp</span>
             </button>
           </div>
 
-          {/* ── Message Thread ── */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
+          {/* ── Messages Scroll Area ── */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs font-sans">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -479,16 +594,16 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                   </div>
                 )}
 
-                <div className={`max-w-[85%] space-y-2`}>
+                <div className={`max-w-[88%] space-y-2`}>
                   <div
-                    className={`p-3.5 rounded-2xl leading-relaxed text-[12px] shadow-xs ${
+                    className={`p-3.5 rounded-2xl leading-relaxed text-[12px] shadow-xs relative group/msg ${
                       msg.sender === 'user'
                         ? 'bg-indigo-600 text-white rounded-tr-none font-medium'
                         : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-none border border-slate-200/80 dark:border-white/5'
                     }`}
                   >
                     {/* Render message formatted with simple markdown formatting */}
-                    <div className="whitespace-pre-wrap space-y-1">
+                    <div className="whitespace-pre-wrap space-y-1.5">
                       {msg.text.split('\n').map((line, idx) => {
                         // Bold formatting
                         const parts = line.split(/(\*\*[^*]+\*\*)/g);
@@ -496,7 +611,11 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                           <p key={idx}>
                             {parts.map((p, pIdx) => {
                               if (p.startsWith('**') && p.endsWith('**')) {
-                                return <strong key={pIdx} className="font-extrabold text-indigo-600 dark:text-indigo-300">{p.slice(2, -2)}</strong>;
+                                return (
+                                  <strong key={pIdx} className="font-extrabold text-indigo-600 dark:text-cyan-300">
+                                    {p.slice(2, -2)}
+                                  </strong>
+                                );
                               }
                               if (p.startsWith('_') && p.endsWith('_')) {
                                 return <em key={pIdx} className="opacity-90">{p.slice(1, -1)}</em>;
@@ -508,27 +627,79 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                       })}
                     </div>
 
-                    <span
-                      className={`block text-[8.5px] mt-1.5 ${
-                        msg.sender === 'user' ? 'text-indigo-200 text-right' : 'text-slate-400'
-                      }`}
-                    >
-                      {msg.timestamp}
-                    </span>
+                    <div className="flex items-center justify-between pt-1 mt-1 border-t border-slate-200/50 dark:border-white/5">
+                      <span
+                        className={`text-[8.5px] ${
+                          msg.sender === 'user' ? 'text-indigo-200' : 'text-slate-400'
+                        }`}
+                      >
+                        {msg.timestamp}
+                      </span>
+
+                      {/* Bot Message Utilities: Copy & Read Aloud */}
+                      {msg.sender === 'bot' && (
+                        <div className="flex items-center gap-1.5 opacity-60 hover:opacity-100 transition-opacity">
+                          <button
+                            onClick={() => copyToClipboard(msg.id, msg.text)}
+                            title="Copy response"
+                            className="p-1 hover:text-indigo-500 rounded transition-colors"
+                          >
+                            {copiedId === msg.id ? (
+                              <Check size={11} className="text-emerald-500" />
+                            ) : (
+                              <Copy size={11} />
+                            )}
+                          </button>
+                          <button
+                            onClick={() => toggleSpeech(msg.id, msg.text)}
+                            title={speakingId === msg.id ? 'Stop reading' : 'Read aloud'}
+                            className="p-1 hover:text-indigo-500 rounded transition-colors"
+                          >
+                            {speakingId === msg.id ? (
+                              <VolumeX size={11} className="text-cyan-400 animate-pulse" />
+                            ) : (
+                              <Volume2 size={11} />
+                            )}
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Quick Action Chips attached to message */}
+                  {/* Primary Quick Action Chips */}
                   {msg.quickActions && msg.quickActions.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-1">
+                    <div className="flex flex-wrap gap-1.5 pt-0.5">
                       {msg.quickActions.map((qa, qaIdx) => (
                         <button
                           key={qaIdx}
                           onClick={qa.action}
-                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20 text-[10px] font-bold transition-all active:scale-95 shadow-2xs"
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20 text-[10px] font-bold transition-all active:scale-95 shadow-2xs cursor-pointer"
                         >
                           <span>{qa.label}</span>
                         </button>
                       ))}
+                    </div>
+                  )}
+
+                  {/* ── Contextual Assumption / Deep-Dive Questions ── */}
+                  {msg.assumptionQuestions && msg.assumptionQuestions.length > 0 && (
+                    <div className="pt-1.5 space-y-1">
+                      <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-slate-500 dark:text-cyan-400/80">
+                        <Lightbulb size={11} className="text-amber-400" />
+                        <span>Suggested Follow-up Questions:</span>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        {msg.assumptionQuestions.map((qText, qIdx) => (
+                          <button
+                            key={qIdx}
+                            onClick={() => handleSendMessage(qText)}
+                            className="w-full text-left px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-950/70 hover:bg-indigo-50/80 dark:hover:bg-indigo-950/70 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-300 border border-slate-200/70 dark:border-slate-800 text-[10.5px] transition-all flex items-center justify-between group/q cursor-pointer"
+                          >
+                            <span className="line-clamp-1">{qText}</span>
+                            <ChevronRight size={12} className="opacity-40 group-hover/q:opacity-100 group-hover/q:translate-x-0.5 transition-all shrink-0 ml-1 text-cyan-400" />
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -571,7 +742,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                   </div>
                   <button
                     onClick={() => setShowBookingForm(false)}
-                    className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
+                    className="text-slate-400 hover:text-slate-600 dark:hover:text-white cursor-pointer"
                   >
                     <X size={14} />
                   </button>
@@ -615,12 +786,12 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                       onChange={(e) => setBookingService(e.target.value)}
                       className="w-full px-3 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 font-medium"
                     >
-                      <option value="New Website or Landing Page">🌐 New Website or Landing Page (Design, Speed, Online Store)</option>
-                      <option value="24/7 AI Chatbot for WhatsApp & Website">🤖 24/7 AI Chatbot (Auto-reply on WhatsApp & Website)</option>
-                      <option value="Automate Repetitive Manual Work">⚡ Automate Manual Work (Save 10+ hours/week with smart tools)</option>
-                      <option value="Get More Client Leads & Sales">🎯 Get More Client Leads (Automated outreach & prospecting)</option>
-                      <option value="Logo & Brand Identity Design">🎨 Logo & Branding Design (Logo, Social Graphics, Banners)</option>
-                      <option value="Free Consultation / Not Sure">💡 Not Sure / Free Advice (Help me choose the right solution)</option>
+                      <option value="AI Workflow Automation (n8n/Python)">⚡ AI Workflow Automation (Save 10+ hrs/wk with n8n/Python)</option>
+                      <option value="24/7 AI Chatbot & WhatsApp Commerce">🤖 24/7 AI Chatbot (RAG, WhatsApp API, Web Widget)</option>
+                      <option value="Custom SaaS Platform & MVP Engineering">☁️ Custom SaaS & MVP Engineering (Multi-tenant, Stripe, Docker)</option>
+                      <option value="High-Converting Web App or Funnel">🌐 Web Development (React 19, Next.js 14, 100 Lighthouse)</option>
+                      <option value="B2B Lead Generation & Cold Email">🎯 B2B Lead Generation (Apollo/LinkedIn scraping, Outreach)</option>
+                      <option value="Free 30-Min Strategy Audit / Architecture">💡 Not Sure / Free 30-Min Strategy Audit</option>
                     </select>
                   </div>
 
@@ -652,7 +823,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
                   >
                     <MessageCircle size={15} />
                     <span>Confirm &amp; Send to WhatsApp</span>
@@ -668,6 +839,46 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
             <div ref={messagesEndRef} />
           </div>
 
+          {/* ── Assumption Questions Quick Bar (Collapsible / Scrollable) ── */}
+          {showAssumptionBar && (
+            <div className="px-3 py-2 bg-slate-100/90 dark:bg-slate-950/90 border-t border-slate-200 dark:border-white/5 flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0">
+              <span className="text-[9px] font-black uppercase text-slate-500 dark:text-cyan-400/90 shrink-0 flex items-center gap-1">
+                <HelpCircle size={11} className="text-cyan-400" />
+                <span>Ask:</span>
+              </span>
+              <button
+                onClick={() => handleSendMessage('What are your pricing packages and rates?')}
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+              >
+                💰 Cost &amp; Rates?
+              </button>
+              <button
+                onClick={() => handleSendMessage('How does Saathi Bot capture leads and handle FAQs?')}
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+              >
+                🤖 Saathi Bot Demo?
+              </button>
+              <button
+                onClick={() => handleSendMessage('What is your delivery timeline for an MVP?')}
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+              >
+                ⏱️ Delivery Timeline?
+              </button>
+              <button
+                onClick={() => handleSendMessage('How does TASQ-ONE break down project tasks?')}
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+              >
+                ⚡ TASQ-ONE AI?
+              </button>
+              <button
+                onClick={() => openBookingFlow()}
+                className="shrink-0 px-2 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 text-[10px] text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 font-bold transition-all active:scale-95 cursor-pointer"
+              >
+                📅 Free Audit Call
+              </button>
+            </div>
+          )}
+
           {/* ── Input Bar ── */}
           <div className="p-3 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-white/10 shrink-0">
             <form
@@ -679,7 +890,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
             >
               <input
                 type="text"
-                placeholder="Ask about AI, Web, Chatbots, Pricing..."
+                placeholder="Ask about AI, Web, Chatbots, Pricing, Timelines..."
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 className="flex-1 px-3.5 py-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors shadow-inner"
@@ -687,7 +898,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               <button
                 type="submit"
                 disabled={!inputText.trim()}
-                className="w-10 h-10 rounded-2xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:hover:bg-indigo-600 text-white flex items-center justify-center transition-all shrink-0 active:scale-95 shadow-md shadow-indigo-600/30"
+                className="w-10 h-10 rounded-2xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:hover:bg-indigo-600 text-white flex items-center justify-center transition-all shrink-0 active:scale-95 shadow-md shadow-indigo-600/30 cursor-pointer"
                 aria-label="Send message"
               >
                 <Send size={16} />
