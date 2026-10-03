@@ -9,7 +9,7 @@ import {
 import postsData from '../content/posts.json';
 import SharePageButton from '../components/SharePageButton';
 import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
-import { FIVERR_PROFILE_URL } from '../constants';
+import { FIVERR_PROFILE_URL, getActiveDomain } from '../constants';
 
 export interface BlogPost {
   id: string;
@@ -98,7 +98,7 @@ const PostCard: React.FC<{ post: BlogPost; featured?: boolean }> = ({ post, feat
 /* ─── Detail Article View (Redesigned & Clean) ───────────── */
 const PostView: React.FC<{ post: BlogPost }> = ({ post }) => {
   const navigate = useNavigate();
-  const postUrl = typeof window !== 'undefined' ? window.location.href : `https://codewithmrsingh.me/blog/${post.id}`;
+  const postUrl = typeof window !== 'undefined' ? window.location.href : `${getActiveDomain()}/blog/${post.id}`;
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">

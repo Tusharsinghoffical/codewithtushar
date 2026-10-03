@@ -8,7 +8,7 @@ import {
   Zap, Star, Layers, MessageSquare, PhoneCall, HelpCircle,
   Code2, Rocket, Check
 } from 'lucide-react';
-import { FIVERR_PROFILE_URL } from '../constants';
+import { FIVERR_PROFILE_URL, SITE_URL, getActiveDomain } from '../constants';
 import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
 
 /* ─── Types ──────────────────────────────────────────────── */
@@ -169,11 +169,12 @@ const injectSchema = () => {
   const script = document.createElement('script');
   script.type = 'application/ld+json';
   script.id = 'services-jsonld';
+  const base = getActiveDomain();
   script.textContent = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Services by Tushar Singh",
-    "url": "https://codewithmrsingh.me/services",
+    "url": `${base}/services`,
     "numberOfItems": ACTIVE_SERVICES.length,
     "itemListElement": ACTIVE_SERVICES.map((s, i) => ({
       "@type": "ListItem",
@@ -184,7 +185,7 @@ const injectSchema = () => {
         "description": s.description,
         "provider": {
           "@type": "Person",
-          "@id": "https://codewithmrsingh.me/#person",
+          "@id": `${base}/#person`,
           "name": "Tushar Singh"
         },
         "areaServed": "Worldwide"

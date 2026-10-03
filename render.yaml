@@ -3,8 +3,9 @@ services:
     name: codewithmrsingh
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
-    # Custom domain — configure in Render dashboard
-    # domain: codewithmrsingh.me
+    # Custom domains — configure in Render dashboard:
+    # 1. codewithmrsingh.me (Primary)
+    # 2. codewithtushar.me (Mirror / Secondary)
     headers:
       # Cache hashed assets forever (Vite adds content hashes to filenames)
       - path: /assets/*

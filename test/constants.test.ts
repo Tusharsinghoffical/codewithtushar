@@ -1,10 +1,20 @@
 import { describe, it, expect } from 'vitest';
-import { PROJECTS, SERVICES, SAAS_PRODUCTS, SITE_URL, SITE_NAME } from '../constants';
+import {
+  PROJECTS, SERVICES, SAAS_PRODUCTS,
+  SITE_URL, SITE_NAME, PRIMARY_DOMAIN, SECONDARY_DOMAIN,
+  SECONDARY_SITE_URL, SUPPORTED_DOMAINS, getActiveDomain
+} from '../constants';
 
 describe('Constants & Data Integrity Tests', () => {
-  it('should have valid site metadata', () => {
+  it('should have valid dual-domain site metadata', () => {
     expect(SITE_NAME).toBeDefined();
-    expect(SITE_URL).toContain('https://');
+    expect(SITE_URL).toBe('https://codewithmrsingh.me');
+    expect(SECONDARY_SITE_URL).toBe('https://codewithtushar.me');
+    expect(PRIMARY_DOMAIN).toBe('codewithmrsingh.me');
+    expect(SECONDARY_DOMAIN).toBe('codewithtushar.me');
+    expect(SUPPORTED_DOMAINS).toContain('codewithmrsingh.me');
+    expect(SUPPORTED_DOMAINS).toContain('codewithtushar.me');
+    expect(getActiveDomain()).toBe('https://codewithmrsingh.me');
   });
 
   it('should validate all projects have required production properties', () => {

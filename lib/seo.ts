@@ -70,12 +70,13 @@ export const updateMetaTags = (tags: Record<string, string>): void => {
   });
 };
 
+import { SITE_URL, SECONDARY_SITE_URL, SITE_NAME, SECONDARY_SITE_NAME, getActiveDomain } from '../constants';
+
 /**
  * Generate canonical URL
  */
 export const getCanonicalUrl = (path: string): string => {
-  const baseUrl = 'https://codewithmrsingh.me';
-  return `${baseUrl}${path}`;
+  return `${SITE_URL}${path}`;
 };
 
 /**
@@ -118,7 +119,7 @@ export const setupPageSEO = (options: {
   imageUrl?: string;
   type?: 'website' | 'article' | 'profile';
 }): void => {
-  const { title, description, keywords, path, imageUrl = 'https://codewithmrsingh.me/tushar-singh-optimized.jpg', type = 'website' } = options;
+  const { title, description, keywords, path, imageUrl = `${SITE_URL}/tushar-singh-optimized.jpg`, type = 'website' } = options;
   const canonicalUrl = getCanonicalUrl(path);
 
   // Update basic meta tags
@@ -126,19 +127,19 @@ export const setupPageSEO = (options: {
     'description': description,
     'keywords': keywords,
     'title': title,
-    'og:title': `${title} | Code with Mr Singh`,
+    'og:title': `${title} | ${SITE_NAME}`,
     'og:description': description,
     'og:url': canonicalUrl,
     'og:type': type,
     'og:image': imageUrl,
-    'twitter:title': `${title} | Code with Mr Singh`,
+    'twitter:title': `${title} | ${SITE_NAME}`,
     'twitter:description': description,
     'twitter:image': imageUrl,
     'twitter:card': 'summary_large_image'
   });
 
   // Update document title
-  document.title = `${title} | Code with Mr Singh`;
+  document.title = `${title} | ${SITE_NAME}`;
 
   // Update canonical link
   const canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -146,12 +147,14 @@ export const setupPageSEO = (options: {
     canonicalLink.setAttribute('href', canonicalUrl);
   }
 
-  // Add WebSite structured data
+  // Add WebSite structured data with dual-domain awareness
   addStructuredData({
     type: 'WebSite',
     data: {
-      name: 'Code with Mr Singh',
-      url: 'https://codewithmrsingh.me',
+      name: SITE_NAME,
+      alternateName: [SECONDARY_SITE_NAME, 'codewithtushar.me', 'codewithmrsingh.me'],
+      url: SITE_URL,
+      sameAs: [SECONDARY_SITE_URL],
       description: description,
       publisher: {
         '@type': 'Person',

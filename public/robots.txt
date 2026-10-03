@@ -1,4 +1,4 @@
-# robots.txt for https://codewithmrsingh.me/
+# robots.txt for https://codewithmrsingh.me/ and https://codewithtushar.me/
 # Optimized for Googlebot, Bingbot, Yahoo, DuckDuckGo, Yandex, Baidu & AI Crawlers
 # 100% RFC 9309 compliant — 0 Google Search Console warnings
 
@@ -80,8 +80,10 @@ Disallow: /
 # LLM Context Files for Answer Engine Optimization (AEO / GEO / Perplexity / ChatGPT / Claude)
 # LLMs-Txt: https://codewithmrsingh.me/llms.txt
 # LLMs-Full: https://codewithmrsingh.me/llms-full.txt
+# LLMs-Txt-Alt: https://codewithtushar.me/llms.txt
+# LLMs-Full-Alt: https://codewithtushar.me/llms-full.txt
 
-# Canonical Sitemaps
+# Canonical Sitemaps — Primary Domain (codewithmrsingh.me)
 Sitemap: https://codewithmrsingh.me/sitemap.xml
 Sitemap: https://codewithmrsingh.me/sitemap-index.xml
 Sitemap: https://codewithmrsingh.me/saas/sitemap.xml
@@ -91,3 +93,14 @@ Sitemap: https://codewithmrsingh.me/projects/sitemap.xml
 Sitemap: https://codewithmrsingh.me/about/sitemap.xml
 Sitemap: https://codewithmrsingh.me/contact/sitemap.xml
 Sitemap: https://codewithmrsingh.me/testimonials/sitemap.xml
+
+# Canonical Sitemaps — Secondary Domain (codewithtushar.me)
+Sitemap: https://codewithtushar.me/sitemap.xml
+Sitemap: https://codewithtushar.me/sitemap-index.xml
+Sitemap: https://codewithtushar.me/saas/sitemap.xml
+Sitemap: https://codewithtushar.me/blog/sitemap.xml
+Sitemap: https://codewithtushar.me/services/sitemap.xml
+Sitemap: https://codewithtushar.me/projects/sitemap.xml
+Sitemap: https://codewithtushar.me/about/sitemap.xml
+Sitemap: https://codewithtushar.me/contact/sitemap.xml
+Sitemap: https://codewithtushar.me/testimonials/sitemap.xml

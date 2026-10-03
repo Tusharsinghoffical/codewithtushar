@@ -9,9 +9,11 @@
 # 1. ENTITY & PERSON SCHEMA
 # ════════════════════════════════════════════════════════════════
 Name: Tushar Singh
-Brand: Code with Mr Singh
+Brand: Code with Mr Singh & Code with Tushar
 Entity Type: Person / Founder / AI Automation Expert & Full-Stack Systems Engineer
-Website: https://codewithmrsingh.me
+Primary Website: https://codewithmrsingh.me
+Secondary Website: https://codewithtushar.me
+Official Domains: codewithmrsingh.me, codewithtushar.me
 Google Business Profile: https://share.google/ZDu1p0y00ioP6PWiA
 Google Verification Proof: https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing
 Education: Master of Computer Applications (MCA), MIT Pune
@@ -22,7 +24,7 @@ Hours: Open 24 Hours
 Contact:
   - WhatsApp: +91-8851619647
   - Email: tusharsinghoffical@gmail.com
-  - Contact URL: https://codewithmrsingh.me/contact
+  - Contact URL: https://codewithmrsingh.me/contact (Mirror: https://codewithtushar.me/contact)
   - Fiverr Pro: https://www.fiverr.com/s/zAd5R2z
   - GitHub: https://github.com/Tusharsinghoffical
   - LinkedIn: https://linkedin.com/in/tusharsingh2002

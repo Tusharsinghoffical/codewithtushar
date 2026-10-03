@@ -30,7 +30,8 @@
 
 <br/>
 
-[![Live Production](https://img.shields.io/badge/🌐_OFFICIAL_PRODUCTION-codewithmrsingh.me-6366F1?style=for-the-badge)](https://codewithmrsingh.me)
+[![Official Domain 1](https://img.shields.io/badge/🌐_OFFICIAL_DOMAIN-codewithmrsingh.me-6366F1?style=for-the-badge)](https://codewithmrsingh.me)
+[![Official Domain 2](https://img.shields.io/badge/🌐_OFFICIAL_DOMAIN-codewithtushar.me-06B6D4?style=for-the-badge)](https://codewithtushar.me)
 [![Google Verified](https://img.shields.io/badge/🛡️_GOOGLE_VERIFIED-Tushar_Singh_Freelancing-4285F4?style=for-the-badge&logo=google)](https://share.google/ZDu1p0y00ioP6PWiA)
 [![Fiverr Pro](https://img.shields.io/badge/⭐_FIVERR_PRO-fiverr.com/s/zAd5R2z-1DBF73?style=for-the-badge&logo=fiverr)](https://www.fiverr.com/s/zAd5R2z)
 
@@ -327,6 +328,7 @@ Fill in your configuration:
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
 VITE_WHATSAPP_NUMBER=919876543210
 VITE_SITE_URL=https://codewithmrsingh.me
+VITE_SECONDARY_SITE_URL=https://codewithtushar.me
 ```
 
 ### 3 · Launch Local Development Server
@@ -354,7 +356,7 @@ npm run preview
 
 | Channel | Details |
 |:--------|:--------|
-| 🌐 **Official Website** | [codewithmrsingh.me](https://codewithmrsingh.me) |
+| 🌐 **Official Websites** | [codewithmrsingh.me](https://codewithmrsingh.me) • [codewithtushar.me](https://codewithtushar.me) |
 | 👨‍💻 **Founder & Architect** | **Tushar Singh** (AI Automation & SaaS Specialist) |
 | 📱 **WhatsApp Consultation**| [Direct WhatsApp Booking](https://wa.me/919876543210) |
 | 📧 **Business Email** | [tusharsingh.dev@gmail.com](mailto:tusharsingh.dev@gmail.com) |
@@ -378,9 +380,10 @@ Distributed under the **MIT License**. See `LICENSE` for complete terms.
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                                                                 │
-│   🚀  CODE WITH MR SINGH — Next-Gen AI Automation & SaaS        │
+│   🚀  CODE WITH MR SINGH & CODE WITH TUSHAR                     │
 │                                                                 │
-│   Crafted with ❤️ by Tushar Singh (codewithmrsingh.me)          │
+│   Crafted with ❤️ by Tushar Singh                               │
+│   codewithmrsingh.me  •  codewithtushar.me                      │
 │   New Delhi / Pune, India  ·  React 19 · Vite 6 · Gemini AI     │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘

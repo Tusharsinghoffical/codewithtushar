@@ -24,10 +24,10 @@ import Sitemap from './pages/Sitemap';
 import NotFound from './pages/NotFound';
 import ErrorBoundary from './components/ErrorBoundary';
 import {
-  SITE_URL, SITE_NAME,
+  SITE_URL, SECONDARY_SITE_URL, SITE_NAME, SECONDARY_SITE_NAME,
   SITE_DEFAULT_OG_IMAGE, SITE_DEFAULT_OG_ALT,
   SITE_DEFAULT_OG_WIDTH, SITE_DEFAULT_OG_HEIGHT,
-  SITE_DATE_MODIFIED, PAGE_OG,
+  SITE_DATE_MODIFIED, PAGE_OG, getActiveDomain
 } from './constants';
 
 const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
@@ -330,7 +330,7 @@ const removeSchema = (id: string) => {
 
 // Per-page rich structured data for AEO + GEO
 const updateStructuredData = (title: string, description: string, path: string) => {
-  const baseUrl = 'https://codewithmrsingh.me';
+  const baseUrl = getActiveDomain();
   const pageUrl = `${baseUrl}${path}`;
 
   // ── BreadcrumbList (all pages) ──────────────────────────────
@@ -430,10 +430,10 @@ const updateStructuredData = (title: string, description: string, path: string) 
         "@type": "Person",
         "@id": `${baseUrl}/#person`,
         "name": "Tushar Singh",
-        "alternateName": "Code with Mr Singh",
+        "alternateName": ["Code with Mr Singh", "Code with Tushar", "codewithtushar.me", "codewithmrsingh.me"],
         "jobTitle": "AI Automation Expert & Full-Stack Developer",
         "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from MIT Pune. Founder of Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
-        "image": "https://codewithmrsingh.me/tushar-singh-optimized.jpg",
+        "image": `${SITE_URL}/tushar-singh-optimized.jpg`,
         "url": `${baseUrl}/about`,
         "address": {
           "@type": "PostalAddress",
@@ -444,6 +444,8 @@ const updateStructuredData = (title: string, description: string, path: string) 
           "postalCode": "110044"
         },
         "sameAs": [
+          SITE_URL,
+          SECONDARY_SITE_URL,
           "https://www.fiverr.com/s/zAd5R2z",
           "https://share.google/ZDu1p0y00ioP6PWiA",
           "https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing",

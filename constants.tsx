@@ -3,21 +3,49 @@ import React from 'react';
 import { Database, Code, Cpu, BarChart, Zap, Globe, Brain, Terminal, Settings, Palette } from 'lucide-react';
 import { Service, Project, Testimonial, SaasProduct } from './types';
 
-// ─── Site-wide constants ──────────────────────────────────────────────────────
-export const SITE_URL             = 'https://codewithmrsingh.me';
-export const SITE_NAME            = 'Code with Mr Singh';
-export const SITE_DEFAULT_OG_IMAGE  = 'https://codewithmrsingh.me/tushar-singh-optimized.jpg';
-export const SITE_DEFAULT_OG_ALT    = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
+// ─── Dual-Domain & Site-wide constants ─────────────────────────────────────────
+export const PRIMARY_DOMAIN = 'codewithmrsingh.me';
+export const SECONDARY_DOMAIN = 'codewithtushar.me';
+export const SITE_URL = 'https://codewithmrsingh.me';
+export const SECONDARY_SITE_URL = 'https://codewithtushar.me';
+export const SITE_NAME = 'Code with Mr Singh';
+export const SECONDARY_SITE_NAME = 'Code with Tushar';
+export const BRAND_NAMES = ['Code with Mr Singh', 'Code with Tushar'] as const;
+export const SUPPORTED_DOMAINS = [
+  'codewithmrsingh.me',
+  'www.codewithmrsingh.me',
+  'codewithtushar.me',
+  'www.codewithtushar.me',
+] as const;
+
+/**
+ * Dynamically resolves the currently active canonical base URL based on
+ * the browser's hostname so both codewithtushar.me and codewithmrsingh.me
+ * feel fully native and correctly linked.
+ */
+export const getActiveDomain = (): string => {
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname.toLowerCase();
+    if (host.includes('codewithtushar.me')) {
+      return SECONDARY_SITE_URL;
+    }
+  }
+  return SITE_URL;
+};
+
+export const SITE_DEFAULT_OG_IMAGE = 'https://codewithmrsingh.me/tushar-singh-optimized.jpg';
+export const SITE_DEFAULT_OG_ALT = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
 /** Actual pixel dimensions of tushar-singh-optimized.jpg (square portrait) */
-export const SITE_DEFAULT_OG_WIDTH  = '800';
+export const SITE_DEFAULT_OG_WIDTH = '800';
 export const SITE_DEFAULT_OG_HEIGHT = '800';
 /** Current deployment date — update on each redeploy for fresh dateModified signals */
-export const SITE_DATE_MODIFIED = '2026-09-05';
+export const SITE_DATE_MODIFIED = '2026-10-03';
 
 // ─── Search Engine, AEO & GEO Engagement Keywords ─────────────────────────────
 export const SEO_CORE_KEYWORDS = [
+  'codewithtushar.me', 'codewithmrsingh.me', 'Code with Tushar', 'Code with Mr Singh',
   'Tushar Singh freelancing', 'Tushar Singh freelancing Delhi', 'Tushar Singh freelance developer',
-  'Code with Mr Singh', 'freelance developer Delhi', 'AI automation expert India',
+  'freelance developer Delhi', 'AI automation expert India',
   'full stack developer India', 'Python developer India', 'React.js developer India',
   'Django developer', 'n8n automation', 'RAG chatbot development', 'AI agent development',
   'machine learning engineer India', 'data scientist India', 'web development India',
@@ -63,7 +91,7 @@ export const ALL_SITE_KEYWORDS = [
 
 // ─── Google Business Profile & Verification Constants ────────────────────────
 export const GOOGLE_BUSINESS_NAME = 'Tushar Singh freelancing';
-export const GOOGLE_BUSINESS_URL  = 'https://share.google/ZDu1p0y00ioP6PWiA';
+export const GOOGLE_BUSINESS_URL = 'https://share.google/ZDu1p0y00ioP6PWiA';
 export const GOOGLE_VERIFICATION_PROOF_URL = 'https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing';
 export const GOOGLE_MAPS_DIRECTIONS_URL = 'https://www.google.com/maps/search/?api=1&query=Tushar+Singh+freelancing+New+Delhi+Delhi+110044';
 

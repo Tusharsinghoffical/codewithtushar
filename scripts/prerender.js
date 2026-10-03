@@ -18,7 +18,9 @@ const template = fs.readFileSync(templatePath, 'utf8');
 const posts = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
 
 const SITE_URL = 'https://codewithmrsingh.me';
+const SECONDARY_SITE_URL = 'https://codewithtushar.me';
 const SITE_NAME = 'Code with Mr Singh';
+const SECONDARY_SITE_NAME = 'Code with Tushar';
 const DEFAULT_IMAGE = 'https://codewithmrsingh.me/tushar-singh-optimized.jpg';
 const DEFAULT_ALT = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
 const SITE_DATE_MODIFIED = new Date().toISOString().split('T')[0];
@@ -60,7 +62,7 @@ const pages = [
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         "name": "Tushar Singh",
-        "alternateName": "Code with Mr Singh",
+        "alternateName": ["Code with Mr Singh", "Code with Tushar", "codewithtushar.me", "codewithmrsingh.me"],
         "jobTitle": "AI Automation Expert & Full-Stack Developer",
         "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from MIT Pune. Founder of Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
         "image": DEFAULT_IMAGE,
@@ -74,6 +76,8 @@ const pages = [
           "postalCode": "110044"
         },
         "sameAs": [
+          "https://codewithmrsingh.me",
+          "https://codewithtushar.me",
           "https://www.fiverr.com/s/zAd5R2z",
           "https://share.google/ZDu1p0y00ioP6PWiA",
           "https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing",
