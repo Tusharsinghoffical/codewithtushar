@@ -706,10 +706,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       <img src="/saathi-bot/saathi-black-icon.svg" alt="Saathi Mascot" className="w-5 h-5 object-contain hidden dark:block" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-slate-900 dark:text-white font-outfit">Saathi Bot Assistant</div>
-                      <div className="text-[10px] text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                        <span>Online · Verified Grounding</span>
+                      <div className="flex items-center gap-1.5">
+                        <div className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white font-outfit">Demo Chatbot</div>
+                        <span className="px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-wider bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 border border-cyan-400/30">
+                          Saathi Bot
+                        </span>
+                      </div>
+                      <div className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1 flex-wrap">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                        <span className="font-semibold text-emerald-600 dark:text-emerald-400">Online</span>
+                        <span>•</span>
+                        <span>Yeh demo chatbot Saathi Bot ki taraf se hai</span>
                       </div>
                     </div>
                   </div>
@@ -745,6 +752,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       Shadow DOM
                     </span>
                   </div>
+                </div>
+
+                {/* Saathi Bot Demo Tagline Banner */}
+                <div className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500/10 via-cyan-500/5 to-transparent border border-cyan-500/25 text-cyan-950 dark:text-cyan-200 text-xs font-medium flex items-center gap-2">
+                  <Sparkles size={14} className="text-cyan-500 shrink-0 animate-pulse" />
+                  <span className="leading-snug">
+                    <strong className="font-bold">Demo Chatbot:</strong> Yeh demo chatbot Saathi Bot ki taraf se hai — 100% Grounded AI &amp; Zero Hallucination.
+                  </span>
                 </div>
 
                 {/* Conversation Stream */}
