@@ -924,82 +924,82 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       {/* ─── Chat Window Modal ────────────────────────────────────── */}
       {isOpen && (
         <div
-          className="fixed bottom-2 left-2 right-2 sm:right-auto sm:bottom-6 sm:left-8 z-[200] w-[calc(100vw-1rem)] sm:w-[420px] max-h-[calc(100dvh-4rem)] h-[580px] sm:h-[660px] flex flex-col bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.4)] border border-slate-200 dark:border-indigo-500/30 overflow-hidden animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-bottom-6 duration-300 backdrop-blur-xl"
+          className="fixed inset-x-2 bottom-2 sm:inset-x-auto sm:left-6 md:left-8 sm:bottom-6 z-[200] w-[calc(100vw-1rem)] sm:w-[440px] md:w-[460px] max-h-[calc(100dvh-1rem)] sm:max-h-[85vh] h-[min(650px,calc(100dvh-1.5rem))] sm:h-[660px] flex flex-col bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.4)] border border-slate-200 dark:border-indigo-500/30 overflow-hidden animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-bottom-6 duration-300 backdrop-blur-xl"
           role="dialog"
           aria-label="Tushar AI Assistant"
         >
           {/* ── Top Header ── */}
-          <div className="bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 p-4 border-b border-indigo-500/20 text-white flex items-center justify-between shrink-0">
-            <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="w-11 h-11 rounded-2xl bg-slate-950 p-1 flex items-center justify-center shadow-md border border-cyan-400/40 overflow-hidden">
+          <div className="bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 p-3 sm:p-4 border-b border-indigo-500/20 text-white flex items-center justify-between shrink-0">
+            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+              <div className="relative shrink-0">
+                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-slate-950 p-1 flex items-center justify-center shadow-md border border-cyan-400/40 overflow-hidden">
                   <img
                     src="/tushar-ai-icon.png"
                     alt="Tushar AI Assistant Logo"
                     className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]"
                   />
                 </div>
-                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-slate-950" />
+                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full border-2 border-slate-950" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="font-outfit font-black text-sm text-white tracking-wide">
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <h3 className="font-outfit font-black text-xs sm:text-sm text-white tracking-wide truncate">
                     Tushar AI Assistant
                   </h3>
-                  <span className="px-1.5 py-0.5 bg-indigo-500/30 text-indigo-300 text-[8px] font-black rounded-md uppercase tracking-wider border border-indigo-400/30">
+                  <span className="px-1.5 py-0.5 bg-indigo-500/30 text-indigo-300 text-[8px] font-black rounded-md uppercase tracking-wider border border-indigo-400/30 shrink-0">
                     Live
                   </span>
                 </div>
-                <p className="text-[10px] text-slate-400 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  <span>Answers Services, Projects &amp; Instant Booking</span>
+                <p className="text-[9px] sm:text-[10px] text-slate-400 flex items-center gap-1.5 truncate">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping shrink-0" />
+                  <span className="truncate">Answers Services, Projects &amp; Instant Booking</span>
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
               <button
                 onClick={handleResetChat}
                 title="Reset Conversation"
-                className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all cursor-pointer"
+                className="p-1.5 sm:p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all cursor-pointer"
                 aria-label="Reset Chat"
               >
-                <RefreshCw size={15} />
+                <RefreshCw size={14} className="sm:w-[15px] sm:h-[15px]" />
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all cursor-pointer"
+                className="p-1.5 sm:p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all cursor-pointer"
                 aria-label="Close Assistant"
               >
-                <X size={18} />
+                <X size={16} className="sm:w-[18px] sm:h-[18px]" />
               </button>
             </div>
           </div>
 
           {/* ── Sub-header Banner: Free Consultation & Direct WhatsApp ── */}
-          <div className="bg-slate-950/95 px-4 py-2 border-b border-indigo-500/20 flex items-center justify-between text-[11px] shrink-0">
-            <div className="flex items-center gap-1.5 text-cyan-300 font-semibold">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span className="truncate">Free Consultation • &lt; 1 Hr Response</span>
+          <div className="bg-slate-950/95 px-3 sm:px-4 py-1.5 sm:py-2 border-b border-indigo-500/20 flex items-center justify-between text-[10px] sm:text-[11px] shrink-0 gap-2">
+            <div className="flex items-center gap-1.5 text-cyan-300 font-semibold min-w-0 truncate">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span className="truncate text-[9.5px] sm:text-[11px]">Free Consultation • &lt; 1 Hr Response</span>
             </div>
             <button
               onClick={() => sendDirectWhatsApp('Hi Tushar, I want to connect directly from your AI Assistant.')}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold transition-all active:scale-95 shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-[9px] sm:text-[10px] font-bold transition-all active:scale-95 shrink-0 cursor-pointer"
             >
-              <MessageCircle size={12} className="text-emerald-400" />
+              <MessageCircle size={11} className="text-emerald-400 sm:w-3 sm:h-3" />
               <span>Direct WhatsApp</span>
             </button>
           </div>
 
           {/* ── Messages Scroll Area ── */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs font-sans">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 text-xs font-sans">
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className={`flex gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex gap-2 sm:gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 mt-0.5 border border-cyan-500/30 shadow-2xs overflow-hidden">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 mt-0.5 border border-cyan-500/30 shadow-2xs overflow-hidden">
                     <img
                       src="/tushar-ai-icon.png"
                       alt="Tushar AI"
@@ -1008,9 +1008,9 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                   </div>
                 )}
 
-                <div className={`max-w-[88%] space-y-2`}>
+                <div className="max-w-[90%] sm:max-w-[86%] space-y-1.5 sm:space-y-2">
                   <div
-                    className={`p-3.5 rounded-2xl leading-relaxed text-[12px] shadow-xs relative group/msg ${
+                    className={`p-2.5 sm:p-3.5 rounded-2xl leading-relaxed text-[11px] sm:text-[12px] shadow-xs relative group/msg ${
                       msg.sender === 'user'
                         ? 'bg-indigo-600 text-white rounded-tr-none font-medium'
                         : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-none border border-slate-200/80 dark:border-white/5'
@@ -1082,12 +1082,12 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
                   {/* Primary Quick Action Chips */}
                   {msg.quickActions && msg.quickActions.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-0.5">
+                    <div className="flex flex-wrap gap-1 sm:gap-1.5 pt-0.5">
                       {msg.quickActions.map((qa, qaIdx) => (
                         <button
                           key={qaIdx}
                           onClick={qa.action}
-                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20 text-[10px] font-bold transition-all active:scale-95 shadow-2xs cursor-pointer"
+                          className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20 text-[9px] sm:text-[10px] font-bold transition-all active:scale-95 shadow-2xs cursor-pointer"
                         >
                           <span>{qa.label}</span>
                         </button>
@@ -1098,8 +1098,8 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                   {/* ── Contextual Assumption / Deep-Dive Questions ── */}
                   {msg.assumptionQuestions && msg.assumptionQuestions.length > 0 && (
                     <div className="pt-1.5 space-y-1">
-                      <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-slate-500 dark:text-cyan-400/80">
-                        <Lightbulb size={11} className="text-amber-400" />
+                      <div className="flex items-center gap-1 text-[8.5px] sm:text-[9px] font-black uppercase tracking-wider text-slate-500 dark:text-cyan-400/80">
+                        <Lightbulb size={10} className="text-amber-400 sm:w-[11px] sm:h-[11px]" />
                         <span>Suggested Follow-up Questions:</span>
                       </div>
                       <div className="flex flex-col gap-1">
@@ -1107,10 +1107,10 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                           <button
                             key={qIdx}
                             onClick={() => handleSendMessage(qText)}
-                            className="w-full text-left px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-950/70 hover:bg-indigo-50/80 dark:hover:bg-indigo-950/70 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-300 border border-slate-200/70 dark:border-slate-800 text-[10.5px] transition-all flex items-center justify-between group/q cursor-pointer"
+                            className="w-full text-left px-2 sm:px-2.5 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-950/70 hover:bg-indigo-50/80 dark:hover:bg-indigo-950/70 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-cyan-300 border border-slate-200/70 dark:border-slate-800 text-[9.5px] sm:text-[10.5px] leading-snug transition-all flex items-center justify-between group/q cursor-pointer"
                           >
-                            <span className="line-clamp-1">{qText}</span>
-                            <ChevronRight size={12} className="opacity-40 group-hover/q:opacity-100 group-hover/q:translate-x-0.5 transition-all shrink-0 ml-1 text-cyan-400" />
+                            <span className="line-clamp-2 pr-1">{qText}</span>
+                            <ChevronRight size={12} className="opacity-40 group-hover/q:opacity-100 group-hover/q:translate-x-0.5 transition-all shrink-0 text-cyan-400" />
                           </button>
                         ))}
                       </div>
@@ -1119,8 +1119,8 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                 </div>
 
                 {msg.sender === 'user' && (
-                  <div className="w-7 h-7 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0 mt-0.5">
-                    <User size={14} />
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0 mt-0.5">
+                    <User size={12} className="sm:w-[14px] sm:h-[14px]" />
                   </div>
                 )}
               </div>
@@ -1128,15 +1128,15 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
             {/* Typing Indicator */}
             {isTyping && (
-              <div className="flex gap-2.5 items-center">
-                <div className="w-7 h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-cyan-500/30 overflow-hidden">
+              <div className="flex gap-2 sm:gap-2.5 items-center">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-cyan-500/30 overflow-hidden">
                   <img
                     src="/tushar-ai-icon.png"
                     alt="Tushar AI"
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div className="bg-slate-100 dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200/80 dark:border-white/5 flex items-center gap-1.5">
+                <div className="bg-slate-100 dark:bg-slate-800 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl rounded-tl-none border border-slate-200/80 dark:border-white/5 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce" />
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce [animation-delay:0.2s]" />
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce [animation-delay:0.4s]" />
@@ -1146,25 +1146,25 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
             {/* ── In-Chat Interactive Booking Form ── */}
             {showBookingForm && (
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-slate-800 dark:to-indigo-950/40 border-2 border-indigo-500/40 shadow-lg space-y-3 animate-in fade-in zoom-in-95 duration-200">
-                <div className="flex items-center justify-between border-b border-indigo-200/60 dark:border-indigo-500/20 pb-2">
+              <div className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-slate-800 dark:to-indigo-950/40 border-2 border-indigo-500/40 shadow-lg space-y-2.5 sm:space-y-3 animate-in fade-in zoom-in-95 duration-200">
+                <div className="flex items-center justify-between border-b border-indigo-200/60 dark:border-indigo-500/20 pb-1.5 sm:pb-2">
                   <div className="flex items-center gap-1.5">
-                    <Calendar size={15} className="text-indigo-600 dark:text-indigo-400" />
-                    <h4 className="font-outfit font-black text-xs text-slate-900 dark:text-white">
+                    <Calendar size={14} className="text-indigo-600 dark:text-indigo-400 sm:w-[15px] sm:h-[15px]" />
+                    <h4 className="font-outfit font-black text-[11px] sm:text-xs text-slate-900 dark:text-white">
                       Book Free 30-Min Strategy Call
                     </h4>
                   </div>
                   <button
                     onClick={() => setShowBookingForm(false)}
-                    className="text-slate-400 hover:text-slate-600 dark:hover:text-white cursor-pointer"
+                    className="text-slate-400 hover:text-slate-600 dark:hover:text-white cursor-pointer p-0.5"
                   >
                     <X size={14} />
                   </button>
                 </div>
 
-                <form onSubmit={handleBookingSubmit} className="space-y-2.5">
+                <form onSubmit={handleBookingSubmit} className="space-y-2 sm:space-y-2.5">
                   <div>
-                    <label className="block text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-1">
+                    <label className="block text-[8.5px] sm:text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-0.5 sm:mb-1">
                       Your Name *
                     </label>
                     <input
@@ -1173,12 +1173,12 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                       placeholder="e.g. Rahul Sharma / Alex"
                       value={bookingName}
                       onChange={(e) => setBookingName(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
+                      className="w-full px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-1">
+                    <label className="block text-[8.5px] sm:text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-0.5 sm:mb-1">
                       WhatsApp / Phone Number *
                     </label>
                     <input
@@ -1187,18 +1187,18 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                       placeholder="e.g. +91 98765 43210"
                       value={bookingPhone}
                       onChange={(e) => setBookingPhone(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
+                      className="w-full px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-1">
+                    <label className="block text-[8.5px] sm:text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-0.5 sm:mb-1">
                       What do you need help with?
                     </label>
                     <select
                       value={bookingService}
                       onChange={(e) => setBookingService(e.target.value)}
-                      className="w-full px-3 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 font-medium"
+                      className="w-full px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-[11px] sm:text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 font-medium"
                     >
                       <option value="AI Workflow Automation (n8n/Python)">⚡ AI Workflow Automation (Save 10+ hrs/wk with n8n/Python)</option>
                       <option value="24/7 AI Chatbot & WhatsApp Commerce">🤖 24/7 AI Chatbot (RAG, WhatsApp API, Web Widget)</option>
@@ -1210,7 +1210,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                   </div>
 
                   <div>
-                    <label className="block text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-1">
+                    <label className="block text-[8.5px] sm:text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-0.5 sm:mb-1">
                       Preferred Date &amp; Time (Optional)
                     </label>
                     <input
@@ -1218,12 +1218,12 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                       placeholder="e.g. Tomorrow at 4:00 PM IST"
                       value={bookingDate}
                       onChange={(e) => setBookingDate(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
+                      className="w-full px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-1">
+                    <label className="block text-[8.5px] sm:text-[9px] font-black uppercase text-slate-600 dark:text-slate-300 mb-0.5 sm:mb-1">
                       Project Notes / Goal (Optional)
                     </label>
                     <textarea
@@ -1231,19 +1231,19 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                       placeholder="Briefly describe what you want to build or automate..."
                       value={bookingNotes}
                       onChange={(e) => setBookingNotes(e.target.value)}
-                      className="w-full px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 resize-none"
+                      className="w-full px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500 resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+                    className="w-full flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-[11px] sm:text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
                   >
-                    <MessageCircle size={15} />
+                    <MessageCircle size={14} className="sm:w-[15px] sm:h-[15px]" />
                     <span>Confirm &amp; Send to WhatsApp</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={13} className="sm:w-[14px] sm:h-[14px]" />
                   </button>
-                  <p className="text-[8.5px] text-center text-slate-500 dark:text-slate-400">
+                  <p className="text-[8px] sm:text-[8.5px] text-center text-slate-500 dark:text-slate-400">
                     ⚡ Instant connection with Tushar Singh on WhatsApp (&lt; 1 hour response)
                   </p>
                 </form>
@@ -1255,38 +1255,38 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
           {/* ── Assumption Questions Quick Bar (Collapsible / Scrollable) ── */}
           {showAssumptionBar && (
-            <div className="px-3 py-2 bg-slate-100/90 dark:bg-slate-950/90 border-t border-slate-200 dark:border-white/5 flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0">
-              <span className="text-[9px] font-black uppercase text-slate-500 dark:text-cyan-400/90 shrink-0 flex items-center gap-1">
-                <HelpCircle size={11} className="text-cyan-400" />
+            <div className="px-2.5 sm:px-3 py-1.5 sm:py-2 bg-slate-100/90 dark:bg-slate-950/90 border-t border-slate-200 dark:border-white/5 flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar shrink-0">
+              <span className="text-[8.5px] sm:text-[9px] font-black uppercase text-slate-500 dark:text-cyan-400/90 shrink-0 flex items-center gap-0.5 sm:gap-1">
+                <HelpCircle size={10} className="text-cyan-400 sm:w-[11px] sm:h-[11px]" />
                 <span>Ask:</span>
               </span>
               <button
                 onClick={() => handleSendMessage('What are your pricing packages and rates?')}
-                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
               >
                 💰 Cost &amp; Rates?
               </button>
               <button
                 onClick={() => handleSendMessage('How does Saathi Bot capture leads and handle FAQs?')}
-                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
               >
                 🤖 Saathi Bot Demo?
               </button>
               <button
                 onClick={() => handleSendMessage('What is your delivery timeline for an MVP?')}
-                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
               >
                 ⏱️ Delivery Timeline?
               </button>
               <button
                 onClick={() => handleSendMessage('How does TASQ-ONE break down project tasks?')}
-                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-[9.5px] sm:text-[10px] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 font-medium transition-all active:scale-95 cursor-pointer"
               >
                 ⚡ TASQ-ONE AI?
               </button>
               <button
                 onClick={() => openBookingFlow()}
-                className="shrink-0 px-2 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 text-[10px] text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 font-bold transition-all active:scale-95 cursor-pointer"
+                className="shrink-0 px-2 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 text-[9.5px] sm:text-[10px] text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 font-bold transition-all active:scale-95 cursor-pointer"
               >
                 📅 Free Audit Call
               </button>
@@ -1294,28 +1294,28 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
           )}
 
           {/* ── Input Bar ── */}
-          <div className="p-3 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-white/10 shrink-0">
+          <div className="p-2 sm:p-3 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-white/10 shrink-0">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
                 handleSendMessage();
               }}
-              className="flex items-center gap-2"
+              className="flex items-center gap-1.5 sm:gap-2"
             >
               <input
                 type="text"
                 placeholder="Ask about AI, Web, Chatbots, Pricing, Timelines..."
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                className="flex-1 px-3.5 py-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors shadow-inner"
+                className="flex-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl sm:rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] sm:text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors shadow-inner"
               />
               <button
                 type="submit"
                 disabled={!inputText.trim()}
-                className="w-10 h-10 rounded-2xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:hover:bg-indigo-600 text-white flex items-center justify-center transition-all shrink-0 active:scale-95 shadow-md shadow-indigo-600/30 cursor-pointer"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:hover:bg-indigo-600 text-white flex items-center justify-center transition-all shrink-0 active:scale-95 shadow-md shadow-indigo-600/30 cursor-pointer"
                 aria-label="Send message"
               >
-                <Send size={16} />
+                <Send size={14} className="sm:w-4 sm:h-4" />
               </button>
             </form>
           </div>
