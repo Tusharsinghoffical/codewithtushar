@@ -212,9 +212,21 @@ AddDefaultCharset UTF-8
 FileETag None
 
 # =============================================
-# HTTPS Security (HSTS)
+# Security Headers & Hardening
 # =============================================
 <IfModule mod_headers.c>
     # Force HTTPS for 1 year (include subdomains)
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Clickjacking protection
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Referrer privacy protection
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Restrict sensitive browser APIs
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>

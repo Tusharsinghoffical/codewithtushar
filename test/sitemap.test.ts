@@ -33,6 +33,7 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(content).toContain('https://codewithmrsingh.me/saas/tasq-one');
     expect(content).toContain('https://codewithmrsingh.me/saas/saathi-bot');
     expect(content).toContain('https://codewithmrsingh.me/blog');
+    expect(content).toContain('ai-vs-human-coding-software-development');
     expect(content).toContain('env-schema-guard-zero-dependency-config-validator');
     expect(content).toContain('retry-circuit-distributed-resilience-engine');
     expect(content).toContain('prompt-kit-js-versioned-llm-prompt-registry');

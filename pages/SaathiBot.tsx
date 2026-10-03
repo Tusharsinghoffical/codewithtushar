@@ -357,9 +357,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="flex items-center justify-center pt-1">
             <div className="p-3 sm:p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md dark:shadow-cyan-500/10 relative group">
               <img
-                src="/saathi-bot/saathi-bot-logo.svg"
+                src="/saathi-bot/saathi-white-logo.svg"
                 alt="Saathi Bot Official Logo"
-                className="h-10 sm:h-14 w-auto object-contain relative z-10"
+                className="h-10 sm:h-14 w-auto object-contain relative z-10 dark:hidden"
+              />
+              <img
+                src="/saathi-bot/saathi-black-logo.svg"
+                alt="Saathi Bot Official Logo"
+                className="h-10 sm:h-14 w-auto object-contain relative z-10 hidden dark:block"
               />
             </div>
           </div>
@@ -487,10 +492,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="pt-4 max-w-5xl mx-auto">
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200 dark:border-cyan-500/30 bg-white dark:bg-slate-900 shadow-xl group">
               <img
-                src="/saathi-bot/saathi-bot-logo.svg"
+                src="/saathi-bot/saathi-white-banner.svg"
                 alt="Saathi Bot Product Architecture & Dashboard Showcase"
-                className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl transition-transform duration-500 group-hover:scale-[1.01]"
+                className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl transition-transform duration-500 group-hover:scale-[1.01] dark:hidden"
               />
+              <div className="hidden dark:flex flex-col items-center justify-center p-8 sm:p-14 relative overflow-hidden bg-slate-950 min-h-[240px] sm:min-h-[300px]">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-500/15 via-teal-500/10 to-transparent blur-2xl pointer-events-none" />
+                <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+                  <div className="p-4 sm:p-6 rounded-3xl bg-slate-900/90 border border-cyan-500/30 shadow-[0_0_50px_rgba(6,182,212,0.25)] flex items-center justify-center">
+                    <img
+                      src="/saathi-bot/saathi-black-logo.svg"
+                      alt="Saathi Bot Official Logo"
+                      className="h-16 sm:h-24 w-auto object-contain drop-shadow-[0_0_25px_rgba(126,244,248,0.5)] transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                    <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-cyan-950/60 border border-cyan-500/40 text-cyan-300">
+                      v1.0.0 Production Architecture
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-emerald-950/60 border border-emerald-500/40 text-emerald-300">
+                      Zero Hallucination RRF
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-indigo-950/60 border border-indigo-500/40 text-indigo-300">
+                      18 KB Shadow DOM
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -673,8 +701,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {/* Chat Header */}
                 <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 flex items-center justify-center">
-                      <img src="/saathi-bot/saathi-bot-icon.svg" alt="Saathi Mascot" className="w-5 h-5" />
+                    <div className="w-8 h-8 rounded-xl bg-cyan-100 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 flex items-center justify-center overflow-hidden p-1">
+                      <img src="/saathi-bot/saathi-white-icon.svg" alt="Saathi Mascot" className="w-5 h-5 object-contain dark:hidden" />
+                      <img src="/saathi-bot/saathi-black-icon.svg" alt="Saathi Mascot" className="w-5 h-5 object-contain hidden dark:block" />
                     </div>
                     <div>
                       <div className="text-xs font-bold text-slate-900 dark:text-white font-outfit">Saathi Bot Assistant</div>

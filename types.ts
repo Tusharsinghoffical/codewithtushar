@@ -74,7 +74,9 @@ export interface SaasProduct {
   statusLabel: string;
   version: string;
   bannerImage: string;
+  bannerImageDark?: string;
   logoImage?: string;
+  logoImageDark?: string;
   tags: string[];
   metrics: { label: string; value: string }[];
   highlights: string[];

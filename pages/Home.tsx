@@ -67,9 +67,9 @@ const SAAS_SLIDES = [
     title: 'Meet Saathi Bot.',
     subtitle: 'Enterprise Autonomous AI Chatbot & Conversational Commerce Platform. Turn any website into an accurate, grounded assistant with Zero Hallucination Guarantee and In-Chat Booking.',
     pillTech: ['Hybrid RAG (RRF)', 'Pre-LLM Confidence Gate', '18 KB Shadow DOM'],
-    logoImage: '/saathi-bot/saathi-bot-banner.jpg',
-    logoAlt: 'Saathi Bot Dashboard & Conversational Architecture Banner',
-    isBannerView: true,
+    logoImage: '/saathi-bot/saathi-black-logo.svg',
+    logoAlt: 'Saathi Bot Official Logo',
+    isBannerView: false,
     metrics: [
       { label: 'First Token', val: '< 750ms' },
       { label: 'Fallback Latency', val: '24ms' },

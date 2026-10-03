@@ -158,8 +158,10 @@ export const SAAS_PRODUCTS: SaasProduct[] = [
     status: 'live',
     statusLabel: 'PRODUCTION V1.0 LIVE',
     version: 'v1.0.0',
-    bannerImage: '/saathi-bot/saathi-bot-banner.jpg',
-    logoImage: '/saathi-bot/saathi-bot-icon.svg',
+    bannerImage: '/saathi-bot/saathi-white-banner.svg',
+    bannerImageDark: '/saathi-bot/saathi-black-logo.svg',
+    logoImage: '/saathi-bot/saathi-white-logo.svg',
+    logoImageDark: '/saathi-bot/saathi-black-logo.svg',
     tags: ['Hybrid RAG (RRF)', 'Confidence Gate', 'Multilingual RAG', 'Shadow DOM (18KB)', 'Google Sheets Sync', 'Supabase pgvector', 'Zero-AWS'],
     metrics: [
       { label: 'First-Token Latency', value: '< 750ms' },

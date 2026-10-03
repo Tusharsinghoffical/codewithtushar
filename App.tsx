@@ -760,7 +760,7 @@ const App: React.FC = () => {
             </Routes>
           </ErrorBoundary>
         </main>
-        <AIChatAssistant showTrigger={false} />
+        <AIChatAssistant showTrigger={true} />
         <SaathiBotWidget botId="bot_9f223d8f29b999e81e" />
         <FloatingSideDock />
         <ScrollToTop />

@@ -204,13 +204,39 @@ CONVENTIONAL PORTFOLIOS                      CODE WITH MR SINGH (CMS)
 │  Search Engine           │  Fuse.js 7.1.0 Typo-Tolerant Client Search       │
 │  AI Engine               │  Google Gemini Pro / Flash API via fetch         │
 │  Iconography             │  Lucide React (Optimized tree-shaken SVGs)       │
-│  SSG Pre-Renderer        │  Custom Node.js Prerender Engine (Puppeteer/FS)  │
-│  Testing Harness         │  Vitest 4.1 + React Testing Library              │
+│  SSG Pre-Renderer        │  Custom Node.js Prerender Engine (19 static routes) │
+│  Testing Harness         │  Vitest 4.1 + React Testing Library (20 tests)   │
+│  Security Architecture   │  HSTS, CSP, X-Frame-Options, X-Content-Type-Nosniff │
 │  Hosting & SSL           │  Render Cloud Global Static Host + Managed SSL   │
 └──────────────────────────┴──────────────────────────────────────────────────┘
 ```
 
 </div>
+
+---
+
+## 🤖 Dual AI Chatbot Architecture
+
+Code with Mr Singh implements a specialized dual-chatbot setup to provide maximum utility and live product demonstration without user friction:
+
+- **Left Side (`AIChatAssistant`):** **Tushar's Original AI Assistant** — Floating bottom-left trigger equipped with a pulse wave and "Original AI" badge. Handles instant portfolio answers across services, pricing, technical stack, and guides visitors into a 1-click WhatsApp strategy booking dialog.
+- **Right Side (`SaathiBotWidget`):** **Saathi Bot Platform Demo** — Floating bottom-right trigger with live "Demo Chatbot (साथी)" badge. Connects directly to the live Saathi Bot embed script (`https://saathi-bot.vercel.app/widget.js`), demonstrating autonomous Hybrid RAG, Pre-LLM Confidence Gating, and in-chat appointment capture in real-time.
+
+---
+
+## 🛡️ Security Hardening & Vulnerability Posture
+
+The application follows defense-in-depth security best practices to protect visitor privacy, prevent clickjacking, and enforce strict content boundaries:
+
+1. **HTTP Strict Transport Security (HSTS):** Enforced in `.htaccess` with `max-age=31536000; includeSubDomains; preload` for full SSL transport protection.
+2. **MIME-Sniffing Prevention:** `X-Content-Type-Options: nosniff` header blocks malicious file-type sniffing exploits.
+3. **Clickjacking Defense:** `X-Frame-Options: SAMEORIGIN` prevents unauthorized third-party iframe embedding.
+4. **Referrer Privacy Protection:** `Referrer-Policy: strict-origin-when-cross-origin` prevents leaking sensitive URL query parameters to external hosts.
+5. **Hardware Device Permissions Policy:** Explicitly disables unauthorized device access (`camera=(), microphone=(), geolocation=()`).
+6. **Automated Security Verification:** Comprehensive Vitest security suite (`test/security.test.ts`) automatically validates:
+   - Zero hardcoded private tokens or live API secrets in client code.
+   - Protection rules blocking direct web access to `.env`, `.git`, `package.json`, and `.htaccess`.
+   - Balanced, injection-safe HTML structures across all 8 technical blog publications.
 
 ---
 
@@ -222,35 +248,54 @@ Bussiness-website-main/
 ├── 📄 App.tsx                        🚀 Root application router, layouts & meta injectors
 ├── 📄 index.html                     🌐 Semantic HTML5 shell with JSON-LD Schema.org
 ├── 📄 index.tsx                      ⚡ React DOM client entrypoint
-├── 📄 types.ts                       📐 TypeScript interfaces (Service, Project, Testimonial)
-├── 📄 constants.tsx                  📦 Global application state, project case studies & data
+├── 📄 types.ts                       📐 TypeScript interfaces (SaasProduct, Service, Project, BlogPost)
+├── 📄 constants.tsx                  📦 Global application state, SaaS products, case studies & services
 ├── 📄 vite.config.ts                 ⚙️ Vite bundler config with Rollup split chunks
 ├── 📄 tailwind.config.js             🎨 Custom colors, animations & glassmorphism tokens
 ├── 📄 render.yaml                    ☁️ Render Cloud static deployment blueprint
+├── 📄 .htaccess                      🛡️ Apache rewrite engine, caching & security hardening headers
 ├── 📄 package.json                   📋 Dependencies, scripts & build pipelines
 │
 ├── 📂 components/                    🧩 Reusable UI Components
-│   ├── AIChat.tsx                    →  Gemini AI conversational assistant widget
+│   ├── AIChatAssistant.tsx           →  Tushar's Original AI Assistant (Bottom-Left)
+│   ├── SaathiBotWidget.tsx           →  Saathi Bot Live Demo Launcher (Bottom-Right)
+│   ├── FloatingSideDock.tsx          →  Quick contact dock (WhatsApp, Fiverr, AI)
 │   ├── SearchModal.tsx               →  Fuse.js Cmd+K command palette
 │   ├── VisitorCounter.tsx            →  Organic live presence micro-HUD
 │   ├── Navbar.tsx                    →  Responsive luxury header navigation
 │   ├── Footer.tsx                    →  SEO link directory & business credentials
-│   └── ROIModal.tsx                  →  Client investment & ROI calculator
+│   └── ScrollToTop.tsx               →  Circular progress scroll-to-top button
 │
 ├── 📂 pages/                         📄 Page Views & Route Containers
-│   ├── Home.tsx                      →  Hero, enterprise proof, services & CTA
-│   ├── SaaS.tsx                      →  Next-Gen SaaS countdown & reservation
+│   ├── Home.tsx                      →  Hero, SaaS carousel, enterprise proof, services & CTA
+│   ├── SaaS.tsx                      →  Proprietary SaaS Ecosystem directory & architecture specs
+│   ├── SaathiBot.tsx                 →  Saathi Bot flagship deep-dive with interactive RAG simulator
+│   ├── TasqOne.tsx                   →  TASQ-ONE intelligent task operating system showcase
 │   ├── Services.tsx                  →  AI Automation & Full-Stack offerings
 │   ├── Projects.tsx                  →  Interactive portfolio & client case studies
+│   ├── Blog.tsx                      →  Technical engineering blog index & article reader
 │   ├── Reviews.tsx                   →  Verified client ratings & testimonials
 │   └── Contact.tsx                   →  Direct WhatsApp & email booking hub
 │
+├── 📂 content/                       📝 Content Datastores
+│   └── posts.json                    →  8 In-depth technical articles with rich HTML schemas
+│
+├── 📂 test/                          🧪 Automated Vitest Test Suites
+│   ├── security.test.ts              →  Security headers, secret scanning & XSS resilience
+│   ├── sitemap.test.ts               →  XML sitemaps & crawler directives validation
+│   ├── constants.test.ts             →  SaaS products & services schema validation
+│   ├── search.test.ts                →  Fuse.js search index completeness
+│   └── routes.test.tsx               →  Route rendering & 404 page resilience
+│
 ├── 📂 scripts/                       🛠️ Automated Build Tooling
-│   └── prerender.js                  →  SSG multi-route pre-renderer for search engines
+│   └── prerender.js                  →  SSG multi-route pre-renderer for 19 static routes
 │
 └── 📂 public/                        🖼️ Static Assets & Manifests
+    ├── saathi-bot/                   →  Standardized Saathi Bot branding SVGs & banners
+    ├── tasq-one/                     →  TASQ-ONE logos & architectural graphics
+    ├── blog/                         →  High-resolution blog post banner illustrations
     ├── robots.txt                    →  Search engine crawler directives
-    ├── sitemap.xml                   →  Full route sitemap for Google Search Console
+    ├── sitemap.xml                   →  Master sitemap for search engines
     └── llms.txt                      →  Structured context specification for AI search
 ```
 

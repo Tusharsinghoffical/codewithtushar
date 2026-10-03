@@ -21,7 +21,7 @@ interface AIChatAssistantProps {
   showTrigger?: boolean;
 }
 
-export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = false }) => {
+export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = true }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -366,8 +366,8 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
           {!isOpen && (
             <button
               onClick={handleOpen}
-              aria-label="Open AI Assistant Chatbot"
-              title="Ask AI Assistant about Services, Projects & In-Chat Booking"
+              aria-label="Open Tushar AI Assistant Chatbot"
+              title="Tushar's Original AI Assistant — Services, Projects & WhatsApp Booking"
               className="group relative flex items-center gap-0 hover:gap-3 bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 hover:from-violet-500 hover:via-indigo-500 hover:to-cyan-400 text-white rounded-full p-3.5 sm:p-4 shadow-[0_12px_40px_rgba(99,102,241,0.45)] hover:shadow-[0_18px_50px_rgba(99,102,241,0.65)] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) active:scale-95 border-2 border-indigo-200/40 backdrop-blur-xl"
             >
               {/* Animated Multi-color Pulse Wave */}
@@ -382,7 +382,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               <div className="overflow-hidden max-w-0 group-hover:max-w-[200px] transition-all duration-500 ease-in-out whitespace-nowrap">
                 <div className="flex items-center gap-1.5 pr-2">
                   <span className="text-[11px] font-black uppercase tracking-wider font-outfit text-white drop-shadow-sm">
-                    Ask AI Assistant
+                    Tushar AI
                   </span>
                   <Sparkles size={13} className="text-amber-300 animate-pulse shrink-0" />
                 </div>
@@ -391,7 +391,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               {/* Glowing Live AI Badge */}
               <div className="absolute -top-1.5 -right-1.5 flex items-center gap-0.5 bg-slate-950 text-cyan-300 text-[8px] font-black px-2 py-0.5 rounded-full border border-cyan-400/50 shadow-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                <span>AI 24/7</span>
+                <span>Original AI</span>
               </div>
             </button>
           )}
@@ -401,7 +401,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
             <div className="absolute bottom-full left-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-1 group-hover:translate-y-0 hidden sm:block">
               <div className="bg-slate-900/95 backdrop-blur-md text-white text-[10px] font-bold px-3.5 py-2 rounded-xl border border-indigo-500/30 shadow-2xl whitespace-nowrap flex items-center gap-2">
                 <Sparkles size={12} className="text-amber-400" />
-                <span>Instant AI answers on Services &amp; 1-Click WhatsApp Booking</span>
+                <span>Tushar's Original AI Assistant · 1-Click WhatsApp Booking</span>
               </div>
             </div>
           )}

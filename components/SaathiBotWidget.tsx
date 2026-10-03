@@ -58,6 +58,11 @@ export const SaathiBotWidget: React.FC<SaathiBotWidgetProps> = ({
           aria-label="Saathi Bot Testing and Demo Chatbot"
           title="Testing & Demo Chatbot — Saathi Bot (Mr Singh)"
         >
+          <img
+            src="/saathi-bot/saathi-black-icon.svg"
+            alt="Saathi Icon"
+            className="w-3.5 h-3.5 object-contain"
+          />
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
           <span>Demo Chatbot</span>
           <span className="text-[8px] font-bold text-slate-400">साथी</span>

@@ -236,11 +236,19 @@ export const SaaS: React.FC = () => {
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3">
                         <div className="h-12 w-12 rounded-xl bg-slate-950 border border-slate-800 dark:border-white/10 flex items-center justify-center p-1.5 shadow-sm shrink-0 overflow-hidden group-hover:scale-105 transition-transform">
-                          <img
-                            src={product.bannerImage}
-                            alt={`${product.title} icon`}
-                            className="max-h-full max-w-full object-contain"
-                          />
+                          {product.id === 'saathi-bot' ? (
+                            <img
+                              src="/saathi-bot/saathi-black-icon.svg"
+                              alt={`${product.title} icon`}
+                              className="max-h-full max-w-full object-contain"
+                            />
+                          ) : (
+                            <img
+                              src={product.logoImage || product.bannerImage}
+                              alt={`${product.title} icon`}
+                              className="max-h-full max-w-full object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
+                            />
+                          )}
                         </div>
                         <div>
                           <div className="flex items-center gap-1.5 flex-wrap">

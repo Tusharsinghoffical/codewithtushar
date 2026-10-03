@@ -220,6 +220,32 @@
     <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/blog"/>
   </url>
 
+  <!-- Blog post: react-developer-tools-complete-guide-2026 -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/react-developer-tools-complete-guide-2026</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/react-developer-tools-complete-guide-2026"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/blog/react-developer-tools-guide.png</image:loc>
+      <image:title>React Developer Tools: Complete Guide to Debugging &amp; Profiling in 2026</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog post: ai-vs-human-coding-software-development -->
+  <url>
+    <loc>https://codewithmrsingh.me/blog/ai-vs-human-coding-software-development</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://codewithmrsingh.me/blog/ai-vs-human-coding-software-development"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/blog/ai-vs-human-coding.png</image:loc>
+      <image:title>AI vs Human Coding: Which Is Better for Software Development?</image:title>
+    </image:image>
+  </url>
+
   <!-- Blog post: env-schema-guard -->
   <url>
     <loc>https://codewithmrsingh.me/blog/env-schema-guard-zero-dependency-config-validator</loc>
