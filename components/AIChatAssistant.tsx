@@ -362,41 +362,20 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
     <>
       {/* ─── Floating Trigger Button (Bottom-Left, conditionally shown) ────────────────── */}
       {showTrigger && (
-        <div className="fixed bottom-6 left-6 sm:left-8 z-[120]">
+        <div className="fixed bottom-6 left-6 sm:left-8 z-[120] group">
           {!isOpen && (
             <button
               onClick={handleOpen}
               aria-label="Open Tushar AI Assistant Chatbot"
-              title="Tushar's Original AI Assistant — Services, Projects & WhatsApp Booking"
-              className="group relative flex items-center gap-0 hover:gap-3 bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500 hover:from-violet-500 hover:via-indigo-500 hover:to-cyan-400 text-white rounded-full p-3.5 sm:p-4 shadow-[0_12px_40px_rgba(99,102,241,0.45)] hover:shadow-[0_18px_50px_rgba(99,102,241,0.65)] transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) active:scale-95 border-2 border-indigo-200/40 backdrop-blur-xl"
+              title="Tushar AI Assistant — Services, Projects & WhatsApp Booking"
+              className="relative flex items-center justify-center p-0 transition-all duration-300 active:scale-95 hover:scale-110 hover:-translate-y-1.5 focus:outline-none cursor-pointer"
             >
-              {/* Animated Multi-color Pulse Wave */}
-              <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-cyan-400 rounded-full animate-ping opacity-25 scale-110 pointer-events-none" />
-
-              {/* AI Assistant Icon */}
-              <div className="relative flex items-center justify-center">
-                <img
-                  src="/tushar-ai-assistant.png"
-                  alt="Tushar AI Assistant Mascot"
-                  className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-[0_0_12px_rgba(34,211,238,0.7)] group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Expandable Label */}
-              <div className="overflow-hidden max-w-0 group-hover:max-w-[200px] transition-all duration-500 ease-in-out whitespace-nowrap">
-                <div className="flex items-center gap-1.5 pr-2">
-                  <span className="text-[11px] font-black uppercase tracking-wider font-outfit text-white drop-shadow-sm">
-                    Tushar AI
-                  </span>
-                  <Sparkles size={13} className="text-amber-300 animate-pulse shrink-0" />
-                </div>
-              </div>
-
-              {/* Glowing Live AI Badge */}
-              <div className="absolute -top-1.5 -right-1.5 flex items-center gap-0.5 bg-slate-950 text-cyan-300 text-[8px] font-black px-2 py-0.5 rounded-full border border-cyan-400/50 shadow-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                <span>Original AI</span>
-              </div>
+              {/* AI Assistant Mascot Icon Only (No orb background, no badge) */}
+              <img
+                src="/tushar-ai-icon.png"
+                alt="Tushar AI Assistant Mascot"
+                className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-[0_10px_25px_rgba(34,211,238,0.45)] hover:drop-shadow-[0_16px_35px_rgba(34,211,238,0.7)] transition-all duration-300"
+              />
             </button>
           )}
 
@@ -405,7 +384,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
             <div className="absolute bottom-full left-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-1 group-hover:translate-y-0 hidden sm:block">
               <div className="bg-slate-900/95 backdrop-blur-md text-white text-[10px] font-bold px-3.5 py-2 rounded-xl border border-indigo-500/30 shadow-2xl whitespace-nowrap flex items-center gap-2">
                 <Sparkles size={12} className="text-amber-400" />
-                <span>Tushar's Original AI Assistant · 1-Click WhatsApp Booking</span>
+                <span>Tushar AI Assistant · 1-Click WhatsApp Booking</span>
               </div>
             </div>
           )}
@@ -425,7 +404,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               <div className="relative">
                 <div className="w-11 h-11 rounded-2xl bg-slate-950 p-1 flex items-center justify-center shadow-md border border-cyan-400/40 overflow-hidden">
                   <img
-                    src="/tushar-ai-assistant.png"
+                    src="/tushar-ai-icon.png"
                     alt="Tushar AI Assistant Logo"
                     className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]"
                   />
@@ -493,7 +472,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                 {msg.sender === 'bot' && (
                   <div className="w-7 h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 mt-0.5 border border-cyan-500/30 shadow-2xs overflow-hidden">
                     <img
-                      src="/tushar-ai-assistant.png"
+                      src="/tushar-ai-icon.png"
                       alt="Tushar AI"
                       className="w-full h-full object-contain"
                     />
@@ -567,7 +546,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               <div className="flex gap-2.5 items-center">
                 <div className="w-7 h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-cyan-500/30 overflow-hidden">
                   <img
-                    src="/tushar-ai-assistant.png"
+                    src="/tushar-ai-icon.png"
                     alt="Tushar AI"
                     className="w-full h-full object-contain"
                   />

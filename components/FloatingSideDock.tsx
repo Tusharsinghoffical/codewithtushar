@@ -146,7 +146,7 @@ export const FloatingSideDock: React.FC = () => {
           className="w-full group/btn relative flex items-center gap-3 p-2.5 rounded-xl bg-gradient-to-r from-violet-950/80 via-indigo-950/70 to-slate-900 border border-indigo-500/40 hover:border-indigo-400 text-left transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md cursor-pointer"
         >
           <div className="w-9 h-9 rounded-xl bg-slate-950 p-1 flex items-center justify-center shrink-0 shadow-md border border-cyan-400/40 group-hover/btn:rotate-6 transition-transform overflow-hidden">
-            <img src="/tushar-ai-assistant.png" alt="Tushar AI Assistant" className="w-full h-full object-contain" />
+            <img src="/tushar-ai-icon.png" alt="Tushar AI Assistant" className="w-full h-full object-contain" />
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center justify-between">
