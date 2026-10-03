@@ -147,7 +147,7 @@ const Home: React.FC = () => {
               </div>
 
               {/* H1 Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.75rem] font-outfit font-black tracking-tight text-slate-950 dark:text-white leading-[1.08] speakable">
+              <h1 className="text-3xl sm:text-5xl lg:text-[3.75rem] font-outfit font-black tracking-tight text-slate-950 dark:text-white leading-[1.1] sm:leading-[1.08] speakable">
                 Build Smarter. <br />
                 <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-500 bg-clip-text text-transparent">
                   Automate Faster.
@@ -156,7 +156,7 @@ const Home: React.FC = () => {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed speakable">
+              <p className="text-sm sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed speakable">
                 AI automation, full-stack web development &amp; intelligent systems by <strong className="text-slate-950 dark:text-white font-bold">Tushar Singh</strong> —
                 <strong className="text-indigo-600 dark:text-indigo-400 font-bold"> 10+ real products</strong> delivered
                 to clients across India and worldwide. Order directly or via Fiverr with buyer protection.
@@ -180,10 +180,10 @@ const Home: React.FC = () => {
 
               {/* CTAs & Reassurance */}
               <div className="space-y-3 pt-1">
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
                   <Link
                     to="/contact"
-                    className="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-xl hover:shadow-indigo-500/25 hover:scale-[1.02] active:scale-95"
+                    className="group inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 sm:py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-xl hover:shadow-indigo-500/25 hover:scale-[1.02] active:scale-95 text-center"
                   >
                     <span>Start a Project</span>
                     <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
@@ -192,7 +192,7 @@ const Home: React.FC = () => {
                     href={FIVERR_PROFILE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-xl hover:shadow-emerald-500/25 hover:scale-[1.02] active:scale-95"
+                    className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 bg-[#1DBF73] hover:bg-[#19a463] text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-xl hover:shadow-emerald-500/25 hover:scale-[1.02] active:scale-95 text-center"
                   >
                     <FiverrIcon size={16} className="brightness-125" />
                     <span>Hire on Fiverr</span>
@@ -200,7 +200,7 @@ const Home: React.FC = () => {
                   </a>
                   <Link
                     to="/projects"
-                    className="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:border-indigo-400 dark:hover:border-indigo-500 transition-all active:scale-95 shadow-xs"
+                    className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:border-indigo-400 dark:hover:border-indigo-500 transition-all active:scale-95 shadow-xs text-center"
                   >
                     <Play size={12} className="fill-indigo-500 text-indigo-500" />
                     <span>Portfolio</span>

@@ -79,7 +79,7 @@ export const FloatingSideDock: React.FC = () => {
       ref={dockRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`fixed right-0 top-1/2 -translate-y-1/2 z-[130] transition-all duration-300 ease-out flex items-center ${
+      className={`fixed right-0 top-1/2 -translate-y-1/2 z-[130] transition-all duration-300 ease-out hidden md:flex items-center ${
         isExpanded ? 'translate-x-0' : 'translate-x-[calc(100%-2.75rem)] sm:translate-x-[calc(100%-3rem)]'
       }`}
       aria-label="Quick Contact and AI Assistant Actions"

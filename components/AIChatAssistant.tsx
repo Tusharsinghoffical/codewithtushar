@@ -892,7 +892,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
     <>
       {/* ─── Floating Trigger Button (Bottom-Left, pure mascot icon without orb or badge) ─── */}
       {showTrigger && (
-        <div className="fixed bottom-6 left-6 sm:left-8 z-[120] group">
+        <div className="fixed bottom-3 left-3 sm:bottom-6 sm:left-8 z-[120] group">
           {!isOpen && (
             <button
               onClick={handleOpen}
@@ -904,7 +904,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
               <img
                 src="/tushar-ai-icon.png"
                 alt="Tushar AI Assistant Mascot"
-                className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-[0_10px_25px_rgba(34,211,238,0.45)] hover:drop-shadow-[0_16px_35px_rgba(34,211,238,0.7)] transition-all duration-300"
+                className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-[0_10px_25px_rgba(34,211,238,0.45)] hover:drop-shadow-[0_16px_35px_rgba(34,211,238,0.7)] transition-all duration-300"
               />
             </button>
           )}
@@ -924,7 +924,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       {/* ─── Chat Window Modal ────────────────────────────────────── */}
       {isOpen && (
         <div
-          className="fixed bottom-4 left-4 sm:bottom-6 sm:left-8 z-[200] w-[calc(100vw-2rem)] sm:w-[420px] max-h-[88vh] h-[660px] flex flex-col bg-white dark:bg-slate-900 rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.4)] border border-slate-200 dark:border-indigo-500/30 overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-300 backdrop-blur-xl"
+          className="fixed bottom-2 left-2 right-2 sm:right-auto sm:bottom-6 sm:left-8 z-[200] w-[calc(100vw-1rem)] sm:w-[420px] max-h-[calc(100dvh-4rem)] h-[580px] sm:h-[660px] flex flex-col bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.4)] border border-slate-200 dark:border-indigo-500/30 overflow-hidden animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-bottom-6 duration-300 backdrop-blur-xl"
           role="dialog"
           aria-label="Tushar AI Assistant"
         >

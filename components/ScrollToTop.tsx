@@ -40,13 +40,13 @@ const ScrollToTop: React.FC = () => {
       title="Back to Top"
       className={`
         fixed z-[120] flex items-center justify-center
-        w-12 h-12 sm:w-13 sm:h-13 rounded-full transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1)
+        w-10 h-10 sm:w-13 sm:h-13 rounded-full transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1)
         backdrop-blur-xl border shadow-[0_10px_30px_rgba(0,0,0,0.25)] group active:scale-90
         ${isVisible
           ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
           : 'opacity-0 translate-y-10 scale-50 pointer-events-none'}
-        /* Positioned above Saathi Bot popup widget and demo badge */
-        bottom-[7.75rem] sm:bottom-[8rem] right-6 sm:right-8
+        /* Positioned cleanly above Saathi Bot popup widget and demo badge */
+        bottom-[4.5rem] sm:bottom-[8rem] right-3 sm:right-8
         /* Modern Glassmorphic Colors */
         bg-slate-900/85 dark:bg-slate-900/90
         border-indigo-500/30 dark:border-indigo-400/30

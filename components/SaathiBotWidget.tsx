@@ -45,7 +45,7 @@ export const SaathiBotWidget: React.FC<SaathiBotWidgetProps> = ({
   };
 
   return (
-    <div className="fixed bottom-[5.25rem] sm:bottom-[5.5rem] right-6 sm:right-8 z-[115] pointer-events-auto select-none">
+    <div className="fixed bottom-3 right-3 sm:bottom-[5.5rem] sm:right-8 z-[115] pointer-events-auto select-none">
       {/* ── Floating "Demo Chatbot" Badge Tag ── */}
       <div className="relative group">
         <button
