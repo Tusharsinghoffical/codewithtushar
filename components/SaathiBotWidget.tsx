@@ -8,12 +8,16 @@ interface SaathiBotWidgetProps {
 
 export const SaathiBotWidget: React.FC<SaathiBotWidgetProps> = ({
   botId = 'bot_9f223d8f29b999e81e',
-  scriptUrl = 'https://saathi-bot.vercel.app/widget.js',
+  scriptUrl,
 }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
     if (!botId) return;
+
+    const isLocal = typeof window !== 'undefined' && 
+      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    const resolvedUrl = scriptUrl || (isLocal ? '/widget.js' : 'https://saathi-bot.vercel.app/widget.js');
 
     // Check if script tag already exists
     const existingScript = document.querySelector<HTMLScriptElement>(
@@ -22,9 +26,10 @@ export const SaathiBotWidget: React.FC<SaathiBotWidgetProps> = ({
 
     if (!existingScript) {
       const script = document.createElement('script');
-      script.src = scriptUrl;
+      script.src = resolvedUrl;
       script.async = true;
       script.setAttribute('data-bot', botId);
+      script.setAttribute('data-api', 'https://saathi-bot.vercel.app');
       script.id = `saathi-bot-script-${botId}`;
       document.body.appendChild(script);
     }
