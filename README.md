@@ -215,12 +215,11 @@ CONVENTIONAL PORTFOLIOS                      CODE WITH MR SINGH (CMS)
 
 ---
 
-## 🤖 Dual AI Chatbot Architecture
+## 🤖 Intelligent AI Assistant Architecture
 
-Code with Mr Singh implements a specialized dual-chatbot setup to provide maximum utility and live product demonstration without user friction:
+Code with Mr Singh features an advanced, responsive AI Assistant (**Tushar AI Assistant** - `components/AIChatAssistant.tsx`) built directly into the client application:
 
-- **Left Side (`AIChatAssistant`):** **Tushar's Original AI Assistant** — Floating bottom-left trigger equipped with a pulse wave and "Original AI" badge. Handles instant portfolio answers across services, pricing, technical stack, and guides visitors into a 1-click WhatsApp strategy booking dialog.
-- **Right Side (`SaathiBotWidget`):** **Saathi Bot Platform Demo** — Floating bottom-right trigger with live "Demo Chatbot (साथी)" badge. Connects directly to the live Saathi Bot embed script (`https://saathi-bot.vercel.app/widget.js`), demonstrating autonomous Hybrid RAG, Pre-LLM Confidence Gating, and in-chat appointment capture in real-time.
+- **Flagship Assistant (`AIChatAssistant`):** Floating bottom-left with 3D automove-flip mascot physics, 3D gyro orbit ring, dynamic ground shadow, smooth spring open/close modal transitions, speech synthesis read-aloud, contextual assumption questions, and direct WhatsApp 30-min strategy audit booking.
 
 ---
 
@@ -258,7 +257,6 @@ Bussiness-website-main/
 │
 ├── 📂 components/                    🧩 Reusable UI Components
 │   ├── AIChatAssistant.tsx           →  Tushar's Original AI Assistant (Bottom-Left)
-│   ├── SaathiBotWidget.tsx           →  Saathi Bot Live Demo Launcher (Bottom-Right)
 │   ├── FloatingSideDock.tsx          →  Quick contact dock (WhatsApp, Fiverr, AI)
 │   ├── SearchModal.tsx               →  Fuse.js Cmd+K command palette
 │   ├── VisitorCounter.tsx            →  Organic live presence micro-HUD

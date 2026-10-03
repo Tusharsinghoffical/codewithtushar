@@ -8,7 +8,6 @@ import ScrollToTop from './components/ScrollToTop';
 import ClockDisplay from './components/ClockDisplay';
 import TopPromoBar from './components/TopPromoBar';
 import AIChatAssistant from './components/AIChatAssistant';
-import SaathiBotWidget from './components/SaathiBotWidget';
 import FloatingSideDock from './components/FloatingSideDock';
 
 import Home from './pages/Home';
@@ -761,7 +760,6 @@ const App: React.FC = () => {
           </ErrorBoundary>
         </main>
         <AIChatAssistant showTrigger={true} />
-        <SaathiBotWidget botId="bot_9f223d8f29b999e81e" />
         <FloatingSideDock />
         <ScrollToTop />
         <Footer />
