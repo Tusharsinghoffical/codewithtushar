@@ -53,12 +53,87 @@
   }
 
   /* Chatbot Custom Animations */
-  @keyframes botFloat {
-    0%, 100% {
-      transform: translateY(0) rotate(0deg);
+  @keyframes botAutomoveFlip {
+    0% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    18% {
+      transform: translateY(-9px) translateX(6px) rotate(3deg) scale(1.02);
+    }
+    34% {
+      transform: translateY(-4px) translateX(10px) rotate(-2deg) scale(1.04);
     }
     50% {
-      transform: translateY(-8px) rotate(2.5deg);
+      transform: translateY(-11px) translateX(2px) rotate(2deg) scale(1.03);
+    }
+    62% {
+      transform: translateY(-8px) translateX(-5px) rotate(-4deg) scale(1.04);
+    }
+    72% {
+      transform: translateY(-13px) translateX(0px) rotateY(180deg) scale(1.08);
+    }
+    82% {
+      transform: translateY(-12px) translateX(0px) rotateY(360deg) scale(1.06);
+    }
+    92% {
+      transform: translateY(-4px) translateX(-3px) rotate(1deg) scale(1.02);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+  }
+
+  @keyframes botGroundShadow {
+    0%, 100% {
+      transform: scaleX(1) scaleY(1);
+      opacity: 0.35;
+    }
+    18%, 50% {
+      transform: scaleX(0.75) scaleY(0.75) translateX(3px);
+      opacity: 0.2;
+    }
+    72%, 82% {
+      transform: scaleX(0.55) scaleY(0.55);
+      opacity: 0.12;
+    }
+  }
+
+  @keyframes gyroRingSpin {
+    0% {
+      transform: rotateX(68deg) rotateY(12deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(68deg) rotateY(12deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes chatModalOpen {
+    0% {
+      opacity: 0;
+      transform: translateY(28px) scale(0.92);
+      filter: blur(4px);
+    }
+    65% {
+      opacity: 1;
+      transform: translateY(-4px) scale(1.015);
+      filter: blur(0px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes chatModalClose {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(32px) scale(0.88);
+      filter: blur(4px);
     }
   }
 
@@ -71,8 +146,30 @@
     }
   }
 
-  .animate-bot-float {
-    animation: botFloat 3.5s ease-in-out infinite;
+  .animate-bot-automove-flip {
+    animation: botAutomoveFlip 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform;
+  }
+
+  .animate-bot-shadow {
+    animation: botGroundShadow 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+
+  .animate-gyro-ring {
+    animation: gyroRingSpin 6s linear infinite;
+    transform-style: preserve-3d;
+  }
+
+  .animate-chat-open {
+    animation: chatModalOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-origin: bottom left;
+  }
+
+  .animate-chat-close {
+    animation: chatModalClose 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform-origin: bottom left;
   }
 
   .animate-soundwave-1 {

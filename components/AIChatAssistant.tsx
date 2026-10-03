@@ -31,6 +31,7 @@ interface AIChatAssistantProps {
 
 export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = true }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showBookingForm, setShowBookingForm] = useState(false);
@@ -85,6 +86,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
   useEffect(() => {
     const handleOpenEvent = () => {
+      setIsClosing(false);
       setIsOpen(true);
       setUnreadCount(0);
     };
@@ -95,8 +97,17 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
   }, []);
 
   const handleOpen = () => {
+    setIsClosing(false);
     setIsOpen(true);
     setUnreadCount(0);
+  };
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsOpen(false);
+      setIsClosing(false);
+    }, 280);
   };
 
   const copyToClipboard = (id: string, text: string) => {
@@ -890,40 +901,45 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
   return (
     <>
-      {/* ─── Floating Trigger Button (Bottom-Left, pure mascot icon without orb or badge) ─── */}
+      {/* ─── Floating Trigger Button (Bottom-Left) ─── */}
       {showTrigger && (
         <div className="fixed bottom-3 left-3 sm:bottom-6 sm:left-8 z-[120] group">
           {!isOpen && (
-            <button
-              onClick={handleOpen}
-              aria-label="Open Tushar AI Assistant Chatbot"
-              title="Tushar AI Assistant — Services, Projects & Instant Booking"
-              className="relative flex items-center justify-center p-0 transition-all duration-300 active:scale-95 hover:scale-110 hover:-translate-y-1.5 focus:outline-none cursor-pointer animate-bot-float group/mascot"
-            >
-              {/* Pulsing ambient halo behind mascot */}
-              <span className="absolute inset-0 rounded-full bg-cyan-400/25 blur-md animate-ping -z-10 [animation-duration:3s]" />
-              <span className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-cyan-400/30 via-indigo-500/20 to-emerald-400/25 blur-sm animate-pulse -z-10" />
+            <div className="relative flex flex-col items-center">
+              <button
+                onClick={handleOpen}
+                aria-label="Open Tushar AI Assistant Chatbot"
+                title="Tushar AI Assistant — Services, Projects & Instant Booking"
+                className="relative flex items-center justify-center p-0 transition-all duration-300 active:scale-90 focus:outline-none cursor-pointer group/mascot"
+              >
+                {/* 3D Gyro Orbit Ring around mascot (Innovative energy shield) */}
+                <div className="absolute -inset-3 pointer-events-none flex items-center justify-center -z-10">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-cyan-400/35 border-dashed animate-gyro-ring shadow-[0_0_15px_rgba(34,211,238,0.25)]" />
+                </div>
 
-              {/* AI Assistant Mascot Icon Only */}
-              <img
-                src="/tushar-ai-icon.png"
-                alt="Tushar AI Assistant Mascot"
-                className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-[0_10px_25px_rgba(34,211,238,0.45)] group-hover/mascot:drop-shadow-[0_16px_35px_rgba(34,211,238,0.75)] transition-all duration-300 select-none pointer-events-none"
-              />
+                {/* Ambient Soft Cyan Pulse Aura (No green dot) */}
+                <span className="absolute inset-1 rounded-full bg-cyan-400/20 blur-md animate-pulse -z-10" />
 
-              {/* Live Status indicator beacon */}
-              <span className="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5 sm:h-4 sm:w-4">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3.5 w-3.5 sm:h-4 sm:w-4 bg-emerald-500 border-2 border-slate-950 shadow-xs" />
-              </span>
-            </button>
+                {/* AI Assistant Mascot with 3D Automove & Flip Animation */}
+                <div className="animate-bot-automove-flip">
+                  <img
+                    src="/tushar-ai-icon.png"
+                    alt="Tushar AI Assistant Mascot"
+                    className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-[0_12px_28px_rgba(34,211,238,0.55)] group-hover/mascot:drop-shadow-[0_20px_45px_rgba(34,211,238,0.85)] group-hover/mascot:scale-110 transition-all duration-300 select-none pointer-events-none"
+                  />
+                </div>
+              </button>
+
+              {/* Dynamic 3D Ground Shadow that scales with mascot float height */}
+              <div className="w-8 sm:w-10 h-1.5 bg-cyan-950/60 dark:bg-black/60 rounded-full blur-xs mt-1 animate-bot-shadow pointer-events-none" />
+            </div>
           )}
 
           {/* Hover Tooltip (Desktop) */}
           {!isOpen && (
             <div className="absolute bottom-full left-0 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none translate-y-1 group-hover:translate-y-0 hidden sm:block">
-              <div className="bg-slate-900/95 backdrop-blur-md text-white text-[10px] font-bold px-3.5 py-2 rounded-xl border border-indigo-500/30 shadow-2xl whitespace-nowrap flex items-center gap-2">
-                <Sparkles size={12} className="text-amber-400" />
+              <div className="bg-slate-900/95 backdrop-blur-md text-white text-[10px] font-bold px-3.5 py-2 rounded-xl border border-cyan-500/30 shadow-2xl whitespace-nowrap flex items-center gap-2">
+                <Sparkles size={12} className="text-cyan-400" />
                 <span>Tushar AI Assistant · Free Consultation &lt; 1 Hr</span>
               </div>
             </div>
@@ -931,10 +947,12 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
         </div>
       )}
 
-      {/* ─── Chat Window Modal ────────────────────────────────────── */}
-      {isOpen && (
+      {/* ─── Chat Window Modal with Open & Close Animations ────────── */}
+      {(isOpen || isClosing) && (
         <div
-          className="fixed inset-x-2 bottom-2 sm:inset-x-auto sm:left-6 md:left-8 sm:bottom-6 z-[200] w-[calc(100vw-1rem)] sm:w-[440px] md:w-[460px] max-h-[calc(100dvh-1rem)] sm:max-h-[85vh] h-[min(650px,calc(100dvh-1.5rem))] sm:h-[660px] flex flex-col bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.5)] border border-slate-200 dark:border-indigo-500/30 overflow-hidden animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-6 duration-300 backdrop-blur-xl"
+          className={`fixed inset-x-2 bottom-2 sm:inset-x-auto sm:left-6 md:left-8 sm:bottom-6 z-[200] w-[calc(100vw-1rem)] sm:w-[440px] md:w-[460px] max-h-[calc(100dvh-1rem)] sm:max-h-[85vh] h-[min(650px,calc(100dvh-1.5rem))] sm:h-[660px] flex flex-col bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.5)] border border-slate-200 dark:border-indigo-500/30 overflow-hidden backdrop-blur-xl ${
+            isClosing ? 'animate-chat-close pointer-events-none' : 'animate-chat-open'
+          }`}
           role="dialog"
           aria-label="Tushar AI Assistant"
         >
@@ -949,19 +967,20 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                     className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(34,211,238,0.5)] animate-pulse [animation-duration:4s]"
                   />
                 </div>
-                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full border-2 border-slate-950" />
+                {/* Electric Cyan live beacon instead of green dot */}
+                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-cyan-400 rounded-full border-2 border-slate-950 shadow-[0_0_6px_rgba(34,211,238,0.8)]" />
               </div>
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <h3 className="font-outfit font-black text-xs sm:text-sm text-white tracking-wide truncate">
                     Tushar AI Assistant
                   </h3>
-                  <span className="px-1.5 py-0.5 bg-indigo-500/30 text-indigo-300 text-[8px] font-black rounded-md uppercase tracking-wider border border-indigo-400/30 shrink-0 animate-pulse">
+                  <span className="px-1.5 py-0.5 bg-cyan-500/20 text-cyan-300 text-[8px] font-black rounded-md uppercase tracking-wider border border-cyan-400/30 shrink-0 animate-pulse">
                     Live
                   </span>
                 </div>
                 <p className="text-[9px] sm:text-[10px] text-slate-400 flex items-center gap-1.5 truncate">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping shrink-0" />
                   <span className="truncate">Answers Services, Projects &amp; Instant Booking</span>
                 </p>
               </div>
@@ -977,7 +996,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                 <RefreshCw size={14} className="sm:w-[15px] sm:h-[15px]" />
               </button>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={handleClose}
                 className="p-1.5 sm:p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-200 hover:scale-110 cursor-pointer"
                 aria-label="Close Assistant"
               >
@@ -989,7 +1008,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
           {/* ── Sub-header Banner: Free Consultation & Direct WhatsApp ── */}
           <div className="bg-slate-950/95 px-3 sm:px-4 py-1.5 sm:py-2 border-b border-indigo-500/20 flex items-center justify-between text-[10px] sm:text-[11px] shrink-0 gap-2">
             <div className="flex items-center gap-1.5 text-cyan-300 font-semibold min-w-0 truncate">
-              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
               <span className="truncate text-[9.5px] sm:text-[11px]">Free Consultation • &lt; 1 Hr Response</span>
             </div>
             <button
