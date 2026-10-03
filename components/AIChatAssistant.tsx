@@ -142,11 +142,466 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
     setMessages(prev => [...prev, botMsg]);
   };
 
-  // Comprehensive Knowledge Engine with Deep Assumptions & Next-Step Guidance
+  // Comprehensive Multi-Tier Knowledge Engine with High-Precision Intent Matching
   const generateBotReply = (query: string): { replyText: string; quickActions?: QuickAction[]; assumptionQuestions?: string[] } => {
     const q = query.toLowerCase().trim();
 
-    // 1. Booking / Meeting / Call / Consultation / Hire
+    // ──────────────────────────────────────────────────────────────────────────
+    // TIER 1: HIGH-PRECISION SPECIFIC ASSUMPTION & TECHNICAL QUESTIONS
+    // ──────────────────────────────────────────────────────────────────────────
+
+    // 1.1. Specific: n8n connecting WhatsApp with Google Sheets / CRM
+    if (
+      (q.includes('whatsapp') && (q.includes('sheet') || q.includes('google sheet') || q.includes('crm'))) ||
+      (q.includes('n8n') && q.includes('sheet')) ||
+      (q.includes('connect') && q.includes('whatsapp') && q.includes('sheet'))
+    ) {
+      return {
+        replyText: `✅ **Yes, absolutely! n8n connects WhatsApp with Google Sheets & CRMs in Real-Time:**\n\n• **End-to-End Workflow:**\n  1. Customer messages your WhatsApp Business number.\n  2. An n8n Webhook catches the event instantly (< 200ms).\n  3. An AI node (OpenAI/Python) parses names, phone, purchase intent, and key details.\n  4. n8n appends or updates the row directly in your Google Sheet (or HubSpot/Notion).\n  5. An automated confirmation or answer is dispatched back to WhatsApp in under 2 seconds!\n\n• **Zero Data Loss:** Handles concurrent messages with automatic retries and dead-letter queue.\n• **Bonus Alert:** Can also ping your team's Slack or Telegram group whenever a high-ticket lead arrives!`,
+        quickActions: [
+          { label: '📅 Plan WhatsApp + Sheets Setup', action: () => openBookingFlow('WhatsApp + Sheets Automation') },
+          { label: '💬 Chat with Tushar on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to connect WhatsApp and Google Sheets using n8n.') }
+        ],
+        assumptionQuestions: [
+          'What are the hosting & API costs of running n8n?',
+          'Which business workflows can n8n automate?',
+          'How does automated error handling work in production?'
+        ]
+      };
+    }
+
+    // 1.2. Specific: Hosting & API Running Costs for n8n or Chatbot
+    if (
+      (q.includes('hosting') && (q.includes('cost') || q.includes('n8n') || q.includes('server') || q.includes('api'))) ||
+      q.includes('api cost') || q.includes('running cost') || q.includes('server cost') ||
+      (q.includes('costs of running') || q.includes('api costs for a chatbot'))
+    ) {
+      return {
+        replyText: `⚙️ **Infrastructure & API Running Costs Breakdown:**\n\n• **Self-Hosted n8n VPS:** **$5 to $10/month** on a Hetzner, DigitalOcean, or AWS Lightsail VPS (Runs unlimited workflows with zero per-task charges, saving $100+/mo compared to Zapier!).\n• **OpenAI / Claude API Costs:** For typical business chatbot & automation usage, token costs average only **$3 to $15 per month** (using GPT-4o-mini or Claude 3.5 Haiku).\n• **Vector Database (Pinecone / Supabase pgvector):** 100% Free tier is sufficient for up to 100,000 vector document embeddings!\n• **Total Estimated Monthly OpEx:** Just **$10 to $25/month** to run a complete, high-volume automated business system.`,
+        quickActions: [
+          { label: '📅 Get Architecture Cost Audit', action: () => openBookingFlow('Cost & Architecture Audit') },
+          { label: '💬 Ask Tushar on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, can you give me an OpEx breakdown for my AI automation setup?') }
+        ],
+        assumptionQuestions: [
+          'Can n8n connect with WhatsApp and Google Sheets?',
+          'How does automated error handling work in production?',
+          'Which business workflows can n8n automate?'
+        ]
+      };
+    }
+
+    // 1.3. Specific: Which business workflows can n8n automate?
+    if (
+      q.includes('which business workflow') || q.includes('which workflow') ||
+      q.includes('tasks can n8n') || q.includes('what can n8n automate') || q.includes('workflows can n8n')
+    ) {
+      return {
+        replyText: `⚡ **Top 5 High-ROI Workflows We Automate with n8n:**\n\n1. **Omnichannel Lead Capture & CRM Sync:** Captures leads from WhatsApp, web forms, Calendly, and pings HubSpot/Notion/Google Sheets instantly.\n2. **AI Invoice & Document Processing:** Reads incoming PDF invoices from email, extracts line-item totals using OpenAI vision, and posts to accounting.\n3. **Customer Onboarding & Drip Sequences:** Sends personalized welcome WhatsApps, creates user folders on Google Drive, and notifies account managers on Slack.\n4. **Social & Content Syndication:** Auto-posts approved blog articles and product drops across LinkedIn, Twitter, and Facebook.\n5. **Stripe & Payment Webhooks:** Auto-generates GST tax invoices, sends WhatsApp payment receipts, and grants app access.`,
+        quickActions: [
+          { label: '📅 Book Automation Audit', action: () => openBookingFlow('AI Automation') },
+          { label: '💬 Discuss My Workflows', action: () => sendDirectWhatsApp('Hi Tushar, I want to see which of our company workflows can be automated with n8n.') }
+        ],
+        assumptionQuestions: [
+          'Can n8n connect with WhatsApp and Google Sheets?',
+          'What are the hosting & API costs of running n8n?',
+          'How does automated error handling work in production?'
+        ]
+      };
+    }
+
+    // 1.4. Specific: Error handling & production resilience
+    if (
+      q.includes('error handling') || q.includes('retry') ||
+      q.includes('dead letter') || q.includes('production error') || q.includes('fail') && q.includes('production')
+    ) {
+      return {
+        replyText: `🛡️ **Enterprise Error Handling & Resilience Architecture:**\n\n• **Dedicated Error Trigger Nodes:** Every n8n workflow is paired with a global Error Handler workflow that catches unhandled exceptions.\n• **Exponential Backoff Retries:** Transient API timeouts (e.g. OpenAI rate limits or network blips) automatically retry with 2s, 4s, and 8s intervals.\n• **Dead-Letter Storage:** If an external endpoint stays down, raw payloads are safely logged to PostgreSQL so zero data is lost.\n• **Real-Time Admin Alerts:** Sends instant Telegram/Slack alerts with workflow ID, timestamp, and error stack trace for instant remediation.`,
+        quickActions: [
+          { label: '📅 Book Technical Architecture Review', action: () => openBookingFlow('Architecture Review') },
+          { label: '💬 Message Tushar', action: () => sendDirectWhatsApp('Hi Tushar, how do you handle automated error handling and logging?') }
+        ],
+        assumptionQuestions: [
+          'What are the hosting & API costs of running n8n?',
+          'Can we sign an NDA before discussing project details?',
+          'What are your available meeting time slots this week?'
+        ]
+      };
+    }
+
+    // 1.5. Specific: Test Saathi Bot Widget Demo Right Now
+    if (
+      (q.includes('saathi') && (q.includes('demo') || q.includes('test') || q.includes('widget') || q.includes('try') || q.includes('live'))) ||
+      q.includes('test the saathi bot') || q.includes('test saathi')
+    ) {
+      return {
+        replyText: `🤖 **Saathi Bot is Live on This Screen!**\n\n• **Live Demo:** Look at the bottom-right corner of this page—that's **Saathi Bot (v1.0.0)** running in real time!\n• **What You Can Test:**\n  - Ask it about website services, pricing, or technical questions.\n  - Watch its sub-200ms streaming responses.\n  - Experience automated lead qualification and appointment capture.\n• **Embed on Your Website:** Takes just 1 line of HTML script tag on WordPress, Shopify, Webflow, or Next.js!`,
+        quickActions: [
+          { label: '🤖 Open Saathi Demo Widget Now', action: () => { window.dispatchEvent(new CustomEvent('open-saathi-widget')); } },
+          { label: '🚀 Explore Saathi Bot Product Page', action: () => { window.location.href = '/saas/saathi-bot'; } },
+          { label: '💬 Deploy for My Website', action: () => sendDirectWhatsApp('Hi Tushar, I want to deploy a custom Saathi Bot for my business website.') }
+        ],
+        assumptionQuestions: [
+          'How does RAG prevent hallucinations in bot answers?',
+          'How does WhatsApp Business API integration work?',
+          'Can the chatbot speak Hindi, English and regional languages?'
+        ]
+      };
+    }
+
+    // 1.6. Specific: RAG and preventing hallucinations
+    if (
+      q.includes('hallucination') || q.includes('prevent hallucination') ||
+      q.includes('rag prevent') || q.includes('accurate answers')
+    ) {
+      return {
+        replyText: `🧠 **How Our RAG Architecture Prevents LLM Hallucinations:**\n\n• **Strict Grounding Guardrails:** The LLM system prompt is strictly constrained: *"Answer ONLY based on the verified documents retrieved. If the answer is not present, politely say you don't know and offer WhatsApp connection."*\n• **Chunking & Vector Embeddings:** Your PDFs, Notion docs, and product catalogs are tokenized into 500-token chunks with 50-token overlaps using OpenAI \`text-embedding-3-small\`.\n• **Cosine Similarity Filtering:** Chunks must meet a strict 0.78+ similarity threshold in Pinecone/pgvector to be injected into prompt context.\n• **99.4% Verified Accuracy:** Ensures your chatbot never promises fictitious discounts or incorrect product specs!`,
+        quickActions: [
+          { label: '📅 Book RAG Architecture Call', action: () => openBookingFlow('RAG Architecture') },
+          { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, how does your RAG system ensure accurate answers without hallucination?') }
+        ],
+        assumptionQuestions: [
+          'Can the chatbot speak Hindi, English and regional languages?',
+          'How does WhatsApp Business API integration work?',
+          'What are the server & OpenAI API costs for a chatbot?'
+        ]
+      };
+    }
+
+    // 1.7. Specific: Multilingual & Hindi / Hinglish capabilities
+    if (
+      q.includes('multilingual') || q.includes('hindi') || q.includes('regional') ||
+      q.includes('bhasha') || q.includes('language')
+    ) {
+      return {
+        replyText: `🌐 **Multilingual & Hinglish Natural Language Processing:**\n\n• **Supported Languages:** English, Hindi, Hinglish, Spanish, Arabic, French, and regional Indian languages.\n• **Natural Code-Switching:** Users can type naturally in Hinglish (*"Mera order kab tak deliver hoga?"* or *"Pricing kya hai?"*), and the assistant replies with perfect conversational context.\n• **Language Auto-Detection:** Dynamically switches languages based on the customer's input without requiring awkward dropdown selectors.`,
+        quickActions: [
+          { label: '📅 Plan Multilingual Bot', action: () => openBookingFlow('Multilingual Chatbot') },
+          { label: '💬 Test in Hindi on WhatsApp', action: () => sendDirectWhatsApp('Namaste Tushar, mujhe ek multilingual AI chatbot chahiye.') }
+        ],
+        assumptionQuestions: [
+          'How does WhatsApp Business API integration work?',
+          'How does RAG prevent hallucinations in bot answers?',
+          'How much does a custom AI automation or chatbot cost?'
+        ]
+      };
+    }
+
+    // 1.8. Specific: WhatsApp Business Cloud API Integration
+    if (
+      q.includes('whatsapp business api') || q.includes('meta cloud api') ||
+      q.includes('whatsapp api integration') || q.includes('whatsapp integration work')
+    ) {
+      return {
+        replyText: `📱 **Official WhatsApp Business Cloud API Setup:**\n\n• **Direct Meta Cloud API:** Zero reliance on unapproved scrapers—100% compliant with Meta terms with zero ban risk.\n• **Interactive Rich UI:** Sends clickable quick-reply buttons, interactive catalog list pickers, and PDF brochures.\n• **Instant 24/7 Auto-Reply:** Answers customer questions in under 1 second, captures customer phone numbers, and routes hot deals to your personal phone.`,
+        quickActions: [
+          { label: '📅 Setup WhatsApp Cloud API', action: () => openBookingFlow('WhatsApp Cloud API') },
+          { label: '💬 Chat on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to set up an official WhatsApp Business Cloud API bot.') }
+        ],
+        assumptionQuestions: [
+          'Can n8n connect with WhatsApp and Google Sheets?',
+          'How much does a custom AI automation or chatbot cost?',
+          'What are the hosting & API costs of running n8n?'
+        ]
+      };
+    }
+
+    // 1.9. Specific: TASQ-ONE DAG validation & Groq Llama 3.3 70B AI
+    if (
+      q.includes('dag') || q.includes('kahn') || q.includes('topological') ||
+      q.includes('tasq-one') || q.includes('tasq') || q.includes('llama 3.3')
+    ) {
+      return {
+        replyText: `⚡ **TASQ-ONE: Autonomous Task OS with Groq Llama 3.3 70B AI:**\n\n• **Acyclic Dependency DAG Validation:** Uses Kahn's topological sort algorithm to validate task dependencies, ensuring development pipelines have zero circular deadlocks.\n• **Sub-400ms Decomposition:** Converts messy thoughts into production-ready Jira/Linear user stories, acceptance criteria, and story points in under 400ms.\n• **Cryptographic Audit Trails:** Immutable SHA-256 state tracking compliant with DPDP & SOC2 data governance.\n• **Stack:** Next.js 14, Groq Llama 3.3 70B, Supabase Postgres RLS, Upstash Redis, Docker.`,
+        quickActions: [
+          { label: '⚡ Explore TASQ-ONE Platform', action: () => { window.location.href = '/saas/tasq-one'; } },
+          { label: '🚀 Explore All SaaS Suites', action: () => { window.location.href = '/saas'; } },
+          { label: '📅 Book SaaS Engineering Call', action: () => openBookingFlow('SaaS Architecture') }
+        ],
+        assumptionQuestions: [
+          'What tech stack do you recommend for high-scale SaaS?',
+          'What database and authentication do you use for SaaS?',
+          'Can you build a private SaaS platform for my company?'
+        ]
+      };
+    }
+
+    // 1.10. Specific: SaaS Architecture, Multi-tenancy & Stripe/Razorpay
+    if (
+      q.includes('multi tenant') || q.includes('database and auth') ||
+      q.includes('supabase rls') || q.includes('recurring billing') || q.includes('stripe') || q.includes('razorpay')
+    ) {
+      return {
+        replyText: `☁️ **Multi-Tenant SaaS Architecture & Automated Subscriptions:**\n\n• **Tenant Data Isolation:** PostgreSQL Row-Level Security (RLS) policies (\`tenant_id = auth.jwt()->>'tenant_id'\`) guarantee strict tenant data isolation.\n• **Automated Recurring Billing:** Pre-built webhooks for Stripe & Razorpay handling subscription creation, prorated upgrades, failed invoice retries, and customer portals.\n• **Scalable Cloud Setup:** Containerized Docker images ready for AWS ECS, Vercel, or Render with sub-second Edge response times.`,
+        quickActions: [
+          { label: '📅 Book SaaS MVP Strategy', action: () => openBookingFlow('SaaS Architecture') },
+          { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to discuss multi-tenant database and billing architecture for our SaaS.') }
+        ],
+        assumptionQuestions: [
+          'What tech stack do you recommend for high-scale SaaS?',
+          'How fast can Tushar deliver a working MVP?',
+          'Can we start with a small paid pilot or proof-of-concept?'
+        ]
+      };
+    }
+
+    // 1.11. Specific: 100/100 Lighthouse & SEO
+    if (
+      q.includes('lighthouse') || q.includes('100/100') ||
+      q.includes('seo ranking') || q.includes('core web vitals') || q.includes('page speed')
+    ) {
+      return {
+        replyText: `⚡ **100/100 Google Lighthouse & Modern AEO/GEO SEO Standards:**\n\n• **Core Web Vitals:** Sub-800ms First Contentful Paint (FCP), 0 Cumulative Layout Shift (CLS), and sub-100ms INP.\n• **Semantic Architecture:** Full HTML5 semantic structure, JSON-LD Schema markup, dynamic Open Graph & Twitter meta tags.\n• **Pre-Rendering & Compression:** WebP/AVIF asset optimization, route-based code splitting, and zero render-blocking scripts.\n• **Result:** Maximum Google crawl efficiency and AI Search Engine (AEO/GEO) discoverability!`,
+        quickActions: [
+          { label: '📅 Book Website Audit Call', action: () => openBookingFlow('Performance Audit') },
+          { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want my website to achieve 100/100 Google Lighthouse score.') }
+        ],
+        assumptionQuestions: [
+          'Can you redesign my existing slow WordPress or Wix site?',
+          'Can I manage content easily without touching code?',
+          'What is the turnaround time for a complete web MVP?'
+        ]
+      };
+    }
+
+    // 1.12. Specific: WordPress / Wix Migration to Modern React
+    if (
+      q.includes('wordpress') || q.includes('wix') ||
+      q.includes('redesign my existing') || q.includes('migrate')
+    ) {
+      return {
+        replyText: `🔄 **WordPress / Wix to Modern React/Next.js Migration:**\n\n• **Massive Speed Increase:** Drops page load from 4–6s down to under 800ms.\n• **100% SEO Preservation:** All existing URLs, slug structures, meta titles, and 301 redirects are preserved to protect your search ranking.\n• **Zero Maintenance Headaches:** No vulnerable PHP plugins, no constant security breaches, and zero database bloat.`,
+        quickActions: [
+          { label: '📅 Plan Website Migration', action: () => openBookingFlow('Website Migration') },
+          { label: '💬 Message Tushar on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to migrate my slow WordPress/Wix site to modern React/Next.js.') }
+        ],
+        assumptionQuestions: [
+          'Do you ensure 100/100 Google Lighthouse and SEO ranking?',
+          'Can I manage content easily without touching code?',
+          'What are your pricing packages and rates?'
+        ]
+      };
+    }
+
+    // 1.13. Specific: Headless CMS / Non-technical content management
+    if (
+      q.includes('without code') || q.includes('without touching code') ||
+      q.includes('cms') || q.includes('manage content')
+    ) {
+      return {
+        replyText: `📝 **Headless CMS & Non-Technical Content Management:**\n\n• **Intuitive Visual Dashboard:** We integrate modern headless CMS platforms (Sanity, Strapi, Notion, or Supabase).\n• **Zero Coding Required:** Your marketing team can add blog posts, edit pricing plans, change images, and update testimonials through a friendly visual editor.\n• **Instant Live Publishing:** Content changes trigger automated rebuild webhooks, publishing changes live in seconds!`,
+        quickActions: [
+          { label: '📅 Book CMS Consultation', action: () => openBookingFlow('CMS Setup') },
+          { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want a modern web platform where my team can manage content easily without code.') }
+        ],
+        assumptionQuestions: [
+          'Do you ensure 100/100 Google Lighthouse and SEO ranking?',
+          'What is the turnaround time for a complete web MVP?',
+          'How much does a custom AI automation or chatbot cost?'
+        ]
+      };
+    }
+
+    // 1.14. Specific: Paid Pilot / Proof of Concept
+    if (
+      q.includes('pilot') || q.includes('proof-of-concept') ||
+      q.includes('poc') || q.includes('start small')
+    ) {
+      return {
+        replyText: `🎯 **Yes, absolutely! We love starting with a Paid Pilot:**\n\n• **Low Risk & Fast Validation:** We build a focused proof-of-concept (1 core workflow or 1 chatbot prototype) in **3 to 5 business days**.\n• **Test Working Chemistry:** Validate delivery speed, code quality, and communication before committing to the full enterprise contract.\n• **100% Credited:** The pilot fee is credited toward the full project if you decide to proceed!`,
+        quickActions: [
+          { label: '📅 Start a Paid Pilot', action: () => openBookingFlow('Paid Pilot') },
+          { label: '💬 WhatsApp Tushar', action: () => sendDirectWhatsApp('Hi Tushar, I want to start with a small paid pilot project.') }
+        ],
+        assumptionQuestions: [
+          'How does payment milestone structuring work?',
+          'Can we sign an NDA before discussing project details?',
+          'What are your pricing packages and rates?'
+        ]
+      };
+    }
+
+    // 1.15. Specific: Payment Milestone Structuring & Escrow
+    if (
+      q.includes('milestone') || (q.includes('payment') && q.includes('structur'))
+    ) {
+      return {
+        replyText: `💳 **Milestone-Based Transparent Payment Structuring:**\n\n• **Standard Project Breakdown:**\n  - **Milestone 1 (30%):** Project kickoff, UX wireframes & architecture approval.\n  - **Milestone 2 (40%):** Functional beta build deployed on staging for client testing.\n  - **Milestone 3 (30%):** Final production launch, QA sign-off, and repository handover.\n• **Fiverr Escrow Protection:** You also have the option to hire via Fiverr Escrow, where funds remain locked until you personally approve the milestone deliverable!`,
+        quickActions: [
+          { label: '⭐ Hire via Fiverr Escrow', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
+          { label: '📅 Discuss Milestones on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, can you explain how project milestones are structured?') }
+        ],
+        assumptionQuestions: [
+          'Can we start with a small paid pilot or proof-of-concept?',
+          'Do you offer free post-launch support and bug fixes?',
+          'Can we sign an NDA before discussing project details?'
+        ]
+      };
+    }
+
+    // 1.16. Specific: Post-Launch Support & Warranty
+    if (
+      q.includes('post-launch') || q.includes('maintenance') ||
+      q.includes('bug fixes') || q.includes('warranty') || q.includes('support after')
+    ) {
+      return {
+        replyText: `🛠️ **Post-Launch Support & Warranty Guarantee:**\n\n• **14 to 30 Days Free Warranty:** Any bug, glitch, or alignment issue found post-launch is resolved immediately at zero charge.\n• **Comprehensive Handoff:** Includes clear architecture documentation and Loom video walkthroughs for your team.\n• **Ongoing Retainers Available:** Monthly retainer options available for continuous AI prompt tuning, feature iterations, and server uptime monitoring.`,
+        quickActions: [
+          { label: '📅 Book Support Plan Call', action: () => openBookingFlow('Support Retainer') },
+          { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, what post-launch support and maintenance do you offer?') }
+        ],
+        assumptionQuestions: [
+          'Can we start with a small paid pilot or proof-of-concept?',
+          'How does payment milestone structuring work?',
+          'What are your pricing packages and rates?'
+        ]
+      };
+    }
+
+    // 1.17. Specific: Cold Email Deliverability & Anti-Spam
+    if (
+      q.includes('deliverability') || q.includes('spam') ||
+      q.includes('spf') || q.includes('dkim') || q.includes('warmup')
+    ) {
+      return {
+        replyText: `📬 **Cold Email Deliverability & Anti-Spam Engineering:**\n\n• **Domain Authentication:** Dedicated secondary sending domains configured with SPF, DKIM, DMARC, and custom tracking domains (CTD).\n• **Gradual Inbox Warmup:** 14-day automated warmup via Instantly/Smartlead mimicking natural human cadence.\n• **AI Personalization & Spintax:** Dynamic variables and spin syntax to ensure no two emails are identical, bypassing spam filters with 60%+ open rates.`,
+        quickActions: [
+          { label: '📅 Plan Lead Gen Pipeline', action: () => openBookingFlow('Lead Generation') },
+          { label: '💬 WhatsApp Tushar', action: () => sendDirectWhatsApp('Hi Tushar, how do you handle email deliverability and avoid spam in outreach?') }
+        ],
+        assumptionQuestions: [
+          'What data sources (Apollo/LinkedIn) are used for leads?',
+          'Can leads automatically sync to our HubSpot or Notion CRM?',
+          'What are your pricing packages and rates?'
+        ]
+      };
+    }
+
+    // 1.18. Specific: Emergency 48-Hour Sprint
+    if (
+      q.includes('48 hour') || q.includes('48-hour') ||
+      q.includes('emergency') || q.includes('urgent')
+    ) {
+      return {
+        replyText: `⚡ **48-Hour Emergency Sprint Delivery Available!**\n\n• **Ideal For:** Fast MVP demos, investor pitch deck prototypes, sudden client deadlines, or critical production bug fixes.\n• **Dedicated Focus:** Tushar focuses exclusively on your sprint with frequent staging updates.\n• **How to Initiate:** Message Tushar directly on WhatsApp with the keyword **"URGENT SPRINT"** for immediate confirmation!`,
+        quickActions: [
+          { label: '💬 Message Tushar on WhatsApp (Urgent)', action: () => sendDirectWhatsApp('Hi Tushar, I have an URGENT 48-HR SPRINT requirement. Are you available?') },
+          { label: '📅 Schedule Immediate Call', action: () => openBookingFlow('Urgent Sprint') }
+        ],
+        assumptionQuestions: [
+          'How often will I receive progress updates and staging previews?',
+          'Can we launch in phased milestones?',
+          'Can we sign an NDA before discussing project details?'
+        ]
+      };
+    }
+
+    // 1.19. Specific: NDA & Confidentiality
+    if (
+      q.includes('nda') || q.includes('non disclosure') || q.includes('confidential')
+    ) {
+      return {
+        replyText: `📝 **Mutual NDA & Intellectual Property Protection:**\n\n• **100% Confidentiality:** We are happy to review and sign your standard Mutual Non-Disclosure Agreement (NDA) before discussing proprietary business logic or codebases.\n• **Full IP Ownership:** You retain 100% intellectual property rights, copyright, and source code ownership upon project completion and handover.`,
+        quickActions: [
+          { label: '📅 Book Confidential Strategy Audit', action: () => openBookingFlow('Confidential Project') },
+          { label: '💬 Send NDA on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I would like to share an NDA before we discuss project specs.') }
+        ],
+        assumptionQuestions: [
+          'What happens during the 30-min strategy audit?',
+          'What are your available meeting time slots this week?',
+          'Can we start with a small paid pilot or proof-of-concept?'
+        ]
+      };
+    }
+
+    // 1.20. Specific: What happens in 30-min Strategy Audit?
+    if (
+      q.includes('what happens during') || q.includes('strategy audit') ||
+      q.includes('30-min strategy') || q.includes('prepare before the strategy')
+    ) {
+      return {
+        replyText: `🎯 **What Happens in Your Free 30-Min Strategy Audit:**\n\n1. **Workflow & Bottleneck Analysis:** We identify manual tasks that waste time or leak revenue in your current operation.\n2. **Architecture Blueprint:** Tushar recommends the exact stack (e.g. n8n vs Python vs Next.js vs RAG).\n3. **Timeline & Cost Estimate:** Clear milestone plan and OpEx cost estimates with zero sales pressure.\n• **Preparation:** Simply bring your rough goal or existing process workflow!`,
+        quickActions: [
+          { label: '📝 Fill Booking Form Now', action: () => openBookingFlow() },
+          { label: '💬 WhatsApp Directly', action: () => sendDirectWhatsApp('Hi Tushar, I want to book a free 30-min strategy audit.') }
+        ],
+        assumptionQuestions: [
+          'What are your available meeting time slots this week?',
+          'Can we sign an NDA before discussing project details?',
+          'What are your pricing packages and rates?'
+        ]
+      };
+    }
+
+    // 1.21. Specific: Tech Stack Recommendation for SaaS / Web
+    if (
+      q.includes('tech stack') || q.includes('recommend for high-scale saas') ||
+      (q.includes('recommend') && q.includes('stack'))
+    ) {
+      return {
+        replyText: `🏗️ **Recommended Modern Tech Stack for High-Scale SaaS:**\n\n• **Frontend & SSR:** **Next.js 15 (App Router)** + React 19 + TypeScript + Tailwind CSS for sub-second UI speeds.\n• **Database & RLS:** **Supabase PostgreSQL** with strict Row-Level Security for multi-tenant isolation.\n• **Serverless Caching:** **Upstash Redis** for rate limiting, session caching, and sub-10ms response times.\n• **AI Models & Agents:** **Groq Llama 3.3 70B** (<400ms inference) + **OpenAI GPT-4o** for multi-modal tasks.\n• **Containerization & Hosting:** Docker containers deployed on AWS ECS, Render, or Vercel.`,
+        quickActions: [
+          { label: '🚀 View TASQ-ONE Architecture', action: () => { window.location.href = '/saas/tasq-one'; } },
+          { label: '📅 Book Tech Architecture Call', action: () => openBookingFlow('Tech Stack Advisory') },
+          { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, what tech stack do you recommend for our new software platform?') }
+        ],
+        assumptionQuestions: [
+          'How does TASQ-ONE validate dependency DAGs?',
+          'What database and authentication do you use for SaaS?',
+          'How fast can Tushar deliver a working MVP?'
+        ]
+      };
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // TIER 2: PRICING, COSTS & TIMELINES (MUST MATCH BEFORE GENERAL CATEGORIES)
+    // ──────────────────────────────────────────────────────────────────────────
+
+    // 2.1. PRICING & COSTS (Handles "How much does a custom AI automation or chatbot cost?", "What are your pricing packages and rates?", etc.)
+    if (
+      q.includes('price') || q.includes('cost') || q.includes('rate') ||
+      q.includes('charges') || q.includes('fee') || q.includes('kitna') ||
+      q.includes('budget') || q.includes('rupee') || q.includes('quote') || q.includes('how much')
+    ) {
+      return {
+        replyText: `💰 **Transparent Pricing & Cost Estimates:**\n\n• **AI Workflow Automations (n8n / Python):** Typically **₹15,000 – ₹45,000** ($200 – $600) based on complexity and webhook integrations.\n• **Custom AI Chatbots & RAG (WhatsApp / Web):** Typically **₹25,000 – ₹60,000** ($350 – $800) including custom document training and WhatsApp API setup.\n• **Full-Stack Web MVPs & Funnels:** Typically **₹40,000 – ₹1,20,000** ($500 – $1,500) for complete production-ready platforms.\n• **Free Initial Consultation:** 100% Free 30-min strategy audit with zero commitment.\n• **Fiverr Escrow Protection:** 100% milestone buyer escrow available!`,
+        quickActions: [
+          { label: '📅 Get Custom Quote', action: () => openBookingFlow('Custom Quote') },
+          { label: '⭐ View Fiverr Packages', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
+          { label: '💬 Get Instant Estimate on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, can you give me an accurate pricing estimate for my project?') }
+        ],
+        assumptionQuestions: [
+          'Can we start with a small paid pilot or proof-of-concept?',
+          'How does payment milestone structuring work?',
+          'What are the typical costs for an n8n automation project?',
+          'Do you offer free post-launch support and bug fixes?'
+        ]
+      };
+    }
+
+    // 2.2. TIMELINES & SPEED (Handles "How fast can Tushar deliver a working MVP?", "Delivery timeline?", etc.)
+    if (
+      q.includes('timeline') || q.includes('turnaround') || q.includes('how fast') ||
+      q.includes('delivery time') || q.includes('kab tak') || q.includes('duration') || q.includes('delivery timeline')
+    ) {
+      return {
+        replyText: `⏱️ **Project Delivery Timelines & Milestones:**\n\n• **AI Automations & n8n Workflows:** **3 to 7 business days**\n• **Custom AI Chatbots & RAG Systems:** **5 to 10 business days**\n• **High-Converting Landing Pages:** **3 to 5 business days**\n• **Full-Stack SaaS MVPs:** **7 to 14 business days**\n• **Express 48-Hour Emergency Sprint:** Available for urgent client requirements.\n\nWe provide daily milestone previews on staging URLs so you see live progress every step of the way!`,
+        quickActions: [
+          { label: '📅 Plan My Timeline', action: () => openBookingFlow('Timeline Planning') },
+          { label: '💬 Check Availability on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I have a specific deadline and want to check your availability.') }
+        ],
+        assumptionQuestions: [
+          'Can you deliver an emergency prototype in 48 hours?',
+          'How often will I receive progress updates and staging previews?',
+          'Can we launch in phased milestones?'
+        ]
+      };
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // TIER 3: BROAD DOMAIN INQUIRIES (FALLBACK CATEGORIES)
+    // ──────────────────────────────────────────────────────────────────────────
+
+    // 3.1. Booking / Contact / Hire
     if (
       q.includes('book') || q.includes('meeting') || q.includes('call') ||
       q.includes('consultation') || q.includes('appointment') || q.includes('talk') ||
@@ -167,7 +622,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       };
     }
 
-    // 2. AI Automation / n8n / Workflows / Multi-Agent Systems
+    // 3.2. AI Automation & n8n
     if (
       q.includes('automation') || q.includes('n8n') || q.includes('workflow') ||
       q.includes('zapier') || q.includes('make.com') || q.includes('agent') || q.includes('automate')
@@ -180,18 +635,18 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
           { label: '💬 Inquire on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I want to discuss automating our business workflows with n8n.') }
         ],
         assumptionQuestions: [
-          'Which business workflows can n8n automate?',
-          'What are the hosting & API costs of running n8n?',
           'Can n8n connect with WhatsApp and Google Sheets?',
+          'What are the hosting & API costs of running n8n?',
+          'Which business workflows can n8n automate?',
           'How does automated error handling work in production?'
         ]
       };
     }
 
-    // 3. AI Chatbots / Customer Support / WhatsApp Bot / RAG Systems
+    // 3.3. AI Chatbots & RAG
     if (
       q.includes('chatbot') || q.includes('bot') || q.includes('rag') ||
-      q.includes('support agent') || q.includes('whatsapp bot') || q.includes('telegram') || q.includes('saathi')
+      q.includes('support agent') || q.includes('whatsapp bot') || q.includes('telegram')
     ) {
       return {
         replyText: `🤖 **Enterprise AI Chatbots, RAG Knowledge Bases & WhatsApp Commerce:**\n\n• **Capabilities:** 24/7 multilingual assistance, document-trained RAG (PDFs, Notion, DBs), automated lead qualification, and appointment booking.\n• **Channels:** Web embed widget, WhatsApp Business Cloud API, Telegram, and Slack.\n• **Proven Results:** **70% support ticket reduction** and immediate 0-second customer response time.\n• **Live SaaS Showcase:** Try our proprietary **Saathi Bot** live on the right side of the screen right now!\n• **Tech:** OpenAI, LangChain, Pinecone vector search, Python FastAPI, React.`,
@@ -201,18 +656,17 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
           { label: '💬 Discuss on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I need a custom AI Chatbot for my business.') }
         ],
         assumptionQuestions: [
-          'How does WhatsApp Business API integration work?',
+          'Can I test the Saathi Bot demo widget right now?',
           'How does RAG prevent hallucinations in bot answers?',
-          'Can the chatbot speak Hindi, English and regional languages?',
-          'What are the server & OpenAI API costs for a chatbot?'
+          'How does WhatsApp Business API integration work?',
+          'Can the chatbot speak Hindi, English and regional languages?'
         ]
       };
     }
 
-    // 4. Custom SaaS Products / TASQ-ONE / Cloud Platforms
+    // 3.4. Proprietary SaaS Suites
     if (
-      q.includes('saas') || q.includes('software') || q.includes('tasq') ||
-      q.includes('product') || q.includes('multi tenant') || q.includes('subscription') || q.includes('microservice')
+      q.includes('saas') || q.includes('software') || q.includes('product')
     ) {
       return {
         replyText: `☁️ **Tushar's Proprietary SaaS Ecosystem & Custom MVP Engineering:**\n\n1. **Saathi Bot (v1.0.0):** Autonomous B2B AI Chatbot platform with embeddable zero-latency widget, FAQ crawler, and live lead qualification.\n2. **TASQ-ONE (v1.4.0):** The Intelligent Task OS with Groq Llama 3.3 70B AI task decomposition, topological acyclic Kanban DAG validation, sub-400ms latency, and cryptographic audit trails.\n3. **Custom SaaS MVP Engineering:** Multi-tenant architecture, Supabase PostgreSQL RLS, Stripe/Razorpay billing, and Docker containerization.\n• **Delivery Timeline:** Fully functional production MVP in **2 to 4 weeks**.`,
@@ -222,15 +676,15 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
           { label: '📅 Book SaaS MVP Call', action: () => openBookingFlow('Custom SaaS & MVP Engineering') }
         ],
         assumptionQuestions: [
+          'What tech stack do you recommend for high-scale SaaS?',
           'How does TASQ-ONE validate dependency DAGs?',
-          'What database and authentication do you use for SaaS?',
           'Can you build a private SaaS platform for my company?',
           'How do you handle automated Stripe & Razorpay recurring billing?'
         ]
       };
     }
 
-    // 5. Full-Stack Web Development / React / Next.js / Django
+    // 3.5. Web Development
     if (
       q.includes('web') || q.includes('website') || q.includes('react') ||
       q.includes('django') || q.includes('next.js') || q.includes('frontend') ||
@@ -252,28 +706,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       };
     }
 
-    // 6. Pricing / Rates / Budget / Escrow
-    if (
-      q.includes('price') || q.includes('cost') || q.includes('rate') ||
-      q.includes('kitna') || q.includes('budget') || q.includes('charges') || q.includes('fee') || q.includes('rupee')
-    ) {
-      return {
-        replyText: `💰 **Pricing, Engagement Models & Guarantees:**\n\n• **Free Initial Consultation:** 100% Free 30-min architecture & strategy audit.\n• **Fixed-Price Milestones:** Transparent scopes with 0 hidden costs (Automations, Chatbots, Web MVPs).\n• **Fiverr Escrow Buyer Protection:** Option to hire via Fiverr with full milestone protection.\n• **Guaranteed ROI:** Projects engineered to save 10+ hrs/week or generate immediate qualified pipeline.\n• **Hourly Consulting & Retainer:** Available for ongoing AI ops & technical advisory.`,
-        quickActions: [
-          { label: '📅 Get Custom Quote', action: () => openBookingFlow('Custom Quote') },
-          { label: '⭐ Hire via Fiverr Escrow', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
-          { label: '💬 Get Instant Estimate on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, can you give me an estimate for my project?') }
-        ],
-        assumptionQuestions: [
-          'Can we start with a small paid pilot or proof-of-concept?',
-          'How does payment milestone structuring work?',
-          'Do you offer free post-launch support and bug fixes?',
-          'What are the typical costs for an n8n automation project?'
-        ]
-      };
-    }
-
-    // 7. Lead Generation / Cold Outreach
+    // 3.6. Lead Generation
     if (
       q.includes('lead') || q.includes('prospect') || q.includes('cold email') ||
       q.includes('outreach') || q.includes('apollo') || q.includes('instantly')
@@ -292,26 +725,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       };
     }
 
-    // 8. Timelines & Delivery Speeds
-    if (
-      q.includes('time') || q.includes('timeline') || q.includes('duration') ||
-      q.includes('kab tak') || q.includes('days') || q.includes('fast') || q.includes('delivery') || q.includes('speed')
-    ) {
-      return {
-        replyText: `⏱️ **Project Delivery Timelines:**\n\n• **AI Automations & n8n Workflows:** 3 to 7 business days\n• **Custom AI Chatbots (RAG / WhatsApp):** 5 to 10 business days\n• **Full-Stack MVPs & Web Platforms:** 7 to 14 business days\n• **Express 48-Hour Sprint:** Available for urgent client requirements.\n\nWe provide daily milestone previews on staging URLs so you see live progress every step of the way!`,
-        quickActions: [
-          { label: '📅 Plan My Timeline', action: () => openBookingFlow('Timeline Planning') },
-          { label: '💬 Check Availability on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, I have an urgent project requirement and want to check your availability.') }
-        ],
-        assumptionQuestions: [
-          'Can you deliver an emergency prototype in 48 hours?',
-          'How often will I receive progress updates and staging previews?',
-          'Can we launch in phased milestones?'
-        ]
-      };
-    }
-
-    // 9. About Tushar / Background / Credentials / Location
+    // 3.7. About Tushar
     if (
       q.includes('about') || q.includes('who is') || q.includes('tushar') ||
       q.includes('education') || q.includes('location') || q.includes('mca') ||
@@ -327,12 +741,12 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
         assumptionQuestions: [
           'Are you available for international / remote freelance contracts?',
           'Can I see client reviews and ratings on Fiverr?',
-          'What is your primary tech stack preference for new projects?'
+          'What is your educational & technical background?'
         ]
       };
     }
 
-    // 10. Security / Pentesting / Compliance
+    // 3.8. Security & Pentesting
     if (
       q.includes('security') || q.includes('pentest') || q.includes('safe') ||
       q.includes('gdpr') || q.includes('soc2') || q.includes('encryption') || q.includes('hack')
@@ -351,7 +765,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       };
     }
 
-    // Default Fallback
+    // 3.9. Default Fallback
     return {
       replyText: `🤖 Thanks for your question! Tushar Singh specializes across:\n\n1. **AI Automation** (n8n workflows, Python autonomous agents, CRM syncs)\n2. **Custom AI Chatbots & RAG** (WhatsApp Business API, Web Widgets, Saathi Bot)\n3. **Full-Stack Web Development** (React 19, Next.js 14, Django, 100/100 Lighthouse)\n4. **Proprietary SaaS Suites** (Saathi Bot, TASQ-ONE, Cloud MVPs)\n5. **B2B Lead Generation Engines** (Apollo, LinkedIn, cold email infrastructure)\n\nWould you like to book a free 30-min strategy call or explore any of the assumption questions below?`,
       quickActions: [
@@ -361,10 +775,10 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
         { label: '💬 Direct WhatsApp Chat', action: () => sendDirectWhatsApp(`Hi Tushar, I had a question regarding: "${query}"`) }
       ],
       assumptionQuestions: [
-        'How much does a typical project cost?',
+        'How much does a custom AI automation or chatbot cost?',
         'Can I test the Saathi Bot demo widget right now?',
-        'How fast can you deliver an MVP?',
-        'Can you show me real client case studies?'
+        'How fast can Tushar deliver a working MVP?',
+        'What tech stack do you recommend for high-scale SaaS?'
       ]
     };
   };
