@@ -375,7 +375,11 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
 
               {/* AI Assistant Icon */}
               <div className="relative flex items-center justify-center">
-                <Bot size={24} className="group-hover:rotate-12 transition-transform duration-300 drop-shadow-md text-white" />
+                <img
+                  src="/tushar-ai-assistant.png"
+                  alt="Tushar AI Assistant Mascot"
+                  className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-[0_0_12px_rgba(34,211,238,0.7)] group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
 
               {/* Expandable Label */}
@@ -419,8 +423,12 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
           <div className="bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 p-4 border-b border-indigo-500/20 text-white flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-md border border-indigo-400/40">
-                  <Bot size={22} className="text-white" />
+                <div className="w-11 h-11 rounded-2xl bg-slate-950 p-1 flex items-center justify-center shadow-md border border-cyan-400/40 overflow-hidden">
+                  <img
+                    src="/tushar-ai-assistant.png"
+                    alt="Tushar AI Assistant Logo"
+                    className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]"
+                  />
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-slate-950" />
               </div>
@@ -483,8 +491,12 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
                 className={`flex gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-xl bg-indigo-600/20 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 mt-0.5 border border-indigo-500/20">
-                    <Bot size={14} />
+                  <div className="w-7 h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 mt-0.5 border border-cyan-500/30 shadow-2xs overflow-hidden">
+                    <img
+                      src="/tushar-ai-assistant.png"
+                      alt="Tushar AI"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                 )}
 
@@ -553,8 +565,12 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
             {/* Typing Indicator */}
             {isTyping && (
               <div className="flex gap-2.5 items-center">
-                <div className="w-7 h-7 rounded-xl bg-indigo-600/20 text-indigo-600 flex items-center justify-center shrink-0">
-                  <Bot size={14} />
+                <div className="w-7 h-7 rounded-lg bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-cyan-500/30 overflow-hidden">
+                  <img
+                    src="/tushar-ai-assistant.png"
+                    alt="Tushar AI"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div className="bg-slate-100 dark:bg-slate-800 px-4 py-2.5 rounded-2xl rounded-tl-none border border-slate-200/80 dark:border-white/5 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-bounce" />
