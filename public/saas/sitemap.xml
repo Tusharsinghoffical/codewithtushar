@@ -116,6 +116,25 @@
     </image:image>
   </url>
 
+  <!-- ═══ 2.8. SHIELDCAPTCHA ENTERPRISE SAAS PRODUCT ═══ -->
+  <url>
+    <loc>https://codewithmrsingh.me/saas/shield-captcha</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://codewithmrsingh.me/saas/shield-captcha"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://codewithmrsingh.me/saas/shield-captcha"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://codewithmrsingh.me/saas/shield-captcha"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://codewithmrsingh.me/saas/shield-captcha"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://codewithmrsingh.me/saas/shield-captcha"/>
+    <image:image>
+      <image:loc>https://codewithmrsingh.me/projects/shield-captcha-enterprise.jpg</image:loc>
+      <image:title>ShieldCaptcha Enterprise — Autonomous Bot Defense &amp; Cryptographic Human Verification Platform</image:title>
+      <image:caption>Zero-cookie autonomous bot defense platform with SHA-256 Proof-of-Work, mouse kinematics trajectory analysis, and HMAC-SHA256 replay-protected verification tokens.</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+  </url>
+
   <!-- ═══ 3. PROJECTS / PORTFOLIO ═══ -->
   <url>
     <loc>https://codewithmrsingh.me/projects</loc>

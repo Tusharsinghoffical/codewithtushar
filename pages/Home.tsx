@@ -11,7 +11,7 @@ import {
   PROJECTS, SERVICES, TESTIMONIALS,
   GOOGLE_BUSINESS_NAME, GOOGLE_BUSINESS_URL,
   GOOGLE_VERIFICATION_PROOF_URL, BUSINESS_ADDRESS,
-  FIVERR_PROFILE_URL, TASQ_ONE_URL, SAATHI_BOT_URL
+  FIVERR_PROFILE_URL, TASQ_ONE_URL, SAATHI_BOT_URL, SHIELD_CAPTCHA_URL
 } from '../constants';
 import OptimizedImage from '../components/OptimizedImage';
 import GoogleVerifiedBadge, { GoogleGIcon } from '../components/GoogleVerifiedBadge';
@@ -23,95 +23,95 @@ const SVC_ICONS = [
   <Globe size={22} />, <Target size={22} />, <Code2 size={22} />,
 ];
 
-/* ─── Proprietary SaaS Carousel Data ─────────────────────────────────────── */
-const SAAS_SLIDES = [
+/* ─── Proprietary SaaS Cloud Suites ─────────────────────────────────────── */
+const SAAS_SUITES = [
   {
     id: 'tasq-one',
-    tabName: 'TASQ-ONE',
-    badge: 'TASQ-ONE v1.4.0 · Live Public Beta',
-    badgeBorder: 'border-indigo-400/30 text-indigo-300 bg-indigo-500/20',
-    title: 'Meet TASQ-ONE.',
-    subtitle: 'The Intelligent Task Operating System built by Tushar Singh Labs. Autonomous AI decomposition, real-time Kanban dependency DAGs, and multi-tenant security.',
-    pillTech: ['Groq Llama 3.3 70B', 'Postgres 15 RLS', 'Docker Ready'],
+    name: 'TASQ-ONE',
+    category: 'AI Task Operating System',
+    version: 'v1.4.0',
+    status: 'Public Beta',
+    tagline: 'Autonomous AI ticket decomposition & real-time topological Kanban DAGs.',
     logoImage: '/tasq-one/task-one-emblem.png',
     logoAlt: 'TASQ-ONE Intelligent Task Operating System Logo',
-    isBannerView: false,
+    topGradient: 'from-indigo-500 via-violet-500 to-indigo-600',
+    accentBorder: 'hover:border-indigo-500/50 hover:shadow-indigo-500/10',
+    badgeText: 'text-indigo-300 bg-indigo-500/15 border-indigo-400/30',
     metrics: [
-      { label: 'Onboarding', val: '< 5 Mins' },
       { label: 'AI Latency', val: '< 400ms' },
-      { label: 'Team Savings', val: '₹48k/mo' },
+      { label: 'AI Engine', val: 'Llama 3.3' },
       { label: 'Audit Security', val: 'SHA-256' },
     ],
-    cardTag: 'Turn 1-Sentence Thoughts Into Air-Tight Engineering Tickets',
-    cardTitle: 'Stop Wasting 10–15 Hours a Week in Chaotic Standups & Vague Jira Tickets.',
-    cardDesc: 'TASQ-ONE uses hardware-accelerated Groq Llama 3.3 70B to instantly decompose one sentence into production-ready tasks with story points, acceptance criteria, and topological DAG dependency constraints.',
-    checklist: [
+    features: [
       'Sub-400ms autonomous task breakdown via Groq LPU engine',
-      'Topological Kanban DAG locks blocked tasks from premature execution',
-      'Cryptographic SHA-256 audit trails ensure DPDP & SOC 2 readiness',
-      'PostgreSQL Row-Level Security (RLS) hardware-grade data sandboxing',
+      'Topological Kanban DAG locks blocked tasks from execution',
+      'PostgreSQL Row-Level Security (RLS) hardware sandboxing',
     ],
-    primaryBtnText: 'Launch Free Beta App',
-    primaryBtnUrl: TASQ_ONE_URL,
-    primaryBtnColor: 'bg-indigo-600 hover:bg-indigo-500 shadow-indigo-600/30',
-    productPageUrl: '/saas/tasq-one',
-    cardBorder: 'border-indigo-500/30 shadow-indigo-950/40',
-    accentText: 'text-indigo-400',
-    orbGradient: 'from-indigo-500/20 via-violet-500/20 to-cyan-500/20',
+    techTags: ['Groq Llama 3.3', 'Postgres RLS', 'Docker'],
+    primaryUrl: TASQ_ONE_URL,
+    primaryText: 'Launch Free Beta',
+    specsUrl: '/saas/tasq-one',
   },
   {
     id: 'saathi-bot',
-    tabName: 'Saathi Bot',
-    badge: 'Saathi Bot v1.0.0 · Production Ready',
-    badgeBorder: 'border-cyan-400/30 text-cyan-300 bg-cyan-500/20',
-    title: 'Meet Saathi Bot.',
-    subtitle: 'Enterprise Autonomous AI Chatbot & Conversational Commerce Platform. Turn any website into an accurate, grounded assistant with Zero Hallucination Guarantee and In-Chat Booking.',
-    pillTech: ['Hybrid RAG (RRF)', 'Pre-LLM Confidence Gate', '18 KB Shadow DOM'],
+    name: 'Saathi Bot',
+    category: 'Autonomous Conversational AI',
+    version: 'v1.0.0',
+    status: 'Production Ready',
+    tagline: 'Zero-hallucination multilingual AI assistant with pre-LLM confidence gating.',
     logoImage: '/saathi-bot/saathi-black-logo.svg',
     logoAlt: 'Saathi Bot Official Logo',
-    isBannerView: false,
+    topGradient: 'from-cyan-500 via-teal-500 to-cyan-600',
+    accentBorder: 'hover:border-cyan-500/50 hover:shadow-cyan-500/10',
+    badgeText: 'text-cyan-300 bg-cyan-500/15 border-cyan-400/30',
     metrics: [
       { label: 'First Token', val: '< 750ms' },
-      { label: 'Fallback Latency', val: '24ms' },
-      { label: 'Fallback Cost', val: '$0.000 (Free)' },
+      { label: 'Fallback Latency', val: '24ms ($0)' },
       { label: 'Widget Payload', val: '18 KB' },
     ],
-    cardTag: 'Turn Your Business Knowledge Footprint Into an Autonomous AI Assistant',
-    cardTitle: 'Defend Customer Trust with Zero Hallucinations & Pre-LLM Confidence Gating.',
-    cardDesc: 'Saathi Bot connects dense Gemini embeddings with sparse lexical search via Reciprocal Rank Fusion, intercepts out-of-scope inquiries in 24ms at zero token cost, and syncs appointment leads directly to Google Sheets.',
-    checklist: [
-      '100% Verifiable Grounding with strict attribution to source URLs',
-      'Pre-LLM Confidence Gate saving up to 41% on operational AI bills',
-      'Zero-bleed 18 KB Shadow DOM Web Component immune to host CSS conflicts',
-      'In-chat lead booking drawer with real-time Google Sheets OAuth sync',
+    features: [
+      '100% Verifiable grounding with strict source URL attribution',
+      'Pre-LLM Confidence Gate saving up to 41% on AI bills',
+      'Zero-bleed 18 KB Shadow DOM widget immune to CSS bleed',
     ],
-    primaryBtnText: 'Launch Live SaaS Platform',
-    primaryBtnUrl: SAATHI_BOT_URL,
-    primaryBtnColor: 'bg-cyan-600 hover:bg-cyan-500 shadow-cyan-600/30',
-    productPageUrl: '/saas/saathi-bot',
-    cardBorder: 'border-cyan-500/30 shadow-cyan-950/40',
-    accentText: 'text-cyan-400',
-    orbGradient: 'from-cyan-500/20 via-teal-500/20 to-indigo-500/20',
-  }
+    techTags: ['Hybrid RAG (RRF)', 'Confidence Gate', 'Shadow DOM'],
+    primaryUrl: SAATHI_BOT_URL,
+    primaryText: 'Launch Live Platform',
+    specsUrl: '/saas/saathi-bot',
+  },
+  {
+    id: 'shield-captcha',
+    name: 'ShieldCaptcha Enterprise',
+    category: 'Cybersecurity & Bot Defense',
+    version: 'v1.2.0',
+    status: 'Live Production',
+    tagline: 'Privacy-first bot defense replacing tracking CAPTCHAs via SHA-256 PoW.',
+    logoImage: '/shield-captcha/shield-captcha-logo.png',
+    logoAlt: 'ShieldCaptcha Enterprise Official Shield Logo',
+    topGradient: 'from-blue-500 via-cyan-500 to-blue-600',
+    accentBorder: 'hover:border-blue-500/50 hover:shadow-blue-500/10',
+    badgeText: 'text-blue-300 bg-blue-500/15 border-blue-400/30',
+    metrics: [
+      { label: 'PoW Latency', val: '150–300ms' },
+      { label: 'Cookies', val: '0 (Zero)' },
+      { label: 'Self-Hosted', val: '$0 / Mo' },
+    ],
+    features: [
+      'Hardware-accelerated client-side SHA-256 Proof-of-Work',
+      'Biomechanical mouse kinematics trajectory & entropy',
+      '100% GDPR & DPDP compliant with single-use HMAC replay defense',
+    ],
+    techTags: ['Zero Cookies', 'SHA-256 PoW', 'Mouse Kinematics'],
+    primaryUrl: SHIELD_CAPTCHA_URL,
+    primaryText: 'Launch Live Portal',
+    specsUrl: '/saas/shield-captcha',
+  },
 ];
 
 /* ─── Main Component ─────────────────────────────────────────────────────── */
 const Home: React.FC = () => {
-  const [qrModalOpen, setQrModalOpen] = useState(false);
-  const [saasSlide, setSaasSlide] = useState(0);
-  const [isSaasPaused, setIsSaasPaused] = useState(false);
+    const [qrModalOpen, setQrModalOpen] = useState(false);
   const featured = PROJECTS.filter(p => p.isFeatured).slice(0, 3);
-
-  /* Auto-slide timer (6.5s interval, pauses on hover) */
-  useEffect(() => {
-    if (isSaasPaused) return;
-    const interval = setInterval(() => {
-      setSaasSlide(prev => (prev + 1) % SAAS_SLIDES.length);
-    }, 6500);
-    return () => clearInterval(interval);
-  }, [isSaasPaused]);
-
-  const activeSaaS = SAAS_SLIDES[saasSlide];
 
   return (
     <div className="bg-white dark:bg-slate-950 w-full overflow-x-hidden transition-colors duration-300">
@@ -446,198 +446,150 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════ 2.5. PROPRIETARY SAAS SPOTLIGHT (CAROUSEL) ═══════════════════════ */}
+      {/* ═══════════════════════ 2.5. PROPRIETARY SAAS SUITES (COMPACT 3-CARD FLEET) ═══════════════════════ */}
       <section
-        className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-950 text-white relative overflow-hidden border-y border-white/10"
+        className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 text-white relative overflow-hidden border-y border-white/10"
         aria-labelledby="saas-spotlight-heading"
-        onMouseEnter={() => setIsSaasPaused(true)}
-        onMouseLeave={() => setIsSaasPaused(false)}
       >
-        {/* Radiant Ambient Orb */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-[400px] h-[400px] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
+        {/* Ambient Glow Orbs */}
+        <div className="absolute top-0 right-1/4 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-[350px] h-[350px] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto relative z-10 space-y-8">
+        <div className="max-w-7xl mx-auto relative z-10 space-y-8 sm:space-y-10">
           
-          {/* Header Row with Navigation & Tabs */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-[10px] font-black uppercase tracking-wider font-outfit">
-                <Sparkles size={12} className="text-indigo-400" />
-                <span>Proprietary Cloud Software · SaaS Suites</span>
+          {/* Section Header */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div className="space-y-3">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-xs font-black uppercase tracking-wider font-outfit">
+                <Sparkles size={13} className="text-indigo-400 animate-pulse" />
+                <span>Proprietary Cloud Ecosystem · 3 Live Suites</span>
               </div>
-              <h2 id="saas-spotlight-heading" className="text-3xl sm:text-5xl font-outfit font-black text-white tracking-tight leading-tight">
-                {activeSaaS.title}
+              <h2 id="saas-spotlight-heading" className="text-3xl sm:text-4xl lg:text-5xl font-outfit font-black text-white tracking-tight leading-tight">
+                Proprietary SaaS Suites Engineered In-House.
               </h2>
-              <p className="text-xs sm:text-base text-slate-300 max-w-2xl font-medium">
-                {activeSaaS.subtitle}
+              <p className="text-xs sm:text-base text-slate-300 max-w-2xl font-normal leading-relaxed">
+                Explore three production-grade, autonomous cloud platforms built from zero to production by Tushar Singh — spanning AI task orchestration, conversational commerce, and zero-cookie bot defense.
               </p>
             </div>
 
-            {/* Carousel Controls & Slide Pills */}
-            <div className="flex flex-wrap items-center gap-3">
-              {/* Slide Selector Tabs */}
-              <div className="inline-flex items-center p-1 bg-white/5 border border-white/15 rounded-2xl">
-                {SAAS_SLIDES.map((slide, sIdx) => (
-                  <button
-                    key={slide.id}
-                    onClick={() => setSaasSlide(sIdx)}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-outfit font-bold transition-all cursor-pointer ${
-                      saasSlide === sIdx
-                        ? 'bg-white text-slate-950 shadow-sm'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    {slide.tabName}
-                  </button>
-                ))}
-              </div>
+            <Link
+              to="/saas"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 text-white text-xs font-black uppercase tracking-wider transition-all hover:scale-[1.02] shadow-sm shrink-0"
+            >
+              <span>Explore All SaaS Specs</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
 
-              {/* Prev / Next Arrows */}
-              <div className="flex items-center gap-1.5">
-                <button
-                  onClick={() => setSaasSlide(prev => (prev - 1 + SAAS_SLIDES.length) % SAAS_SLIDES.length)}
-                  className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all cursor-pointer"
-                  aria-label="Previous SaaS Product"
-                >
-                  <ChevronLeft size={16} />
-                </button>
-                <button
-                  onClick={() => setSaasSlide(prev => (prev + 1) % SAAS_SLIDES.length)}
-                  className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all cursor-pointer"
-                  aria-label="Next SaaS Product"
-                >
-                  <ChevronRight size={16} />
-                </button>
-              </div>
-
-              <Link
-                to="/saas"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 text-white text-xs font-black uppercase tracking-wider transition-all shadow-xs"
+          {/* ─── 3-APP SUITE GRID (ALL 3 SAAS APPS VISIBLE AT ONCE) ─── */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+            {SAAS_SUITES.map((suite) => (
+              <div
+                key={suite.id}
+                className={`group relative rounded-3xl bg-slate-900/70 hover:bg-slate-900 border border-white/10 ${suite.accentBorder} p-6 sm:p-7 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden`}
               >
-                <span>Explore All SaaS</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-          </div>
+                {/* Top Glowing Gradient Accent Bar */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${suite.topGradient} opacity-60 group-hover:opacity-100 transition-opacity`} />
 
-          {/* High-Impact Split Showcase Card */}
-          <div className={`rounded-3xl bg-slate-900/90 border ${activeSaaS.cardBorder} p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center backdrop-blur-md transition-all duration-500`}>
-            
-            {/* Left: Graphic & Benchmark Pills (6 Cols) */}
-            <div className="lg:col-span-6 space-y-5">
-              
-              {/* Image Frame with Glow */}
-              <div className="relative rounded-2xl overflow-hidden bg-slate-950 border border-white/15 p-4 sm:p-5 shadow-inner flex flex-col items-center justify-center">
-                <div className="flex items-center justify-between w-full pb-3 border-b border-white/10 text-xs">
-                  <span className="font-outfit font-black text-white tracking-wide">{activeSaaS.badge}</span>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
-                    </span>
-                    Live
-                  </span>
-                </div>
+                <div className="space-y-5">
+                  {/* Header Row: Logo Avatar + Live Badge + Version */}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-2xl bg-slate-950 border border-white/15 p-2 flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 transition-transform">
+                        <img
+                          src={suite.logoImage}
+                          alt={suite.logoAlt}
+                          className="max-h-full max-w-full object-contain filter drop-shadow"
+                        />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
+                          {suite.category}
+                        </span>
+                        <h3 className="text-lg font-outfit font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">
+                          {suite.name}
+                        </h3>
+                      </div>
+                    </div>
 
-                <div className="py-4 w-full flex items-center justify-center relative">
-                  <div className={`absolute inset-0 bg-gradient-to-r ${activeSaaS.orbGradient} rounded-full blur-2xl pointer-events-none`} />
-                  {activeSaaS.isBannerView ? (
-                    <img
-                      src={activeSaaS.logoImage}
-                      alt={activeSaaS.logoAlt}
-                      className="w-full max-h-56 sm:max-h-64 object-cover rounded-xl shadow-lg relative z-10 transition-transform hover:scale-[1.02] duration-300"
-                    />
-                  ) : (
-                    <img
-                      src={activeSaaS.logoImage}
-                      alt={activeSaaS.logoAlt}
-                      className="max-h-24 sm:max-h-32 w-auto object-contain drop-shadow-[0_0_35px_rgba(255,255,255,0.45)] transition-transform hover:scale-105 duration-300 relative z-10"
-                    />
-                  )}
-                </div>
-
-                <div className="w-full pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-                  {activeSaaS.pillTech.map((tech, tIdx) => (
-                    <span key={tIdx}>{tech}</span>
-                  ))}
-                </div>
-              </div>
-
-              {/* 4 Performance Metric Cards */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                {activeSaaS.metrics.map((m, idx) => (
-                  <div key={idx} className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
-                    <span className="text-[9px] uppercase font-bold text-slate-400 block">{m.label}</span>
-                    <span className="text-sm font-outfit font-black text-emerald-400">{m.val}</span>
+                    <div className="flex flex-col items-end gap-1 shrink-0">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+                        </span>
+                        <span>Live</span>
+                      </span>
+                      <span className="text-[10px] font-mono text-slate-400 font-bold">
+                        {suite.version}
+                      </span>
+                    </div>
                   </div>
-                ))}
-              </div>
 
-            </div>
+                  {/* Tagline */}
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal min-h-[36px]">
+                    {suite.tagline}
+                  </p>
 
-            {/* Right: Architecture Value & Action Buttons (6 Cols) */}
-            <div className="lg:col-span-6 space-y-6 text-left">
-              
-              <div className="space-y-3">
-                <span className={`text-xs font-black uppercase tracking-wider ${activeSaaS.accentText} font-outfit`}>
-                  {activeSaaS.cardTag}
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-outfit font-black text-white leading-tight">
-                  {activeSaaS.cardTitle}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                  {activeSaaS.cardDesc}
-                </p>
-              </div>
-
-              {/* Checklist */}
-              <div className="space-y-2.5 text-xs text-slate-200">
-                {activeSaaS.checklist.map((item, i) => (
-                  <div key={i} className="flex items-center gap-2.5">
-                    <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
-                    <span>{item}</span>
+                  {/* 3 Metric Chips Strip */}
+                  <div className="grid grid-cols-3 gap-2 p-2.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    {suite.metrics.map((m, mIdx) => (
+                      <div key={mIdx} className="min-w-0">
+                        <span className="text-[9px] uppercase font-bold text-slate-400 block truncate">
+                          {m.label}
+                        </span>
+                        <span className="text-xs sm:text-sm font-outfit font-black text-emerald-400 block mt-0.5 truncate">
+                          {m.val}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+
+                  {/* 3 Key Capabilities Checkmarks */}
+                  <div className="space-y-2 pt-1">
+                    {suite.features.map((feat, fIdx) => (
+                      <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-200">
+                        <CheckCircle2 size={14} className="text-emerald-400 shrink-0 mt-0.5" />
+                        <span className="leading-snug">{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Tech Stack Tags */}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {suite.techTags.map((tech, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-white/5 border border-white/10 text-slate-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Card Action Footer */}
+                <div className="pt-5 mt-5 border-t border-white/10 flex items-center justify-between gap-3">
+                  <a
+                    href={suite.primaryUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-outfit font-black text-xs uppercase tracking-wider transition-all hover:scale-[1.02]"
+                  >
+                    <span>{suite.primaryText}</span>
+                    <ArrowUpRight size={13} className="text-cyan-400" />
+                  </a>
+
+                  <Link
+                    to={suite.specsUrl}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-slate-400 hover:text-white transition-colors"
+                  >
+                    <span>Specs &amp; ROI</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
               </div>
-
-              {/* CTAs */}
-              <div className="pt-2 flex flex-wrap items-center gap-3">
-                <a
-                  href={activeSaaS.primaryBtnUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl ${activeSaaS.primaryBtnColor} text-white font-outfit font-black text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer`}
-                >
-                  <span>{activeSaaS.primaryBtnText}</span>
-                  <ArrowUpRight size={15} />
-                </a>
-
-                <Link
-                  to={activeSaaS.productPageUrl}
-                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-outfit font-bold text-xs uppercase tracking-wider transition-all"
-                >
-                  <span>View Product Specs &amp; ROI</span>
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* Carousel Slide Indicators */}
-          <div className="flex items-center justify-center gap-2 pt-2">
-            {SAAS_SLIDES.map((_, dotIdx) => (
-              <button
-                key={dotIdx}
-                onClick={() => setSaasSlide(dotIdx)}
-                className={`h-2 rounded-full transition-all cursor-pointer ${
-                  saasSlide === dotIdx ? 'w-8 bg-cyan-400' : 'w-2 bg-white/20 hover:bg-white/40'
-                }`}
-                aria-label={`Go to slide ${dotIdx + 1}`}
-              />
             ))}
           </div>
 

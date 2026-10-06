@@ -341,6 +341,79 @@ const pages = [
     }
   },
   {
+    path: '/saas/shield-captcha',
+    title: 'ShieldCaptcha Enterprise — Zero-Cookie Bot Defense & Cryptographic Human Verification | Tushar Singh',
+    description: '⚡ ShieldCaptcha is an open-source, self-hostable bot defense platform combining SHA-256 Proof-of-Work, mouse kinematics trajectory analysis, and single-use HMAC-SHA256 token authorization with sub-200ms latency. Try live interactive demo.',
+    keywords: `ShieldCaptcha, Shield Captcha, bot defense SaaS, zero cookie captcha, proof of work captcha, mouse kinematics captcha, self hostable captcha, open source captcha, anti bot protection, cybersecurity SaaS, Tushar Singh, ${INDIA_STATES_KEYWORDS}`,
+    type: 'website',
+    image: `${SITE_URL}/projects/shield-captcha-enterprise.jpg`,
+    alt: 'ShieldCaptcha Enterprise — Autonomous Zero-Cookie Bot Defense Architecture by Tushar Singh',
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": `${SITE_URL}/saas/shield-captcha#software`,
+          "name": "ShieldCaptcha Enterprise",
+          "operatingSystem": "Cloud, Web, Docker, Linux, macOS, Windows",
+          "applicationCategory": "SecurityApplication, Cybersecurity, BotDefense",
+          "description": "ShieldCaptcha is a self-hostable, zero-cookie autonomous bot defense platform combining SHA-256 Proof-of-Work, mouse kinematics trajectory analysis, and HMAC token authorization.",
+          "url": "https://shieldcaptcha.vercel.app",
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": "0",
+            "highPrice": "0",
+            "offerCount": "1"
+          },
+          "creator": {
+            "@type": "Person",
+            "@id": `${SITE_URL}/#person`,
+            "name": "Tushar Singh",
+            "jobTitle": "AI Automation Expert & Full-Stack Developer",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "New Delhi",
+              "addressRegion": "Delhi",
+              "postalCode": "110044",
+              "addressCountry": "IN"
+            }
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${SITE_URL}/saas/shield-captcha#faq`,
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is ShieldCaptcha Enterprise?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ShieldCaptcha Enterprise is a self-hostable, open-source bot defense platform by Tushar Singh that eliminates tracking cookies and verifies human interactions via hardware-accelerated SHA-256 Proof-of-Work and mouse kinematics physics in 150-300ms."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does ShieldCaptcha achieve zero-cookie human verification?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ShieldCaptcha does not store third-party cookies or persistent profiles. It validates ephemeral mathematical challenges solved by Web Workers in real-time, delivering 100% GDPR, CCPA, and DPDP compliance."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can ShieldCaptcha be self-hosted on private infrastructure?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, ShieldCaptcha is completely self-hostable using Docker and Docker Compose with zero cloud lock-in and zero recurring licensing costs."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     path: '/blog',
     title: 'AI Automation & Full-Stack Engineering Blog | Tushar Singh',
     description: '💡 Actionable guides on AI automation, n8n workflows, RAG conversational chatbots & full-stack development — written from real production experience by Tushar Singh.',

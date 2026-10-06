@@ -14,6 +14,7 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(content).toContain('https://codewithmrsingh.me/saas');
     expect(content).toContain('https://codewithmrsingh.me/saas/tasq-one');
     expect(content).toContain('https://codewithmrsingh.me/saas/saathi-bot');
+    expect(content).toContain('https://codewithmrsingh.me/saas/shield-captcha');
     expect(content).toContain('<?xml version="1.0" encoding="UTF-8"?>');
     expect(content).toContain('<urlset');
   });
@@ -75,8 +76,10 @@ describe('Sitemap Integrity & SEO Tests', () => {
     const llms = fs.readFileSync(llmsPath, 'utf8');
     expect(llms).toContain('TASQ-ONE');
     expect(llms).toContain('Saathi Bot');
+    expect(llms).toContain('ShieldCaptcha');
     expect(llms).toContain('https://saathi-bot.vercel.app');
     expect(llms).toContain('https://codewithmrsingh.me/saas/saathi-bot');
+    expect(llms).toContain('https://codewithmrsingh.me/saas/shield-captcha');
 
     const llmsFull = fs.readFileSync(llmsFullPath, 'utf8');
     expect(llmsFull).toContain('TASQ-ONE');

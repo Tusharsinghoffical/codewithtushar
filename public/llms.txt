@@ -51,28 +51,34 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
    Live Platform: https://saathi-bot.vercel.app
    URL: https://codewithmrsingh.me/saas/saathi-bot
 
-4. AI Automation Workflows
+4. ShieldCaptcha Enterprise — Zero-Cookie Autonomous Bot Defense Platform (SaaS)
+   Self-hostable, zero-cookie open-source bot defense platform replacing legacy tracking CAPTCHAs. Features client-side SHA-256 Proof-of-Work, real-time mouse kinematics trajectory analysis, dual Node.js/Python engines, and single-use HMAC-SHA256 replay-protected verification tokens in 150-300ms.
+   Live Platform: https://shieldcaptcha.vercel.app
+   URL: https://codewithmrsingh.me/saas/shield-captcha
+
+5. AI Automation Workflows
    Build autonomous workflows using n8n, Python, Zapier, Make.com.
    Eliminate manual tasks. Save 10+ hours per week.
    URL: https://codewithmrsingh.me/services
 
-5. Custom RAG Chatbot Development
+6. Custom RAG Chatbot Development
    Custom AI chatbots trained on business data using OpenAI and LangChain.
    Deployed on website, WhatsApp, or Telegram. Reduces support workload by 70%.
    URL: https://codewithmrsingh.me/services
 
-6. High-Conversion Website & Sales Funnel Engineering
+7. High-Conversion Website & Sales Funnel Engineering
    High-conversion websites and sales funnels using React.js, Django, Next.js.
    URL: https://codewithmrsingh.me/services
 
-7. Logo, Visual Brand Identity & Graphic Design
+8. Logo, Visual Brand Identity & Graphic Design
    Professional brand identity — logo, social media graphics, marketing materials.
    Tools: Figma, Adobe Illustrator, Canva.
    URL: https://codewithmrsingh.me/services
 
 # ── PINNED PROJECTS & CLIENT DELIVERABLES ───────────────────
-1. TASQ-ONE — Intelligent Task Operating System SaaS (Groq Llama 3.3 70B, PostgreSQL RLS, Docker, Dependency DAGs) [Demo: https://tasq-one.onrender.com | Product Page: https://codewithmrsingh.me/saas/tasq-one]
-2. Saathi Bot — Enterprise Autonomous AI Chatbot & Conversational Commerce Platform (Next.js 16, Supabase pgvector, Hybrid RRF, Pre-LLM Confidence Gate 0.55, 18 KB Shadow DOM widget, Google Sheets sync) [Demo: https://saathi-bot.vercel.app | Product Page: https://codewithmrsingh.me/saas/saathi-bot]
+1. ShieldCaptcha Enterprise — Zero-Cookie Autonomous Bot Defense & Human Verification (SHA-256 PoW, Mouse Kinematics, HMAC-SHA256, Node.js, FastAPI, Docker) [Live Demo: https://shieldcaptcha.vercel.app | Product Page: https://codewithmrsingh.me/saas/shield-captcha]
+2. TASQ-ONE — Intelligent Task Operating System SaaS (Groq Llama 3.3 70B, PostgreSQL RLS, Docker, Dependency DAGs) [Demo: https://tasq-one.onrender.com | Product Page: https://codewithmrsingh.me/saas/tasq-one]
+3. Saathi Bot — Enterprise Autonomous AI Chatbot & Conversational Commerce Platform (Next.js 16, Supabase pgvector, Hybrid RRF, Pre-LLM Confidence Gate 0.55, 18 KB Shadow DOM widget, Google Sheets sync) [Demo: https://saathi-bot.vercel.app | Product Page: https://codewithmrsingh.me/saas/saathi-bot]
 3. AI-Powered HR Recruitment Screening Assistant — Enterprise recruitment workflow automation with n8n + LLMs, automated ATS scoring (0–100), skill matching, and interview question generation (Sold to enterprise client in Abu Dhabi, UAE)
 4. WhatsApp AI Agent — 24/7 automated business communication, instant message routing, and CRM booking (n8n + OpenAI)
 5. TakeOpinion Medical Tourism Platform — Full-stack global medical tourism web platform with Django 5, PostgreSQL, Stripe/Razorpay, hotel bookings, and doctor directory (Sold to healthcare client in Delhi, India | Demo: https://takeopinionclientprojectss.onrender.com)

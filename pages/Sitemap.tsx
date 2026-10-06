@@ -11,7 +11,7 @@ const Sitemap: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-12">
-        
+
         {/* Header */}
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
@@ -85,6 +85,17 @@ const Sitemap: React.FC = () => {
                 <ArrowUpRight size={14} className="text-slate-400 group-hover:text-cyan-400" />
               </div>
               <p className="text-xs text-slate-400 mt-1">Autonomous multilingual AI chatbot with Confidence Gate, Hybrid RAG &amp; in-chat booking.</p>
+            </Link>
+
+            <Link
+              to="/saas/shield-captcha"
+              className="p-4 rounded-xl bg-slate-950/60 border border-blue-500/30 hover:border-blue-500 hover:bg-slate-900 transition-all group block"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-blue-400 group-hover:text-blue-300 transition-colors">ShieldCaptcha</span>
+                <ArrowUpRight size={14} className="text-slate-400 group-hover:text-blue-400" />
+              </div>
+              <p className="text-xs text-slate-400 mt-1">Zero-cookie autonomous bot defense platform with Proof-of-Work &amp; mouse kinematics.</p>
             </Link>
 
             <Link

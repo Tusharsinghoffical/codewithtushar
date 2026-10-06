@@ -616,6 +616,18 @@ const Projects: React.FC = () => {
                   </a>
                 )}
 
+                {selected.githubUrl && (
+                  <a
+                    href={selected.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-700 text-white text-xs font-black uppercase tracking-wider transition-all shadow-md active:scale-95"
+                  >
+                    <span>View GitHub</span>
+                    <ExternalLink size={13} />
+                  </a>
+                )}
+
                 {selected.saasPageUrl && (
                   <button
                     onClick={() => {

@@ -17,6 +17,7 @@ import Projects from './pages/Projects';
 import SaaS from './pages/SaaS';
 import TasqOne from './pages/TasqOne';
 import SaathiBot from './pages/SaathiBot';
+import ShieldCaptcha from './pages/ShieldCaptcha';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
 import Blog, { BLOG_POSTS } from './pages/Blog';
@@ -572,6 +573,32 @@ const updateStructuredData = (title: string, description: string, path: string) 
       }
     });
   }
+
+  else if (path === '/saas/shield-captcha') {
+    // SaaS: SoftwareApplication schema for ShieldCaptcha Enterprise
+    upsertSchema('schema-page-specific', {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": `${baseUrl}/saas/shield-captcha#software`,
+      "name": "ShieldCaptcha Enterprise",
+      "operatingSystem": "Cloud, Web, Docker, Linux, macOS, Windows",
+      "applicationCategory": "SecurityApplication, Cybersecurity, BotDefense",
+      "description": "ShieldCaptcha is a self-hostable, zero-cookie autonomous bot defense platform combining SHA-256 Proof-of-Work, mouse kinematics trajectory analysis, and HMAC token authorization.",
+      "url": "https://shieldcaptcha.vercel.app",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "0",
+        "highPrice": "0",
+        "offerCount": "1"
+      },
+      "creator": {
+        "@type": "Person",
+        "@id": `${baseUrl}/#person`,
+        "name": "Tushar Singh"
+      }
+    });
+  }
 };
 
 /* ─── BlogPostWrapper ────────────────────────────────────────
@@ -718,6 +745,12 @@ const App: React.FC = () => {
                 description="🤖 Saathi Bot is an autonomous multilingual RAG conversational assistant with sub-second streaming, pre-LLM Confidence Gate, Shadow DOM embed widget & Google Sheets lead sync."
                 keywords="Saathi Bot, AI chatbot SaaS, RAG chatbot, multilingual chatbot, conversational AI SaaS, shadow DOM widget, Tushar Singh SaaS, prompt injection defense, Zero AWS SaaS"
               ><SaathiBot /></PageWrapper>} />
+
+              <Route path="/saas/shield-captcha" element={<PageWrapper
+                title="ShieldCaptcha Enterprise — Zero-Cookie Bot Defense Platform | Tushar Singh"
+                description="⚡ ShieldCaptcha is an open-source, self-hostable bot defense platform combining SHA-256 Proof-of-Work, mouse kinematics trajectory analysis, and single-use HMAC-SHA256 token authorization with sub-200ms latency. Try live interactive demo."
+                keywords="ShieldCaptcha, Shield Captcha, bot defense SaaS, zero cookie captcha, proof of work captcha, mouse kinematics captcha, self hostable captcha, open source captcha, anti bot protection, cybersecurity SaaS, Tushar Singh"
+              ><ShieldCaptcha /></PageWrapper>} />
 
               <Route path="/blog" element={<PageWrapper
                 title="AI Automation & Full-Stack Engineering Blog | Tushar Singh"

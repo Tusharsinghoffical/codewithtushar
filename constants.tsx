@@ -163,6 +163,12 @@ export const PAGE_OG: Record<string, { image: string; alt: string; width?: strin
     width: '240',
     height: '64',
   },
+  '/saas/shield-captcha': {
+    image: `${SITE_URL}/projects/shield-captcha-enterprise.jpg`,
+    alt: 'ShieldCaptcha Enterprise — Autonomous Zero-Cookie Bot Defense Platform by Tushar Singh',
+    width: '1280',
+    height: '720',
+  },
 };
 
 export const TASQ_ONE_URL = 'https://tasq-one.onrender.com';
@@ -172,6 +178,12 @@ export const SAATHI_BOT_URL = 'https://saathi-bot.vercel.app';
 export const SAATHI_BOT_WIDGET_SCRIPT = 'https://saathi-bot.vercel.app/widget.js';
 export const SAATHI_BOT_PUBLIC_ID = 'bot_9f223d8f29b999e81e';
 export const SAATHI_BOT_DASHBOARD_URL = 'https://saathi-bot.vercel.app/dashboard/bots/3622b090-d258-4556-ae06-4369b495bb3f';
+
+export const SHIELD_CAPTCHA_URL = 'https://shieldcaptcha.vercel.app';
+export const SHIELD_CAPTCHA_DEMO_URL = 'https://shieldcaptcha.vercel.app/demo';
+export const SHIELD_CAPTCHA_SIMULATOR_URL = 'https://shieldcaptcha.vercel.app/simulator';
+export const SHIELD_CAPTCHA_DOCS_URL = 'https://shieldcaptcha.vercel.app/docs';
+export const SHIELD_CAPTCHA_DOCKER_IMAGE = 'tusharsinghoffical/shieldcaptcha';
 
 /* ─── Proprietary SaaS Products Directory ──────────────────────────────
    💡 TO ADD A NEW SAAS PRODUCT:
@@ -243,6 +255,41 @@ export const SAAS_PRODUCTS: SaasProduct[] = [
     demoUrl: TASQ_ONE_URL,
     pageUrl: '/saas/tasq-one',
     dockerSnippet: `docker run -d --name tasq-one -p 3000:3000 tusharsinghoffical/tasq-one:latest`,
+    isFlagship: true
+  },
+  {
+    id: 'shield-captcha',
+    title: 'ShieldCaptcha Enterprise',
+    tagline: 'Zero-Cookie Autonomous Bot Defense & Human Verification Platform',
+    description: 'Self-hostable, zero-cookie privacy-first bot defense platform replacing legacy tracking CAPTCHAs. Features client-side SHA-256 Proof-of-Work, real-time mouse kinematics trajectory analysis, dual Node.js/Python engines, and single-use HMAC-SHA256 replay-protected verification tokens in 150–300ms.',
+    category: 'Cybersecurity & Bot Defense',
+    status: 'live',
+    statusLabel: 'ENTERPRISE PRODUCTION LIVE',
+    version: 'v1.2.0',
+    bannerImage: '/shield-captcha/shield-captcha-banner.png',
+    bannerImageDark: '/shield-captcha/shield-captcha-banner.png',
+    logoImage: '/shield-captcha/shield-captcha-logo.png',
+    logoImageDark: '/shield-captcha/shield-captcha-logo.png',
+    tags: ['Zero-Cookie', 'Proof-of-Work (SHA-256)', 'Mouse Kinematics', 'HMAC-SHA256', 'Sub-300ms Latency', 'Self-Hostable', 'GDPR & DPDP Compliant'],
+    metrics: [
+      { label: 'Verification Latency', value: '150–300ms' },
+      { label: 'Tracking Cookies', value: '0 (Zero Cookies)' },
+      { label: 'Compliance', value: 'GDPR / CCPA / DPDP' },
+      { label: 'Self-Hosted Cost', value: '$0 / Month' },
+    ],
+    highlights: [
+      'Client-side hardware-accelerated SHA-256 Proof-of-Work challenges via Web Workers',
+      'Real-time biomechanical mouse kinematics trajectory & micro-tremor entropy detection',
+      'Atomic single-use HMAC-SHA256 verification tokens with cryptographic replay defense',
+      'Dual native backend verification support: Node.js (Express/NestJS) & Python (FastAPI/Django)',
+      '100% GDPR, CCPA, and India DPDP Act compliance without third-party data tracking',
+      'One-command self-hosting via Docker and Docker Compose with zero vendor lock-in',
+      'Interactive developer sandbox with live simulator, benchmark calculator, and code generators'
+    ],
+    techStack: ['Node.js', 'FastAPI', 'Docker', 'Web Workers', 'Web Crypto API', 'TypeScript'],
+    demoUrl: SHIELD_CAPTCHA_URL,
+    pageUrl: '/saas/shield-captcha',
+    dockerSnippet: `docker run -d --name shield-captcha -p 8080:8080 tusharsinghoffical/shieldcaptcha:latest`,
     isFlagship: true
   }
 ];
@@ -431,6 +478,34 @@ export const SERVICES: Service[] = [
 ];
 
 export const PROJECTS: Project[] = [
+  // ── 0. ShieldCaptcha Enterprise Flagship Cybersecurity SaaS (Pinned / Featured) ─
+  {
+    id: 'p-shield-captcha',
+    title: 'ShieldCaptcha Enterprise | Zero-Cookie Autonomous Bot Defense & Human Verification',
+    description: 'Self-hostable, zero-cookie privacy-first bot defense platform combining hardware-accelerated SHA-256 Proof-of-Work, real-time mouse kinematics physics, and military-grade HMAC-SHA256 replay-protected verification tokens in 150–300ms.',
+    imageUrl: '/projects/shield-captcha-enterprise.jpg',
+    category: 'SaaS Products',
+    tags: ['SaaS', 'Cybersecurity', 'Proof-of-Work', 'Mouse Kinematics', 'Zero-Cookie', 'HMAC-SHA256', 'Node.js', 'FastAPI', 'Docker'],
+    date: '2026',
+    isFeatured: true,
+    isPinned: true,
+    clientBackground: 'Tushar Singh Labs open-source cybersecurity initiative delivering a 100% self-hostable, privacy-first alternative to Google reCAPTCHA and Cloudflare Turnstile for global enterprises.',
+    problemStatement: 'Legacy CAPTCHAs violate user privacy through third-party tracking cookies, deliver painful 15-30s user friction with image grids, charge thousands of dollars at scale, and get easily defeated by AI computer vision scrapers.',
+    strategy: 'Engineered a multi-modal zero-dependency bot defense platform combining background Web Worker SHA-256 Proof-of-Work puzzles, biomechanical mouse pointer trajectory analysis (curvature & micro-tremors), AES-CBC-128 client encryption, and atomic single-use HMAC-SHA256 verification tokens.',
+    results: [
+      'Sub-300ms verification execution (150ms–300ms vs 15s legacy CAPTCHA).',
+      'Zero third-party cookies & 100% GDPR, CCPA & DPDP compliant privacy.',
+      '100% self-hostable on Docker with zero licensing fees ($0 forever).',
+      'Immunity to AI vision scrapers via kinematics physics and hardware compute cost.'
+    ],
+    beforeAfter: {
+      before: '15-30s traffic light clicking, tracking cookies & thousands in reCAPTCHA enterprise fees',
+      after: 'Sub-300ms zero-cookie 1-click PoW, kinematics physics defense & 100% free self-hosting'
+    },
+    liveDemoUrl: 'https://shieldcaptcha.vercel.app',
+    saasPageUrl: '/saas/shield-captcha'
+  },
+
   // ── 1. TASQ-ONE Flagship SaaS Platform (Pinned / Featured) ─────────────────────
   {
     id: 'p-tasq-one',
