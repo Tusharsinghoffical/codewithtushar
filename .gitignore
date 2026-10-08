@@ -25,7 +25,10 @@ git-push.bat
 .env.local
 .env.production
 .env.*.local
-.security/
+.security/*.db
+.security/*.sqlite
+.security/*.log
+.security/scratch/
 
 # Editor directories and files
 .vscode/*
