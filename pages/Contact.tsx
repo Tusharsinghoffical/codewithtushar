@@ -1,4 +1,4 @@
-import React, { useState, useId } from 'react';
+import React, { useState, useId, useRef, useCallback } from 'react';
 import {
   Mail, Send, Github, Linkedin, Instagram,
   CheckCircle2, ArrowRight, Sparkles,
@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import GoogleVerifiedBadge, { GoogleGIcon } from '../components/GoogleVerifiedBadge';
 import { FiverrIcon, FiverrBadge } from '../components/FiverrBadge';
+import ShieldCaptchaWidget from '../components/ShieldCaptchaWidget';
 import {
   GOOGLE_BUSINESS_NAME, GOOGLE_BUSINESS_URL,
   GOOGLE_VERIFICATION_PROOF_URL, BUSINESS_ADDRESS,
@@ -73,7 +74,22 @@ const Contact: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
   const [selectedService, setSelectedService] = useState('AI Automation');
   const [selectedTimeline, setSelectedTimeline] = useState('Standard (2-4 wks)');
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaScore, setCaptchaScore] = useState<number | null>(null);
+  const [captchaError, setCaptchaError] = useState(false);
+  const captchaRef = useRef<HTMLDivElement>(null);
   const ids = { name: useId(), email: useId(), phone: useId(), company: useId(), message: useId(), country: useId() };
+
+  const handleCaptchaVerify = useCallback((token: string, meta?: { score?: number }) => {
+    setCaptchaToken(token);
+    setCaptchaScore(meta?.score ?? 98);
+    setCaptchaError(false);
+  }, []);
+
+  const handleCaptchaReset = useCallback(() => {
+    setCaptchaToken(null);
+    setCaptchaScore(null);
+  }, []);
 
   React.useEffect(() => {
     const stored = sessionStorage.getItem('selectedService');
@@ -88,14 +104,27 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!captchaToken) {
+      setCaptchaError(true);
+      if (captchaRef.current) {
+        captchaRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    setCaptchaError(false);
     setStatus('sending');
     const fd = new FormData(e.currentTarget);
-    const msg = `Hi Tushar! I'd like to discuss a project.\n\n👤 Name: ${fd.get('name')}\n📧 Email: ${fd.get('email')}\n📱 Phone/WhatsApp: ${fd.get('phone')}\n🏢 Company: ${fd.get('company')}\n🛠️ Service: ${selectedService}\n⏱️ Timeline: ${selectedTimeline}\n🌍 Country: ${fd.get('country')}\n\n📝 Project Details:\n${fd.get('message')}`;
+    const msg = `Hi Tushar! I'd like to discuss a project.\n\n👤 Name: ${fd.get('name')}\n📧 Email: ${fd.get('email')}\n📱 Phone/WhatsApp: ${fd.get('phone')}\n🏢 Company: ${fd.get('company')}\n🛠️ Service: ${selectedService}\n⏱️ Timeline: ${selectedTimeline}\n🌍 Country: ${fd.get('country')}\n\n📝 Project Details:\n${fd.get('message')}\n\n🛡️ ShieldCaptcha Verified: Human Pass (Score: ${captchaScore ?? 98}/100)`;
     
-    window.open(`https://wa.me/918851619647?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/918851619647?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
     setStatus('success');
     const form = e.currentTarget;
-    setTimeout(() => form.reset(), 1500);
+    setTimeout(() => {
+      form.reset();
+      setCaptchaToken(null);
+      setCaptchaScore(null);
+      setCaptchaError(false);
+    }, 1500);
   };
 
   return (
@@ -371,7 +400,12 @@ const Contact: React.FC = () => {
                     </p>
                   </div>
                   <button
-                    onClick={() => setStatus('idle')}
+                    onClick={() => {
+                      setStatus('idle');
+                      setCaptchaToken(null);
+                      setCaptchaScore(null);
+                      setCaptchaError(false);
+                    }}
                     className="px-7 py-3 bg-slate-950 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-extrabold text-xs uppercase tracking-widest hover:bg-indigo-600 dark:hover:bg-indigo-50 transition-all shadow-md active:scale-95 cursor-pointer"
                   >
                     Send Another Brief
@@ -508,18 +542,39 @@ const Contact: React.FC = () => {
                     />
                   </div>
 
+                  {/* 6. ShieldCaptcha Human Defense Verification */}
+                  <div ref={captchaRef} className="space-y-1.5 text-left scroll-mt-24">
+                    <label className="text-[9.5px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
+                      Cryptographic Human Defense Verification
+                    </label>
+                    <ShieldCaptchaWidget
+                      onVerify={handleCaptchaVerify}
+                      onReset={handleCaptchaReset}
+                      highlightError={captchaError}
+                    />
+                  </div>
+
                   {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={status === 'sending'}
-                    className="group w-full flex items-center justify-center gap-2.5 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-xl shadow-indigo-500/25 hover:scale-[1.01] active:scale-95 disabled:opacity-70 cursor-pointer"
+                    className={`group w-full flex items-center justify-center gap-2.5 py-4 rounded-2xl font-extrabold text-xs uppercase tracking-widest transition-all shadow-xl hover:scale-[1.01] active:scale-95 disabled:opacity-70 cursor-pointer ${
+                      captchaToken
+                        ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-500/25 ring-2 ring-emerald-500/30'
+                        : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-500/25'
+                    }`}
                   >
                     {status === 'sending' ? (
                       <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                    ) : captchaToken ? (
+                      <>
+                        <ShieldCheck size={16} className="text-white" />
+                        <span>Verified Human (Score: {captchaScore ?? 98}/100) — Send Brief</span>
+                      </>
                     ) : (
                       <>
                         <Send size={14} className="group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
-                        <span>Send Brief via WhatsApp</span>
+                        <span>Verify Captcha &amp; Send Brief</span>
                       </>
                     )}
                   </button>

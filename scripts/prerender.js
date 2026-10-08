@@ -342,8 +342,8 @@ const pages = [
   },
   {
     path: '/saas/shield-captcha',
-    title: 'ShieldCaptcha Enterprise — Zero-Cookie Bot Defense & Cryptographic Human Verification | Tushar Singh',
-    description: '⚡ ShieldCaptcha is an open-source, self-hostable bot defense platform combining SHA-256 Proof-of-Work, mouse kinematics trajectory analysis, and single-use HMAC-SHA256 token authorization with sub-200ms latency. Try live interactive demo.',
+    title: 'ShieldCaptcha v4.2 Enterprise — Autonomous Bot Defense & Zero-Cookie Human Verification | Tushar Singh',
+    description: '⚡ ShieldCaptcha is an open-source, self-hostable bot defense platform combining multi-threaded SHA-256 Proof-of-Work (~18ms), Flash & Hogan biomechanical kinematics, and single-use HMAC token authorization with zero tracking cookies. Try live interactive trial.',
     keywords: `ShieldCaptcha, Shield Captcha, bot defense SaaS, zero cookie captcha, proof of work captcha, mouse kinematics captcha, self hostable captcha, open source captcha, anti bot protection, cybersecurity SaaS, Tushar Singh, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: `${SITE_URL}/projects/shield-captcha-enterprise.jpg`,
@@ -354,10 +354,10 @@ const pages = [
         {
           "@type": "SoftwareApplication",
           "@id": `${SITE_URL}/saas/shield-captcha#software`,
-          "name": "ShieldCaptcha Enterprise",
+          "name": "ShieldCaptcha v4.2 Enterprise",
           "operatingSystem": "Cloud, Web, Docker, Linux, macOS, Windows",
           "applicationCategory": "SecurityApplication, Cybersecurity, BotDefense",
-          "description": "ShieldCaptcha is a self-hostable, zero-cookie autonomous bot defense platform combining SHA-256 Proof-of-Work, mouse kinematics trajectory analysis, and HMAC token authorization.",
+          "description": "Fast for Real Humans. Impossible for Automated Bots. ShieldCaptcha combines multi-threaded SHA-256 Proof-of-Work (~18ms), biomechanical kinematics, adversarial jigsaw puzzles, and HMAC token authorization.",
           "url": "https://shieldcaptcha.vercel.app",
           "offers": {
             "@type": "AggregateOffer",
@@ -389,7 +389,7 @@ const pages = [
               "name": "What is ShieldCaptcha Enterprise?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "ShieldCaptcha Enterprise is a self-hostable, open-source bot defense platform by Tushar Singh that eliminates tracking cookies and verifies human interactions via hardware-accelerated SHA-256 Proof-of-Work and mouse kinematics physics in 150-300ms."
+                "text": "ShieldCaptcha Enterprise is a self-hostable, open-source bot defense platform by Tushar Singh that eliminates tracking cookies and verifies human interactions via hardware-accelerated SHA-256 Proof-of-Work and mouse kinematics physics in ~18ms."
               }
             },
             {

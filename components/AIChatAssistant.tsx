@@ -438,7 +438,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
       return {
         replyText: `💳 **Milestone-Based Transparent Payment Structuring:**\n\n• **Standard Project Breakdown:**\n  - **Milestone 1 (30%):** Project kickoff, UX wireframes & architecture approval.\n  - **Milestone 2 (40%):** Functional beta build deployed on staging for client testing.\n  - **Milestone 3 (30%):** Final production launch, QA sign-off, and repository handover.\n• **Fiverr Escrow Protection:** You also have the option to hire via Fiverr Escrow, where funds remain locked until you personally approve the milestone deliverable!`,
         quickActions: [
-          { label: '⭐ Hire via Fiverr Escrow', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
+          { label: '⭐ Hire via Fiverr Escrow', action: () => window.open(FIVERR_PROFILE_URL, '_blank', 'noopener,noreferrer') },
           { label: '📅 Discuss Milestones on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, can you explain how project milestones are structured?') }
         ],
         assumptionQuestions: [
@@ -577,7 +577,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
         replyText: `💰 **Transparent Pricing & Cost Estimates:**\n\n• **AI Workflow Automations (n8n / Python):** Typically **₹15,000 – ₹45,000** ($200 – $600) based on complexity and webhook integrations.\n• **Custom AI Chatbots & RAG (WhatsApp / Web):** Typically **₹25,000 – ₹60,000** ($350 – $800) including custom document training and WhatsApp API setup.\n• **Full-Stack Web MVPs & Funnels:** Typically **₹40,000 – ₹1,20,000** ($500 – $1,500) for complete production-ready platforms.\n• **Free Initial Consultation:** 100% Free 30-min strategy audit with zero commitment.\n• **Fiverr Escrow Protection:** 100% milestone buyer escrow available!`,
         quickActions: [
           { label: '📅 Get Custom Quote', action: () => openBookingFlow('Custom Quote') },
-          { label: '⭐ View Fiverr Packages', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
+          { label: '⭐ View Fiverr Packages', action: () => window.open(FIVERR_PROFILE_URL, '_blank', 'noopener,noreferrer') },
           { label: '💬 Get Instant Estimate on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, can you give me an accurate pricing estimate for my project?') }
         ],
         assumptionQuestions: [
@@ -746,7 +746,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
         replyText: `👨‍💻 **About Tushar Singh (Code with Mr Singh):**\n\n• **Role:** AI Automation Engineer, Full-Stack Architect & SaaS Founder\n• **Education:** Master of Computer Applications (MCA), MIT Pune\n• **Location:** Badarpur, New Delhi, India (Serving clients across India, US, UK & Middle East)\n• **Verified Badges:** Google Verified Business Owner, Fiverr Verified Seller with 4.0 ★ rating\n• **Track Record:** ₹2L+ Commercial Value Delivered across 10+ production software products\n• **Core Tech:** Python, React, Next.js, n8n, OpenAI, Django, PostgreSQL, Docker.`,
         quickActions: [
           { label: '📄 View About Page', action: () => { window.location.href = '/about'; } },
-          { label: '⭐ Fiverr Profile', action: () => window.open(FIVERR_PROFILE_URL, '_blank') },
+          { label: '⭐ Fiverr Profile', action: () => window.open(FIVERR_PROFILE_URL, '_blank', 'noopener,noreferrer') },
           { label: '💬 Connect on WhatsApp', action: () => sendDirectWhatsApp('Hi Tushar, nice to connect with you!') }
         ],
         assumptionQuestions: [
@@ -831,7 +831,7 @@ export const AIChatAssistant: React.FC<AIChatAssistantProps> = ({ showTrigger = 
   const sendDirectWhatsApp = (customMessage?: string) => {
     const defaultMsg = "Hi Tushar, I'd like to discuss a project with you!";
     const encoded = encodeURIComponent(customMessage || defaultMsg);
-    window.open(`https://wa.me/${TUSHAR_PHONE}?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/${TUSHAR_PHONE}?text=${encoded}`, '_blank', 'noopener,noreferrer');
   };
 
   // Submit in-chat booking and directly forward to WhatsApp

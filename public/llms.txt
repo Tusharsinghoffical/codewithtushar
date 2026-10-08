@@ -51,8 +51,8 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
    Live Platform: https://saathi-bot.vercel.app
    URL: https://codewithmrsingh.me/saas/saathi-bot
 
-4. ShieldCaptcha Enterprise — Zero-Cookie Autonomous Bot Defense Platform (SaaS)
-   Self-hostable, zero-cookie open-source bot defense platform replacing legacy tracking CAPTCHAs. Features client-side SHA-256 Proof-of-Work, real-time mouse kinematics trajectory analysis, dual Node.js/Python engines, and single-use HMAC-SHA256 replay-protected verification tokens in 150-300ms.
+4. ShieldCaptcha v4.2 Enterprise — Dual-Layer Zero-Cookie Bot Defense Platform (SaaS)
+   Self-hostable, zero-cookie open-source bot defense platform replacing legacy tracking CAPTCHAs. Features client-side SHA-256 Proof-of-Work (~18ms), Flash & Hogan biomechanical kinematics, adversarial jigsaw puzzles, dual Node.js/Python engines, and single-use HMAC token authorization with zero cookies.
    Live Platform: https://shieldcaptcha.vercel.app
    URL: https://codewithmrsingh.me/saas/shield-captcha
 

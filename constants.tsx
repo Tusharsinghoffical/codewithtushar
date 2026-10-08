@@ -260,36 +260,36 @@ export const SAAS_PRODUCTS: SaasProduct[] = [
   {
     id: 'shield-captcha',
     title: 'ShieldCaptcha Enterprise',
-    tagline: 'Zero-Cookie Autonomous Bot Defense & Human Verification Platform',
-    description: 'Self-hostable, zero-cookie privacy-first bot defense platform replacing legacy tracking CAPTCHAs. Features client-side SHA-256 Proof-of-Work, real-time mouse kinematics trajectory analysis, dual Node.js/Python engines, and single-use HMAC-SHA256 replay-protected verification tokens in 150–300ms.',
+    tagline: 'Dual-Layer Zero-Cookie Autonomous Bot Defense & Human Verification Platform',
+    description: 'Fast for Real Humans. Impossible for Automated Bots. Stop credential stuffing, AI scrapers, and headless browser bots before they touch your server. Combines multi-threaded SHA-256 Proof-of-Work, biomechanical kinematics, and cryptographic HMAC single-use tokens with zero tracking cookies.',
     category: 'Cybersecurity & Bot Defense',
     status: 'live',
-    statusLabel: 'ENTERPRISE PRODUCTION LIVE',
-    version: 'v1.2.0',
+    statusLabel: 'ENTERPRISE PRODUCTION V4.2 LIVE',
+    version: 'v4.2.0',
     bannerImage: '/shield-captcha/shield-captcha-banner.png',
     bannerImageDark: '/shield-captcha/shield-captcha-banner.png',
     logoImage: '/shield-captcha/shield-captcha-logo.png',
     logoImageDark: '/shield-captcha/shield-captcha-logo.png',
-    tags: ['Zero-Cookie', 'Proof-of-Work (SHA-256)', 'Mouse Kinematics', 'HMAC-SHA256', 'Sub-300ms Latency', 'Self-Hostable', 'GDPR & DPDP Compliant'],
+    tags: ['v4.2 Enterprise', 'Bit-Level PoW', 'Biomechanical Kinematics', 'Flash & Hogan', 'HMAC Nonce', 'Zero-Cookie', 'Self-Hostable'],
     metrics: [
-      { label: 'Verification Latency', value: '150–300ms' },
+      { label: 'Avg Latency', value: '18ms (Fast)' },
       { label: 'Tracking Cookies', value: '0 (Zero Cookies)' },
-      { label: 'Compliance', value: 'GDPR / CCPA / DPDP' },
-      { label: 'Self-Hosted Cost', value: '$0 / Month' },
+      { label: 'Genuine Pass Rate', value: '100% Genuine' },
+      { label: 'Self-Hosted Cost', value: '$0 / Month (MIT)' },
     ],
     highlights: [
-      'Client-side hardware-accelerated SHA-256 Proof-of-Work challenges via Web Workers',
-      'Real-time biomechanical mouse kinematics trajectory & micro-tremor entropy detection',
-      'Atomic single-use HMAC-SHA256 verification tokens with cryptographic replay defense',
-      'Dual native backend verification support: Node.js (Express/NestJS) & Python (FastAPI/Django)',
-      '100% GDPR, CCPA, and India DPDP Act compliance without third-party data tracking',
-      'One-command self-hosting via Docker and Docker Compose with zero vendor lock-in',
-      'Interactive developer sandbox with live simulator, benchmark calculator, and code generators'
+      'Multi-threaded Web Worker leading-zero SHA-256 computation in ~18ms',
+      'Biomechanical Flash & Hogan minimum jerk (da/dt) & physiological micro-tremors',
+      'Procedural Perlin fractal noise jigsaw cutout with ±24px magnetic snap tolerance',
+      'Cryptographically signed HMAC single-use token with unique jti nonce & anti-replay defense',
+      'Frictionless 1-click checkbox for 98% clean users with automatic step-up on anomaly',
+      'CDP & WebDriver hardware integrity checks against SwiftShader, llvmpipe & Puppeteer',
+      'Official developer packages: npm i shieldcaptcha (backend) and npm i @shieldcaptcha/client'
     ],
-    techStack: ['Node.js', 'FastAPI', 'Docker', 'Web Workers', 'Web Crypto API', 'TypeScript'],
+    techStack: ['npm: shieldcaptcha', '@shieldcaptcha/client', 'Web Workers', 'SHA-256 Web Crypto', 'Node.js', 'FastAPI', 'Docker'],
     demoUrl: SHIELD_CAPTCHA_URL,
     pageUrl: '/saas/shield-captcha',
-    dockerSnippet: `docker run -d --name shield-captcha -p 8080:8080 tusharsinghoffical/shieldcaptcha:latest`,
+    dockerSnippet: `npm i shieldcaptcha`,
     isFlagship: true
   }
 ];
@@ -481,26 +481,26 @@ export const PROJECTS: Project[] = [
   // ── 0. ShieldCaptcha Enterprise Flagship Cybersecurity SaaS (Pinned / Featured) ─
   {
     id: 'p-shield-captcha',
-    title: 'ShieldCaptcha Enterprise | Zero-Cookie Autonomous Bot Defense & Human Verification',
-    description: 'Self-hostable, zero-cookie privacy-first bot defense platform combining hardware-accelerated SHA-256 Proof-of-Work, real-time mouse kinematics physics, and military-grade HMAC-SHA256 replay-protected verification tokens in 150–300ms.',
+    title: 'ShieldCaptcha v4.2 Enterprise | Autonomous Bot Defense & Human Verification',
+    description: 'Self-hostable, zero-cookie privacy-first bot defense platform combining multi-threaded SHA-256 Proof-of-Work (~18ms), Flash & Hogan biomechanical kinematics, adversarial jigsaw puzzles, and single-use HMAC token authorization with zero tracking cookies.',
     imageUrl: '/projects/shield-captcha-enterprise.jpg',
     category: 'SaaS Products',
-    tags: ['SaaS', 'Cybersecurity', 'Proof-of-Work', 'Mouse Kinematics', 'Zero-Cookie', 'HMAC-SHA256', 'Node.js', 'FastAPI', 'Docker'],
+    tags: ['SaaS', 'Cybersecurity', 'v4.2 Enterprise', 'Proof-of-Work', 'Biomechanical Kinematics', 'Zero-Cookie', 'HMAC-SHA256', 'npm package', 'Docker'],
     date: '2026',
     isFeatured: true,
     isPinned: true,
     clientBackground: 'Tushar Singh Labs open-source cybersecurity initiative delivering a 100% self-hostable, privacy-first alternative to Google reCAPTCHA and Cloudflare Turnstile for global enterprises.',
     problemStatement: 'Legacy CAPTCHAs violate user privacy through third-party tracking cookies, deliver painful 15-30s user friction with image grids, charge thousands of dollars at scale, and get easily defeated by AI computer vision scrapers.',
-    strategy: 'Engineered a multi-modal zero-dependency bot defense platform combining background Web Worker SHA-256 Proof-of-Work puzzles, biomechanical mouse pointer trajectory analysis (curvature & micro-tremors), AES-CBC-128 client encryption, and atomic single-use HMAC-SHA256 verification tokens.',
+    strategy: 'Engineered an enterprise bot defense platform combining multi-threaded Web Worker SHA-256 Proof-of-Work puzzles (~18ms), Flash & Hogan minimum jerk trajectory analysis, Perlin fractal noise jigsaw cutouts, and single-use HMAC authorization nonces.',
     results: [
-      'Sub-300ms verification execution (150ms–300ms vs 15s legacy CAPTCHA).',
+      '~18ms average verification execution via multi-threaded Web Worker.',
       'Zero third-party cookies & 100% GDPR, CCPA & DPDP compliant privacy.',
-      '100% self-hostable on Docker with zero licensing fees ($0 forever).',
+      '100% self-hostable on Docker with zero licensing fees ($0 forever MIT).',
       'Immunity to AI vision scrapers via kinematics physics and hardware compute cost.'
     ],
     beforeAfter: {
       before: '15-30s traffic light clicking, tracking cookies & thousands in reCAPTCHA enterprise fees',
-      after: 'Sub-300ms zero-cookie 1-click PoW, kinematics physics defense & 100% free self-hosting'
+      after: '~18ms zero-cookie 1-click PoW, Flash & Hogan kinematics defense & 100% free self-hosting'
     },
     liveDemoUrl: 'https://shieldcaptcha.vercel.app',
     saasPageUrl: '/saas/shield-captcha'

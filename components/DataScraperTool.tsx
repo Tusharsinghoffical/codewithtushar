@@ -189,10 +189,11 @@ export const DataScraperTool: React.FC = () => {
       <div className="space-y-2">
         <label className="text-[10px] font-black uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center justify-between">
           <span>Raw Text / HTML Source</span>
-          <span className="text-slate-400 font-normal">{inputText.length} characters</span>
+          <span className="text-slate-400 font-normal">{inputText.length.toLocaleString()} / 50,000 max characters</span>
         </label>
         <textarea
           value={inputText}
+          maxLength={50000}
           onChange={(e) => extractData(e.target.value)}
           placeholder="Paste raw email text, Google Maps dump, contact list, LinkedIn text, or website source here..."
           rows={5}

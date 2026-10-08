@@ -20,11 +20,12 @@ Thumbs.db
 git-push.bat
 *.bat
 
-# Environment variables — never commit secrets
+# Environment variables & security audit reports — never commit secrets
 .env
 .env.local
 .env.production
 .env.*.local
+.security/
 
 # Editor directories and files
 .vscode/*

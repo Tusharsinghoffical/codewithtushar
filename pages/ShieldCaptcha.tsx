@@ -16,36 +16,92 @@ import {
   SHIELD_CAPTCHA_DOCKER_IMAGE
 } from '../constants';
 
-/* ─── Code Snippets for Developer Integration Tabs ─────────────────────── */
+/* ─── Code Snippets for Developer Integration Tabs (Live ShieldCaptcha v4.2) ── */
 const INTEGRATION_CODE_SNIPPETS = {
-  html: `<!-- 1. Include the ShieldCaptcha client script -->
+  npm: `// 1. Install official ShieldCaptcha server package:
+// npm install shieldcaptcha
+
+const express = require('express');
+const { ShieldCaptcha } = require('shieldcaptcha');
+
+const app = express();
+app.use(express.json());
+
+// Initialize with your site key and secret from the dashboard
+const captcha = new ShieldCaptcha({
+  siteKey: process.env.SHIELDCAPTCHA_SITE_KEY || 'pub_shield_live_production_01928374',
+  secretKey: process.env.SHIELDCAPTCHA_SECRET_KEY,
+  apiUrl: 'https://shieldcaptcha.vercel.app'
+});
+
+// Protect any authentication or form endpoint
+app.post('/api/login', async (req, res) => {
+  const { email, password, captcha_token } = req.body;
+  const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
+  // Single-line server-to-server verification
+  const verification = await captcha.verify({
+    token: captcha_token,
+    remoteIp: clientIp
+  });
+
+  if (!verification.success) {
+    return res.status(403).json({
+      error: 'Captcha verification failed',
+      reason: verification.error
+    });
+  }
+
+  // Token valid and consumed! Proceed with login
+  console.log('Verified Human Trust Score:', verification.score);
+  res.json({ success: true, message: 'Welcome back human!', score: verification.score });
+});
+
+// Or use the built-in Express middleware:
+// app.post('/api/protected', captcha.middleware({ minScore: 50 }), handler);`,
+
+  html: `<!-- 1. Include ShieldCaptcha Standalone SDK -->
 <script src="https://shieldcaptcha.vercel.app/captcha.js"></script>
 
-<!-- 2. Form container with widget mount point -->
-<form id="login-form" action="/api/login" method="POST">
-  <input type="text" name="username" placeholder="Username" required />
-  <input type="password" name="password" placeholder="Password" required />
-
-  <!-- ShieldCaptcha Widget Mount Point -->
-  <div id="captcha-widget"></div>
-
-  <button type="submit" id="submit-btn" disabled>Login</button>
+<!-- 2. Target Container in your form -->
+<form id="login-form">
+  <input type="email" placeholder="user@domain.com" required />
+  <div id="captcha-container"></div>
+  <button type="submit" id="btn-login" disabled>Sign In</button>
 </form>
 
 <script>
-  let verifiedToken = '';
+  let captchaToken = '';
 
-  ShieldCaptcha.mount(document.getElementById('captcha-widget'), {
-    siteKey: 'pub_shield_live_production_01928374',
-    mode: 'checkbox', // or 'jigsaw'
-    onSuccess: (token) => {
-      verifiedToken = token;
-      document.getElementById('submit-btn').disabled = false;
+  // Mount widget (Choose 'checkbox', 'jigsaw', or 'adaptive')
+  ShieldCaptcha.mount(document.getElementById('captcha-container'), {
+    mode: 'checkbox', // Checkbox 1-Click Verification
+    onToken: (token, meta) => {
+      captchaToken = token;
+      document.getElementById('btn-login').disabled = false;
+      console.log('Verified token:', token, 'score:', meta.score);
+    },
+    onReset: () => {
+      captchaToken = '';
+      document.getElementById('btn-login').disabled = true;
     }
   });
+
+  document.getElementById('login-form').onsubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: captchaToken })
+    });
+    const result = await res.json();
+    alert(result.success ? 'Login Success!' : 'Verification Failed');
+  };
 </script>`,
 
   react: `import { useState } from 'react';
+// Or use official React client wrapper:
+// npm install @shieldcaptcha/client
 
 export default function LoginForm() {
   const [token, setToken] = useState('');
@@ -58,7 +114,7 @@ export default function LoginForm() {
     const res = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ captchaToken: token })
+      body: JSON.stringify({ token })
     });
     const data = await res.json();
     setLoading(false);
@@ -88,17 +144,17 @@ const app = express();
 app.use(express.json());
 
 app.post('/api/login', async (req, res) => {
-  const { username, password, captchaToken } = req.body;
+  const { username, password, token } = req.body;
 
   // 1. Verify token with ShieldCaptcha Server-to-Server API
-  const verifyRes = await fetch('https://shieldcaptcha.vercel.app/api/v1/siteverify', {
+  const verifyRes = await fetch('https://shieldcaptcha.vercel.app/api/siteverify', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'X-Site-Secret': process.env.SHIELD_SITE_SECRET // Your private secret
     },
     body: JSON.stringify({
-      token: captchaToken,
+      token,
       ip: req.ip
     })
   });
@@ -128,17 +184,17 @@ app = FastAPI(title="ShieldCaptcha Protected API")
 class LoginRequest(BaseModel):
     username: str
     password: str
-    captcha_token: str
+    token: str
 
 @app.post("/api/login")
 async def login(req_data: LoginRequest, request: Request):
     # Verify token with ShieldCaptcha core engine
     async with httpx.AsyncClient() as client:
         resp = await client.post(
-            "https://shieldcaptcha.vercel.app/api/v1/siteverify",
+            "https://shieldcaptcha.vercel.app/api/siteverify",
             headers={"X-Site-Secret": os.getenv("SHIELD_SITE_SECRET")},
             json={
-                "token": req_data.captcha_token,
+                "token": req_data.token,
                 "ip": request.client.host
             }
         )
@@ -201,7 +257,7 @@ export const ShieldCaptcha: React.FC = () => {
   const [legacyCostPerThousand] = useState(1.0); // $1 per 1,000 assessments after free tier
 
   /* ── 5. Integration Code Tabs State ── */
-  const [selectedSnippetTab, setSelectedSnippetTab] = useState<'html' | 'react' | 'node' | 'python' | 'docker'>('html');
+  const [selectedSnippetTab, setSelectedSnippetTab] = useState<'npm' | 'html' | 'react' | 'node' | 'python' | 'docker'>('npm');
   const [copiedSnippet, setCopiedSnippet] = useState(false);
   const [copiedDockerCmd, setCopiedDockerCmd] = useState(false);
 
@@ -330,7 +386,7 @@ export const ShieldCaptcha: React.FC = () => {
               Cybersecurity &amp; Bot Defense
             </span>
             <span className="hidden sm:inline text-slate-400">·</span>
-            <span className="hidden sm:inline text-slate-500">v1.0.0 Production Release</span>
+            <span className="hidden sm:inline text-slate-500">v4.2 Enterprise Production Release</span>
           </div>
         </div>
 
@@ -348,49 +404,106 @@ export const ShieldCaptcha: React.FC = () => {
               />
             </div>
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs backdrop-blur-md">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500" />
-            </span>
-            <span className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-800 dark:text-slate-200 font-outfit">
-              ShieldCaptcha Enterprise · Zero-Cookie Defense Platform
-            </span>
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              </span>
+              <span className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-800 dark:text-slate-200 font-outfit">
+                ShieldCaptcha v4.2 Enterprise · Dual-Layer Zero-Cookie Defense
+              </span>
             </div>
           </div>
 
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-6xl font-outfit font-black tracking-tight text-slate-950 dark:text-white leading-[1.12]">
-              Autonomous Bot Defense &amp;{' '}
-              <span className="bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-500 bg-clip-text text-transparent">
-                Cryptographic Human Verification
+              Fast for Real Humans. <br />
+              <span className="bg-gradient-to-r from-cyan-500 via-blue-600 to-emerald-500 bg-clip-text text-transparent">
+                Impossible for Automated Bots.
               </span>
             </h1>
             <p className="text-base sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              The 100% self-hostable, open-source alternative to Google reCAPTCHA and Cloudflare Turnstile. Eliminates tracking cookies, resolves under 200ms via client-side Proof-of-Work (PoW) and biomechanical kinematics, with military-grade HMAC replay protection.
+              Stop credential stuffing, AI scrapers, and headless browser bots before they touch your server. Combines multi-threaded <strong>SHA-256 Proof-of-Work</strong>, <strong>biomechanical kinematics</strong>, and cryptographic <strong>HMAC single-use tokens</strong> with zero tracking cookies.
             </p>
           </div>
 
-          {/* Quick Metrics Deck */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 max-w-3xl mx-auto text-left">
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs">
-              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Verification Speed</span>
-              <span className="text-xl font-outfit font-black text-cyan-600 dark:text-cyan-400">150–300ms</span>
-              <span className="text-[11px] text-slate-500 block">Sub-second execution</span>
+          {/* Install Badges / CLI Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+            <div className="flex items-center gap-2 bg-slate-900 text-slate-200 px-3.5 py-2 rounded-xl border border-slate-800 font-mono text-xs shadow-xs">
+              <span className="text-cyan-400 select-none">$</span>
+              <span>npm i shieldcaptcha</span>
+              <button
+                type="button"
+                onClick={() => copyCode('npm i shieldcaptcha')}
+                title="Copy package command"
+                className="ml-1 p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+              >
+                <Copy size={12} />
+              </button>
             </div>
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs">
-              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Cookie Tracking</span>
-              <span className="text-xl font-outfit font-black text-emerald-600 dark:text-emerald-400">0 Cookies</span>
-              <span className="text-[11px] text-slate-500 block">100% GDPR compliant</span>
+            <div className="flex items-center gap-2 bg-slate-900 text-slate-200 px-3.5 py-2 rounded-xl border border-slate-800 font-mono text-xs shadow-xs">
+              <span className="text-cyan-400 select-none">$</span>
+              <span>npm i @shieldcaptcha/client</span>
+              <button
+                type="button"
+                onClick={() => copyCode('npm i @shieldcaptcha/client')}
+                title="Copy package command"
+                className="ml-1 p-1 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+              >
+                <Copy size={12} />
+              </button>
             </div>
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs">
-              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Self-Hostable</span>
-              <span className="text-xl font-outfit font-black text-indigo-600 dark:text-indigo-400">Docker + Edge</span>
-              <span className="text-[11px] text-slate-500 block">Node &amp; Python engines</span>
+          </div>
+
+          {/* Quick Metrics Deck (Live Portal Stats) */}
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2 max-w-4xl mx-auto text-left">
+            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs relative overflow-hidden group">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-sky-500 opacity-70 group-hover:opacity-100 transition-opacity" />
+              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Challenges</span>
+              <div className="flex items-baseline gap-1.5 my-0.5">
+                <span className="text-2xl font-outfit font-black text-slate-900 dark:text-white font-mono">14</span>
+                <span className="text-[10px] text-sky-600 dark:text-sky-400 font-bold">issued</span>
+              </div>
+              <span className="text-[10px] text-slate-500 block">PoW + Jigsaw pipeline</span>
             </div>
-            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs">
-              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Enterprise License</span>
-              <span className="text-xl font-outfit font-black text-purple-600 dark:text-purple-400">$0 Free</span>
-              <span className="text-[11px] text-slate-500 block">MIT Open Source</span>
+
+            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs relative overflow-hidden group">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-emerald-500 opacity-70 group-hover:opacity-100 transition-opacity" />
+              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Verified</span>
+              <div className="flex items-baseline gap-1.5 my-0.5">
+                <span className="text-2xl font-outfit font-black text-emerald-600 dark:text-emerald-400 font-mono">10</span>
+                <span className="text-[10px] text-emerald-600 font-bold">humans</span>
+              </div>
+              <span className="text-[10px] text-slate-500 block">100% genuine pass</span>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs relative overflow-hidden group">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-rose-500 opacity-70 group-hover:opacity-100 transition-opacity" />
+              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Blocked Bots</span>
+              <div className="flex items-baseline gap-1.5 my-0.5">
+                <span className="text-2xl font-outfit font-black text-rose-600 dark:text-rose-400 font-mono">4</span>
+                <span className="text-[10px] text-rose-600 font-bold">stopped</span>
+              </div>
+              <span className="text-[10px] text-slate-500 block">Zero bot bypasses</span>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs relative overflow-hidden group">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-purple-500 opacity-70 group-hover:opacity-100 transition-opacity" />
+              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Escalated</span>
+              <div className="flex items-baseline gap-1.5 my-0.5">
+                <span className="text-2xl font-outfit font-black text-purple-600 dark:text-purple-400 font-mono">1</span>
+                <span className="text-[10px] text-purple-600 font-bold">puzzles</span>
+              </div>
+              <span className="text-[10px] text-slate-500 block">Adaptive risk trigger</span>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-white/10 shadow-xs relative overflow-hidden group col-span-2 sm:col-span-1">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-cyan-500 opacity-70 group-hover:opacity-100 transition-opacity" />
+              <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Avg Latency</span>
+              <div className="flex items-baseline gap-1.5 my-0.5">
+                <span className="text-2xl font-outfit font-black text-cyan-600 dark:text-cyan-400 font-mono">18ms</span>
+                <span className="text-[10px] text-cyan-600 font-bold">fast</span>
+              </div>
+              <span className="text-[10px] text-slate-500 block">Web Worker threads</span>
             </div>
           </div>
 
@@ -750,7 +863,7 @@ export const ShieldCaptcha: React.FC = () => {
 
               {/* Server Verification Hint */}
               <div className="p-3 rounded-xl bg-cyan-950/30 border border-cyan-800/40 text-[11px] text-cyan-200/90 leading-relaxed">
-                <strong>Server-to-Server Flow:</strong> Your backend sends this token via <code className="text-cyan-300">POST /api/v1/siteverify</code>. The ShieldCaptcha engine validates signature and invalidates the nonce instantly.
+                <strong>Server-to-Server Flow:</strong> Your backend sends this token via <code className="text-cyan-300">POST /api/siteverify</code>. The ShieldCaptcha engine validates signature and invalidates the nonce instantly.
               </div>
 
             </div>
@@ -759,96 +872,148 @@ export const ShieldCaptcha: React.FC = () => {
 
         </section>
 
-        {/* ═══════════════════════ 4. CORE FEATURES & CAPABILITIES ═══════════════════════ */}
+        {/* ═══════════════════════ 4. CORE FEATURES & DEFENSE ARCHITECTURE ═══════════════════════ */}
         <section className="space-y-8">
           
           <div className="text-center space-y-2 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800 text-[11px] font-bold text-cyan-700 dark:text-cyan-300">
+              <ShieldCheck size={12} className="text-cyan-500" />
+              <span>Security Blueprint</span>
+            </div>
             <h2 className="text-3xl font-outfit font-black tracking-tight text-slate-950 dark:text-white">
-              Why Engineering Teams Choose ShieldCaptcha
+              Core Defense Architecture (6 Pillars)
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-              Six foundational architectural advantages that protect user privacy, eliminate vendor lock-in, and stop advanced scraping bots.
+              Multi-layered security mechanics engineered into ShieldCaptcha to protect user privacy and block automated solvers.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {/* Feature 1 */}
-            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group">
-              <div className="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800 flex items-center justify-center text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform">
-                <ShieldCheck size={20} />
+            {/* Pillar 1 */}
+            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-800 flex items-center justify-center text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform">
+                    <Cpu size={20} />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                    Web Worker
+                  </span>
+                </div>
+                <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
+                  Bit-Level Proof-of-Work
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">
+                  Client executes leading-zero SHA-256 computation in a multi-threaded Web Worker. Completes in ~18ms for legitimate users, while costing scraper botnets exponential CPU compute.
+                </p>
               </div>
-              <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
-                Zero Cookies &amp; 100% GDPR
-              </h3>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Does not store third-party cookies, persistent identifiers, or cross-site tracking profiles. Complies strictly with EU GDPR, California CCPA, and India DPDP 2023 regulations.
-              </p>
             </div>
 
-            {/* Feature 2 */}
-            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
-                <Cpu size={20} />
+            {/* Pillar 2 */}
+            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 flex items-center justify-center text-sky-600 dark:text-sky-400 group-hover:scale-110 transition-transform">
+                    <Activity size={20} />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                    Biomechanical
+                  </span>
+                </div>
+                <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
+                  Flash &amp; Hogan Minimum Jerk
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">
+                  Analyzes third-order velocity derivatives (da/dt jerk) and physiological micro-tremor harmonics. Bots generating linear trajectories or polynomial splines fail the biological motion test.
+                </p>
               </div>
-              <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
-                Client-Side Proof-of-Work
-              </h3>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Background Web Workers solve a dynamic SHA-256 mathematical puzzle. A single human solves it in 50ms, while a bot farm trying 100k requests suffers severe CPU exhaustion.
-              </p>
             </div>
 
-            {/* Feature 3 */}
-            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
-                <Activity size={20} />
+            {/* Pillar 3 */}
+            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+                    <EyeOff size={20} />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                    Anti-Computer-Vision
+                  </span>
+                </div>
+                <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
+                  Adversarial Jigsaw Cutout
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">
+                  Procedural Perlin fractal noise canvas with multi-tab Bézier shapes and single glowing target socket with ±24px magnetic tolerance for seamless 1st-try human alignment.
+                </p>
               </div>
-              <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
-                Biomechanical Kinematics
-              </h3>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Measures human micro-tremors, pointer acceleration curves, and jerk derivatives. Scripted bots moving in straight Cartesian lines get flagged and challenged immediately.
-              </p>
             </div>
 
-            {/* Feature 4 */}
-            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group">
-              <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform">
-                <Lock size={20} />
+            {/* Pillar 4 */}
+            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform">
+                    <Lock size={20} />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                    Cryptographic
+                  </span>
+                </div>
+                <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
+                  HMAC Single-Use Authorization
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">
+                  Each passed verification receives a cryptographically signed HMAC token containing a unique jti nonce and client IP hash. Single-use enforcement prevents replay attacks.
+                </p>
               </div>
-              <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
-                HMAC-SHA256 Token Vault
-              </h3>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Each verified token contains an embedded cryptographic signature, client IP hash, timestamp, and unique JTI nonce. Single-use enforcement prevents replay attacks completely.
-              </p>
             </div>
 
-            {/* Feature 5 */}
-            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">
-                <Layers size={20} />
+            {/* Pillar 5 */}
+            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">
+                    <Layers size={20} />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                    Adaptive Defense
+                  </span>
+                </div>
+                <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
+                  Dual Mode &amp; Auto Step-Up
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">
+                  Frictionless 1-Click Checkbox for 98% of clean users. Suspicious automation immediately escalates to the interlocking Jigsaw slider challenge.
+                </p>
               </div>
-              <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
-                Dual Core Engine (Node &amp; Python)
-              </h3>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Includes both a zero-dependency native Node.js HTTP/Crypto engine for extreme concurrency, and a high-performance Python FastAPI engine for data-science environments.
-              </p>
             </div>
 
-            {/* Feature 6 */}
-            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group">
-              <div className="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 flex items-center justify-center text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform">
-                <Server size={20} />
+            {/* Pillar 6 */}
+            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 shadow-md transition-all space-y-3 group relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 flex items-center justify-center text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform">
+                    <Server size={20} />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                    CDP &amp; WebDriver
+                  </span>
+                </div>
+                <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
+                  Hardware Integrity Audit
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">
+                  Inspects Chrome DevTools Protocol flags, WebGL software renderers (SwiftShader, llvmpipe), and IDL property tampering to instantly flag headless environments.
+                </p>
               </div>
-              <h3 className="text-lg font-outfit font-bold text-slate-950 dark:text-white">
-                100% Self-Hostable Docker
-              </h3>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Run it on your private servers, AWS, GCP, Hetzner, or edge clouds. Zero recurring SaaS subscription bills, zero vendor lock-in, and zero third-party external dependencies.
-              </p>
             </div>
 
           </div>
@@ -886,7 +1051,7 @@ export const ShieldCaptcha: React.FC = () => {
               <div className="text-xs font-mono font-bold text-cyan-400">02. AES-CBC ENCRYPTION</div>
               <h4 className="text-sm font-bold font-outfit text-white">Payload Ciphering</h4>
               <p className="text-[11px] text-slate-400 leading-relaxed">
-                Client encrypts telemetry via session PBKDF2 derived key and submits payload to <code className="text-cyan-300">/api/v1/verify</code>.
+                Client encrypts telemetry via session PBKDF2 derived key and submits payload to <code className="text-cyan-300">/api/verify</code>.
               </p>
             </div>
 
@@ -902,7 +1067,7 @@ export const ShieldCaptcha: React.FC = () => {
               <div className="text-xs font-mono font-bold text-emerald-400">04. SITEVERIFY REST API</div>
               <h4 className="text-sm font-bold font-outfit text-white">Server-to-Server Auth</h4>
               <p className="text-[11px] text-slate-400 leading-relaxed">
-                Your application backend sends token + secret to <code className="text-emerald-300">/siteverify</code> and receives <code className="text-emerald-300">success: true</code>.
+                Your application backend sends token + secret to <code className="text-emerald-300">/api/siteverify</code> and receives <code className="text-emerald-300">success: true</code>.
               </p>
             </div>
 
@@ -910,13 +1075,13 @@ export const ShieldCaptcha: React.FC = () => {
 
           {/* Quick ASCII Pipeline Diagram */}
           <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-[11px] text-cyan-300/80 overflow-x-auto whitespace-pre leading-relaxed">
-{`[User Client Browser]  ──────►  1. Web Worker solves SHA-256 PoW + captures pointer kinematics
+{`[User Client Browser]  ──────►  1. Web Worker solves SHA-256 PoW (~18ms) + captures pointer kinematics
                              │
-                             ▼  POST /api/v1/verify (AES-CBC-128 encrypted)
+                             ▼  POST /api/verify (Encrypted client challenge)
 [ShieldCaptcha Engine] ──────►  2. Evaluates tremor entropy & issues single-use HMAC-SHA256 token
                              │
                              ▼  Token attached to form submission
-[Your Backend Service] ──────►  3. POST /api/v1/siteverify (with X-Site-Secret)
+[Your Backend Service] ──────►  3. POST /api/siteverify (with X-Site-Secret or npm package)
                              │
 [ShieldCaptcha Engine] ──────►  4. Validates token authenticity & consumes nonce ──► { success: true, score: 98 }`}
           </div>
@@ -1019,6 +1184,16 @@ export const ShieldCaptcha: React.FC = () => {
             {/* Language Selection Tabs */}
             <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shrink-0 overflow-x-auto">
               <button
+                onClick={() => setSelectedSnippetTab('npm')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold font-outfit transition-all ${
+                  selectedSnippetTab === 'npm'
+                    ? 'bg-cyan-600 text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                NPM Package (SDK)
+              </button>
+              <button
                 onClick={() => setSelectedSnippetTab('html')}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold font-outfit transition-all ${
                   selectedSnippetTab === 'html'
@@ -1046,7 +1221,7 @@ export const ShieldCaptcha: React.FC = () => {
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
-                Node.js / Express
+                Node.js REST
               </button>
               <button
                 onClick={() => setSelectedSnippetTab('python')}
@@ -1079,9 +1254,10 @@ export const ShieldCaptcha: React.FC = () => {
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 <span className="ml-2 text-slate-300">
-                  {selectedSnippetTab === 'html' ? 'index.html' :
+                  {selectedSnippetTab === 'npm' ? 'server.js (npm i shieldcaptcha)' :
+                   selectedSnippetTab === 'html' ? 'index.html' :
                    selectedSnippetTab === 'react' ? 'LoginForm.tsx' :
-                   selectedSnippetTab === 'node' ? 'server.js' :
+                   selectedSnippetTab === 'node' ? 'server.js (/api/siteverify)' :
                    selectedSnippetTab === 'python' ? 'main.py' : 'docker-compose.yml'}
                 </span>
               </div>
@@ -1345,28 +1521,40 @@ export const ShieldCaptcha: React.FC = () => {
           <div className="space-y-3">
             {[
               {
-                q: "How does ShieldCaptcha achieve zero-cookie human verification?",
-                a: "Unlike Google reCAPTCHA which requires persistent tracking cookies and Google account sessions to evaluate user authenticity, ShieldCaptcha evaluates ephemeral client telemetry in real-time. It validates hardware-accelerated SHA-256 Proof-of-Work solutions solved in a Web Worker, combined with mouse trajectory micro-tremor physics and canvas noise rendering. No data is stored between sessions, ensuring 100% GDPR, CCPA, and DPDP compliance."
+                q: "What is ShieldCaptcha and how does it work?",
+                a: "ShieldCaptcha is an open-source, zero-dependency autonomous bot defense platform and free CAPTCHA alternative. It combines client-side cryptographic Proof-of-Work (PoW), anti-computer-vision jigsaw puzzles, and biomechanical kinematics analysis to prevent automated bots, scrapers, and credential stuffing attacks without tracking private user data or requiring invasive cookies."
               },
               {
-                q: "What happens when automated bot farms attack the Proof-of-Work challenge?",
-                a: "For legitimate human users, the baseline Proof-of-Work difficulty is set to 16 bits (~65,000 hashes), which executes smoothly in 50-80ms on any modern smartphone or laptop. When the ShieldCaptcha defense engine detects rapid requests or missing human tremor kinematics, it dynamically escalates the challenge difficulty up to 22-26 bits. At this level, attempting thousands of credential stuffing requests causes the attacker's CPU to max out, rendering automated attacks economically infeasible."
+                q: "Is ShieldCaptcha free to use for websites and developers?",
+                a: "Yes, ShieldCaptcha is 100% free and open-source under the MIT license. Developers can self-host the backend engine via Docker, Node.js, or Python, or use free client-side embeddable widgets with zero monthly subscription fees."
               },
               {
-                q: "How does the Biomechanical Kinematics Engine identify AI scrapers?",
-                a: "Human hand movements naturally possess micro-tremors, continuous curvature changes, variable velocity, and non-zero jerk derivatives. In contrast, automated headless browsers (Puppeteer, Selenium, Playwright) move either in straight lines with instant velocity or with synthetic bezier curves lacking high-frequency human noise. ShieldCaptcha calculates curvature derivatives in real-time to detect synthetic pointer movement instantly."
+                q: "How does ShieldCaptcha compare to Google reCAPTCHA and Cloudflare Turnstile?",
+                a: "Unlike Google reCAPTCHA, ShieldCaptcha does not require third-party cookies, tracking IDs, or vendor lock-in. Unlike Cloudflare Turnstile, ShieldCaptcha is completely self-hostable with full on-premises and private cloud control, providing transparent Proof-of-Work challenges with sub-20ms resolution."
               },
               {
-                q: "Can ShieldCaptcha be self-hosted completely offline / on-premise?",
-                a: "Yes. Both the Node.js core defense engine and the FastAPI microservice are 100% self-contained with zero external cloud dependencies. You can deploy it using Docker or Docker Compose in an air-gapped corporate network or private VPC without any internet connectivity required."
+                q: "How can developers integrate ShieldCaptcha API into React, Next.js, and HTML?",
+                a: "ShieldCaptcha can be added with a single script tag or React component. Simply embed <div id='shield-captcha' data-sitekey='YOUR_KEY'></div> or use the npm package @shieldcaptcha/client, followed by server-side verification using HMAC-SHA256 tokens on /api/siteverify."
               },
               {
-                q: "How does the single-use HMAC token protect against replay attacks?",
-                a: "Upon solving a challenge, the server issues an HMAC-SHA256 signed token containing the client's hashed IP, timestamp, and a cryptographically secure random nonce (JTI). When your backend calls the `/api/v1/siteverify` endpoint, the token is verified against the secret key and its nonce is recorded as consumed in atomic memory or Redis. Any duplicate submission within the 300-second TTL is rejected as a replay attack."
+                q: "What is the difference between client-side and server-side CAPTCHA verification?",
+                a: "Client-side verification solves mathematical challenges and records biomechanical kinematics in the user browser (~18ms). Server-side verification validates the cryptographically signed HMAC token and anti-replay nonce via /api/siteverify or the npm 'shieldcaptcha' SDK to ensure the request was genuine."
               },
               {
-                q: "How easy is it to migrate from Google reCAPTCHA or Cloudflare Turnstile?",
-                a: "Migration takes under 5 minutes. The frontend widget requires only mounting a small container with your site key, and the backend verification follows the standard server-to-server POST verification pattern identical to reCAPTCHA's `/siteverify` format."
+                q: "Can automated bot solvers, OCR scripts, or AI bypass ShieldCaptcha?",
+                a: "No. ShieldCaptcha uses multi-layer detection: dynamic cryptographic SHA-256 Proof-of-Work difficulty scaling, canvas fingerprint validation, drag acceleration kinematics, and tamper-resistant encrypted challenge responses that block automated solvers like Selenium, Puppeteer, and Playwright."
+              },
+              {
+                q: "Can ShieldCaptcha prevent brute force attacks, credential stuffing, and DDoS?",
+                a: "Yes. By requiring client CPU computation (SHA-256 PoW) before processing form submissions, ShieldCaptcha imposes exponential compute costs on botnets, making high-velocity credential stuffing and automated brute force economically and computationally unviable."
+              },
+              {
+                q: "How to troubleshoot 'ShieldCaptcha verification failed' or missing token errors?",
+                a: "Common solutions include: 1) Verify that the site key and secret match your environment configuration; 2) Ensure your backend verifies tokens within the 5-minute expiration window; 3) Check that your server allows CORS or proxy routes to /api/siteverify."
+              },
+              {
+                q: "What is ShieldCaptcha meaning in Hindi (Shield Captcha kya hota hai)?",
+                a: "ShieldCaptcha ek modern, open-source bot defense aur human verification system hai jo bina kisi tracking cookie ke bots, web scrapers aur automated scripts ko website me ghusne se rokta hai. Yeh client-side Proof-of-Work aur mouse kinematics physics ka use karta hai taaki genuine users 18ms me verify ho sakein bina kisi tedious image puzzles ke."
               }
             ].map((faq, idx) => (
               <div

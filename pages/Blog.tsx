@@ -95,10 +95,21 @@ const PostCard: React.FC<{ post: BlogPost; featured?: boolean }> = ({ post, feat
   );
 };
 
+/* ─── HTML Sanitizer Guard (Defense-in-depth against XSS) ─── */
+const sanitizeBlogPostHtml = (html: string): string => {
+  if (!html || typeof html !== 'string') return '';
+  return html
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/\s*on\w+\s*=\s*(["'][^"']*["']|[^\s>]+)/gi, '')
+    .replace(/href\s*=\s*(["'])\s*javascript:[^"']*\1/gi, 'href="#"')
+    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '');
+};
+
 /* ─── Detail Article View (Redesigned & Clean) ───────────── */
 const PostView: React.FC<{ post: BlogPost }> = ({ post }) => {
   const navigate = useNavigate();
   const postUrl = typeof window !== 'undefined' ? window.location.href : `${getActiveDomain()}/blog/${post.id}`;
+  const sanitizedHtml = React.useMemo(() => sanitizeBlogPostHtml(post.content), [post.content]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
@@ -168,7 +179,7 @@ const PostView: React.FC<{ post: BlogPost }> = ({ post }) => {
           <div
             className="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 leading-relaxed font-medium space-y-6"
             style={{ fontSize: '1.05rem', lineHeight: 1.85 }}
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
           />
 
           {/* Tags Footer */}
