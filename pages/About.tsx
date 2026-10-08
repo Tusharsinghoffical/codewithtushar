@@ -5,7 +5,8 @@ import {
   GraduationCap, MapPin, Award, CheckCircle2, Star, Sparkles,
   Brain, Code2, Layers, Rocket, Zap, MessageSquare,
   Terminal, Database, Globe, Cpu, Workflow, Laptop,
-  Activity, Lock, QrCode, X, ExternalLink, Flame, Check
+  Activity, Lock, QrCode, X, ExternalLink, Flame, Check,
+  FileText, Download
 } from 'lucide-react';
 import {
   FIVERR_PROFILE_URL, GOOGLE_BUSINESS_NAME, GOOGLE_BUSINESS_URL,
@@ -160,14 +161,28 @@ const About: React.FC = () => {
               <GoogleVerifiedBadge variant="pill" />
             </div>
 
-            <button
-              type="button"
-              onClick={() => setQrModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white transition-all cursor-pointer font-outfit"
-            >
-              <GoogleGIcon size={12} />
-              <span>Verify Owner Proof</span>
-            </button>
+            <div className="flex items-center gap-2">
+              <a
+                href="/Tushar_Singh_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Tushar_Singh_Resume.pdf"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-500/30 text-[11px] font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-all font-outfit"
+              >
+                <FileText size={12} className="text-indigo-500" />
+                <span>Resume (PDF)</span>
+                <Download size={11} />
+              </a>
+
+              <button
+                type="button"
+                onClick={() => setQrModalOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white transition-all cursor-pointer font-outfit"
+              >
+                <GoogleGIcon size={12} />
+                <span>Verify Owner Proof</span>
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -197,6 +212,17 @@ const About: React.FC = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-2 font-outfit">
+                <a
+                  href="/Tushar_Singh_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Tushar_Singh_Resume.pdf"
+                  className="inline-flex items-center gap-2 px-5 py-3.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-lg hover:shadow-indigo-500/25 active:scale-95 cursor-pointer"
+                >
+                  <FileText size={14} />
+                  <span>Download Resume (PDF)</span>
+                  <Download size={13} />
+                </a>
                 <button
                   type="button"
                   onClick={() => navigate('/contact')}
@@ -288,6 +314,19 @@ const About: React.FC = () => {
                   <FiverrIcon size={14} className="brightness-125" />
                   <span>Hire on Fiverr (100% Escrow)</span>
                   <ArrowUpRight size={13} />
+                </a>
+
+                {/* Download Resume Button */}
+                <a
+                  href="/Tushar_Singh_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Tushar_Singh_Resume.pdf"
+                  className="mt-2.5 w-full flex items-center justify-center gap-2 py-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 text-xs font-extrabold uppercase tracking-wider transition-all shadow-xs active:scale-95 cursor-pointer font-outfit"
+                >
+                  <FileText size={14} />
+                  <span>Download Resume (PDF)</span>
+                  <Download size={13} />
                 </a>
 
               </div>
@@ -468,6 +507,77 @@ const About: React.FC = () => {
       </section>
 
       {/* ═════════════════════════════════════════════════════════════════ */}
+      {/* 5. OFFICIAL RESUME & CREDENTIALS BANNER                            */}
+      {/* ═════════════════════════════════════════════════════════════════ */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-indigo-950/20 via-slate-900/40 to-slate-950/30 border-b border-slate-100 dark:border-white/5 font-outfit">
+        <div className="max-w-5xl mx-auto rounded-3xl p-6 sm:p-10 bg-white/80 dark:bg-slate-900/80 border border-indigo-500/20 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+          {/* Ambient Glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+            
+            {/* Left Content */}
+            <div className="space-y-4 text-left max-w-xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-500/30 text-[11px] font-bold text-indigo-700 dark:text-indigo-300">
+                <FileText size={13} className="text-indigo-500" />
+                <span>Verified Curriculum Vitae (CV)</span>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white tracking-tight">
+                Tushar Singh — Official Resume
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                Detailed technical breakdown of my software engineering experience, production deployments, autonomous AI workflows, MCA academic coursework (MIT Pune), and verified commercial track record.
+              </p>
+
+              {/* Quick Pills */}
+              <div className="flex flex-wrap gap-2 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+                <span className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/5">
+                  🎓 MCA, MIT Pune
+                </span>
+                <span className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/5">
+                  🤖 AI Automation &amp; Agent Workflows
+                </span>
+                <span className="px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/5">
+                  💻 React, Next.js, Django &amp; Python
+                </span>
+                <span className="px-3 py-1 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+                  ⭐ Google &amp; Fiverr Verified
+                </span>
+              </div>
+            </div>
+
+            {/* Right Buttons Card */}
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full lg:w-auto shrink-0">
+              <a
+                href="/Tushar_Singh_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Tushar_Singh_Resume.pdf"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-black text-xs uppercase tracking-wider transition-all shadow-xl hover:shadow-indigo-500/25 active:scale-95 cursor-pointer font-outfit"
+              >
+                <Download size={15} />
+                <span>Download Resume (PDF)</span>
+              </a>
+
+              <a
+                href="/Tushar_Singh_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white border border-slate-200 dark:border-white/10 font-bold text-xs uppercase tracking-wider transition-all active:scale-95 cursor-pointer font-outfit"
+              >
+                <FileText size={14} className="text-indigo-400" />
+                <span>View in New Tab</span>
+                <ExternalLink size={12} />
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ═════════════════════════════════════════════════════════════════ */}
       {/* 5. GOOGLE VERIFIED ACCREDITATION BANNER                            */}
       {/* ═════════════════════════════════════════════════════════════════ */}
       <section className="py-10 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/40 border-b border-slate-100 dark:border-white/5">
@@ -499,6 +609,17 @@ const About: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2 font-outfit">
+            <a
+              href="/Tushar_Singh_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Tushar_Singh_Resume.pdf"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-xl active:scale-95 cursor-pointer font-outfit"
+            >
+              <FileText size={14} />
+              <span>Download Resume (PDF)</span>
+              <Download size={13} />
+            </a>
             <button
               onClick={() => navigate('/contact')}
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-slate-950 rounded-2xl font-extrabold text-xs uppercase tracking-wider hover:bg-indigo-50 transition-all shadow-xl active:scale-95 cursor-pointer font-outfit"

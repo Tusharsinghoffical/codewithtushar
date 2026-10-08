@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Github, Linkedin, Instagram, Youtube, MapPin, Mail, Phone,
   ArrowUpRight, Zap, ShieldCheck, Star, Clock,
-  ArrowUp, Building2, Award, ExternalLink
+  ArrowUp, Building2, Award, ExternalLink, FileText, Download
 } from 'lucide-react';
 import { FIVERR_PROFILE_URL } from '../constants';
 import { FiverrIcon } from './FiverrBadge';
@@ -97,6 +97,18 @@ export const Footer: React.FC = () => {
               <ExternalLink size={12} />
             </a>
 
+            <a
+              href="/Tushar_Singh_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Tushar_Singh_Resume.pdf"
+              className="inline-flex items-center gap-2 px-5 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-outfit font-bold text-xs uppercase tracking-wider transition-all shadow-lg border border-slate-700/80 hover:border-indigo-500/50 active:scale-95 cursor-pointer"
+            >
+              <FileText size={14} className="text-indigo-400" />
+              <span>Resume (PDF)</span>
+              <Download size={12} className="text-slate-400" />
+            </a>
+
             <Link
               to="/contact"
               onClick={scrollToTop}
@@ -179,6 +191,23 @@ export const Footer: React.FC = () => {
             <ul className="space-y-1">
               <FooterLink to="/" label="Home" />
               <FooterLink to="/about" label="About Me" />
+              <li>
+                <a
+                  href="/Tushar_Singh_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Tushar_Singh_Resume.pdf"
+                  className="text-indigo-400 hover:text-indigo-300 transition-all duration-200 text-xs sm:text-[13px] font-semibold flex items-center justify-between group py-1"
+                >
+                  <span className="flex items-center gap-2">
+                    <FileText size={13} className="text-indigo-400" />
+                    <span className="group-hover:translate-x-1 transition-transform">Download Resume</span>
+                  </span>
+                  <span className="px-1.5 py-0.2 rounded-full text-[8.5px] font-black uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
+                    PDF
+                  </span>
+                </a>
+              </li>
               <FooterLink to="/projects" label="Client Projects (10+)" />
               <FooterLink to="/saas" label="SaaS Suites" isNew />
               <FooterLink to="/blog" label="Blog &amp; Guides" />
@@ -262,6 +291,17 @@ export const Footer: React.FC = () => {
                   <span>Google Verified Owner Certificate</span>
                   <ExternalLink size={10} />
                 </a>
+                <a
+                  href="/Tushar_Singh_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Tushar_Singh_Resume.pdf"
+                  className="text-violet-400 hover:text-violet-300 flex items-center gap-1.5"
+                >
+                  <FileText size={11} className="text-violet-400" />
+                  <span>Tushar Singh Resume (PDF)</span>
+                  <ExternalLink size={10} />
+                </a>
               </div>
 
             </div>
@@ -285,6 +325,16 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4">
+            <a
+              href="/Tushar_Singh_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Tushar_Singh_Resume.pdf"
+              className="text-slate-400 hover:text-indigo-400 transition-colors text-[11px] font-medium flex items-center gap-1.5"
+            >
+              <FileText size={11} className="text-indigo-400" />
+              <span>Resume (PDF)</span>
+            </a>
             <Link
               to="/sitemap"
               onClick={scrollToTop}
