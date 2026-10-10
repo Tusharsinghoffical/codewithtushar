@@ -25,7 +25,8 @@
 ![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![AI Engine](https://img.shields.io/badge/Gemini_AI-Google_GenAI-EA4335?style=for-the-badge&logo=google&logoColor=white)
-![Deploy](https://img.shields.io/badge/Host-Render_Static_CDN-46E3B7?style=for-the-badge&logo=render&logoColor=white)
+![Host Render](https://img.shields.io/badge/Host-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)
+![Host Vercel](https://img.shields.io/badge/Host-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)
 
 <br/>
@@ -347,6 +348,44 @@ This triggers Vite compilation followed by `scripts/prerender.js`, generating st
 ```bash
 npm run preview
 ```
+
+---
+
+## 🌐 Deployment Guide (Render & Vercel)
+
+This repository is pre-configured for instant zero-hassle deployment on both **Render** and **Vercel** with full Static Site Generation (SSG), SPA routing rewrites, HTTP cache optimization, and strict security headers.
+
+### 🔷 Render Deployment
+1. Log in to [Render Dashboard](https://dashboard.render.com).
+2. Click **New +** → **Blueprint** and connect your GitHub repository (`Bussiness-website`).
+3. Render reads [`render.yaml`](render.yaml) automatically:
+   - **Type**: Static Site (`services[0].type: static`)
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `./dist`
+   - **SPA Fallback**: `/*` rewritten to `/index.html`
+   - **Security Headers & Caching**: Pre-configured in `render.yaml`
+4. In the Render Dashboard under **Settings**, configure your custom domains:
+   - `codewithmrsingh.me` (Primary)
+   - `codewithtushar.me` (Mirror / Secondary)
+
+*(Alternatively, to create manually: Choose **New Static Site**, enter Build Command `npm install && npm run build`, and Publish Directory `dist`).*
+
+---
+
+### ▲ Vercel Deployment
+1. Log in to [Vercel Dashboard](https://vercel.com/dashboard) and click **Add New...** → **Project**.
+2. Select and import your GitHub repository (`Bussiness-website`).
+3. Vercel automatically detects the Vite framework and loads [`vercel.json`](vercel.json):
+   - **Framework Preset**: Vite
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Clean URLs**: Enabled (`cleanUrls: true`)
+   - **Rewrites & Headers**: Pre-configured for SPA routing & security
+4. Under **Environment Variables**, optionally set:
+   - `NODE_ENV` = `production`
+   - `VITE_APP_URL` = `https://codewithmrsingh.me`
+   - `VITE_APP_SECONDARY_URL` = `https://codewithtushar.me`
+5. Click **Deploy**. Vercel will build and distribute your site globally across its Edge Network.
 
 ---
 

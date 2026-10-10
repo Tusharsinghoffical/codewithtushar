@@ -36,3 +36,7 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: VITE_APP_URL
+        value: https://codewithmrsingh.me
+      - key: VITE_APP_SECONDARY_URL
+        value: https://codewithtushar.me
