@@ -3,6 +3,281 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- ═══ PRIMARY DOMAIN (www.codewithtushar.me) ═══ -->
+  <url>
+    <loc>https://www.codewithtushar.me/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://www.codewithtushar.me/"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://www.codewithtushar.me/"/>
+    <xhtml:link rel="alternate" hreflang="en-au"     href="https://www.codewithtushar.me/"/>
+    <xhtml:link rel="alternate" hreflang="en-ca"     href="https://www.codewithtushar.me/"/>
+    <xhtml:link rel="alternate" hreflang="en-ae"     href="https://www.codewithtushar.me/"/>
+    <xhtml:link rel="alternate" hreflang="en-sg"     href="https://www.codewithtushar.me/"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/tushar-singh.webp</image:loc>
+      <image:title>Tushar Singh — AI Automation Expert &amp; Full-Stack Developer Delhi</image:title>
+      <image:caption>10+ successful deliverables. ₹2L+ revenue. Verified Google Business Owner.</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/google-business-qr.png</image:loc>
+      <image:title>Google Verified Business QR — Tushar Singh freelancing</image:title>
+      <image:caption>Official Google Business Profile QR and Verified Owner Certificate for Tushar Singh freelancing.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/tushar-singh-optimized.jpg</image:loc>
+      <image:title>Tushar Singh Developer Profile</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/services</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/services"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/services"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/services"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://www.codewithtushar.me/services"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://www.codewithtushar.me/services"/>
+    <xhtml:link rel="alternate" hreflang="en-ae"     href="https://www.codewithtushar.me/services"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/tushar-singh.webp</image:loc>
+      <image:title>AI Automation &amp; Web Development Services by Tushar Singh</image:title>
+      <image:caption>Autonomous AI agents, n8n workflows, RAG smart chatbots, React.js web apps.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/saas</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/saas"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/saas"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/saas"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://www.codewithtushar.me/saas"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://www.codewithtushar.me/saas"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/tasq-one/tasq-one-banner.png</image:loc>
+      <image:title>Proprietary SaaS Suites &amp; Cloud Software by Tushar Singh Labs</image:title>
+      <image:caption>TASQ-ONE intelligent task operating system and autonomous AI cloud suites.</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/saas/tasq-one</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://www.codewithtushar.me/saas/tasq-one"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://www.codewithtushar.me/saas/tasq-one"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/tasq-one/tasq-one-banner.png</image:loc>
+      <image:title>TASQ-ONE — Intelligent Task Operating System (SaaS)</image:title>
+      <image:caption>Autonomous AI decomposition, Groq Llama 3.3 70B, real-time Kanban DAGs, and cryptographic audit trail.</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/saas/saathi-bot</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/saas/saathi-bot"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/saas/saathi-bot"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/saas/saathi-bot"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://www.codewithtushar.me/saas/saathi-bot"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://www.codewithtushar.me/saas/saathi-bot"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/saathi-bot/saathi-bot-banner.jpg</image:loc>
+      <image:title>Saathi Bot — Grounded Enterprise AI Chatbot &amp; Lead Booking Platform Architecture</image:title>
+      <image:caption>Autonomous multilingual RAG assistant with sub-second streaming, pre-LLM Confidence Gate, Shadow DOM embed widget &amp; Google Sheets sync.</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/saathi-bot/saathi-bot-logo.svg</image:loc>
+      <image:title>Saathi Bot Official Logo</image:title>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/projects</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/projects"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/projects"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/projects"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://www.codewithtushar.me/projects"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/saathi-bot/saathi-bot-banner.jpg</image:loc>
+      <image:title>Saathi Bot Enterprise Autonomous AI Chatbot &amp; Conversational Commerce Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/projects/task-one-platform.png</image:loc>
+      <image:title>TASQ-ONE Intelligent Task Operating System SaaS Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/projects/ai-hr-recruitment-screening-assistant.png</image:loc>
+      <image:title>AI-Powered HR Recruitment Screening Assistant n8n Workflow</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/projects/whatsapp-ai-agent.png</image:loc>
+      <image:title>WhatsApp AI Business Communication Agent</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/projects/takeopinion-platform.jpg</image:loc>
+      <image:title>TakeOpinion Global Medical Tourism Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/projects/vas-qr-attendance-platform.jpg</image:loc>
+      <image:title>VASS Smart Attendance System for Modern Workplaces</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/projects/rag-knowledge-base-chatbot.png</image:loc>
+      <image:title>RAG Knowledge Base Assistant AI Chatbot</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/projects/hospital-analytics-dashboard.jpg</image:loc>
+      <image:title>Hospital Analytics Power BI Healthcare Intelligence Dashboard</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/about</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/about"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/about"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/about"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/tushar-singh.webp</image:loc>
+      <image:title>About Tushar Singh — MCA Graduate, AI Automation Expert &amp; Developer</image:title>
+      <image:caption>Tushar Singh background, expertise in AI automation, full-stack development, and tech consulting.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/testimonials</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/testimonials"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/testimonials"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/testimonials"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/google-business-qr.png</image:loc>
+      <image:title>Google Verified Customer Reviews for Tushar Singh</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/contact</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/contact"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/contact"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/contact"/>
+    <xhtml:link rel="alternate" hreflang="en-us"     href="https://www.codewithtushar.me/contact"/>
+    <xhtml:link rel="alternate" hreflang="en-gb"     href="https://www.codewithtushar.me/contact"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/tushar-singh.webp</image:loc>
+      <image:title>Contact Tushar Singh — Hire for AI Automation &amp; Web Development</image:title>
+      <image:caption>Direct WhatsApp +91 88516 19647, Calendly consultation, New Delhi office.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/blog</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/blog"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/blog"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/blog"/>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/blog/ai-vs-human-coding-software-development</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.codewithtushar.me/blog/ai-vs-human-coding-software-development"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/blog/ai-vs-human-coding.png</image:loc>
+      <image:title>AI vs Human Coding: Which Is Better for Software Development?</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/blog/env-schema-guard-zero-dependency-config-validator</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.codewithtushar.me/blog/env-schema-guard-zero-dependency-config-validator"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/blog/env-schema-guard.png</image:loc>
+      <image:title>env-schema-guard — Zero-Dependency Startup Config &amp; Schema Validator</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/blog/retry-circuit-distributed-resilience-engine</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.codewithtushar.me/blog/retry-circuit-distributed-resilience-engine"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/blog/retry-circuit.png</image:loc>
+      <image:title>retry-circuit — Distributed Systems Resilience Engine</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/blog/prompt-kit-js-versioned-llm-prompt-registry</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.codewithtushar.me/blog/prompt-kit-js-versioned-llm-prompt-registry"/>
+    <image:image>
+      <image:loc>https://www.codewithtushar.me/blog/prompt-kit-js.png</image:loc>
+      <image:title>prompt-kit-js — Versioned LLM Prompt Registry &amp; Token Estimator</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/blog/faang-coding-roadmap-150-questions</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.codewithtushar.me/blog/faang-coding-roadmap-150-questions"/>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/blog/n8n-automation-guide-beginners-2026</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.codewithtushar.me/blog/n8n-automation-guide-beginners-2026"/>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/blog/ai-chatbot-for-business-complete-guide-2026</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.codewithtushar.me/blog/ai-chatbot-for-business-complete-guide-2026"/>
+  </url>
+  <url>
+    <loc>https://www.codewithtushar.me/sitemap</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.codewithtushar.me/sitemap"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://www.codewithtushar.me/sitemap"/>
+    <xhtml:link rel="alternate" hreflang="en-in"     href="https://www.codewithtushar.me/sitemap"/>
+  </url>
+
+  <!-- ═══ SUPPORTED MIRROR DOMAIN (codewithmrsingh.me) ═══ -->
+
   <!-- ═══ 1. HOME PAGE ═══ -->
   <url>
     <loc>https://codewithmrsingh.me/</loc>
