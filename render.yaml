@@ -4,8 +4,8 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     # Custom domains — configure in Render dashboard:
-    # 1. codewithmrsingh.me (Primary)
-    # 2. codewithtushar.me (Mirror / Secondary)
+    # 1. www.codewithtushar.me / codewithtushar.me (Primary)
+    # 2. codewithmrsingh.me (Mirror / Supported)
     headers:
       # Cache hashed assets forever (Vite adds content hashes to filenames)
       - path: /assets/*
@@ -37,6 +37,6 @@ services:
       - key: NODE_ENV
         value: production
       - key: VITE_APP_URL
-        value: https://codewithmrsingh.me
+        value: https://www.codewithtushar.me
       - key: VITE_APP_SECONDARY_URL
-        value: https://codewithtushar.me
+        value: https://codewithmrsingh.me

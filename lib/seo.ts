@@ -76,7 +76,7 @@ import { SITE_URL, SECONDARY_SITE_URL, SITE_NAME, SECONDARY_SITE_NAME, getActive
  * Generate canonical URL
  */
 export const getCanonicalUrl = (path: string): string => {
-  return `${SITE_URL}${path}`;
+  return `${getActiveDomain()}${path}`;
 };
 
 /**
@@ -121,25 +121,26 @@ export const setupPageSEO = (options: {
 }): void => {
   const { title, description, keywords, path, imageUrl = `${SITE_URL}/tushar-singh-optimized.jpg`, type = 'website' } = options;
   const canonicalUrl = getCanonicalUrl(path);
+  const brandTitle = `${SITE_NAME} & ${SECONDARY_SITE_NAME}`;
 
   // Update basic meta tags
   updateMetaTags({
     'description': description,
     'keywords': keywords,
     'title': title,
-    'og:title': `${title} | ${SITE_NAME}`,
+    'og:title': `${title} | ${brandTitle}`,
     'og:description': description,
     'og:url': canonicalUrl,
     'og:type': type,
     'og:image': imageUrl,
-    'twitter:title': `${title} | ${SITE_NAME}`,
+    'twitter:title': `${title} | ${brandTitle}`,
     'twitter:description': description,
     'twitter:image': imageUrl,
     'twitter:card': 'summary_large_image'
   });
 
   // Update document title
-  document.title = `${title} | ${SITE_NAME}`;
+  document.title = `${title} | ${brandTitle}`;
 
   // Update canonical link
   const canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -151,10 +152,10 @@ export const setupPageSEO = (options: {
   addStructuredData({
     type: 'WebSite',
     data: {
-      name: SITE_NAME,
-      alternateName: [SECONDARY_SITE_NAME, 'codewithtushar.me', 'codewithmrsingh.me'],
+      name: `${SITE_NAME} & ${SECONDARY_SITE_NAME}`,
+      alternateName: [SITE_NAME, SECONDARY_SITE_NAME, 'codewithtushar.me', 'www.codewithtushar.me', 'codewithmrsingh.me'],
       url: SITE_URL,
-      sameAs: [SECONDARY_SITE_URL],
+      sameAs: [SECONDARY_SITE_URL, 'https://codewithtushar.me'],
       description: description,
       publisher: {
         '@type': 'Person',
@@ -172,7 +173,7 @@ export const setupPageSEO = (options: {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://codewithmrsingh.me/'
+          item: `${getActiveDomain()}/`
         },
         ...(path !== '/' ? [{
           '@type': 'ListItem',

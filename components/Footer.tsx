@@ -138,7 +138,7 @@ export const Footer: React.FC = () => {
               </Link>
               <div className="flex items-center gap-2 text-xs font-semibold text-indigo-400">
                 <Building2 size={13} />
-                <span>Tushar Singh freelancing · Code with Mr Singh</span>
+                <span>Tushar Singh freelancing · Code with Tushar · Code with Mr Singh</span>
               </div>
               <p className="text-xs sm:text-[13px] text-slate-400 leading-relaxed max-w-sm">
                 Personal freelance portfolio of <strong>Tushar Singh</strong> (MCA, MIT Pune). I build custom AI tools, smart WhatsApp bots, fast websites, and full software platforms that help businesses save time and grow.
@@ -315,7 +315,7 @@ export const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-[11.5px] text-slate-400">
           
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <span>&copy; {year} <strong>Code with Mr Singh</strong> (Tushar Singh). All rights reserved.</span>
+            <span>&copy; {year} <strong>Code with Tushar</strong> &amp; <strong>Code with Mr Singh</strong> (Tushar Singh). All rights reserved.</span>
             <span className="hidden sm:inline text-slate-700">•</span>
             <span className="flex items-center gap-1.5 text-slate-400">
               <ShieldCheck size={13} className="text-emerald-400" /> 100% Safe &amp; Protected

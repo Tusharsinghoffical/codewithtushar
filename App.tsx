@@ -194,10 +194,11 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
   const location = useLocation();
 
   useEffect(() => {
-    const fullTitle = `${title} | ${SITE_NAME}`;
+    const fullTitle = `${title} | ${SITE_NAME} & ${SECONDARY_SITE_NAME}`;
     document.title = fullTitle;
 
-    const pageUrl = `${SITE_URL}${location.pathname}`;
+    const baseUrl = getActiveDomain();
+    const pageUrl = `${baseUrl}${location.pathname}`;
     // Resolve per-page OG data; fall back to site defaults
     const ogMeta = PAGE_OG[location.pathname];
     const ogImage = ogMeta?.image ?? SITE_DEFAULT_OG_IMAGE;
@@ -258,9 +259,9 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
     setMeta('meta[name="distribution"]', 'global');
     setMeta('meta[name="rating"]', 'general');
     setMeta('meta[name="revisit-after"]', '3 days');
-    setMeta('meta[name="publisher"]', 'Code with Mr Singh');
+    setMeta('meta[name="publisher"]', 'Code with Tushar & Code with Mr Singh');
     setMeta('meta[name="designer"]', 'Tushar Singh');
-    setMeta('meta[name="copyright"]', '© 2026 Code with Mr Singh. All rights reserved.');
+    setMeta('meta[name="copyright"]', '© 2026 Code with Tushar & Code with Mr Singh. All rights reserved.');
     setMeta('meta[name="owner"]', 'Tushar Singh');
     setMeta('meta[name="category"]', 'Technology, Web Development, AI/ML, Data Science, Business Automation');
     setMeta('meta[name="topic"]', 'AI Automation Services, Full-Stack Development, Chatbot Development, Freelance Developer India');
@@ -272,7 +273,7 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
     setMeta('meta[name="page-type"]', 'Business Profile, Professional Portfolio, Service Listing');
     setMeta('meta[name="format-detection"]', 'telephone=yes');
     setMeta('meta[name="referrer"]', 'origin-when-cross-origin');
-    setMeta('meta[name="identifier-URL"]', 'https://codewithmrsingh.me/');
+    setMeta('meta[name="identifier-URL"]', `${baseUrl}/`);
     setMeta('meta[name="url"]', pageUrl);
 
     // Open Graph
@@ -350,7 +351,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
     "@type": "WebPage",
     "@id": `${pageUrl}#webpage`,
     "url": pageUrl,
-    "name": `${title} | Code with Mr Singh`,
+    "name": `${title} | ${SITE_NAME} & ${SECONDARY_SITE_NAME}`,
     "description": description,
     "isPartOf": { "@id": `${baseUrl}/#website` },
     "about": { "@id": `${baseUrl}/#person` },
@@ -431,9 +432,9 @@ const updateStructuredData = (title: string, description: string, path: string) 
         "@type": "Person",
         "@id": `${baseUrl}/#person`,
         "name": "Tushar Singh",
-        "alternateName": ["Code with Mr Singh", "Code with Tushar", "codewithtushar.me", "codewithmrsingh.me"],
+        "alternateName": ["Code with Tushar", "Code with Mr Singh", "codewithtushar.me", "www.codewithtushar.me", "codewithmrsingh.me"],
         "jobTitle": "AI Automation Expert & Full-Stack Developer",
-        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from MIT Pune. Founder of Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
+        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from MIT Pune. Founder of Code with Tushar & Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
         "image": `${SITE_URL}/tushar-singh-optimized.jpg`,
         "url": `${baseUrl}/about`,
         "address": {

@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Master canonical sitemap containing all website pages -->
+  <!-- Primary canonical sitemaps (Code with Tushar) -->
+  <sitemap>
+    <loc>https://www.codewithtushar.me/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.codewithtushar.me/saas/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.codewithtushar.me/blog/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.codewithtushar.me/services/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.codewithtushar.me/projects/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+
+  <!-- Apex domain sitemaps (Code with Tushar) -->
+  <sitemap>
+    <loc>https://codewithtushar.me/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://codewithtushar.me/saas/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://codewithtushar.me/blog/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://codewithtushar.me/services/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://codewithtushar.me/projects/sitemap.xml</loc>
+    <lastmod>2026-10-12</lastmod>
+  </sitemap>
+
+  <!-- Supported mirror sitemaps (Code with Mr Singh) -->
   <sitemap>
     <loc>https://codewithmrsingh.me/sitemap.xml</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-12</lastmod>
   </sitemap>
 
   <!-- Proprietary SaaS suites (TASQ-ONE OS & Saathi Bot Platform) -->

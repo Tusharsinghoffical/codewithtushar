@@ -1,4 +1,4 @@
-# robots.txt for https://codewithmrsingh.me/ and https://codewithtushar.me/
+# robots.txt for https://www.codewithtushar.me/, https://codewithtushar.me/ and https://codewithmrsingh.me/
 # Optimized for Googlebot, Bingbot, Yahoo, DuckDuckGo, Yandex, Baidu & AI Crawlers
 # 100% RFC 9309 compliant — 0 Google Search Console warnings
 
@@ -78,23 +78,24 @@ Disallow: /
 User-agent: PetalBot
 Disallow: /
 # LLM Context Files for Answer Engine Optimization (AEO / GEO / Perplexity / ChatGPT / Claude)
-# LLMs-Txt: https://codewithmrsingh.me/llms.txt
-# LLMs-Full: https://codewithmrsingh.me/llms-full.txt
+# LLMs-Txt: https://www.codewithtushar.me/llms.txt
+# LLMs-Full: https://www.codewithtushar.me/llms-full.txt
 # LLMs-Txt-Alt: https://codewithtushar.me/llms.txt
 # LLMs-Full-Alt: https://codewithtushar.me/llms-full.txt
+# LLMs-Txt-Mirror: https://codewithmrsingh.me/llms.txt
+# LLMs-Full-Mirror: https://codewithmrsingh.me/llms-full.txt
 
-# Canonical Sitemaps — Primary Domain (codewithmrsingh.me)
-Sitemap: https://codewithmrsingh.me/sitemap.xml
-Sitemap: https://codewithmrsingh.me/sitemap-index.xml
-Sitemap: https://codewithmrsingh.me/saas/sitemap.xml
-Sitemap: https://codewithmrsingh.me/blog/sitemap.xml
-Sitemap: https://codewithmrsingh.me/services/sitemap.xml
-Sitemap: https://codewithmrsingh.me/projects/sitemap.xml
-Sitemap: https://codewithmrsingh.me/about/sitemap.xml
-Sitemap: https://codewithmrsingh.me/contact/sitemap.xml
-Sitemap: https://codewithmrsingh.me/testimonials/sitemap.xml
+# Canonical Sitemaps — Primary Domain (www.codewithtushar.me & codewithtushar.me)
+Sitemap: https://www.codewithtushar.me/sitemap.xml
+Sitemap: https://www.codewithtushar.me/sitemap-index.xml
+Sitemap: https://www.codewithtushar.me/saas/sitemap.xml
+Sitemap: https://www.codewithtushar.me/blog/sitemap.xml
+Sitemap: https://www.codewithtushar.me/services/sitemap.xml
+Sitemap: https://www.codewithtushar.me/projects/sitemap.xml
+Sitemap: https://www.codewithtushar.me/about/sitemap.xml
+Sitemap: https://www.codewithtushar.me/contact/sitemap.xml
+Sitemap: https://www.codewithtushar.me/testimonials/sitemap.xml
 
-# Canonical Sitemaps — Secondary Domain (codewithtushar.me)
 Sitemap: https://codewithtushar.me/sitemap.xml
 Sitemap: https://codewithtushar.me/sitemap-index.xml
 Sitemap: https://codewithtushar.me/saas/sitemap.xml
@@ -104,3 +105,14 @@ Sitemap: https://codewithtushar.me/projects/sitemap.xml
 Sitemap: https://codewithtushar.me/about/sitemap.xml
 Sitemap: https://codewithtushar.me/contact/sitemap.xml
 Sitemap: https://codewithtushar.me/testimonials/sitemap.xml
+
+# Canonical Sitemaps — Supported Secondary / Mirror Domain (codewithmrsingh.me)
+Sitemap: https://codewithmrsingh.me/sitemap.xml
+Sitemap: https://codewithmrsingh.me/sitemap-index.xml
+Sitemap: https://codewithmrsingh.me/saas/sitemap.xml
+Sitemap: https://codewithmrsingh.me/blog/sitemap.xml
+Sitemap: https://codewithmrsingh.me/services/sitemap.xml
+Sitemap: https://codewithmrsingh.me/projects/sitemap.xml
+Sitemap: https://codewithmrsingh.me/about/sitemap.xml
+Sitemap: https://codewithmrsingh.me/contact/sitemap.xml
+Sitemap: https://codewithmrsingh.me/testimonials/sitemap.xml

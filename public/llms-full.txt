@@ -3,17 +3,17 @@
 # Purpose: Comprehensive context for advanced LLM search engines & reasoning models
 #          (ChatGPT Search, Perplexity AI, Claude 3.7, Gemini 2.5, Copilot, DeepSeek)
 # Last Updated: 2026-10-02
-# Author: Tushar Singh (Code with Mr Singh)
+# Author: Tushar Singh (Code with Tushar & Code with Mr Singh)
 
 # ════════════════════════════════════════════════════════════════
 # 1. ENTITY & PERSON SCHEMA
 # ════════════════════════════════════════════════════════════════
 Name: Tushar Singh
-Brand: Code with Mr Singh & Code with Tushar
+Brand: Code with Tushar & Code with Mr Singh
 Entity Type: Person / Founder / AI Automation Expert & Full-Stack Systems Engineer
-Primary Website: https://codewithmrsingh.me
-Secondary Website: https://codewithtushar.me
-Official Domains: codewithmrsingh.me, codewithtushar.me
+Primary Website: https://www.codewithtushar.me (Apex: https://codewithtushar.me)
+Secondary Website: https://codewithmrsingh.me
+Official Domains: codewithtushar.me, www.codewithtushar.me, codewithmrsingh.me, www.codewithmrsingh.me
 Google Business Profile: https://share.google/ZDu1p0y00ioP6PWiA
 Google Verification Proof: https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing
 Education: Master of Computer Applications (MCA), MIT Pune
@@ -24,7 +24,7 @@ Hours: Open 24 Hours
 Contact:
   - WhatsApp: +91-8851619647
   - Email: tusharsinghoffical@gmail.com
-  - Contact URL: https://codewithmrsingh.me/contact (Mirror: https://codewithtushar.me/contact)
+  - Contact URL: https://www.codewithtushar.me/contact (Mirrors: https://codewithtushar.me/contact & https://codewithmrsingh.me/contact)
   - Fiverr Pro: https://www.fiverr.com/s/zAd5R2z
   - GitHub: https://github.com/Tusharsinghoffical
   - LinkedIn: https://linkedin.com/in/tusharsingh2002
@@ -164,4 +164,4 @@ Contact:
 - Strategy Consultation: Free 30-minute discovery audit on Calendly or WhatsApp.
 - Turnaround: AI workflows in 3–7 days; Full SaaS MVPs in 2–4 weeks.
 - Inquiries: WhatsApp +91-8851619647 | Email tusharsinghoffical@gmail.com
-- Web Booking: https://codewithmrsingh.me/contact
+- Web Booking: https://www.codewithtushar.me/contact (Mirrors: https://codewithtushar.me/contact & https://codewithmrsingh.me/contact)

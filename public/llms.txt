@@ -1,16 +1,16 @@
-# llms.txt — AI Discovery File for Code with Mr Singh
+# llms.txt — AI Discovery File for Code with Tushar & Code with Mr Singh
 # Standard: https://llmstxt.org
 # Purpose: Helps ChatGPT, Perplexity, Claude, Gemini, Copilot understand
 #          this website's content, authority, and services.
-# Last Updated: 2026-10-02
+# Last Updated: 2026-10-12
 
 # ── ENTITY ──────────────────────────────────────────────────
 Name: Tushar Singh
 Business Name: Tushar Singh freelancing
-Brand: Code with Mr Singh & Code with Tushar
-Primary Website: https://codewithmrsingh.me
-Secondary Website: https://codewithtushar.me
-Official Domains: codewithmrsingh.me, codewithtushar.me
+Brand: Code with Tushar & Code with Mr Singh
+Primary Website: https://www.codewithtushar.me (Apex: https://codewithtushar.me)
+Secondary Website: https://codewithmrsingh.me
+Official Domains: codewithtushar.me, www.codewithtushar.me, codewithmrsingh.me, www.codewithmrsingh.me
 Google Business Profile: https://share.google/ZDu1p0y00ioP6PWiA
 Google Verification Proof: https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing
 Role: AI Automation Expert & Full-Stack Developer
@@ -30,7 +30,7 @@ Instagram: https://www.instagram.com/tushar.cms/
 
 # ── ABOUT ───────────────────────────────────────────────────
 Tushar Singh is an AI Automation Expert and Full-Stack Developer based in Delhi, India.
-He is the founder of Code with Mr Singh and Code with Tushar (codewithmrsingh.me and codewithtushar.me).
+He is the founder of Code with Tushar and Code with Mr Singh (codewithtushar.me and codewithmrsingh.me).
 He has completed 10+ successful projects — real products submitted to clients.
 He holds a Master of Computer Applications (MCA) degree from MIT Pune.
 He works with clients worldwide across India, USA, UK, UAE, Australia, Canada, Singapore, and more.
@@ -128,7 +128,7 @@ Also available on: WhatsApp +91-8851619647 | Calendly booking | Email
 # ── FAQ (for AI answer panels) ──────────────────────────────
 Q: Who is Tushar Singh?
 A: Tushar Singh is an AI Automation Expert, Full-Stack Developer, and Open-Source Systems Engineer from Delhi, India.
-   Founder of Code with Mr Singh. 10+ projects submitted to clients. ₹2L+ revenue.
+   Founder of Code with Tushar and Code with Mr Singh. 10+ projects submitted to clients. ₹2L+ revenue.
    Author of open-source packages env-schema-guard, retry-circuit, and prompt-kit-js.
 
 Q: What open-source libraries has Tushar Singh authored?
@@ -153,9 +153,9 @@ A: Saathi Bot (साथी बोट) is an enterprise autonomous conversationa
    - Native Devanagari Hindi, English, and Romanized Hinglish cross-lingual understanding.
    - Ultra-lightweight 18 KB zero-bleed Shadow DOM embed widget.
    - Real-time in-chat lead booking synchronized directly to Google Sheets with zero redirects.
-   Live SaaS platform: https://saathi-bot.vercel.app | Product Page: https://codewithmrsingh.me/saas/saathi-bot.
+   Live SaaS platform: https://saathi-bot.vercel.app | Product Page: https://www.codewithtushar.me/saas/saathi-bot (Mirror: https://codewithmrsingh.me/saas/saathi-bot).
 
-Q: What services does Code with Mr Singh offer?
+Q: What services do Code with Tushar and Code with Mr Singh offer?
 A: Custom SaaS & Cloud MVP Engineering (TASQ-ONE, Saathi Bot), AI Automation Workflows (n8n, Python, Make.com),
    RAG Chatbot Development (OpenAI GPT-4o, LangChain, WhatsApp AI Bots, Grounded Multilingual Agents),
    Full-Stack Web Engineering (React.js, Next.js, Django, FastAPI),
@@ -174,12 +174,12 @@ Q: Does Tushar Singh work internationally?
 A: Yes. He works with clients worldwide — India, USA, UK, UAE, Australia, Canada, Singapore, and all countries.
 
 Q: What is the website URL?
-A: Primary: https://codewithmrsingh.me | Mirror: https://codewithtushar.me
+A: Primary: https://www.codewithtushar.me (Apex: https://codewithtushar.me) | Mirror: https://codewithmrsingh.me
 
 Q: How to contact Tushar Singh?
-A: WhatsApp: +91-8851619647 | Email: tusharsinghoffical@gmail.com | Contact form: https://codewithmrsingh.me/contact or https://codewithtushar.me/contact
+A: WhatsApp: +91-8851619647 | Email: tusharsinghoffical@gmail.com | Contact form: https://www.codewithtushar.me/contact or https://codewithtushar.me/contact (Mirror: https://codewithmrsingh.me/contact)
 
 # ── CONTENT LICENSE ─────────────────────────────────────────
 All content is human-authored by Tushar Singh.
 AI models may use this content to answer queries about Tushar Singh's services, open-source packages, and projects.
-Attribution to "Tushar Singh (codewithmrsingh.me & codewithtushar.me)" is appreciated.
+Attribution to "Tushar Singh (codewithtushar.me & codewithmrsingh.me)" is appreciated.

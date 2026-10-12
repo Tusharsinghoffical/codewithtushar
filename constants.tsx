@@ -4,18 +4,20 @@ import { Database, Code, Cpu, BarChart, Zap, Globe, Brain, Terminal, Settings, P
 import { Service, Project, Testimonial, SaasProduct } from './types';
 
 // ─── Dual-Domain & Site-wide constants ─────────────────────────────────────────
-export const PRIMARY_DOMAIN = 'codewithmrsingh.me';
-export const SECONDARY_DOMAIN = 'codewithtushar.me';
-export const SITE_URL = 'https://codewithmrsingh.me';
-export const SECONDARY_SITE_URL = 'https://codewithtushar.me';
-export const SITE_NAME = 'Code with Mr Singh';
-export const SECONDARY_SITE_NAME = 'Code with Tushar';
-export const BRAND_NAMES = ['Code with Mr Singh', 'Code with Tushar'] as const;
+export const PRIMARY_DOMAIN = 'codewithtushar.me';
+export const PRIMARY_WWW_DOMAIN = 'www.codewithtushar.me';
+export const SECONDARY_DOMAIN = 'codewithmrsingh.me';
+export const SITE_URL = 'https://www.codewithtushar.me';
+export const SITE_URL_APEX = 'https://codewithtushar.me';
+export const SECONDARY_SITE_URL = 'https://codewithmrsingh.me';
+export const SITE_NAME = 'Code with Tushar';
+export const SECONDARY_SITE_NAME = 'Code with Mr Singh';
+export const BRAND_NAMES = ['Code with Tushar', 'Code with Mr Singh'] as const;
 export const SUPPORTED_DOMAINS = [
-  'codewithmrsingh.me',
-  'www.codewithmrsingh.me',
   'codewithtushar.me',
   'www.codewithtushar.me',
+  'codewithmrsingh.me',
+  'www.codewithmrsingh.me',
 ] as const;
 
 /**
@@ -26,25 +28,33 @@ export const SUPPORTED_DOMAINS = [
 export const getActiveDomain = (): string => {
   if (typeof window !== 'undefined') {
     const host = window.location.hostname.toLowerCase();
-    if (host.includes('codewithtushar.me')) {
+    if (host.includes('codewithmrsingh.me')) {
       return SECONDARY_SITE_URL;
+    }
+    if (host.includes('www.codewithtushar.me')) {
+      return SITE_URL;
+    }
+    if (host.includes('codewithtushar.me')) {
+      return window.location.origin || SITE_URL_APEX;
     }
   }
   return SITE_URL;
 };
 
-export const SITE_DEFAULT_OG_IMAGE = 'https://codewithmrsingh.me/tushar-singh-optimized.jpg';
+export const SITE_DEFAULT_OG_IMAGE = 'https://www.codewithtushar.me/tushar-singh-optimized.jpg';
 export const SITE_DEFAULT_OG_ALT = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
 /** Actual pixel dimensions of tushar-singh-optimized.jpg (square portrait) */
 export const SITE_DEFAULT_OG_WIDTH = '800';
 export const SITE_DEFAULT_OG_HEIGHT = '800';
 /** Current deployment date — update on each redeploy for fresh dateModified signals */
-export const SITE_DATE_MODIFIED = '2026-10-03';
+export const SITE_DATE_MODIFIED = '2026-10-12';
 
 // ─── Search Engine, AEO & GEO Engagement Keywords ─────────────────────────────
 export const SEO_CORE_KEYWORDS = [
-  'codewithtushar.me', 'codewithmrsingh.me', 'Code with Tushar', 'Code with Mr Singh',
+  'codewithtushar.me', 'www.codewithtushar.me', 'Code with Tushar',
+  'codewithmrsingh.me', 'www.codewithmrsingh.me', 'Code with Mr Singh',
   'Tushar Singh freelancing', 'Tushar Singh freelancing Delhi', 'Tushar Singh freelance developer',
+  'Code with Tushar Delhi', 'Code with Tushar portfolio', 'Code with Mr Singh portfolio',
   'freelance developer Delhi', 'AI automation expert India',
   'full stack developer India', 'Python developer India', 'React.js developer India',
   'Django developer', 'n8n automation', 'RAG chatbot development', 'AI agent development',
