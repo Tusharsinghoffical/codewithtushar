@@ -70,7 +70,7 @@ export const updateMetaTags = (tags: Record<string, string>): void => {
   });
 };
 
-import { SITE_URL, SECONDARY_SITE_URL, SITE_NAME, SECONDARY_SITE_NAME, getActiveDomain } from '../constants';
+import { SITE_URL, SITE_NAME, getActiveDomain } from '../constants';
 
 /**
  * Generate canonical URL
@@ -121,7 +121,7 @@ export const setupPageSEO = (options: {
 }): void => {
   const { title, description, keywords, path, imageUrl = `${SITE_URL}/tushar-singh-optimized.jpg`, type = 'website' } = options;
   const canonicalUrl = getCanonicalUrl(path);
-  const brandTitle = `${SITE_NAME} & ${SECONDARY_SITE_NAME}`;
+  const brandTitle = SITE_NAME;
 
   // Update basic meta tags
   updateMetaTags({
@@ -148,14 +148,14 @@ export const setupPageSEO = (options: {
     canonicalLink.setAttribute('href', canonicalUrl);
   }
 
-  // Add WebSite structured data with dual-domain awareness
+  // Add WebSite structured data
   addStructuredData({
     type: 'WebSite',
     data: {
-      name: `${SITE_NAME} & ${SECONDARY_SITE_NAME}`,
-      alternateName: [SITE_NAME, SECONDARY_SITE_NAME, 'codewithtushar.me', 'www.codewithtushar.me', 'codewithmrsingh.me'],
+      name: SITE_NAME,
+      alternateName: [SITE_NAME, 'codewithtushar.me', 'www.codewithtushar.me'],
       url: SITE_URL,
-      sameAs: [SECONDARY_SITE_URL, 'https://codewithtushar.me'],
+      sameAs: ['https://www.codewithtushar.me'],
       description: description,
       publisher: {
         '@type': 'Person',

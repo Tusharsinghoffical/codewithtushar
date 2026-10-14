@@ -91,7 +91,7 @@ graph TD
 ### C. Environment Variables
 - `PORT`: Server port for local Vite dev server (default: `3000`).
 - `NODE_ENV`: Runtime mode (`production` vs `development`).
-- `VITE_APP_URL`: Canonical site URL (`https://codewithmrsingh.me`).
+- `VITE_APP_URL`: Canonical site URL (`https://codewithtushar.me`).
 - `VITE_APP_SECONDARY_URL`: Secondary canonical mirror (`https://codewithtushar.me`).
 
 ### D. File Uploads, Webhooks, Background Jobs, DB Models

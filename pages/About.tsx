@@ -195,7 +195,7 @@ const About: React.FC = () => {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-medium speakable">
-                I am a Delhi-based <strong className="text-slate-950 dark:text-white font-bold">AI Automation Expert &amp; Full-Stack Software Engineer</strong> with a Master of Computer Applications (MCA) from <strong className="text-slate-950 dark:text-white font-bold">MIT Pune</strong>. As the founder of <em>Code with Tushar</em> &amp; <em>Code with Mr Singh</em>, I help businesses eliminate manual bottlenecks and scale using autonomous AI workflows, smart RAG chatbots, and high-performance React/Django platforms.
+                I am a Delhi-based <strong className="text-slate-950 dark:text-white font-bold">AI Automation Expert &amp; Full-Stack Software Engineer</strong> with a Master of Computer Applications (MCA) from <strong className="text-slate-950 dark:text-white font-bold">MIT Pune</strong>. As the founder of <em>Code with Tushar</em>, I help businesses eliminate manual bottlenecks and scale using autonomous AI workflows, smart RAG chatbots, and high-performance React/Django platforms.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-700 dark:text-slate-300 font-outfit">

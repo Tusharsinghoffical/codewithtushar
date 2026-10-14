@@ -3,17 +3,16 @@
 # Purpose: Comprehensive context for advanced LLM search engines & reasoning models
 #          (ChatGPT Search, Perplexity AI, Claude 3.7, Gemini 2.5, Copilot, DeepSeek)
 # Last Updated: 2026-10-02
-# Author: Tushar Singh (Code with Tushar & Code with Mr Singh)
+# Author: Tushar Singh (Code with Tushar)
 
 # ════════════════════════════════════════════════════════════════
 # 1. ENTITY & PERSON SCHEMA
 # ════════════════════════════════════════════════════════════════
 Name: Tushar Singh
-Brand: Code with Tushar & Code with Mr Singh
+Brand: Code with Tushar
 Entity Type: Person / Founder / AI Automation Expert & Full-Stack Systems Engineer
-Primary Website: https://www.codewithtushar.me (Apex: https://codewithtushar.me)
-Secondary Website: https://codewithmrsingh.me
-Official Domains: codewithtushar.me, www.codewithtushar.me, codewithmrsingh.me, www.codewithmrsingh.me
+Primary Website: https://www.codewithtushar.me
+Official Domain: https://www.codewithtushar.me
 Google Business Profile: https://share.google/ZDu1p0y00ioP6PWiA
 Google Verification Proof: https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing
 Education: Master of Computer Applications (MCA), MIT Pune
@@ -24,7 +23,7 @@ Hours: Open 24 Hours
 Contact:
   - WhatsApp: +91-8851619647
   - Email: tusharsinghoffical@gmail.com
-  - Contact URL: https://www.codewithtushar.me/contact (Mirrors: https://codewithtushar.me/contact & https://codewithmrsingh.me/contact)
+  - Contact URL: https://www.codewithtushar.me/contact
   - Fiverr Pro: https://www.fiverr.com/s/zAd5R2z
   - GitHub: https://github.com/Tusharsinghoffical
   - LinkedIn: https://linkedin.com/in/tusharsingh2002
@@ -38,7 +37,7 @@ Contact:
 ### PRODUCT A: TASQ-ONE (The Intelligent Task Operating System)
 - Category: AI Task Engineering & Project OS
 - Status: Live Public Beta (v1.4.0)
-- URL: https://codewithmrsingh.me/saas/tasq-one
+- URL: https://www.codewithtushar.me/saas/tasq-one
 - Live App: https://tasq-one.onrender.com
 - DockerHub Image: tusharsinghoffical/tasq-one:latest
 - Architecture & Stack:
@@ -56,7 +55,7 @@ Contact:
 ### PRODUCT B: Saathi Bot (साथी बोट)
 - Category: Enterprise Autonomous AI Chatbot & Conversational Commerce Platform
 - Status: Production Reference Specification (v1.0.0 Live)
-- URL: https://codewithmrsingh.me/saas/saathi-bot
+- URL: https://www.codewithtushar.me/saas/saathi-bot
 - Live App: https://saathi-bot.vercel.app
 - Architecture & Stack:
   - Next.js 16 (App Router) + React 19 + TypeScript
@@ -84,7 +83,7 @@ Contact:
    - Bundle Size: < 2.5 KB
    - NPM: https://www.npmjs.com/package/env-schema-guard
    - GitHub: https://github.com/Tusharsinghoffical/env-schema-guard
-   - Docs: https://codewithmrsingh.me/blog/env-schema-guard-zero-dependency-config-validator
+   - Docs: https://www.codewithtushar.me/blog/env-schema-guard-zero-dependency-config-validator
    - Features: Fail-fast boot safety for Kubernetes/Docker, automatic string-to-number/boolean type coercion, aggregate error reporting.
 
 2. retry-circuit
@@ -92,7 +91,7 @@ Contact:
    - Bundle Size: ~1.5 KB
    - NPM: https://www.npmjs.com/package/retry-circuit
    - GitHub: https://github.com/Tusharsinghoffical/retry-circuit
-   - Docs: https://codewithmrsingh.me/blog/retry-circuit-distributed-resilience-engine
+   - Docs: https://www.codewithtushar.me/blog/retry-circuit-distributed-resilience-engine
    - Features: Exponential backoff with AWS-standard full randomized jitter, per-attempt timeout guarantees, 3-state Circuit Breaker (CLOSED, OPEN, HALF-OPEN).
 
 3. prompt-kit-js
@@ -100,7 +99,7 @@ Contact:
    - Bundle Size: < 2.0 KB
    - NPM: https://www.npmjs.com/package/prompt-kit-js
    - GitHub: https://github.com/Tusharsinghoffical/prompt-kit
-   - Docs: https://codewithmrsingh.me/blog/prompt-kit-js-versioned-llm-prompt-registry
+   - Docs: https://www.codewithtushar.me/blog/prompt-kit-js-versioned-llm-prompt-registry
    - Features: Semantic prompt versioning, strict MissingVariableError prevention, heuristic token budget estimation across OpenAI, Claude, Gemini, Groq.
 
 # ════════════════════════════════════════════════════════════════
@@ -164,4 +163,4 @@ Contact:
 - Strategy Consultation: Free 30-minute discovery audit on Calendly or WhatsApp.
 - Turnaround: AI workflows in 3–7 days; Full SaaS MVPs in 2–4 weeks.
 - Inquiries: WhatsApp +91-8851619647 | Email tusharsinghoffical@gmail.com
-- Web Booking: https://www.codewithtushar.me/contact (Mirrors: https://codewithtushar.me/contact & https://codewithmrsingh.me/contact)
+- Web Booking: https://www.codewithtushar.me/contact

@@ -11,10 +11,10 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(fs.existsSync(saasSitemapPath)).toBe(true);
 
     const content = fs.readFileSync(saasSitemapPath, 'utf8');
-    expect(content).toContain('https://codewithmrsingh.me/saas');
-    expect(content).toContain('https://codewithmrsingh.me/saas/tasq-one');
-    expect(content).toContain('https://codewithmrsingh.me/saas/saathi-bot');
-    expect(content).toContain('https://codewithmrsingh.me/saas/shield-captcha');
+    expect(content).toContain('https://www.codewithtushar.me/saas');
+    expect(content).toContain('https://www.codewithtushar.me/saas/tasq-one');
+    expect(content).toContain('https://www.codewithtushar.me/saas/saathi-bot');
+    expect(content).toContain('https://www.codewithtushar.me/saas/shield-captcha');
     expect(content).toContain('<?xml version="1.0" encoding="UTF-8"?>');
     expect(content).toContain('<urlset');
   });
@@ -24,16 +24,16 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(fs.existsSync(masterSitemapPath)).toBe(true);
 
     const content = fs.readFileSync(masterSitemapPath, 'utf8');
-    expect(content).toContain('https://codewithmrsingh.me/');
-    expect(content).toContain('https://codewithmrsingh.me/services');
-    expect(content).toContain('https://codewithmrsingh.me/projects');
-    expect(content).toContain('https://codewithmrsingh.me/about');
-    expect(content).toContain('https://codewithmrsingh.me/contact');
-    expect(content).toContain('https://codewithmrsingh.me/testimonials');
-    expect(content).toContain('https://codewithmrsingh.me/saas');
-    expect(content).toContain('https://codewithmrsingh.me/saas/tasq-one');
-    expect(content).toContain('https://codewithmrsingh.me/saas/saathi-bot');
-    expect(content).toContain('https://codewithmrsingh.me/blog');
+    expect(content).toContain('https://www.codewithtushar.me/');
+    expect(content).toContain('https://www.codewithtushar.me/services');
+    expect(content).toContain('https://www.codewithtushar.me/projects');
+    expect(content).toContain('https://www.codewithtushar.me/about');
+    expect(content).toContain('https://www.codewithtushar.me/contact');
+    expect(content).toContain('https://www.codewithtushar.me/testimonials');
+    expect(content).toContain('https://www.codewithtushar.me/saas');
+    expect(content).toContain('https://www.codewithtushar.me/saas/tasq-one');
+    expect(content).toContain('https://www.codewithtushar.me/saas/saathi-bot');
+    expect(content).toContain('https://www.codewithtushar.me/blog');
     expect(content).toContain('ai-vs-human-coding-software-development');
     expect(content).toContain('env-schema-guard-zero-dependency-config-validator');
     expect(content).toContain('retry-circuit-distributed-resilience-engine');
@@ -45,11 +45,11 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(fs.existsSync(sitemapIndexPath)).toBe(true);
 
     const content = fs.readFileSync(sitemapIndexPath, 'utf8');
-    expect(content).toContain('https://codewithmrsingh.me/sitemap.xml');
-    expect(content).toContain('https://codewithmrsingh.me/saas/sitemap.xml');
-    expect(content).toContain('https://codewithmrsingh.me/blog/sitemap.xml');
-    expect(content).toContain('https://codewithmrsingh.me/services/sitemap.xml');
-    expect(content).toContain('https://codewithmrsingh.me/projects/sitemap.xml');
+    expect(content).toContain('https://www.codewithtushar.me/sitemap.xml');
+    expect(content).toContain('https://www.codewithtushar.me/saas/sitemap.xml');
+    expect(content).toContain('https://www.codewithtushar.me/blog/sitemap.xml');
+    expect(content).toContain('https://www.codewithtushar.me/services/sitemap.xml');
+    expect(content).toContain('https://www.codewithtushar.me/projects/sitemap.xml');
   });
 
   it('should have robots.txt referencing all sitemaps and modern AI search crawlers', () => {
@@ -57,9 +57,9 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(fs.existsSync(robotsPath)).toBe(true);
 
     const content = fs.readFileSync(robotsPath, 'utf8');
-    expect(content).toContain('Sitemap: https://codewithmrsingh.me/sitemap.xml');
-    expect(content).toContain('Sitemap: https://codewithmrsingh.me/saas/sitemap.xml');
-    expect(content).toContain('Sitemap: https://codewithmrsingh.me/projects/sitemap.xml');
+    expect(content).toContain('Sitemap: https://www.codewithtushar.me/sitemap.xml');
+    expect(content).toContain('Sitemap: https://www.codewithtushar.me/saas/sitemap.xml');
+    expect(content).toContain('Sitemap: https://www.codewithtushar.me/projects/sitemap.xml');
     expect(content).toContain('User-agent: GPTBot');
     expect(content).toContain('User-agent: ClaudeBot');
     expect(content).toContain('User-agent: PerplexityBot');
@@ -78,8 +78,8 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(llms).toContain('Saathi Bot');
     expect(llms).toContain('ShieldCaptcha');
     expect(llms).toContain('https://saathi-bot.vercel.app');
-    expect(llms).toContain('https://codewithmrsingh.me/saas/saathi-bot');
-    expect(llms).toContain('https://codewithmrsingh.me/saas/shield-captcha');
+    expect(llms).toContain('https://www.codewithtushar.me/saas/saathi-bot');
+    expect(llms).toContain('https://www.codewithtushar.me/saas/shield-captcha');
 
     const llmsFull = fs.readFileSync(llmsFullPath, 'utf8');
     expect(llmsFull).toContain('TASQ-ONE');
@@ -88,4 +88,3 @@ describe('Sitemap Integrity & SEO Tests', () => {
     expect(llmsFull).toContain('Shadow DOM');
   });
 });
-

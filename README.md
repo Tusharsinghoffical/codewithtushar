@@ -13,7 +13,7 @@
 
 <br/>
 
-<h2>Code with Tushar &amp; Code with Mr Singh — Enterprise AI Automation, SaaS Suites &amp; Engineering Platform</h2>
+<h2>Code with Tushar — Enterprise AI Automation, SaaS Suites &amp; Engineering Platform</h2>
 
 <p><em>Official commercial portfolio, AI consultation portal, and Next-Gen SaaS launch platform for Tushar Singh.<br/>React 19, TypeScript 5.8, Vite 6, SSG multi-route pre-rendering, and intelligent Gemini AI lead conversion.</em></p>
 
@@ -31,8 +31,7 @@
 
 <br/>
 
-[![Official Primary Domain](https://img.shields.io/badge/🌐_PRIMARY_DOMAIN-www.codewithtushar.me-06B6D4?style=for-the-badge)](https://www.codewithtushar.me)
-[![Official Mirror Domain](https://img.shields.io/badge/🌐_OFFICIAL_DOMAIN-codewithmrsingh.me-6366F1?style=for-the-badge)](https://codewithmrsingh.me)
+[![Official Domain](https://img.shields.io/badge/🌐_OFFICIAL_DOMAIN-www.codewithtushar.me-06B6D4?style=for-the-badge)](https://www.codewithtushar.me)
 [![Google Verified](https://img.shields.io/badge/🛡️_GOOGLE_VERIFIED-Tushar_Singh_Freelancing-4285F4?style=for-the-badge&logo=google)](https://share.google/ZDu1p0y00ioP6PWiA)
 [![Fiverr Pro](https://img.shields.io/badge/⭐_FIVERR_PRO-fiverr.com/s/zAd5R2z-1DBF73?style=for-the-badge&logo=fiverr)](https://www.fiverr.com/s/zAd5R2z)
 
@@ -50,9 +49,9 @@
 
 ## 🎯 Overview
 
-> **Code with Tushar & Code with Mr Singh (CMS)** is the high-performance commercial portfolio, AI client acquisition portal, and SaaS launchpad of **Tushar Singh** (MCA, MIT Pune) — Full-Stack AI Engineer, SaaS Architect, and Top-Rated Developer based in New Delhi, India.
+> **Code with Tushar (CMS)** is the high-performance commercial portfolio, AI client acquisition portal, and SaaS launchpad of **Tushar Singh** (MCA, MIT Pune) — Full-Stack AI Engineer, SaaS Architect, and Top-Rated Developer based in New Delhi, India.
 
-Unlike traditional static developer portfolios that serve merely as resume placeholders, Code with Tushar & Code with Mr Singh operates as an active **digital business engine**:
+Unlike traditional static developer portfolios that serve merely as resume placeholders, Code with Tushar operates as an active **digital business engine**:
 - Ingests visitor inquiries through an **intelligent Google Gemini AI assistant**.
 - Triages technical requirements and calculates instant project scopes.
 - Packages conversational context into a **1-click direct WhatsApp booking handoff**.
@@ -86,7 +85,7 @@ Unlike traditional static developer portfolios that serve merely as resume place
 <div align="center">
 
 ```
-CONVENTIONAL PORTFOLIOS                      CODE WITH TUSHAR & CODE WITH MR SINGH
+CONVENTIONAL PORTFOLIOS                      CODE WITH TUSHAR
 ───────────────────────                      ─────────────────────────────────────
 ❌ Passive Static Resume                     ✅ Active Commercial Lead Conversion Engine
    (Visitors view page and bounce)              (Gemini AI assistant qualifies clients & bookings)
@@ -328,8 +327,7 @@ Fill in your configuration:
 ```env
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
 VITE_WHATSAPP_NUMBER=919876543210
-VITE_SITE_URL=https://codewithmrsingh.me
-VITE_SECONDARY_SITE_URL=https://codewithtushar.me
+VITE_SITE_URL=https://www.codewithtushar.me
 ```
 
 ### 3 · Launch Local Development Server
@@ -364,9 +362,8 @@ This repository is pre-configured for instant zero-hassle deployment on both **R
    - **Publish Directory**: `./dist`
    - **SPA Fallback**: `/*` rewritten to `/index.html`
    - **Security Headers & Caching**: Pre-configured in `render.yaml`
-4. In the Render Dashboard under **Settings**, configure your custom domains:
-   - `codewithmrsingh.me` (Primary)
-   - `codewithtushar.me` (Mirror / Secondary)
+4. In the Render Dashboard under **Settings**, configure your custom domain:
+   - `www.codewithtushar.me` (or `codewithtushar.me` with 301 redirect)
 
 *(Alternatively, to create manually: Choose **New Static Site**, enter Build Command `npm install && npm run build`, and Publish Directory `dist`).*
 
@@ -383,8 +380,7 @@ This repository is pre-configured for instant zero-hassle deployment on both **R
    - **Rewrites & Headers**: Pre-configured for SPA routing & security
 4. Under **Environment Variables**, optionally set:
    - `NODE_ENV` = `production`
-   - `VITE_APP_URL` = `https://codewithmrsingh.me`
-   - `VITE_APP_SECONDARY_URL` = `https://codewithtushar.me`
+   - `VITE_APP_URL` = `https://www.codewithtushar.me`
 5. Click **Deploy**. Vercel will build and distribute your site globally across its Edge Network.
 
 ---
@@ -395,7 +391,7 @@ This repository is pre-configured for instant zero-hassle deployment on both **R
 
 | Channel | Details |
 |:--------|:--------|
-| 🌐 **Official Websites** | [codewithmrsingh.me](https://codewithmrsingh.me) • [codewithtushar.me](https://codewithtushar.me) |
+| 🌐 **Official Website** | [www.codewithtushar.me](https://www.codewithtushar.me) |
 | 👨‍💻 **Founder & Architect** | **Tushar Singh** (AI Automation & SaaS Specialist) |
 | 📱 **WhatsApp Consultation**| [Direct WhatsApp Booking](https://wa.me/919876543210) |
 | 📧 **Business Email** | [tusharsingh.dev@gmail.com](mailto:tusharsingh.dev@gmail.com) |
@@ -419,10 +415,10 @@ Distributed under the **MIT License**. See `LICENSE` for complete terms.
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                                                                 │
-│   🚀  CODE WITH MR SINGH & CODE WITH TUSHAR                     │
+│   🚀  CODE WITH TUSHAR                                          │
 │                                                                 │
 │   Crafted with ❤️ by Tushar Singh                               │
-│   codewithmrsingh.me  •  codewithtushar.me                      │
+│   codewithtushar.me  •  www.codewithtushar.me                   │
 │   New Delhi / Pune, India  ·  React 19 · Vite 6 · Gemini AI     │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘

@@ -156,7 +156,7 @@ const PostView: React.FC<{ post: BlogPost }> = ({ post }) => {
                   <p className="text-sm font-outfit font-black text-slate-950 dark:text-white">Tushar Singh</p>
                   <ShieldCheck size={14} className="text-emerald-500" />
                 </div>
-                <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Founder, Code with Tushar &amp; Code with Mr Singh • {post.dateDisplay || '2026'}</p>
+                <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Founder, Code with Tushar • {post.dateDisplay || '2026'}</p>
               </div>
             </div>
 
@@ -193,7 +193,7 @@ const PostView: React.FC<{ post: BlogPost }> = ({ post }) => {
             </div>
 
             <SharePageButton
-              title={`${post.title} | Code with Tushar & Code with Mr Singh`}
+              title={`${post.title} | Code with Tushar`}
               text={post.excerpt}
               url={postUrl}
               buttonLabel="Share This Guide"
@@ -369,7 +369,7 @@ const Blog: React.FC = () => {
         <div className="max-w-4xl mx-auto p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-white/10 text-center space-y-5 shadow-lg">
           <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400">Join the Community</span>
           <h3 className="text-2xl sm:text-3xl font-outfit font-black text-slate-950 dark:text-white">
-            Learn Coding &amp; AI with Code with Tushar &amp; Code with Mr Singh
+            Learn Coding &amp; AI with Code with Tushar
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-lg mx-auto leading-relaxed font-medium">
             Subscribe on YouTube and follow on Instagram for weekly practical tutorials on n8n workflows, Python, full-stack development, and AI agent engineering.

@@ -25,7 +25,7 @@ import Sitemap from './pages/Sitemap';
 import NotFound from './pages/NotFound';
 import ErrorBoundary from './components/ErrorBoundary';
 import {
-  SITE_URL, SECONDARY_SITE_URL, SITE_NAME, SECONDARY_SITE_NAME,
+  SITE_URL, SITE_NAME,
   SITE_DEFAULT_OG_IMAGE, SITE_DEFAULT_OG_ALT,
   SITE_DEFAULT_OG_WIDTH, SITE_DEFAULT_OG_HEIGHT,
   SITE_DATE_MODIFIED, PAGE_OG, getActiveDomain
@@ -194,7 +194,7 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
   const location = useLocation();
 
   useEffect(() => {
-    const fullTitle = `${title} | ${SITE_NAME} & ${SECONDARY_SITE_NAME}`;
+    const fullTitle = `${title} | ${SITE_NAME}`;
     document.title = fullTitle;
 
     const baseUrl = getActiveDomain();
@@ -259,9 +259,9 @@ const PageWrapper: React.FC<{ children: React.ReactNode, title: string, descript
     setMeta('meta[name="distribution"]', 'global');
     setMeta('meta[name="rating"]', 'general');
     setMeta('meta[name="revisit-after"]', '3 days');
-    setMeta('meta[name="publisher"]', 'Code with Tushar & Code with Mr Singh');
+    setMeta('meta[name="publisher"]', 'Code with Tushar');
     setMeta('meta[name="designer"]', 'Tushar Singh');
-    setMeta('meta[name="copyright"]', '© 2026 Code with Tushar & Code with Mr Singh. All rights reserved.');
+    setMeta('meta[name="copyright"]', '© 2026 Code with Tushar. All rights reserved.');
     setMeta('meta[name="owner"]', 'Tushar Singh');
     setMeta('meta[name="category"]', 'Technology, Web Development, AI/ML, Data Science, Business Automation');
     setMeta('meta[name="topic"]', 'AI Automation Services, Full-Stack Development, Chatbot Development, Freelance Developer India');
@@ -351,7 +351,7 @@ const updateStructuredData = (title: string, description: string, path: string) 
     "@type": "WebPage",
     "@id": `${pageUrl}#webpage`,
     "url": pageUrl,
-    "name": `${title} | ${SITE_NAME} & ${SECONDARY_SITE_NAME}`,
+    "name": `${title} | ${SITE_NAME}`,
     "description": description,
     "isPartOf": { "@id": `${baseUrl}/#website` },
     "about": { "@id": `${baseUrl}/#person` },
@@ -432,9 +432,9 @@ const updateStructuredData = (title: string, description: string, path: string) 
         "@type": "Person",
         "@id": `${baseUrl}/#person`,
         "name": "Tushar Singh",
-        "alternateName": ["Code with Tushar", "Code with Mr Singh", "codewithtushar.me", "www.codewithtushar.me", "codewithmrsingh.me"],
+        "alternateName": ["Code with Tushar", "codewithtushar.me", "www.codewithtushar.me"],
         "jobTitle": "AI Automation Expert & Full-Stack Developer",
-        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from MIT Pune. Founder of Code with Tushar & Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
+        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from MIT Pune. Founder of Code with Tushar. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
         "image": `${SITE_URL}/tushar-singh-optimized.jpg`,
         "url": `${baseUrl}/about`,
         "address": {
@@ -447,7 +447,6 @@ const updateStructuredData = (title: string, description: string, path: string) 
         },
         "sameAs": [
           SITE_URL,
-          SECONDARY_SITE_URL,
           "https://www.fiverr.com/s/zAd5R2z",
           "https://share.google/ZDu1p0y00ioP6PWiA",
           "https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing",
@@ -774,9 +773,9 @@ const App: React.FC = () => {
               ><Contact /></PageWrapper>} />
 
               <Route path="/sitemap" element={<PageWrapper
-                title="HTML Sitemap & Complete Page Index | Code with Mr Singh"
+                title="HTML Sitemap & Complete Page Index | Code with Tushar"
                 description="🗺️ Complete HTML sitemap and directory of all pages, SaaS suites, client projects, services, and technical blog posts by Tushar Singh."
-                keywords="HTML sitemap, website directory, page index, all pages Tushar Singh, Code with Mr Singh sitemap"
+                keywords="HTML sitemap, website directory, page index, all pages Tushar Singh, Code with Tushar sitemap"
               ><Sitemap /></PageWrapper>} />
 
               {/* Explicit 404 Route */}

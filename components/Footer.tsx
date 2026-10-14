@@ -138,7 +138,7 @@ export const Footer: React.FC = () => {
               </Link>
               <div className="flex items-center gap-2 text-xs font-semibold text-indigo-400">
                 <Building2 size={13} />
-                <span>Tushar Singh freelancing · Code with Tushar · Code with Mr Singh</span>
+                <span>Tushar Singh freelancing · Code with Tushar</span>
               </div>
               <p className="text-xs sm:text-[13px] text-slate-400 leading-relaxed max-w-sm">
                 Personal freelance portfolio of <strong>Tushar Singh</strong> (MCA, MIT Pune). I build custom AI tools, smart WhatsApp bots, fast websites, and full software platforms that help businesses save time and grow.

@@ -23,7 +23,7 @@ const Sitemap: React.FC = () => {
           </h1>
           <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             Direct access to all pages, proprietary SaaS platforms, engineering case studies,
-            and technical blog articles published on <strong>Code with Tushar</strong> &amp; <strong>Code with Mr Singh</strong> (Tushar Singh).
+            and technical blog articles published on <strong>Code with Tushar</strong> (Tushar Singh).
           </p>
         </div>
 

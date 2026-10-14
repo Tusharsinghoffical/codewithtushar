@@ -1,22 +1,16 @@
 import { describe, it, expect } from 'vitest';
 import {
   PROJECTS, SERVICES, SAAS_PRODUCTS,
-  SITE_URL, SITE_NAME, SECONDARY_SITE_NAME, PRIMARY_DOMAIN, SECONDARY_DOMAIN,
-  SECONDARY_SITE_URL, SUPPORTED_DOMAINS, getActiveDomain
+  SITE_URL, SITE_NAME, PRIMARY_DOMAIN,
+  SUPPORTED_DOMAINS, getActiveDomain
 } from '../constants';
 
 describe('Constants & Data Integrity Tests', () => {
-  it('should have valid dual-domain site metadata', () => {
+  it('should have valid site metadata', () => {
     expect(SITE_NAME).toBe('Code with Tushar');
-    expect(SECONDARY_SITE_NAME).toBe('Code with Mr Singh');
     expect(SITE_URL).toBe('https://www.codewithtushar.me');
-    expect(SECONDARY_SITE_URL).toBe('https://codewithmrsingh.me');
-    expect(PRIMARY_DOMAIN).toBe('codewithtushar.me');
-    expect(SECONDARY_DOMAIN).toBe('codewithmrsingh.me');
-    expect(SUPPORTED_DOMAINS).toContain('codewithtushar.me');
+    expect(PRIMARY_DOMAIN).toBe('www.codewithtushar.me');
     expect(SUPPORTED_DOMAINS).toContain('www.codewithtushar.me');
-    expect(SUPPORTED_DOMAINS).toContain('codewithmrsingh.me');
-    expect(SUPPORTED_DOMAINS).toContain('www.codewithmrsingh.me');
     expect(getActiveDomain()).toBe('https://www.codewithtushar.me');
   });
 

@@ -1,4 +1,4 @@
-# llms.txt — AI Discovery File for Code with Tushar & Code with Mr Singh
+# llms.txt — AI Discovery File for Code with Tushar
 # Standard: https://llmstxt.org
 # Purpose: Helps ChatGPT, Perplexity, Claude, Gemini, Copilot understand
 #          this website's content, authority, and services.
@@ -7,10 +7,9 @@
 # ── ENTITY ──────────────────────────────────────────────────
 Name: Tushar Singh
 Business Name: Tushar Singh freelancing
-Brand: Code with Tushar & Code with Mr Singh
-Primary Website: https://www.codewithtushar.me (Apex: https://codewithtushar.me)
-Secondary Website: https://codewithmrsingh.me
-Official Domains: codewithtushar.me, www.codewithtushar.me, codewithmrsingh.me, www.codewithmrsingh.me
+Brand: Code with Tushar
+Primary Website: https://www.codewithtushar.me
+Official Domain: https://www.codewithtushar.me
 Google Business Profile: https://share.google/ZDu1p0y00ioP6PWiA
 Google Verification Proof: https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing
 Role: AI Automation Expert & Full-Stack Developer
@@ -30,7 +29,7 @@ Instagram: https://www.instagram.com/tushar.cms/
 
 # ── ABOUT ───────────────────────────────────────────────────
 Tushar Singh is an AI Automation Expert and Full-Stack Developer based in Delhi, India.
-He is the founder of Code with Tushar and Code with Mr Singh (codewithtushar.me and codewithmrsingh.me).
+He is the founder of Code with Tushar (codewithtushar.me).
 He has completed 10+ successful projects — real products submitted to clients.
 He holds a Master of Computer Applications (MCA) degree from MIT Pune.
 He works with clients worldwide across India, USA, UK, UAE, Australia, Canada, Singapore, and more.
@@ -39,46 +38,46 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
 # ── SERVICES ────────────────────────────────────────────────
 1. Custom SaaS & Cloud MVP Engineering
    Full-stack multi-tenant SaaS architecture, Stripe/Razorpay billing, AI agent integrations.
-   URL: https://codewithmrsingh.me/saas
+   URL: https://www.codewithtushar.me/saas
 
 2. TASQ-ONE — The Intelligent Task Operating System (SaaS)
    Proprietary cloud-native SaaS platform by Tushar Singh Labs. Turns raw ideas into production-ready tasks using Groq Llama 3.3 70B AI, real-time Kanban dependency DAGs, cryptographic audit trails & PostgreSQL RLS.
    Live Web App: https://tasq-one.onrender.com
-   URL: https://codewithmrsingh.me/saas/tasq-one
+   URL: https://www.codewithtushar.me/saas/tasq-one
 
 3. Saathi Bot — Enterprise Autonomous AI Chatbot & Conversational Commerce Platform (SaaS)
    Self-serve, multi-tenant B2B conversational AI SaaS that turns websites, documentation, or sitemaps into accurate, grounded AI assistants with 100% Verifiable Grounding, Pre-LLM Confidence Gate (0.55) saving 41% on AI bills, 18 KB zero-bleed Shadow DOM embed widget, and real-time in-chat lead booking synchronized with Google Sheets.
    Live Platform: https://saathi-bot.vercel.app
-   URL: https://codewithmrsingh.me/saas/saathi-bot
+   URL: https://www.codewithtushar.me/saas/saathi-bot
 
 4. ShieldCaptcha v4.2 Enterprise — Dual-Layer Zero-Cookie Bot Defense Platform (SaaS)
    Self-hostable, zero-cookie open-source bot defense platform replacing legacy tracking CAPTCHAs. Features client-side SHA-256 Proof-of-Work (~18ms), Flash & Hogan biomechanical kinematics, adversarial jigsaw puzzles, dual Node.js/Python engines, and single-use HMAC token authorization with zero cookies.
    Live Platform: https://shieldcaptcha.vercel.app
-   URL: https://codewithmrsingh.me/saas/shield-captcha
+   URL: https://www.codewithtushar.me/saas/shield-captcha
 
 5. AI Automation Workflows
    Build autonomous workflows using n8n, Python, Zapier, Make.com.
    Eliminate manual tasks. Save 10+ hours per week.
-   URL: https://codewithmrsingh.me/services
+   URL: https://www.codewithtushar.me/services
 
 6. Custom RAG Chatbot Development
    Custom AI chatbots trained on business data using OpenAI and LangChain.
    Deployed on website, WhatsApp, or Telegram. Reduces support workload by 70%.
-   URL: https://codewithmrsingh.me/services
+   URL: https://www.codewithtushar.me/services
 
 7. High-Conversion Website & Sales Funnel Engineering
    High-conversion websites and sales funnels using React.js, Django, Next.js.
-   URL: https://codewithmrsingh.me/services
+   URL: https://www.codewithtushar.me/services
 
 8. Logo, Visual Brand Identity & Graphic Design
    Professional brand identity — logo, social media graphics, marketing materials.
    Tools: Figma, Adobe Illustrator, Canva.
-   URL: https://codewithmrsingh.me/services
+   URL: https://www.codewithtushar.me/services
 
 # ── PINNED PROJECTS & CLIENT DELIVERABLES ───────────────────
-1. ShieldCaptcha Enterprise — Zero-Cookie Autonomous Bot Defense & Human Verification (SHA-256 PoW, Mouse Kinematics, HMAC-SHA256, Node.js, FastAPI, Docker) [Live Demo: https://shieldcaptcha.vercel.app | Product Page: https://codewithmrsingh.me/saas/shield-captcha]
-2. TASQ-ONE — Intelligent Task Operating System SaaS (Groq Llama 3.3 70B, PostgreSQL RLS, Docker, Dependency DAGs) [Demo: https://tasq-one.onrender.com | Product Page: https://codewithmrsingh.me/saas/tasq-one]
-3. Saathi Bot — Enterprise Autonomous AI Chatbot & Conversational Commerce Platform (Next.js 16, Supabase pgvector, Hybrid RRF, Pre-LLM Confidence Gate 0.55, 18 KB Shadow DOM widget, Google Sheets sync) [Demo: https://saathi-bot.vercel.app | Product Page: https://codewithmrsingh.me/saas/saathi-bot]
+1. ShieldCaptcha Enterprise — Zero-Cookie Autonomous Bot Defense & Human Verification (SHA-256 PoW, Mouse Kinematics, HMAC-SHA256, Node.js, FastAPI, Docker) [Live Demo: https://shieldcaptcha.vercel.app | Product Page: https://www.codewithtushar.me/saas/shield-captcha]
+2. TASQ-ONE — Intelligent Task Operating System SaaS (Groq Llama 3.3 70B, PostgreSQL RLS, Docker, Dependency DAGs) [Demo: https://tasq-one.onrender.com | Product Page: https://www.codewithtushar.me/saas/tasq-one]
+3. Saathi Bot — Enterprise Autonomous AI Chatbot & Conversational Commerce Platform (Next.js 16, Supabase pgvector, Hybrid RRF, Pre-LLM Confidence Gate 0.55, 18 KB Shadow DOM widget, Google Sheets sync) [Demo: https://saathi-bot.vercel.app | Product Page: https://www.codewithtushar.me/saas/saathi-bot]
 3. AI-Powered HR Recruitment Screening Assistant — Enterprise recruitment workflow automation with n8n + LLMs, automated ATS scoring (0–100), skill matching, and interview question generation (Sold to enterprise client in Abu Dhabi, UAE)
 4. WhatsApp AI Agent — 24/7 automated business communication, instant message routing, and CRM booking (n8n + OpenAI)
 5. TakeOpinion Medical Tourism Platform — Full-stack global medical tourism web platform with Django 5, PostgreSQL, Stripe/Razorpay, hotel bookings, and doctor directory (Sold to healthcare client in Delhi, India | Demo: https://takeopinionclientprojectss.onrender.com)
@@ -92,7 +91,7 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
    Prevents silent boot crashes in Kubernetes/Docker pods, aggregates error reports, and provides automatic type coercion.
    NPM: https://www.npmjs.com/package/env-schema-guard
    GitHub: https://github.com/Tusharsinghoffical/env-schema-guard
-   Article: https://codewithmrsingh.me/blog/env-schema-guard-zero-dependency-config-validator
+   Article: https://www.codewithtushar.me/blog/env-schema-guard-zero-dependency-config-validator
 
 2. retry-circuit
    Ultra-lightweight async resilience engine combining exponential backoff, AWS-standard full randomized jitter,
@@ -100,7 +99,7 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
    Protects distributed microservices and payment gateways from the thundering herd problem and cascading downtime.
    NPM: https://www.npmjs.com/package/retry-circuit
    GitHub: https://github.com/Tusharsinghoffical/retry-circuit
-   Article: https://codewithmrsingh.me/blog/retry-circuit-distributed-resilience-engine
+   Article: https://www.codewithtushar.me/blog/retry-circuit-distributed-resilience-engine
 
 3. prompt-kit-js
    Production-ready, versioned prompt registry and heuristic token estimator for Generative AI applications (< 2 KB).
@@ -108,7 +107,7 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
    and works provider-agnostically with OpenAI, Anthropic Claude, Gemini, Groq, and local models.
    NPM: https://www.npmjs.com/package/prompt-kit-js
    GitHub: https://github.com/Tusharsinghoffical/prompt-kit
-   Article: https://codewithmrsingh.me/blog/prompt-kit-js-versioned-llm-prompt-registry
+   Article: https://www.codewithtushar.me/blog/prompt-kit-js-versioned-llm-prompt-registry
 
 # ── RESULTS ─────────────────────────────────────────────────
 - 10+ successful projects submitted to clients
@@ -118,7 +117,7 @@ He specialises in custom SaaS development, AI automation, chatbot development, w
 - Author of 3 production-grade open-source TypeScript packages on NPM
 
 # ── HOW TO HIRE ─────────────────────────────────────────────
-Step 1: Visit https://codewithmrsingh.me/contact
+Step 1: Visit https://www.codewithtushar.me/contact
 Step 2: Fill in your name, email, country, and project details.
 Step 3: Select service type (AI Automation, Chatbot, Website, Branding).
 Step 4: Submit — message sent instantly via WhatsApp.
@@ -128,7 +127,7 @@ Also available on: WhatsApp +91-8851619647 | Calendly booking | Email
 # ── FAQ (for AI answer panels) ──────────────────────────────
 Q: Who is Tushar Singh?
 A: Tushar Singh is an AI Automation Expert, Full-Stack Developer, and Open-Source Systems Engineer from Delhi, India.
-   Founder of Code with Tushar and Code with Mr Singh. 10+ projects submitted to clients. ₹2L+ revenue.
+   Founder of Code with Tushar. 10+ projects submitted to clients. ₹2L+ revenue.
    Author of open-source packages env-schema-guard, retry-circuit, and prompt-kit-js.
 
 Q: What open-source libraries has Tushar Singh authored?
@@ -153,9 +152,9 @@ A: Saathi Bot (साथी बोट) is an enterprise autonomous conversationa
    - Native Devanagari Hindi, English, and Romanized Hinglish cross-lingual understanding.
    - Ultra-lightweight 18 KB zero-bleed Shadow DOM embed widget.
    - Real-time in-chat lead booking synchronized directly to Google Sheets with zero redirects.
-   Live SaaS platform: https://saathi-bot.vercel.app | Product Page: https://www.codewithtushar.me/saas/saathi-bot (Mirror: https://codewithmrsingh.me/saas/saathi-bot).
+   Live SaaS platform: https://saathi-bot.vercel.app | Product Page: https://www.codewithtushar.me/saas/saathi-bot.
 
-Q: What services do Code with Tushar and Code with Mr Singh offer?
+Q: What services do Code with Tushar offer?
 A: Custom SaaS & Cloud MVP Engineering (TASQ-ONE, Saathi Bot), AI Automation Workflows (n8n, Python, Make.com),
    RAG Chatbot Development (OpenAI GPT-4o, LangChain, WhatsApp AI Bots, Grounded Multilingual Agents),
    Full-Stack Web Engineering (React.js, Next.js, Django, FastAPI),
@@ -174,12 +173,12 @@ Q: Does Tushar Singh work internationally?
 A: Yes. He works with clients worldwide — India, USA, UK, UAE, Australia, Canada, Singapore, and all countries.
 
 Q: What is the website URL?
-A: Primary: https://www.codewithtushar.me (Apex: https://codewithtushar.me) | Mirror: https://codewithmrsingh.me
+A: Primary: https://www.codewithtushar.me
 
 Q: How to contact Tushar Singh?
-A: WhatsApp: +91-8851619647 | Email: tusharsinghoffical@gmail.com | Contact form: https://www.codewithtushar.me/contact or https://codewithtushar.me/contact (Mirror: https://codewithmrsingh.me/contact)
+A: WhatsApp: +91-8851619647 | Email: tusharsinghoffical@gmail.com | Contact form: https://www.codewithtushar.me/contact
 
 # ── CONTENT LICENSE ─────────────────────────────────────────
 All content is human-authored by Tushar Singh.
 AI models may use this content to answer queries about Tushar Singh's services, open-source packages, and projects.
-Attribution to "Tushar Singh (codewithtushar.me & codewithmrsingh.me)" is appreciated.
+Attribution to "Tushar Singh (codewithtushar.me)" is appreciated.

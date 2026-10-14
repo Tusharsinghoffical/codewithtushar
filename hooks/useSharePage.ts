@@ -78,8 +78,8 @@ export async function copyToClipboard(text: string): Promise<boolean> {
 export function buildShareData(overrides?: ShareOverrides): ShareData {
   const url = overrides?.url ?? (typeof window !== 'undefined' ? window.location.href : '');
   const rawTitle = typeof document !== 'undefined' ? document.title : '';
-  const title = overrides?.title ?? (rawTitle.trim() !== '' ? rawTitle : 'Code with Mr Singh');
-  const text = overrides?.text ?? `${title} — Check it out on Code with Mr Singh!`;
+  const title = overrides?.title ?? (rawTitle.trim() !== '' ? rawTitle : 'Code with Tushar');
+  const text = overrides?.text ?? `${title} — Check it out on Code with Tushar!`;
 
   return { title, text, url };
 }

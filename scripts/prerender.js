@@ -18,9 +18,7 @@ const template = fs.readFileSync(templatePath, 'utf8');
 const posts = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
 
 const SITE_URL = 'https://www.codewithtushar.me';
-const SECONDARY_SITE_URL = 'https://codewithmrsingh.me';
 const SITE_NAME = 'Code with Tushar';
-const SECONDARY_SITE_NAME = 'Code with Mr Singh';
 const DEFAULT_IMAGE = 'https://www.codewithtushar.me/tushar-singh-optimized.jpg';
 const DEFAULT_ALT = 'Tushar Singh — AI Automation Expert & Full-Stack Developer from Delhi, India';
 const SITE_DATE_MODIFIED = new Date().toISOString().split('T')[0];
@@ -62,9 +60,9 @@ const pages = [
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         "name": "Tushar Singh",
-        "alternateName": ["Code with Tushar", "Code with Mr Singh", "codewithtushar.me", "www.codewithtushar.me", "codewithmrsingh.me"],
+        "alternateName": ["Code with Tushar", "codewithtushar.me", "www.codewithtushar.me"],
         "jobTitle": "AI Automation Expert & Full-Stack Developer",
-        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from MIT Pune. Founder of Code with Tushar & Code with Mr Singh. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
+        "description": "Tushar Singh is a Delhi-based AI Automation Expert and Full-Stack Developer. MCA graduate from MIT Pune. Founder of Code with Tushar. 10+ successful projects submitted to clients. ₹2L+ revenue generated. Expert in Python, React.js, n8n, AI agents, chatbots, and Django.",
         "image": DEFAULT_IMAGE,
         "url": `${SITE_URL}/about`,
         "address": {
@@ -78,7 +76,6 @@ const pages = [
         "sameAs": [
           "https://www.codewithtushar.me",
           "https://codewithtushar.me",
-          "https://codewithmrsingh.me",
           "https://www.fiverr.com/s/zAd5R2z",
           "https://share.google/ZDu1p0y00ioP6PWiA",
           "https://drive.google.com/file/d/17pvGeSh_tA8-_NYFo2UOtRcYA5J2hMOh/view?usp=sharing",
@@ -252,7 +249,7 @@ const pages = [
               "name": "Who developed TASQ-ONE?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "TASQ-ONE was conceptualized, architected, and built by Tushar Singh, founder of Code with Tushar & Code with Mr Singh (Delhi, India)."
+                "text": "TASQ-ONE was conceptualized, architected, and built by Tushar Singh, founder of Code with Tushar (Delhi, India)."
               }
             }
           ]
@@ -490,39 +487,39 @@ const pages = [
   },
   {
     path: '/sitemap',
-    title: 'HTML Sitemap & Complete Website Directory Index | Code with Tushar & Code with Mr Singh',
-    description: 'Explore the complete directory index of Code with Tushar & Code with Mr Singh. Quick direct access to AI automation services, SaaS suites (TASQ-ONE), engineering portfolio, technical blog articles, and XML sitemaps.',
+    title: 'HTML Sitemap & Complete Website Directory Index | Code with Tushar',
+    description: 'Explore the complete directory index of Code with Tushar. Quick direct access to AI automation services, SaaS suites (TASQ-ONE), engineering portfolio, technical blog articles, and XML sitemaps.',
     keywords: `html sitemap, website directory, site index, all pages, AI automation services directory, Tushar Singh portfolio index, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: DEFAULT_IMAGE,
-    alt: 'HTML Sitemap & Directory Index — Code with Tushar & Code with Mr Singh',
+    alt: 'HTML Sitemap & Directory Index — Code with Tushar',
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "@id": `${SITE_URL}/sitemap#webpage`,
       "url": `${SITE_URL}/sitemap`,
-      "name": "HTML Sitemap & Website Directory Index — Code with Tushar & Code with Mr Singh",
-      "description": "Comprehensive HTML sitemap and directory index of Code with Tushar & Code with Mr Singh."
+      "name": "HTML Sitemap & Website Directory Index — Code with Tushar",
+      "description": "Comprehensive HTML sitemap and directory index of Code with Tushar."
     }
   },
   {
     path: '/404',
-    title: '404 — Page Not Found | Code with Tushar & Code with Mr Singh',
+    title: '404 — Page Not Found | Code with Tushar',
     description: 'The page you requested does not exist or has been relocated.',
     keywords: `404, page not found, ${INDIA_STATES_KEYWORDS}`,
     type: 'website',
     image: DEFAULT_IMAGE,
-    alt: '404 Page Not Found | Code with Tushar & Code with Mr Singh',
+    alt: '404 Page Not Found | Code with Tushar',
     noIndex: true
   }
 ];
 
 // Add all blog posts as prerender targets
 posts.forEach((post) => {
-  const fullTitle = `${post.title} | ${SITE_NAME} & ${SECONDARY_SITE_NAME}`;
+  const fullTitle = `${post.title} | ${SITE_NAME}`;
   const pageUrl = `${SITE_URL}/blog/${post.id}`;
   const image = post.imageUrl || DEFAULT_IMAGE;
-  const imageAlt = `${post.title} — ${SITE_NAME} & ${SECONDARY_SITE_NAME}`;
+  const imageAlt = `${post.title} — ${SITE_NAME}`;
 
   pages.push({
     path: `/blog/${post.id}`,
