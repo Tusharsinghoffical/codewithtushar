@@ -169,8 +169,8 @@ export const TASQ_ONE_DOCKER_IMAGE = 'tusharsinghoffical/tasq-one';
 
 export const SAATHI_BOT_URL = 'https://saathi-bot.vercel.app';
 export const SAATHI_BOT_WIDGET_SCRIPT = 'https://saathi-bot.vercel.app/widget.js';
-export const SAATHI_BOT_PUBLIC_ID = 'bot_9f223d8f29b999e81e';
-export const SAATHI_BOT_DASHBOARD_URL = 'https://saathi-bot.vercel.app/dashboard/bots/3622b090-d258-4556-ae06-4369b495bb3f';
+export const SAATHI_BOT_PUBLIC_ID = 'bot_92374edfb771113bfb';
+export const SAATHI_BOT_DASHBOARD_URL = 'https://saathi-bot.vercel.app/dashboard/bots/858608b2-ef00-437f-976c-3afe0fb00fbf';
 
 export const SHIELD_CAPTCHA_URL = 'https://shieldcaptcha.vercel.app';
 export const SHIELD_CAPTCHA_DEMO_URL = 'https://shieldcaptcha.vercel.app/demo';
@@ -216,7 +216,7 @@ export const SAAS_PRODUCTS: SaasProduct[] = [
     techStack: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Supabase pgvector', 'Google Gemini 2.5', 'Groq Cloud', 'Vercel Edge'],
     demoUrl: SAATHI_BOT_URL,
     pageUrl: '/saas/saathi-bot',
-    dockerSnippet: `<script src="https://saathi-bot.vercel.app/widget.js" data-bot="bot_9f223d8f29b999e81e" async></script>`,
+    dockerSnippet: `<script src="https://saathi-bot.vercel.app/widget.js" data-bot="bot_92374edfb771113bfb" async></script>`,
     isFlagship: true
   },
   {
